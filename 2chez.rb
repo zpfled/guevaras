@@ -36,8 +36,8 @@ class MenuItem
 end
 
 
-DataMapper.finalize.auto_upgrade!
-# DataMapper.finalize.auto_migrate!
+# DataMapper.finalize.auto_upgrade!
+DataMapper.finalize.auto_migrate!
 
 class TwoChez < Sinatra::Application
 	use Rack::Session::Cookie, 	secret: 		'kilimanjaro',
@@ -49,6 +49,23 @@ get '/' do
 	@title = 'Welcome'
 	@css = 'main'
 	erb :index
+end
+
+get '/signup' do
+	@title = 'Signup'
+	@action = 'sign up'
+	@css = 'main'
+	@users = Manager.all
+	erb :login
+end
+
+post '/signup' do
+	user = Manager.new
+	user.name = params[:name]
+	user.email = params[:email]
+	user.password = params[:password]
+	user.save
+	redirect '/signup'
 end
 
 get '/login' do
@@ -73,21 +90,6 @@ post '/login' do
 	end
 end
 
-get '/signup' do
-	@title = 'Signup'
-	@action = 'sign up'
-	@css = 'main'
-	erb :login
-end
-
-post '/signup' do
-	user = Manager.new
-	user.name = params[:name]
-	user.email = params[:email]
-	user.password = params[:password]
-	user.save
-	redirect '/login'
-end
 
 get '/admin' do
 	item = MenuItem.new

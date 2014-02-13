@@ -4,20 +4,27 @@
       <div class="col-md-5"></div>
       <div class="col-md-2">
         <div class="container">
-          <form class="form-login" role="form" action="/admin">
+          <form class="form-login" role="form" action="/<%= @action.gsub(' ', '') %>" method="post">
             <h2 class="form-login-heading">Please <%= @action %>.</h2>
             <input label"name" name="name" type="name" class="form-control" placeholder="Username" required autofocus>
             <input label="email" name="email" type="email" class="form-control" placeholder="Email" required>
             <input label="password" name="password" type="password" class="form-control" placeholder="Password" required>
-            <button value="submit" name="submit" class="btn btn-big btn-primary" type="submit">Log in</button>
+            <button value="submit" name="submit" class="btn btn-big btn-primary" type="submit"><%= @action %></button>
           </form>  
           <a href="/">Return to main site</a>
         </div>
       </div>
-      <div class="col-md-5"></div>
+      <div class="col-md-5">
+          <% @users.each do |user| %>
+            <article>
+              <p><%= "#{user.name}, #{user.email}" %></p>
+            </article>
+          <% end %>
+      </div>
     </div>
   </div>
 </section>
+
 
 
 
