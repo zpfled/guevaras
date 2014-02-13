@@ -45,12 +45,14 @@ class TwoChez < Sinatra::Application
 
 # Routes
 
+#tested
 get '/' do
 	@title = 'Welcome'
 	@css = 'main'
 	erb :index
 end
 
+#tested
 get '/signup' do
 	@title = 'Signup'
 	@action = 'sign up'
@@ -59,6 +61,7 @@ get '/signup' do
 	erb :login
 end
 
+#partially tested
 post '/signup' do
 	user = Manager.new
 	user.name = params[:name]
@@ -68,6 +71,7 @@ post '/signup' do
 	redirect '/signup'
 end
 
+#tested
 get '/login' do
 	@title = 'Login'
 	@action = 'log in'
@@ -75,6 +79,7 @@ get '/login' do
 	erb :login
 end
 
+#untested
 post '/login' do
 	session[:name] = params[:name]
 	session[:password] = params[:password]
@@ -90,7 +95,7 @@ post '/login' do
 	end
 end
 
-
+#untested
 get '/admin' do
 	item = MenuItem.new
 	item.menu = "dinner"
