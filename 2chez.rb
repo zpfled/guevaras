@@ -3,7 +3,7 @@ Bundler.require
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://#{Dir.pwd}/2chez.db")
 
-class Editor
+class Manager
 	include DataMapper::Resource
 	include BCrypt
 
@@ -51,7 +51,7 @@ end
 get '/login' do
 	@title = 'Login'
 	@css = 'main'
-	@users = Editor.all
+	@users = Manager.all
 	erb :login
 end
 
@@ -59,7 +59,7 @@ post '/login' do
 	session[:username] = params[:username]
 	session[:password] = params[:password]
 	
-	user = Editor.first(username: session[:username])
+	user = Manager.first(username: session[:username])
 
 	if user.nil?
 		redirect '/login'
