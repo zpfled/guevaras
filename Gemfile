@@ -6,13 +6,24 @@ gem 'shotgun'
 gem 'bcrypt-ruby',			require: 'bcrypt'
 gem 'multi_json', '1.8.4'
 
-group :test do
+group :development, :test do
 	gem 'rspec'
+	gem 'guard'
+
+	gem 'guard-rspec'
+
+	gem 'guard-spork', '1.4.2'
+	gem 'spork', '0.9.2'
+	gem 'rb-fsevent', :require => false
+	gem 'growl'
+end
+
+group :test do
 	gem 'rack-test'
+	gem 'capybara'
 end
 
 group :development do
-	gem 'guard'
 	gem 'guard-livereload', require: false
 	gem 'sqlite3'
 	gem 'dm-sqlite-adapter'

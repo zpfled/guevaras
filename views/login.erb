@@ -6,10 +6,10 @@
         <div class="container">
           <form class="form-login" role="form" action="/admin">
             <h2 class="form-login-heading">Please <%= @action %>.</h2>
-            <input name="name" type="name" class="form-control" placeholder="Username" required autofocus>
-            <input name="email" type="email" class="form-control" placeholder="Email" required>
-            <input name="password" type="password" class="form-control" placeholder="Password" required>
-            <button class="btn btn-big btn-primary" type="submit">Log in</button>
+            <input label"name" name="name" type="name" class="form-control" placeholder="Username" required autofocus>
+            <input label="email" name="email" type="email" class="form-control" placeholder="Email" required>
+            <input label="password" name="password" type="password" class="form-control" placeholder="Password" required>
+            <button value="submit" name="submit" class="btn btn-big btn-primary" type="submit">Log in</button>
           </form>  
           <a href="/">Return to main site</a>
         </div>
@@ -19,10 +19,15 @@
   </div>
 </section>
 
+
+
 <!-- 
 
 Goals for this page:
 
-- Use form to pass :name and :password through params hash to 2Chez.rb
+- Use form to pass :name, :email, and :password through params hash to 2Chez.rb
+- Create new Manager with given information
+- New Manager should not be admin
+
 
 -->
