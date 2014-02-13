@@ -7,7 +7,6 @@ module RSpecMixin
   def app() TwoChez end
 end
 
-# For RSpec 2.x
 RSpec.configure { |c| c.include RSpecMixin }
 
 
