@@ -14,7 +14,6 @@ group :development, :test do
 
 	gem 'guard-spork', '1.4.2'
 	gem 'spork', '0.9.2'
-	gem 'rb-fsevent', :require => false
 	gem 'growl'
 end
 

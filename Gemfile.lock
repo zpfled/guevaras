@@ -167,7 +167,6 @@ DEPENDENCIES
   multi_json (= 1.8.4)
   pg
   rack-test
-  rb-fsevent
   rspec
   shotgun
   sinatra

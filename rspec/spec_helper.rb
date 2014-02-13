@@ -1,19 +1,7 @@
-# require 'rack/test'
-# require 'rspec'
-
-# require File.expand_path '../../2chez.rb', __FILE__
-
-# module RSpecMixin
-#   include Rack::Test::Methods
-#   def app() TwoChez end
-# end
-
-# RSpec.configure { |c| c.include RSpecMixin }
-
 require 'rubygems'
 require 'spork'
 
-ENV['RACK_ENV'] = 'test'                    # force the environment to 'test'
+ENV['RACK_ENV'] = 'test'
 
 Spork.prefork do
   require File.join(File.dirname(__FILE__), '..', '2chez.rb')
@@ -25,7 +13,7 @@ Spork.prefork do
   require 'capybara'
   require 'capybara/dsl'
 
-  Capybara.app = TwoChez       # in order to make Capybara work
+  Capybara.app = TwoChez
 
   # set test environments
   set :environment, :test
