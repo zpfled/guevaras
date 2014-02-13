@@ -5,8 +5,9 @@
       <div class="col-md-2">
         <div class="container">
           <form class="form-login" role="form" action="/admin">
-            <h2 class="form-login-heading">Please log in.</h2>
+            <h2 class="form-login-heading">Please <%= @action %>.</h2>
             <input name="name" type="name" class="form-control" placeholder="Username" required autofocus>
+            <input name="email" type="email" class="form-control" placeholder="Email" required>
             <input name="password" type="password" class="form-control" placeholder="Password" required>
             <button class="btn btn-big btn-primary" type="submit">Log in</button>
           </form>  

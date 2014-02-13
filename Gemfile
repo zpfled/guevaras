@@ -6,6 +6,11 @@ gem 'shotgun'
 gem 'bcrypt-ruby',			require: 'bcrypt'
 gem 'multi_json', '1.8.4'
 
+group :test do
+	gem 'rspec'
+	gem 'rack-test'
+end
+
 group :development do
 	gem 'guard'
 	gem 'guard-livereload', require: false

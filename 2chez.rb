@@ -12,7 +12,7 @@ class Manager
 	property :name, 		Text,		required: true,		unique: true
 	property :email,		Text,		required: true,		unique: true,	format: :email_address
 	property :password, 	BCryptHash, required: true,		length: 8..255
-	property :admin,		Boolean,	default: false
+	property :admin,		Boolean,	default: false,		writer: :protected
 
 	def authenticate?(attempted_password)
     	if self.password == attempted_password
@@ -53,6 +53,7 @@ end
 
 get '/login' do
 	@title = 'Login'
+	@action = 'log in'
 	@css = 'main'
 	erb :login
 end
@@ -64,12 +65,28 @@ post '/login' do
 	user = Manager.first(email: session[:email])
 
 	if user.nil?
-		redirect '/login'
+		redirect '/signup'
 	elsif user.authenticate?(session[:password])
 		redirect '/admin'
 	else
 		redirect '/'
 	end
+end
+
+get '/signup' do
+	@title = 'Signup'
+	@action = 'sign up'
+	@css = 'main'
+	erb :login
+end
+
+post '/signup' do
+	user = Manager.new
+	user.name = params[:name]
+	user.email = params[:email]
+	user.password = params[:password]
+	user.save
+	redirect '/login'
 end
 
 get '/admin' do
