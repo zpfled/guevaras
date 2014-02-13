@@ -3,7 +3,7 @@ Bundler.require
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://#{Dir.pwd}/2chez.db")
 
-class Editor
+class Manager
 	include DataMapper::Resource
 	include BCrypt
 
@@ -33,8 +33,8 @@ class MenuItem
 end
 
 
-DataMapper.finalize.auto_upgrade!
-# DataMapper.finalize.auto_migrate!
+# DataMapper.finalize.auto_upgrade!
+DataMapper.finalize.auto_migrate!
 
 class TwoChez < Sinatra::Application
 	enable :sessions
@@ -50,7 +50,8 @@ end
 
 get '/login' do
 	@title = 'Login'
-	@users = User.all
+	@css = 'main'
+	@users = Manager.all
 	erb :login
 end
 
@@ -58,7 +59,7 @@ post '/login' do
 	session[:username] = params[:username]
 	session[:password] = params[:password]
 	
-	user = User.first(username: session[:username])
+	user = Manager.first(username: session[:username])
 
 	if user.nil?
 		redirect '/login'
