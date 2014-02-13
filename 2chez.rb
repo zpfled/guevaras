@@ -1,15 +1,18 @@
 require 'bundler'
-Bundler.require
+Bundler.require(:default, :development)
 
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://#{Dir.pwd}/2chez.db")
+# DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://#{Dir.pwd}/2chez.db")
+DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
 
 class Manager
 	include DataMapper::Resource
 	include BCrypt
 
 	property :id, 		   	Serial
-	property :username, 	Text,		required: true
-	property :password, 	BCryptHash, required: true
+	property :name, 		Text,		required: true,		unique: true
+	property :email,		Text,		required: true,		unique: true,	format: :email_address
+	property :password, 	BCryptHash, required: true,		length: 8..255
+	property :admin,		Boolean,	default: false
 
 	def authenticate?(attempted_password)
     	if self.password == attempted_password
@@ -37,8 +40,8 @@ DataMapper.finalize.auto_upgrade!
 # DataMapper.finalize.auto_migrate!
 
 class TwoChez < Sinatra::Application
-	enable :sessions
-	set :session_secret, 'kilimanjaro'
+	use Rack::Session::Cookie, 	secret: 		'kilimanjaro',
+								expire_after: 	3600 # session expires after 1 hour
 
 # Routes
 
@@ -51,15 +54,14 @@ end
 get '/login' do
 	@title = 'Login'
 	@css = 'main'
-	@users = Manager.all
 	erb :login
 end
 
 post '/login' do
-	session[:username] = params[:username]
+	session[:name] = params[:name]
 	session[:password] = params[:password]
 	
-	user = Manager.first(username: session[:username])
+	user = Manager.first(email: session[:email])
 
 	if user.nil?
 		redirect '/login'
@@ -81,21 +83,6 @@ get '/admin' do
 	@css = 'admin'
 	@menu_items = MenuItem.all
 	erb :admin, layout: false
-end
-
-get '/contact' do
-	@title = 'Contact Us'
-	@css = 'main'
-	erb :contact
-end
-
-# get "/#{menu}-menu" do
-get '/menu' do
-	# @title = "#{menu} Menu"
-	@title = 'Menu'
-	# @css = 'menu'
-	@css = 'main'
-	erb :menu
 end
 
 end

@@ -18,7 +18,21 @@
 
   <style id="holderjs-style" type="text/css"></style>
 </head>
-<body>
+<body style>
+  <section class="nav-section">
+    <header class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-1">
+            <a type="button" class="btn">
+              <span class="glyphicon glyphicon-home"></span> Home
+            </a>
+          </div>
+        </div>
+      </div>  
+    </header>
+  </section>
+
   <div class="site-wrapper">
     <div class="site-wrapper-inner">
       <section class="container">
@@ -55,3 +69,16 @@
     </div>
   </div>
 </body>
+
+<!-- 
+
+Goals for this page:
+
+- Be accessible only through a successful login
+- Redirect to login page if accessed by non-logged-in user
+- Allow admin to create MenuItems
+- Display current MenuItems, organized by menu (lunch, dinner, etc.)
+- Allow admin to edit existing MenuItem properties
+- Allow admin to destroy MenuItems, with confirmation prompt
+
+-->
