@@ -1,6 +1,6 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
-require 'active_support/core_ext'
+#require 'active_support/core_ext'
 
 guard 'livereload' do
   watch(%r{views/.+\.(erb|haml|slim)$})
