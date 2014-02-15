@@ -4,6 +4,17 @@
  * Globals
  */
 
+ /* Bootstrap Overrides */
+
+ .nav>li>a {
+  padding: 10px 10px;
+ }
+
+ .nav>li>a:hover {
+  color: #666;
+  background-color: #fff;
+ }
+
 /* Links */
 a,
 a:focus,
