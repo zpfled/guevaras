@@ -209,6 +209,11 @@ body {
   margin-top: 25em;
 }
 
+.menu {
+  border-bottom: 1px solid #fff;
+  margin-bottom: 1em;
+}
+
 /*
 * Navbar
 */
