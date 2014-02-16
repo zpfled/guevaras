@@ -6,10 +6,6 @@
 
  /* Bootstrap Overrides */
 
- .nav>li>a {
-  padding: 10px 10px;
- }
-
  .nav>li>a:hover, .nav>li>a:focus {
   color: #666;
   background-color: #fff;
