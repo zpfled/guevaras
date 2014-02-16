@@ -10,7 +10,14 @@
   padding: 10px 10px;
  }
 
- .nav>li>a:hover {
+ .nav>li>a:hover, .nav>li>a:focus {
+  color: #666;
+  background-color: #fff;
+ }
+
+ .nav-pills>li.active>a, 
+ .nav-pills>li.active>a:hover, 
+ .nav-pills>li.active>a:focus {
   color: #666;
   background-color: #fff;
  }
@@ -193,6 +200,7 @@ body {
 */
 
 .content {
+  background: rgba(52,52,52, .75); /* For dev purposes. Delete later. */
   border-bottom: 1px solid #fff;
   padding-bottom: 2em;
 }

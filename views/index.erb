@@ -7,11 +7,15 @@
   <section class="content push-down">
     <h1>Menu</h1>
     <ul class="nav nav-pills">
-      <li><a href="#">Lunch</a></li>
-      <li><a href="#">Dinner</a></li>
-      <li><a href="#">Wine List</a></li>
+      <li><a href="#lunch" data-toggle="pill">Lunch</a></li>
+      <li><a href="#dinner" data-toggle="pill">Dinner</a></li>
+      <li><a href="#wine-list" data-toggle="pill">Wine List</a></li>
     </ul>
-    <p>Menu items go here</p>
+    <div class="tab-content">
+      <div class="tab-pane fade in active" id="lunch">This is lunch</div>
+      <div class="tab-pane fade" id="dinner">This is dinner</div>
+      <div class="tab-pane fade" id="wine-list">This is the wine list</div>
+    </div>
   </section>
 
   <section class="content">
