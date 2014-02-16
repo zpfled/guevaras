@@ -209,8 +209,20 @@ body {
   margin-top: 25em;
 }
 
-.menu {
+.menu.nav {
   border-bottom: 1px solid #fff;
+  margin-bottom: 1em;
+}
+
+.menu {
+  font-size: .85em;
+}
+
+.menu>dt {
+  text-transform: uppercase;
+}
+
+.menu>dd {  
   margin-bottom: 1em;
 }
 
