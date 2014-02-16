@@ -187,7 +187,6 @@ body {
 
 @media (min-width: 768px) {
   .masthead-brand {
-    float: left;
     font-size: 8em;
   }
   .masthead-nav {
@@ -312,7 +311,6 @@ body {
  */
 
 footer {
-  position: absolute;
   top: 100%;
   width: 100%;
 }
@@ -354,11 +352,6 @@ footer {
  */
 
 @media (min-width: 768px) {
-  /* Pull out the header and footer */
-  .masthead {
-    position: absolute;
-    top: 0;
-  }
 
   /* Start the vertical centering */
   .site-wrapper-inner {
@@ -389,10 +382,6 @@ footer {
 */
 
 @media (min-width: 992px) {
-  .masthead,
-  .welcome-container {
-    width: 90%;
-  }
 
   .bar-btn {
     padding: 0 3em 0 3em;
