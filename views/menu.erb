@@ -1,32 +1,34 @@
-<div class="navbar">
-        <div class-"navbar-inner">
-          <div class="bar-wrapper">
-            <div class="btn-group">
-              <a href="/about" class="btn bar-btn">
-                Our Story
-              </a>
-            <div class="btn-group">
-              <a class="btn dropdown dropdown-toggle bar-btn" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                Menu
-              </a>
-              <ul class="dropdown-menu dropup welcome-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Lunch</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Dinner</a></li>
-                <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Cocktails</a></li>
-              </ul>
-            </div>
-              <a href="/contact" class="btn bar-btn">
-                Contact Us
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="welcome-container">
-          <div class="navbar-inner">
-            <div class="inner bottom-bar">
-              <p>Site design by <a href="https://twitter.com/zachpflederer">@zachpflederer</a>, jumpstarted with <a href="http://getbootstrap.com">Bootstrap</a>.</p>
-            </div>
-          </div>
-        </div>
+<section class="content push-down">
+    <h1>Menu</h1>
+
+    <ul class="menu nav nav-pills nav-justified">
+      <li class="h2 active">
+        <a href="#lunch" data-toggle="pill">Lunch</a>
+      </li>
+      <li class="h2">
+        <a href="#dinner" data-toggle="pill">Dinner</a>
+      </li>
+      <li class="h2">
+        <a href="#wine-list" data-toggle="pill">Wine List</a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane fade in active" id="lunch">
+        <h3><a data-toggle="collapse" data-target="#appetizers">Appetizers</a></h3>
+        <dl id="appetizers" class="menu collapse in">
+          <dt>Calamari <span>9</span></dt>
+          <dd>Peoria’s best. Served with Remoulade</dd>
+          <dt>Flat Bread <span>7</span></dt>
+          <dd>Flat bread drizzled with infused garlic and herb olive oil, baked with artichokes, sundry tomatoes, calamata olives, roasted red pepper, fresh mozzarella, fresh basil and pecorino romano</dd>
+          <dt>Bruschetta <span>6</span></dt>
+          <dd>Fresh tomatoes, garlic, and herbs on toasted baguette with a touch of balsamic reduction</dd>
+          <dt>Pomme Frites <span>6</span></dt>
+          <dd>Hand cut fries tossed with grated pecorino, parsley, and lemon zest served with a garlic aioli</dd>
+        </dl>
       </div>
+      <div class="tab-pane fade" id="dinner">This is dinner</div>
+      <div class="tab-pane fade" id="wine-list">This is the wine list</div>
+    </div>
+
+  </section>

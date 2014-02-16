@@ -4,40 +4,7 @@
     <h1>Casual Fine Dining</h1>
   </section>
 
-  <section class="content push-down">
-    <h1>Menu</h1>
-
-    <ul class="menu nav nav-pills nav-justified">
-      <li class="h2 active">
-        <a href="#lunch" data-toggle="pill">Lunch</a>
-      </li>
-      <li class="h2">
-        <a href="#dinner" data-toggle="pill">Dinner</a>
-      </li>
-      <li class="h2">
-        <a href="#wine-list" data-toggle="pill">Wine List</a>
-      </li>
-    </ul>
-
-    <div class="tab-content">
-      <div class="tab-pane fade in active" id="lunch">
-        <h3><a data-toggle="collapse" data-target="#appetizers">Appetizers</a></h3>
-        <dl id="appetizers" class="menu collapse in">
-          <dt>Calamari <span>9</span></dt>
-          <dd>Peoria’s best. Served with Remoulade</dd>
-          <dt>Flat Bread <span>7</span></dt>
-          <dd>Flat bread drizzled with infused garlic and herb olive oil, baked with artichokes, sundry tomatoes, calamata olives, roasted red pepper, fresh mozzarella, fresh basil and pecorino romano</dd>
-          <dt>Bruschetta <span>6</span></dt>
-          <dd>Fresh tomatoes, garlic, and herbs on toasted baguette with a touch of balsamic reduction</dd>
-          <dt>Pomme Frites <span>6</span></dt>
-          <dd>Hand cut fries tossed with grated pecorino, parsley, and lemon zest served with a garlic aioli</dd>
-        </dl>
-      </div>
-      <div class="tab-pane fade" id="dinner">This is dinner</div>
-      <div class="tab-pane fade" id="wine-list">This is the wine list</div>
-    </div>
-
-  </section>
+  <%= erb(:menu, :layout => false) %>
 
   <section class="content">
     <h1>Hours</h1>
