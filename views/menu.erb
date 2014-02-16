@@ -1,15 +1,12 @@
 <section class="content push-down">
     <h1>Menu</h1>
 
-    <ul class="menu nav nav-pills nav-justified">
+    <ul class="menu nav nav-tabs">
       <li class="h2 active">
-        <a href="#lunch" data-toggle="pill">Lunch</a>
+        <a href="#lunch" data-toggle="tab">Lunch</a>
       </li>
       <li class="h2">
-        <a href="#dinner" data-toggle="pill">Dinner</a>
-      </li>
-      <li class="h2">
-        <a href="#wine-list" data-toggle="pill">Wine List</a>
+        <a href="#dinner" data-toggle="tab">Dinner</a>
       </li>
     </ul>
 
@@ -28,7 +25,23 @@
         </dl>
       </div>
       <div class="tab-pane fade" id="dinner">This is dinner</div>
-      <div class="tab-pane fade" id="wine-list">This is the wine list</div>
+    </div>
+
+    <div id="accordion">
+      <div>
+        <div>
+          <h3>
+            <a data-toggle="collapse" data-parent="#accordion" href="#wine-list">
+              Wine List
+            </a>
+          </h3>
+        </div>
+        <div id="wine-list" class="panel-collapse collapse">
+          <div class="panel-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+          </div>
+        </div>
+      </div>
     </div>
 
   </section>
