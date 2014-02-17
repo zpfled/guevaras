@@ -18,6 +18,14 @@
   background-color: #fff;
  }
 
+ .panel {
+  background-color: none;
+  border-bottom: 1px solid #fff;
+  border-top: 1px solid #fff;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+ }
+
 /* Links */
 a,
 a:focus,
@@ -208,6 +216,8 @@ body {
   border-bottom: 1px solid #fff;
   margin-bottom: 1em;
 }
+
+/* Menu */
 
 .menu {
   font-size: .85em;
