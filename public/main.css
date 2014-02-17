@@ -538,3 +538,7 @@ Login Screen
   z-index: 3;
   padding-top: 4em;
 }
+
+@media (min-width: 768px) {
+  
+}

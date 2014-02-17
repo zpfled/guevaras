@@ -1,18 +1,15 @@
 <section class="login-page-wrapper">
   <div class="inner container">
     <div class="row">
-      <div class="col-md-5"></div>
-      <div class="col-md-2">
-        <div class="container">
-          <form class="form-login" role="form" action="/<%= @action.gsub(' ', '') %>" method="post">
-            <h2 class="form-login-heading">Please <%= @action %>.</h2>
-            <input label"name" name="name" type="name" class="form-control" placeholder="Username" required autofocus>
-            <input label="email" name="email" type="email" class="form-control" placeholder="Email" required>
-            <input label="password" name="password" type="password" class="form-control" placeholder="Password" required>
-            <button value="submit" name="submit" class="btn btn-big btn-primary" type="submit"><%= @action %></button>
-          </form>  
+      <div class="col-md-4 col-md-offset-4">
+        <form class="form-login" role="form" action="/<%= @action.gsub(' ', '') %>" method="post">
+          <h2 class="form-login-heading">Please <%= @action %>.</h2>
+          <input label"name" name="name" type="name" class="form-control" placeholder="Username" required autofocus>
+          <input label="email" name="email" type="email" class="form-control" placeholder="Email" required>
+          <input label="password" name="password" type="password" class="form-control" placeholder="Password" required>
+          <button value="submit" name="submit" class="btn btn-lg btn-primary btn-bottom" type="submit"><%= @action %></button>
           <a href="/">Return to main site</a>
-        </div>
+        </form>  
       </div>
       <div class="col-md-5">
           <!-- This is just here to display users until we have a different place to do that. -->
