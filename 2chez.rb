@@ -9,7 +9,7 @@ class Manager
 	include BCrypt
 
 	property :id, 		   	Serial
-	property :name, 		Text,		required: true,		unique: true
+	property :name, 		Text,		required: true,		unique: true,	key: true
 	property :email,		Text,		required: true,		unique: true,	format: :email_address
 	property :password, 	BCryptHash, required: true,		length: 8..255
 	property :admin,		Boolean,	default: false,		writer: :protected
@@ -37,8 +37,8 @@ class MenuItem
 end
 
 
-# DataMapper.finalize.auto_upgrade!
-DataMapper.finalize.auto_migrate!
+DataMapper.finalize.auto_upgrade!
+# DataMapper.finalize.auto_migrate!
 
 class TwoChez < Sinatra::Application
 	use Rack::Session::Cookie, 	secret: 		'kilimanjaro',
@@ -65,7 +65,7 @@ end
 
 post '/signup' do
 	user = Manager.new
-	user.name = params[:name].capitalize
+	user.name = params[:name]
 	user.email = params[:email]
 	user.password = params[:password]
 	user.save
@@ -97,7 +97,7 @@ get '/admin' do
 	@menu_items = MenuItem.all
 	@user = session[:name]
 
-	if session[:name] == nil
+	if @user.nil?
 		redirect '/login'
 	else 
 		erb :admin, layout: false
