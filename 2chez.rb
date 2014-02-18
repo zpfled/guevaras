@@ -83,7 +83,6 @@ end
 post '/login' do
 	session[:name] = params[:name]
 	session[:password] = params[:password]
-	
 	user = Manager.first(name: session[:name])
 
 	if user.nil?
@@ -95,16 +94,17 @@ end
 
 #untested
 get '/admin' do
-	item = MenuItem.new
-	item.menu = "dinner"
-	item.name = "chicken pesto sandwich"
-	item.description = "yummy sandwich with chicken and pesto and bread and a pickle and cheese and mushrooms."
-	item.price = "9"
-	item.save
 	@title = 'Dashboard'
 	@css = 'admin'
 	@menu_items = MenuItem.all
-	erb :admin, layout: false
+
+
+	if session[:name] == nil
+		redirect '/login'
+	else 
+		erb :admin, layout: false
+	end
+
 end
 
 end

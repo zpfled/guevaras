@@ -43,24 +43,26 @@
             <div class="container">
               <h1>Hi, <%= @user %>.</h1>
               <p>Instructions go here.</p>
-              <% @menu_items.each do |item| %>
-                <article class="row">
-                  <div class="col-md-2">
-                    <p><%= item.name %> (<%= item.menu %>)</p>  
-                  </div>
-                  <div class="col-md-4">
-                    <p><%= item.description %></p>
-                  </div>
-                  <div class="col-md-1">
-                    <p>$<%= item.price %></p>
-                  </div>
-                  <div class="col-md-1">
-                    <button class="btn btn-big btn-warning">edit</button>
-                  </div>
-                  <div class="col-md-1">
-                    <button class="btn btn-big btn-danger">delete</button>
-                  </div>
-                </article>  
+              <% if @menu_items != nil %>
+                <% @menu_items.each do |item| %>
+                  <article class="row">
+                    <div class="col-md-2">
+                      <p><%= item.name %> (<%= item.menu %>)</p>  
+                    </div>
+                    <div class="col-md-4">
+                      <p><%= item.description %></p>
+                    </div>
+                    <div class="col-md-1">
+                      <p>$<%= item.price %></p>
+                    </div>
+                    <div class="col-md-1">
+                      <button class="btn btn-big btn-warning">edit</button>
+                    </div>
+                    <div class="col-md-1">
+                      <button class="btn btn-big btn-danger">delete</button>
+                    </div>
+                  </article>  
+                <% end %>
               <% end %>
             </div>
           </div>
