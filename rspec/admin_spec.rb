@@ -33,7 +33,7 @@ feature "admin page" do
 		scenario "should greet user by name" do
 			visit '/admin'
 			expect(page).to have_selector('h1', text: 'Hi, Todd.')
-		end 
+		end
 
 	end
 end
