@@ -12,10 +12,31 @@
 
     <div class="tab-content">
       <div class="tab-pane fade in active" id="lunch">
-        <h3><a data-toggle="collapse" data-target="#appetizers">Appetizers</a></h3>
-        <dl id="appetizers" class="menu collapse in">
-          <dt>Calamari <span>9</span></dt>
-          <dd>Peoria’s best. Served with Remoulade</dd>
+        <% @menu_items.each do |item| %>
+          <% if item.menu == 'lunch' %>
+            <% if item.category == 'starters' %>
+              <article>
+                <h3>
+                  <a data-toggle="collapse" data-target="#<%= item.category %>">
+                    <%= item.category %>
+                  </a>
+                </h3>
+                <dl id="<%= item.category %>" class="menu collapse in">
+                <dt class="item-name">
+                  <%= item.name %>
+                  <span class="item-price">
+                    <%= item.price %>
+                  </span>
+                </dt>
+                <dd class="item-description">
+                  <%= item.description %>
+                </dd>
+              </article>
+            <% end %>
+          <% end %>
+        <% end %>
+        <!-- <h3><a data-toggle="collapse" data-target="#starters">Starters</a></h3> -->
+        <!-- <dl id="starters" class="menu collapse in"> -->
           <dt>Flat Bread <span>7</span></dt>
           <dd>Flat bread drizzled with infused garlic and herb olive oil, baked with artichokes, sundry tomatoes, calamata olives, roasted red pepper, fresh mozzarella, fresh basil and pecorino romano</dd>
           <dt>Bruschetta <span>6</span></dt>
@@ -24,7 +45,9 @@
           <dd>Hand cut fries tossed with grated pecorino, parsley, and lemon zest served with a garlic aioli</dd>
         </dl>
       </div>
-      <div class="tab-pane fade" id="dinner">This is dinner</div>
+      <div class="tab-pane fade" id="dinner">
+        This is dinner
+      </div>
     </div>
 
     <div id="accordion">

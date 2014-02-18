@@ -27,17 +27,18 @@ class MenuItem
 	include DataMapper::Resource
 
 	property :id,			Serial
-	property :menu,			String, 	required: true
-	property :name,			String, 	required: true
+	property :menu,			String, 	required: true # e.g. Lunch, Dinner, Wine
+	property :category,		String,		required: true # e.g. Starters, Chicken, Cabernet Sauvignon, Interesting Whites
+	property :name,			String, 	required: true # e.g. Calimari, Snoqualmie
 	property :description,	Text, 		required: true
 	property :price,		Integer, 	required: true
-	property :added_on,		Date
-	property :updated_on,	Date
+	# property :added_on,		Date
+	# property :updated_on,	Date
 end
 
 
-DataMapper.finalize.auto_upgrade!
-# DataMapper.finalize.auto_migrate!
+# DataMapper.finalize.auto_upgrade!
+DataMapper.finalize.auto_migrate!
 
 class TwoChez < Sinatra::Application
 	use Rack::Session::Cookie, 	secret: 		'kilimanjaro',
@@ -49,6 +50,7 @@ class TwoChez < Sinatra::Application
 get '/' do
 	@title = 'Welcome'
 	@css = 'main'
+	@menu_items = MenuItem.all
 	erb :index
 end
 
