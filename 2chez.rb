@@ -79,7 +79,7 @@ get '/login' do
 	erb :login
 end
 
-#untested
+#tested
 post '/login' do
 	session[:name] = params[:name]
 	session[:password] = params[:password]
@@ -87,11 +87,9 @@ post '/login' do
 	user = Manager.first(name: session[:name])
 
 	if user.nil?
-		redirect '/signup'
+		redirect '/'
 	elsif user.authenticate?(session[:password])
 		redirect '/admin'
-	else
-		redirect '/'
 	end
 end
 

@@ -22,5 +22,16 @@ feature "login page" do
 			click_button 'submit'
 			expect(page).to have_title('Dashboard | 2Chez')
 		end
+
+		scenario "with the wrong credentials" do
+			visit '/login'
+			within('#form') do
+				fill_in 'name', 	with: 'Jimmy'
+				fill_in 'password', with: 'cracked_corn'
+			end
+			click_button 'submit'
+			expect(page).to have_title('Welcome | 2Chez')
+		end
+		
 	end
 end
