@@ -16,6 +16,7 @@
           <% if item.menu == 'lunch' %>
             <% if item.category == 'starters' %>
               <article>
+                <!-- I need to fix it so that the h3 doesn't repeat with every article. -->
                 <h3>
                   <a data-toggle="collapse" data-target="#<%= item.category %>">
                     <%= item.category %>
