@@ -61,14 +61,14 @@ get '/signup' do
 	erb :login
 end
 
-#partially tested
+#tested
 post '/signup' do
 	user = Manager.new
 	user.name = params[:name]
 	user.email = params[:email]
 	user.password = params[:password]
 	user.save
-	redirect '/signup'
+	redirect '/login'
 end
 
 #tested
@@ -84,7 +84,7 @@ post '/login' do
 	session[:name] = params[:name]
 	session[:password] = params[:password]
 	
-	user = Manager.first(email: session[:email])
+	user = Manager.first(name: session[:name])
 
 	if user.nil?
 		redirect '/signup'

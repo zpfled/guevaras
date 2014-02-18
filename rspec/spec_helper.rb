@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'spork'
+require 'capybara/rspec'
 
 ENV['RACK_ENV'] = 'test'
 

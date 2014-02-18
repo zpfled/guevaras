@@ -16,6 +16,10 @@ describe "Signup page" do
     user = Manager.first
     expect(user.name).to eq('Bill Brasky')
     expect(user.email).to eq('billbrasky@email.com')
+    expect(user.password).to eq('password')
     expect(Manager.all.length).to eq(1)
+    expect(user.admin).to eq(false)
   end
+
+
 end
