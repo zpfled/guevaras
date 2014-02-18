@@ -63,7 +63,7 @@ end
 
 post '/signup' do
 	user = Manager.new
-	user.name = params[:name]
+	user.name = params[:name].capitalize
 	user.email = params[:email]
 	user.password = params[:password]
 	user.save
@@ -93,7 +93,7 @@ get '/admin' do
 	@title = 'Dashboard'
 	@css = 'admin'
 	@menu_items = MenuItem.all
-
+	@user = session[:name]
 
 	if session[:name] == nil
 		redirect '/login'

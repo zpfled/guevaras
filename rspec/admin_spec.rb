@@ -29,5 +29,11 @@ feature "admin page" do
 			visit '/admin'
 			expect(page).to have_title('Dashboard | 2Chez')
 		end
+
+		scenario "should greet user by name" do
+			visit '/admin'
+			expect(page).to have_selector('h1', text: 'Hi, Todd.')
+		end 
+
 	end
 end
