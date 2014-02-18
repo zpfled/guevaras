@@ -61,7 +61,6 @@ get '/signup' do
 	erb :login
 end
 
-#tested
 post '/signup' do
 	user = Manager.new
 	user.name = params[:name]
@@ -71,7 +70,6 @@ post '/signup' do
 	redirect '/login'
 end
 
-#tested
 get '/login' do
 	@title = 'Login'
 	@action = 'log in'
@@ -79,7 +77,6 @@ get '/login' do
 	erb :login
 end
 
-#tested
 post '/login' do
 	session[:name] = params[:name]
 	session[:password] = params[:password]
@@ -92,7 +89,6 @@ post '/login' do
 	end
 end
 
-#tested
 get '/admin' do
 	@title = 'Dashboard'
 	@css = 'admin'
