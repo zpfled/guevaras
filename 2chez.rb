@@ -92,7 +92,7 @@ post '/login' do
 	end
 end
 
-#untested
+#tested
 get '/admin' do
 	@title = 'Dashboard'
 	@css = 'admin'
