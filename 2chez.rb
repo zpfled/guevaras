@@ -44,10 +44,12 @@ class TwoChez < Sinatra::Application
 
 # Routes
 
-#tested
+#untested
 get '/' do
 	@title = 'Welcome'
 	@menu_items = MenuItem.all
+	@menu = ['lunch', 'dinner', 'small plates', 'wine', 'cocktails']
+	@admin = false
 	erb :index
 end
 
@@ -59,6 +61,7 @@ get '/signup' do
 	erb :login
 end
 
+#tested
 post '/signup' do
 	user = Manager.new
 	user.name = params[:name]
@@ -68,12 +71,14 @@ post '/signup' do
 	redirect '/login'
 end
 
+#tested
 get '/login' do
 	@title = 'Login'
 	@action = 'log in'
 	erb :login
 end
 
+#tested
 post '/login' do
 	session[:name] = params[:name]
 	session[:password] = params[:password]
@@ -88,13 +93,13 @@ post '/login' do
 	end
 end
 
+# untested
 get '/admin' do
 	@title = 'Dashboard'
 	@user = session[:name]
 	@admin = true ? @user : false
 	@menu_items = MenuItem.all
 	@menu = ['lunch', 'dinner', 'small plates', 'wine', 'cocktails']
-	@menu_items.each { |item| @menu.push(item.menu).sort unless @menu.include?(item.menu) }
 
  	if @user
 		@current_user = Manager.first(name: session[:name])
@@ -108,6 +113,7 @@ get '/admin' do
 	end
 end
 
+# untested
 post '/menu' do
 	item = MenuItem.new
 	item.name = params[:name]
@@ -120,12 +126,14 @@ post '/menu' do
 	redirect '/admin'
 end
 
+# untested
 delete '/menu' do
 	item = MenuItem.first(name: params[:name])
 	item.destroy
 	redirect '/admin'
 end
 
+# untested
 post '/raise' do
 	item = MenuItem.first(name: params[:name])
 	item.price = item.price + 1
@@ -134,6 +142,7 @@ post '/raise' do
 	redirect '/admin'
 end
 
+# untested
 post '/reduce' do
 	item = MenuItem.first(name: params[:name])
 	item.price = item.price - 1
