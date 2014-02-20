@@ -32,8 +32,6 @@ class MenuItem
 	property :name,			String, 	required: true # e.g. Calimari, Snoqualmie
 	property :description,	Text, 		required: true
 	property :price,		Integer, 	required: true
-	# property :added_on,		Date
-	# property :updated_on,	Date
 end
 
 
