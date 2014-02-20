@@ -93,7 +93,7 @@ end
 
 get '/admin' do
 	@title = 'Dashboard'
-	@css = 'admin'
+	@css = 'main'
 	@menu_items = MenuItem.all
 	@user = session[:name]
 
@@ -102,7 +102,7 @@ get '/admin' do
 		if @user != @current_user.name
 			redirect '/'
 		else
-			erb :admin, layout: false
+			erb :admin
 		end
 	else
 		redirect '/login'
