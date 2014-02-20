@@ -107,8 +107,18 @@ get '/admin' do
 	else
 		redirect '/login'
 	end
+end
 
+post '/menu' do
+	item = MenuItem.new
+	item.name = params[:name]
+	item.description = params[:description]
+	item.price = params[:price]
+	item.menu = params[:menu]
+	item.category = params[:category]
+	item.save
 
+	redirect '/admin'
 end
 
 end

@@ -7,7 +7,7 @@
         <p>
             Instructions go here.
         </p>
-        <form action="/menu" method="post">
+        <form action="/menu" method="post" id="add-item">
             <div class="row">
                 <div class="col-xs-12 col-md-4 admin-form">
                     <input class="col-xs-12 admin-form" name="name" label="name" type="text" placeholder="Item name">
@@ -34,7 +34,7 @@
                         <option value="reds">Reds</option>
                         <option value="cocktails">Cocktails</option>
                     </select>
-                    <button type="submit" class="col-xs-12 admin-form btn btn-lg btn-success">
+                    <button value="submit" name="submit" type="submit" class="col-xs-12 admin-form btn btn-lg btn-success">
                         add item
                     </button>
                 </div>

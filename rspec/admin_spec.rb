@@ -35,5 +35,22 @@ feature "admin page" do
 			expect(page).to have_selector('h1', text: 'Hi, Todd.')
 		end
 
+		feature "upon 'add item' submission" do
+			background do
+				@items = MenuItem.all.length
+				visit '/admin'
+				within('#add-item') do
+					fill_in 'name', 		with: 'pizza'
+					fill_in 'description',	with: 'the best food in the world'
+					fill_in 'price',		with: '9'
+				end
+				click_button 'submit'
+			end
+
+			scenario "should create new MenuItem" do
+				new_items = (@items + 1)
+				new_items == MenuItem.all.length
+			end
+		end
 	end
 end
