@@ -15,9 +15,11 @@
             <%= @action %>
           </button>
           <a href="/">return to main site</a>
+          <!-- delete below -->
           <% Manager.all.each do |man| %>
             <p><%= "#{man.name}, #{man.password}" %></p>
           <% end %>
+          <!-- delete above -->
         </form>  
       </div>
     </div>
