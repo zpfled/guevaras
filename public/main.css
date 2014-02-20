@@ -317,41 +317,9 @@ body {
  * Footer
  */
 
-footer {
-  top: 100%;
-  width: 100%;
-}
-
 .footer {
   background-color: rgba(0, 0, 0, .7);
   width: 100%;
-}
-
-.jumbotron .container {
-  overflow: hidden;
-}
-
-/*
-* Contact Page
-*/
-
-.contact-jumbotron {
-  background-color: rgba(25, 25, 25, .75);
-  width: 85%;
-  border: 2px solid #eee;
-  border-radius: 1em;
-  margin-top: 160px !important;
-  padding: 1em;
-  position: relative;
-  overflow: hidden;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.block {
-  position: relative;
-  margin-top: 1em;
-  overflow: hidden;
 }
 
 /*
