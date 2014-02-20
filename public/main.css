@@ -507,3 +507,37 @@ Login Screen
 @media (min-width: 768px) {
   
 }
+
+/*
+Admin
+ */
+
+.admin-content {
+  /*height: 100%;*/
+}
+
+.admin-form {
+}
+
+.admin-form input,
+select,
+button {
+  margin-top: .5em;
+  font-family: 'Quicksand', "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.admin-form input, select {
+  background-color: transparent;
+  color: #eee;
+  border: 1px solid #eee;
+  border-radius: .25em;
+}
+
+.admin-form input {
+  padding-left: .4em
+}
+
+.admin-form select {
+  background-color: #444;
+  display: inherit;
+}

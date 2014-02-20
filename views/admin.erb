@@ -1,4 +1,4 @@
-<section class="inner">
+<section class="inner content admin-content">
     
     <section class="welcome-header">
         <h1 class="dashboard-greeting">
@@ -9,19 +9,42 @@
         </p>
         <form action="/menu" method="post">
             <div class="row">
-                <input class="col-xs-12 col-md-6" name="" label="" type="text" placeholder="Menu (e.g. Lunch, Dinner, Wine List)">
-                <input class="col-xs-12 col-md-6" name="" label="" type="text" placeholder="Category (e.g. Starters, Salads, Interesting Reds)">
-                <input class="col-xs-12 col-md-6" name="" label="" type="text" placeholder="Name (e.g. Silver Oak Cab, Filet & Blue, Calimari">
-                <input class="col-xs-12 col-md-6" name="" label="" type="text" placeholder="Description">
-                <input class="col-xs-12 col-md-6" name="" label="" type="text" placeholder="Price">
-                <input type="submit">
+                <div class="col-xs-12 col-md-4 admin-form">
+                    <input class="col-xs-12 admin-form" name="name" label="name" type="text" placeholder="Item name">
+                    <input class="col-xs-12 admin-form" name="description" label="description" type="text" placeholder="Item description">
+                    <input class="col-xs-12 admin-form" name="price" label="price" type="text" placeholder="Item price">
+                    <select class="col-xs-12 admin-form" name="menu" label="menu">
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                        <option value="small-plates">Small Plates</option>
+                        <option value="wine">Wine</option>
+                        <option value="cocktails">Cocktails</option>
+                    </select>
+                    <select class="col-xs-12 admin-form" name="category" label="category">
+                        <option value="beef">Beef</option>
+                        <option value="chicken">Chicken</option>
+                        <option value="lamb">Lamb</option>
+                        <option value="pork">Pork</option>
+                        <option value="salads">Salads</option>
+                        <option value="sandwiches">Sandwiches</option>
+                        <option value="seafood">Seafood</option>
+                        <option value="starters">Starters</option>
+                        <option value="veal">Veal</option>
+                        <option value="whites">Whites</option>
+                        <option value="reds">Reds</option>
+                        <option value="cocktails">Cocktails</option>
+                    </select>
+                    <button type="submit" class="col-xs-12 admin-form btn btn-lg btn-success">
+                        add item
+                    </button>
+                </div>
             </div>
         </form>
     </section>
+</section>
     
     <%= erb(:menu, :layout => false) %>
 
-</section>
 
 <!-- 
 
