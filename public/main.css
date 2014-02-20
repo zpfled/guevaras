@@ -119,11 +119,7 @@ body {
   margin: 0 auto;
   max-width: 960px;
 }
-.site-wrapper-inner {
-  display: table-cell;
-  vertical-align: top;
-  z-index: -1;
-}
+
 .welcome-container {
   border-bottom: 1px solid #fff;
 }
@@ -208,9 +204,9 @@ body {
 */
 
 .content {
-  background: rgba(52,52,52, .75); /* For dev purposes. Delete later. */
-  border-bottom: 1px solid #fff;
-  padding-bottom: 2em;
+  background: rgba(52,52,52, .85);
+  margin-bottom: 1.5em;
+  padding-bottom: 1em;
 }
 
 .push-down {
@@ -364,10 +360,6 @@ footer {
 
 @media (min-width: 768px) {
 
-  /* Start the vertical centering */
-  .site-wrapper-inner {
-    vertical-align: middle;
-  }
   /* Handle the widths */
   .masthead,
   .welcome-container,
