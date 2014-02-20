@@ -47,7 +47,6 @@ class TwoChez < Sinatra::Application
 #tested
 get '/' do
 	@title = 'Welcome'
-	@css = 'main'
 	@menu_items = MenuItem.all
 	erb :index
 end
@@ -56,7 +55,6 @@ end
 get '/signup' do
 	@title = 'Signup'
 	@action = 'sign up'
-	@css = 'main'
 	@users = Manager.all
 	erb :login
 end
@@ -73,7 +71,6 @@ end
 get '/login' do
 	@title = 'Login'
 	@action = 'log in'
-	@css = 'main'
 	erb :login
 end
 
@@ -93,9 +90,10 @@ end
 
 get '/admin' do
 	@title = 'Dashboard'
-	@css = 'main'
-	@menu_items = MenuItem.all
 	@user = session[:name]
+	@menu_items = MenuItem.all
+	@menu = []
+	@menu_items.each { |item| @menu.push(item.menu) unless @menu.include?(item.menu) }
 
  	if @user
 		@current_user = Manager.first(name: session[:name])
@@ -114,7 +112,7 @@ post '/menu' do
 	item.name = params[:name]
 	item.description = params[:description]
 	item.price = params[:price]
-	item.menu = params[:menu]
+	item.menu = params[:menu].split('-').join(' ')
 	item.category = params[:category]
 	item.save
 

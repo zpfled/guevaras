@@ -2,28 +2,28 @@
   <div class="inner">
     <h1>Menu</h1>
 
-    <ul class="menu nav nav-tabs">
-      <li class="h2 active">
-        <a href="#lunch" data-toggle="tab">Lunch</a>
-      </li>
-      <li class="h2">
-        <a href="#dinner" data-toggle="tab">Dinner</a>
-      </li>
+    <ul class="menu nav nav-tabs visible-md visible-lg">
+      <% @menu.each do |menu| %>
+        <li class="h2">
+          <a href="#<%= menu.split(' ').join('-') %>" data-toggle="tab"><%= menu %></a>
+        </li>
+      <% end %>
     </ul>
 
     <div class="tab-content">
-      <div class="tab-pane fade in active" id="lunch">
-        <% @menu_items.each do |item| %>
-          <% if item.menu == 'lunch' %>
-            <% if item.category == 'starters' %>
+
+      <!-- Lunch -->
+
+      <div class="tab-pane fade in" id="lunch">
+        <h3>
+          <a data-toggle="collapse" data-target="#starters">
+            starters
+          </a>
+        </h3>  
+        <dl id="starters" class="menu collapse in">
+          <% @menu_items.each do |item| %>
+            <% if item.menu == 'lunch' && item.category == 'starters' %>
               <article>
-                <!-- I need to fix it so that the h3 doesn't repeat with every article. -->
-                <h3>
-                  <a data-toggle="collapse" data-target="#<%= item.category %>">
-                    <%= item.category %>
-                  </a>
-                </h3>
-                <dl id="<%= item.category %>" class="menu collapse in">
                 <dt class="item-name">
                   <%= item.name %>
                   <span class="item-price">
@@ -36,15 +36,391 @@
               </article>
             <% end %>
           <% end %>
-        <% end %>
+        </dl>
+        <h3>
+          <a data-toggle="collapse" data-target="#salads">
+            salads
+          </a>
+        </h3>  
+        <dl id="salads" class="menu collapse in">
+          <% @menu_items.each do |item| %>
+            <% if item.menu == 'lunch' && item.category == 'salads' %>
+              <article>
+                <dt class="item-name">
+                  <%= item.name %>
+                  <span class="item-price">
+                    <%= item.price %>
+                  </span>
+                </dt>
+                <dd class="item-description">
+                  <%= item.description %>
+                </dd>
+              </article>
+            <% end %>
+          <% end %>
+        </dl>
+        <h3>
+          <a data-toggle="collapse" data-target="#sandwiches">
+            sandwiches
+          </a>
+        </h3>  
+        <dl id="sandwiches" class="menu collapse in">
+          <% @menu_items.each do |item| %>
+            <% if item.menu == 'lunch' && item.category == 'sandwiches' %>
+              <article>
+                <dt class="item-name">
+                  <%= item.name %>
+                  <span class="item-price">
+                    <%= item.price %>
+                  </span>
+                </dt>
+                <dd class="item-description">
+                  <%= item.description %>
+                </dd>
+              </article>
+            <% end %>
+          <% end %>
+        </dl>
+        <h3>
+          <a data-toggle="collapse" data-target="#chicken">
+            chicken
+          </a>
+        </h3>  
+        <dl id="chicken" class="menu collapse in">
+          <% @menu_items.each do |item| %>
+            <% if item.menu == 'lunch' && item.category == 'chicken' %>
+              <article>
+                <dt class="item-name">
+                  <%= item.name %>
+                  <span class="item-price">
+                    <%= item.price %>
+                  </span>
+                </dt>
+                <dd class="item-description">
+                  <%= item.description %>
+                </dd>
+              </article>
+            <% end %>
+          <% end %>
+        </dl>
+        <h3>
+          <a data-toggle="collapse" data-target="#seafood">
+            seafood
+          </a>
+        </h3>  
+        <dl id="seafood" class="menu collapse in">
+          <% @menu_items.each do |item| %>
+            <% if item.menu == 'lunch' && item.category == 'seafood' %>
+              <article>
+                <dt class="item-name">
+                  <%= item.name %>
+                  <span class="item-price">
+                    <%= item.price %>
+                  </span>
+                </dt>
+                <dd class="item-description">
+                  <%= item.description %>
+                </dd>
+              </article>
+            <% end %>
+          <% end %>
+        </dl>
+        <h3>
+          <a data-toggle="collapse" data-target="#beef">
+            beef
+          </a>
+        </h3>  
+        <dl id="beef" class="menu collapse in">
+          <% @menu_items.each do |item| %>
+            <% if item.menu == 'lunch' && item.category == 'beef' %>
+              <article>
+                <dt class="item-name">
+                  <%= item.name %>
+                  <span class="item-price">
+                    <%= item.price %>
+                  </span>
+                </dt>
+                <dd class="item-description">
+                  <%= item.description %>
+                </dd>
+              </article>
+            <% end %>
+          <% end %>
+        </dl>
       </div>
-      <div class="tab-pane fade" id="dinner">
-        This is dinner
+      
+      <!-- Dinner -->
+
+      <div class="tab-pane fade in" id="dinner">
+        <h3>
+          <a data-toggle="collapse" data-target="#starters">
+            starters
+          </a>
+        </h3>  
+        <dl id="starters" class="menu collapse in">
+          <% @menu_items.each do |item| %>
+            <% if item.menu == 'dinner' && item.category == 'starters' %>
+              <article>
+                <dt class="item-name">
+                  <%= item.name %>
+                  <span class="item-price">
+                    <%= item.price %>
+                  </span>
+                </dt>
+                <dd class="item-description">
+                  <%= item.description %>
+                </dd>
+              </article>
+            <% end %>
+          <% end %>
+        </dl>
+        <h3>
+          <a data-toggle="collapse" data-target="#salads">
+            salads
+          </a>
+        </h3>  
+        <dl id="salads" class="menu collapse in">
+          <% @menu_items.each do |item| %>
+            <% if item.menu == 'dinner' && item.category == 'salads' %>
+              <article>
+                <dt class="item-name">
+                  <%= item.name %>
+                  <span class="item-price">
+                    <%= item.price %>
+                  </span>
+                </dt>
+                <dd class="item-description">
+                  <%= item.description %>
+                </dd>
+              </article>
+            <% end %>
+          <% end %>
+        </dl>
+        <h3>
+          <a data-toggle="collapse" data-target="#chicken">
+            chicken
+          </a>
+        </h3>  
+        <dl id="chicken" class="menu collapse in">
+          <% @menu_items.each do |item| %>
+            <% if item.menu == 'dinner' && item.category == 'chicken' %>
+              <article>
+                <dt class="item-name">
+                  <%= item.name %>
+                  <span class="item-price">
+                    <%= item.price %>
+                  </span>
+                </dt>
+                <dd class="item-description">
+                  <%= item.description %>
+                </dd>
+              </article>
+            <% end %>
+          <% end %>
+        </dl>
+        <h3>
+          <a data-toggle="collapse" data-target="#veal">
+            veal
+          </a>
+        </h3>  
+        <dl id="veal" class="menu collapse in">
+          <% @menu_items.each do |item| %>
+            <% if item.menu == 'dinner' && item.category == 'veal' %>
+              <article>
+                <dt class="item-name">
+                  <%= item.name %>
+                  <span class="item-price">
+                    <%= item.price %>
+                  </span>
+                </dt>
+                <dd class="item-description">
+                  <%= item.description %>
+                </dd>
+              </article>
+            <% end %>
+          <% end %>
+        </dl>
+        <h3>
+          <a data-toggle="collapse" data-target="#seafood">
+            seafood
+          </a>
+        </h3>  
+        <dl id="seafood" class="menu collapse in">
+          <% @menu_items.each do |item| %>
+            <% if item.menu == 'dinner' && item.category == 'seafood' %>
+              <article>
+                <dt class="item-name">
+                  <%= item.name %>
+                  <span class="item-price">
+                    <%= item.price %>
+                  </span>
+                </dt>
+                <dd class="item-description">
+                  <%= item.description %>
+                </dd>
+              </article>
+            <% end %>
+          <% end %>
+        </dl>
+        <h3>
+          <a data-toggle="collapse" data-target="#beef">
+            beef
+          </a>
+        </h3>  
+        <dl id="beef" class="menu collapse in">
+          <% @menu_items.each do |item| %>
+            <% if item.menu == 'dinner' && item.category == 'beef' %>
+              <article>
+                <dt class="item-name">
+                  <%= item.name %>
+                  <span class="item-price">
+                    <%= item.price %>
+                  </span>
+                </dt>
+                <dd class="item-description">
+                  <%= item.description %>
+                </dd>
+              </article>
+            <% end %>
+          <% end %>
+        </dl>
+        <h3>
+          <a data-toggle="collapse" data-target="#pork">
+            pork
+          </a>
+        </h3>  
+        <dl id="pork" class="menu collapse in">
+          <% @menu_items.each do |item| %>
+            <% if item.menu == 'dinner' && item.category == 'pork' %>
+              <article>
+                <dt class="item-name">
+                  <%= item.name %>
+                  <span class="item-price">
+                    <%= item.price %>
+                  </span>
+                </dt>
+                <dd class="item-description">
+                  <%= item.description %>
+                </dd>
+              </article>
+            <% end %>
+          <% end %>
+        </dl>
+        <h3>
+          <a data-toggle="collapse" data-target="#lamb">
+            lamb
+          </a>
+        </h3>  
+        <dl id="lamb" class="menu collapse in">
+          <% @menu_items.each do |item| %>
+            <% if item.menu == 'dinner' && item.category == 'lamb' %>
+              <article>
+                <dt class="item-name">
+                  <%= item.name %>
+                  <span class="item-price">
+                    <%= item.price %>
+                  </span>
+                </dt>
+                <dd class="item-description">
+                  <%= item.description %>
+                </dd>
+              </article>
+            <% end %>
+          <% end %>
+        </dl>
       </div>
-    </div>
+
+      <!-- Small Plates -->
+
+      <div class="tab-pane fade in" id="small-plates">
+          <% @menu_items.each do |item| %>
+            <% if item.menu == 'small plates' %>
+              <article>
+                <dt class="item-name">
+                  <%= item.name %>
+                  <span class="item-price">
+                    <%= item.price %>
+                  </span>
+                </dt>
+                <dd class="item-description">
+                  <%= item.description %>
+                </dd>
+              </article>
+            <% end %>
+          <% end %>
+      </div>
+
+      <!-- Cocktails -->
+
+      <div class="tab-pane fade in" id="cocktails">
+          <% @menu_items.each do |item| %>
+            <% if item.menu == 'cocktails' %>
+              <article>
+                <dt class="item-name">
+                  <%= item.name %>
+                  <span class="item-price">
+                    <%= item.price %>
+                  </span>
+                </dt>
+                <dd class="item-description">
+                  <%= item.description %>
+                </dd>
+              </article>
+            <% end %>
+          <% end %>
+      </div>
+
+      <!-- Wine -->
+
+      <div class="tab-pane fade in" id="wine">
+        <h3>
+          <a data-toggle="collapse" data-target="#whites">
+            whites
+          </a>
+        </h3>  
+        <dl id="whites" class="menu collapse in">
+          <% @menu_items.each do |item| %>
+            <% if item.menu == 'wine' && item.category == 'whites' %>
+              <article>
+                <dt class="item-name">
+                  <%= item.name %>
+                  <span class="item-price">
+                    <%= item.price %>
+                  </span>
+                </dt>
+                <dd class="item-description">
+                  <%= item.description %>
+                </dd>
+              </article>
+            <% end %>
+          <% end %>
+        </dl>
+        <h3>
+          <a data-toggle="collapse" data-target="#reds">
+            reds
+          </a>
+        </h3>  
+        <dl id="reds" class="menu collapse in">
+          <% @menu_items.each do |item| %>
+            <% if item.menu == 'wine' && item.category == 'reds' %>
+              <article>
+                <dt class="item-name">
+                  <%= item.name %>
+                  <span class="item-price">
+                    <%= item.price %>
+                  </span>
+                </dt>
+                <dd class="item-description">
+                  <%= item.description %>
+                </dd>
+              </article>
+            <% end %>
+          <% end %>
+        </dl>
+      </div>
 
     <div id="accordion">
-      <div class="panel">
+      <div class="panel visible-xs visible-sm">
         <div>
           <h3>
             <a data-toggle="collapse" data-parent="#accordion" href="#wine-list">
