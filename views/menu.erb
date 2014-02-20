@@ -1,4 +1,4 @@
-<section class="content push-down">
+<section class="content <%= 'push-down' unless @admin %>">
   <div class="inner">
     <h1>Menu</h1>
 
@@ -8,11 +8,11 @@
       <div class="menu nav-tabs visible-xs visible-sm">
         <div>
           <% @menu.each do |menu| %>
-          <h3>
+          <h2>
             <a data-toggle="tab" data-parent="#accordion" href="#<%= menu.split(' ').join('-') %>">
               <%= menu %>
             </a>
-          </h3>
+          </h2>
           <% end %>
         </div>
     </div>
@@ -21,11 +21,13 @@
 
     <ul class="menu nav nav-tabs visible-md visible-lg">
       <% @menu.each do |menu| %>
-        <li class="h2">
+        <li class="h2 <%= 'active' if menu == 'dinner' %>">
           <a href="#<%= menu.split(' ').join('-') %>" data-toggle="tab"><%= menu %></a>
         </li>
       <% end %>
     </ul>
+
+    <!-- Menus -->
 
     <div class="tab-content">
 
@@ -288,7 +290,7 @@
       
       <!-- Dinner -->
 
-      <div class="tab-pane fade in" id="dinner">
+      <div class="tab-pane fade in active" id="dinner">
         <h3>
           <a data-toggle="collapse" data-target="#starters-dinner">
             starters
@@ -793,11 +795,10 @@
               </article>
             <% end %>
           <% end %>
-        </dl>
-      </div>
+      </dl>
     </div>
-
-  </section>
+  </div>
+</section>
 
 <!-- 
 
