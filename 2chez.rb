@@ -91,9 +91,10 @@ end
 get '/admin' do
 	@title = 'Dashboard'
 	@user = session[:name]
+	@admin = true ? @user : false
 	@menu_items = MenuItem.all
-	@menu = []
-	@menu_items.each { |item| @menu.push(item.menu) unless @menu.include?(item.menu) }
+	@menu = ['lunch', 'dinner', 'small plates', 'wine', 'cocktails']
+	@menu_items.each { |item| @menu.push(item.menu).sort unless @menu.include?(item.menu) }
 
  	if @user
 		@current_user = Manager.first(name: session[:name])
@@ -118,5 +119,28 @@ post '/menu' do
 
 	redirect '/admin'
 end
+
+delete '/menu' do
+	item = MenuItem.first(name: params[:name])
+	item.destroy
+	redirect '/admin'
+end
+
+post '/raise' do
+	item = MenuItem.first(name: params[:name])
+	item.price = item.price + 1
+	item.save
+
+	redirect '/admin'
+end
+
+post '/reduce' do
+	item = MenuItem.first(name: params[:name])
+	item.price = item.price - 1
+	item.save
+
+	redirect '/admin'
+end
+
 
 end

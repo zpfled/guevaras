@@ -2,6 +2,23 @@
   <div class="inner">
     <h1>Menu</h1>
 
+    <!-- Menu accordion for -xs and -sm screens -->
+
+    <div id="accordion">
+      <div class="menu nav-tabs visible-xs visible-sm">
+        <div>
+          <% @menu.each do |menu| %>
+          <h3>
+            <a data-toggle="tab" data-parent="#accordion" href="#<%= menu.split(' ').join('-') %>">
+              <%= menu %>
+            </a>
+          </h3>
+          <% end %>
+        </div>
+    </div>
+
+    <!-- Menu tabs for -md and -lg screens -->
+
     <ul class="menu nav nav-tabs visible-md visible-lg">
       <% @menu.each do |menu| %>
         <li class="h2">
@@ -20,19 +37,39 @@
             starters
           </a>
         </h3>  
-        <dl id="starters" class="menu collapse in">
+        <dl id="starters" class="menu collapse">
           <% @menu_items.each do |item| %>
             <% if item.menu == 'lunch' && item.category == 'starters' %>
               <article>
                 <dt class="item-name">
                   <%= item.name %>
-                  <span class="item-price">
+                  <span class="item-price pull-right">
                     <%= item.price %>
                   </span>
                 </dt>
                 <dd class="item-description">
                   <%= item.description %>
                 </dd>
+                <% if @admin %>
+                  <div class="row">
+                    <form action="/raise" method="post">
+                      <button class="btn btn-lg btn-warning col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        raise price by $1
+                      </button>
+                    </form>
+                    <form action="/reduce" method="post">
+                      <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        reduce price by $1
+                      </button>
+                    </form>
+                    <form action="/menu" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <button class="btn btn-lg btn-danger col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        delete
+                      </button>
+                    </form>
+                  </div>
+                <% end %>
               </article>
             <% end %>
           <% end %>
@@ -42,19 +79,39 @@
             salads
           </a>
         </h3>  
-        <dl id="salads" class="menu collapse in">
+        <dl id="salads" class="menu collapse">
           <% @menu_items.each do |item| %>
             <% if item.menu == 'lunch' && item.category == 'salads' %>
               <article>
                 <dt class="item-name">
                   <%= item.name %>
-                  <span class="item-price">
+                  <span class="item-price pull-right">
                     <%= item.price %>
                   </span>
                 </dt>
                 <dd class="item-description">
                   <%= item.description %>
                 </dd>
+                <% if @admin %>
+                  <div class="row">
+                    <form action="/raise" method="post">
+                      <button class="btn btn-lg btn-warning col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        raise price by $1
+                      </button>
+                    </form>
+                    <form action="/reduce" method="post">
+                      <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        reduce price by $1
+                      </button>
+                    </form>
+                    <form action="/menu" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <button class="btn btn-lg btn-danger col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        delete
+                      </button>
+                    </form>
+                  </div>
+                <% end %>
               </article>
             <% end %>
           <% end %>
@@ -64,19 +121,39 @@
             sandwiches
           </a>
         </h3>  
-        <dl id="sandwiches" class="menu collapse in">
+        <dl id="sandwiches" class="menu collapse">
           <% @menu_items.each do |item| %>
             <% if item.menu == 'lunch' && item.category == 'sandwiches' %>
               <article>
                 <dt class="item-name">
                   <%= item.name %>
-                  <span class="item-price">
+                  <span class="item-price pull-right">
                     <%= item.price %>
                   </span>
                 </dt>
                 <dd class="item-description">
                   <%= item.description %>
                 </dd>
+                <% if @admin %>
+                  <div class="row">
+                    <form action="/raise" method="post">
+                      <button class="btn btn-lg btn-warning col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        raise price by $1
+                      </button>
+                    </form>
+                    <form action="/reduce" method="post">
+                      <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        reduce price by $1
+                      </button>
+                    </form>
+                    <form action="/menu" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <button class="btn btn-lg btn-danger col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        delete
+                      </button>
+                    </form>
+                  </div>
+                <% end %>
               </article>
             <% end %>
           <% end %>
@@ -86,19 +163,39 @@
             chicken
           </a>
         </h3>  
-        <dl id="chicken" class="menu collapse in">
+        <dl id="chicken" class="menu collapse">
           <% @menu_items.each do |item| %>
             <% if item.menu == 'lunch' && item.category == 'chicken' %>
               <article>
                 <dt class="item-name">
                   <%= item.name %>
-                  <span class="item-price">
+                  <span class="item-price pull-right">
                     <%= item.price %>
                   </span>
                 </dt>
                 <dd class="item-description">
                   <%= item.description %>
                 </dd>
+                <% if @admin %>
+                  <div class="row">
+                    <form action="/raise" method="post">
+                      <button class="btn btn-lg btn-warning col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        raise price by $1
+                      </button>
+                    </form>
+                    <form action="/reduce" method="post">
+                      <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        reduce price by $1
+                      </button>
+                    </form>
+                    <form action="/menu" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <button class="btn btn-lg btn-danger col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        delete
+                      </button>
+                    </form>
+                  </div>
+                <% end %>
               </article>
             <% end %>
           <% end %>
@@ -108,19 +205,39 @@
             seafood
           </a>
         </h3>  
-        <dl id="seafood" class="menu collapse in">
+        <dl id="seafood" class="menu collapse">
           <% @menu_items.each do |item| %>
             <% if item.menu == 'lunch' && item.category == 'seafood' %>
               <article>
                 <dt class="item-name">
                   <%= item.name %>
-                  <span class="item-price">
+                  <span class="item-price pull-right">
                     <%= item.price %>
                   </span>
                 </dt>
                 <dd class="item-description">
                   <%= item.description %>
                 </dd>
+                <% if @admin %>
+                  <div class="row">
+                    <form action="/raise" method="post">
+                      <button class="btn btn-lg btn-warning col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        raise price by $1
+                      </button>
+                    </form>
+                    <form action="/reduce" method="post">
+                      <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        reduce price by $1
+                      </button>
+                    </form>
+                    <form action="/menu" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <button class="btn btn-lg btn-danger col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        delete
+                      </button>
+                    </form>
+                  </div>
+                <% end %>
               </article>
             <% end %>
           <% end %>
@@ -130,19 +247,39 @@
             beef
           </a>
         </h3>  
-        <dl id="beef" class="menu collapse in">
+        <dl id="beef" class="menu collapse">
           <% @menu_items.each do |item| %>
             <% if item.menu == 'lunch' && item.category == 'beef' %>
               <article>
                 <dt class="item-name">
                   <%= item.name %>
-                  <span class="item-price">
+                  <span class="item-price pull-right">
                     <%= item.price %>
                   </span>
                 </dt>
                 <dd class="item-description">
                   <%= item.description %>
                 </dd>
+                <% if @admin %>
+                  <div class="row">
+                    <form action="/raise" method="post">
+                      <button class="btn btn-lg btn-warning col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        raise price by $1
+                      </button>
+                    </form>
+                    <form action="/reduce" method="post">
+                      <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        reduce price by $1
+                      </button>
+                    </form>
+                    <form action="/menu" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <button class="btn btn-lg btn-danger col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        delete
+                      </button>
+                    </form>
+                  </div>
+                <% end %>
               </article>
             <% end %>
           <% end %>
@@ -153,177 +290,337 @@
 
       <div class="tab-pane fade in" id="dinner">
         <h3>
-          <a data-toggle="collapse" data-target="#starters">
+          <a data-toggle="collapse" data-target="#starters-dinner">
             starters
           </a>
         </h3>  
-        <dl id="starters" class="menu collapse in">
+        <dl id="starters-dinner" class="menu collapse">
           <% @menu_items.each do |item| %>
             <% if item.menu == 'dinner' && item.category == 'starters' %>
               <article>
                 <dt class="item-name">
                   <%= item.name %>
-                  <span class="item-price">
+                  <span class="item-price pull-right">
                     <%= item.price %>
                   </span>
                 </dt>
                 <dd class="item-description">
                   <%= item.description %>
                 </dd>
+                <% if @admin %>
+                  <div class="row">
+                    <form action="/raise" method="post">
+                      <button class="btn btn-lg btn-warning col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        raise price by $1
+                      </button>
+                    </form>
+                    <form action="/reduce" method="post">
+                      <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        reduce price by $1
+                      </button>
+                    </form>
+                    <form action="/menu" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <button class="btn btn-lg btn-danger col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        delete
+                      </button>
+                    </form>
+                  </div>
+                <% end %>
               </article>
             <% end %>
           <% end %>
         </dl>
         <h3>
-          <a data-toggle="collapse" data-target="#salads">
+          <a data-toggle="collapse" data-target="#salads-dinner">
             salads
           </a>
         </h3>  
-        <dl id="salads" class="menu collapse in">
+        <dl id="salads-dinner" class="menu collapse">
           <% @menu_items.each do |item| %>
             <% if item.menu == 'dinner' && item.category == 'salads' %>
               <article>
                 <dt class="item-name">
                   <%= item.name %>
-                  <span class="item-price">
+                  <span class="item-price pull-right">
                     <%= item.price %>
                   </span>
                 </dt>
                 <dd class="item-description">
                   <%= item.description %>
                 </dd>
+                <% if @admin %>
+                  <div class="row">
+                    <form action="/raise" method="post">
+                      <button class="btn btn-lg btn-warning col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        raise price by $1
+                      </button>
+                    </form>
+                    <form action="/reduce" method="post">
+                      <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        reduce price by $1
+                      </button>
+                    </form>
+                    <form action="/menu" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <button class="btn btn-lg btn-danger col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        delete
+                      </button>
+                    </form>
+                  </div>
+                <% end %>
               </article>
             <% end %>
           <% end %>
         </dl>
         <h3>
-          <a data-toggle="collapse" data-target="#chicken">
+          <a data-toggle="collapse" data-target="#chicken-dinner">
             chicken
           </a>
         </h3>  
-        <dl id="chicken" class="menu collapse in">
+        <dl id="chicken-dinner" class="menu collapse">
           <% @menu_items.each do |item| %>
             <% if item.menu == 'dinner' && item.category == 'chicken' %>
               <article>
                 <dt class="item-name">
                   <%= item.name %>
-                  <span class="item-price">
+                  <span class="item-price pull-right">
                     <%= item.price %>
                   </span>
                 </dt>
                 <dd class="item-description">
                   <%= item.description %>
                 </dd>
+                <% if @admin %>
+                  <div class="row">
+                    <form action="/raise" method="post">
+                      <button class="btn btn-lg btn-warning col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        raise price by $1
+                      </button>
+                    </form>
+                    <form action="/reduce" method="post">
+                      <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        reduce price by $1
+                      </button>
+                    </form>
+                    <form action="/menu" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <button class="btn btn-lg btn-danger col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        delete
+                      </button>
+                    </form>
+                  </div>
+                <% end %>
               </article>
             <% end %>
           <% end %>
         </dl>
         <h3>
-          <a data-toggle="collapse" data-target="#veal">
+          <a data-toggle="collapse" data-target="#veal-dinner">
             veal
           </a>
         </h3>  
-        <dl id="veal" class="menu collapse in">
+        <dl id="veal-dinner" class="menu collapse">
           <% @menu_items.each do |item| %>
             <% if item.menu == 'dinner' && item.category == 'veal' %>
               <article>
                 <dt class="item-name">
                   <%= item.name %>
-                  <span class="item-price">
+                  <span class="item-price pull-right">
                     <%= item.price %>
                   </span>
                 </dt>
                 <dd class="item-description">
                   <%= item.description %>
                 </dd>
+                <% if @admin %>
+                  <div class="row">
+                    <form action="/raise" method="post">
+                      <button class="btn btn-lg btn-warning col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        raise price by $1
+                      </button>
+                    </form>
+                    <form action="/reduce" method="post">
+                      <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        reduce price by $1
+                      </button>
+                    </form>
+                    <form action="/menu" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <button class="btn btn-lg btn-danger col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        delete
+                      </button>
+                    </form>
+                  </div>
+                <% end %>
               </article>
             <% end %>
           <% end %>
         </dl>
         <h3>
-          <a data-toggle="collapse" data-target="#seafood">
+          <a data-toggle="collapse" data-target="#seafood-dinner">
             seafood
           </a>
         </h3>  
-        <dl id="seafood" class="menu collapse in">
+        <dl id="seafood-dinner" class="menu collapse">
           <% @menu_items.each do |item| %>
             <% if item.menu == 'dinner' && item.category == 'seafood' %>
               <article>
                 <dt class="item-name">
                   <%= item.name %>
-                  <span class="item-price">
+                  <span class="item-price pull-right">
                     <%= item.price %>
                   </span>
                 </dt>
                 <dd class="item-description">
                   <%= item.description %>
                 </dd>
+                <% if @admin %>
+                  <div class="row">
+                    <form action="/raise" method="post">
+                      <button class="btn btn-lg btn-warning col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        raise price by $1
+                      </button>
+                    </form>
+                    <form action="/reduce" method="post">
+                      <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        reduce price by $1
+                      </button>
+                    </form>
+                    <form action="/menu" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <button class="btn btn-lg btn-danger col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        delete
+                      </button>
+                    </form>
+                  </div>
+                <% end %>
               </article>
             <% end %>
           <% end %>
         </dl>
         <h3>
-          <a data-toggle="collapse" data-target="#beef">
+          <a data-toggle="collapse" data-target="#beef-dinner">
             beef
           </a>
         </h3>  
-        <dl id="beef" class="menu collapse in">
+        <dl id="beef-dinner" class="menu collapse">
           <% @menu_items.each do |item| %>
             <% if item.menu == 'dinner' && item.category == 'beef' %>
               <article>
                 <dt class="item-name">
                   <%= item.name %>
-                  <span class="item-price">
+                  <span class="item-price pull-right">
                     <%= item.price %>
                   </span>
                 </dt>
                 <dd class="item-description">
                   <%= item.description %>
                 </dd>
+                <% if @admin %>
+                  <div class="row">
+                    <form action="/raise" method="post">
+                      <button class="btn btn-lg btn-warning col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        raise price by $1
+                      </button>
+                    </form>
+                    <form action="/reduce" method="post">
+                      <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        reduce price by $1
+                      </button>
+                    </form>
+                    <form action="/menu" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <button class="btn btn-lg btn-danger col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        delete
+                      </button>
+                    </form>
+                  </div>
+                <% end %>
               </article>
             <% end %>
           <% end %>
         </dl>
         <h3>
-          <a data-toggle="collapse" data-target="#pork">
+          <a data-toggle="collapse" data-target="#pork-dinner">
             pork
           </a>
         </h3>  
-        <dl id="pork" class="menu collapse in">
+        <dl id="pork-dinner" class="menu collapse">
           <% @menu_items.each do |item| %>
             <% if item.menu == 'dinner' && item.category == 'pork' %>
               <article>
                 <dt class="item-name">
                   <%= item.name %>
-                  <span class="item-price">
+                  <span class="item-price pull-right">
                     <%= item.price %>
                   </span>
                 </dt>
                 <dd class="item-description">
                   <%= item.description %>
                 </dd>
+                <% if @admin %>
+                  <div class="row">
+                    <form action="/raise" method="post">
+                      <button class="btn btn-lg btn-warning col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        raise price by $1
+                      </button>
+                    </form>
+                    <form action="/reduce" method="post">
+                      <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        reduce price by $1
+                      </button>
+                    </form>
+                    <form action="/menu" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <button class="btn btn-lg btn-danger col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        delete
+                      </button>
+                    </form>
+                  </div>
+                <% end %>
               </article>
             <% end %>
           <% end %>
         </dl>
         <h3>
-          <a data-toggle="collapse" data-target="#lamb">
+          <a data-toggle="collapse" data-target="#lamb-dinner">
             lamb
           </a>
         </h3>  
-        <dl id="lamb" class="menu collapse in">
+        <dl id="lamb-dinner" class="menu collapse">
           <% @menu_items.each do |item| %>
             <% if item.menu == 'dinner' && item.category == 'lamb' %>
               <article>
                 <dt class="item-name">
                   <%= item.name %>
-                  <span class="item-price">
+                  <span class="item-price pull-right">
                     <%= item.price %>
                   </span>
                 </dt>
                 <dd class="item-description">
                   <%= item.description %>
                 </dd>
+                <% if @admin %>
+                  <div class="row">
+                    <form action="/raise" method="post">
+                      <button class="btn btn-lg btn-warning col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        raise price by $1
+                      </button>
+                    </form>
+                    <form action="/reduce" method="post">
+                      <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        reduce price by $1
+                      </button>
+                    </form>
+                    <form action="/menu" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <button class="btn btn-lg btn-danger col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        delete
+                      </button>
+                    </form>
+                  </div>
+                <% end %>
               </article>
             <% end %>
           <% end %>
@@ -338,13 +635,33 @@
               <article>
                 <dt class="item-name">
                   <%= item.name %>
-                  <span class="item-price">
+                  <span class="item-price pull-right">
                     <%= item.price %>
                   </span>
                 </dt>
                 <dd class="item-description">
                   <%= item.description %>
                 </dd>
+                <% if @admin %>
+                  <div class="row">
+                    <form action="/raise" method="post">
+                      <button class="btn btn-lg btn-warning col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        raise price by $1
+                      </button>
+                    </form>
+                    <form action="/reduce" method="post">
+                      <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        reduce price by $1
+                      </button>
+                    </form>
+                    <form action="/menu" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <button class="btn btn-lg btn-danger col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        delete
+                      </button>
+                    </form>
+                  </div>
+                <% end %>
               </article>
             <% end %>
           <% end %>
@@ -358,13 +675,33 @@
               <article>
                 <dt class="item-name">
                   <%= item.name %>
-                  <span class="item-price">
+                  <span class="item-price pull-right">
                     <%= item.price %>
                   </span>
                 </dt>
                 <dd class="item-description">
                   <%= item.description %>
                 </dd>
+                <% if @admin %>
+                  <div class="row">
+                    <form action="/raise" method="post">
+                      <button class="btn btn-lg btn-warning col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        raise price by $1
+                      </button>
+                    </form>
+                    <form action="/reduce" method="post">
+                      <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        reduce price by $1
+                      </button>
+                    </form>
+                    <form action="/menu" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <button class="btn btn-lg btn-danger col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        delete
+                      </button>
+                    </form>
+                  </div>
+                <% end %>
               </article>
             <% end %>
           <% end %>
@@ -378,19 +715,39 @@
             whites
           </a>
         </h3>  
-        <dl id="whites" class="menu collapse in">
+        <dl id="whites" class="menu collapse">
           <% @menu_items.each do |item| %>
             <% if item.menu == 'wine' && item.category == 'whites' %>
               <article>
                 <dt class="item-name">
                   <%= item.name %>
-                  <span class="item-price">
+                  <span class="item-price pull-right">
                     <%= item.price %>
                   </span>
                 </dt>
                 <dd class="item-description">
                   <%= item.description %>
                 </dd>
+                <% if @admin %>
+                  <div class="row">
+                    <form action="/raise" method="post">
+                      <button class="btn btn-lg btn-warning col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        raise price by $1
+                      </button>
+                    </form>
+                    <form action="/reduce" method="post">
+                      <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        reduce price by $1
+                      </button>
+                    </form>
+                    <form action="/menu" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <button class="btn btn-lg btn-danger col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        delete
+                      </button>
+                    </form>
+                  </div>
+                <% end %>
               </article>
             <% end %>
           <% end %>
@@ -400,42 +757,46 @@
             reds
           </a>
         </h3>  
-        <dl id="reds" class="menu collapse in">
+        <dl id="reds" class="menu collapse">
           <% @menu_items.each do |item| %>
             <% if item.menu == 'wine' && item.category == 'reds' %>
               <article>
                 <dt class="item-name">
                   <%= item.name %>
-                  <span class="item-price">
+                  <span class="item-price pull-right">
                     <%= item.price %>
                   </span>
                 </dt>
                 <dd class="item-description">
                   <%= item.description %>
                 </dd>
+                <% if @admin %>
+                  <div class="row">
+                    <form action="/raise" method="post">
+                      <button class="btn btn-lg btn-warning col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        raise price by $1
+                      </button>
+                    </form>
+                    <form action="/reduce" method="post">
+                      <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        reduce price by $1
+                      </button>
+                    </form>
+                    <form action="/menu" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <button class="btn btn-lg btn-danger col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        delete
+                      </button>
+                    </form>
+                  </div>
+                <% end %>
               </article>
             <% end %>
           <% end %>
         </dl>
       </div>
+    </div>
 
-    <div id="accordion">
-      <div class="panel visible-xs visible-sm">
-        <div>
-          <h3>
-            <a data-toggle="collapse" data-parent="#accordion" href="#wine-list">
-              Wine List
-            </a>
-          </h3>
-        </div>
-        <div id="wine-list" class="menu panel-collapse collapse">
-          <div class="panel-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
   </section>
 
 <!-- 
