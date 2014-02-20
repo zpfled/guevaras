@@ -88,6 +88,8 @@ post '/login' do
 		redirect '/'
 	elsif user.authenticate?(session[:password])
 		redirect '/admin'
+	else
+		redirect '/login'
 	end
 end
 
@@ -97,11 +99,17 @@ get '/admin' do
 	@menu_items = MenuItem.all
 	@user = session[:name]
 
-	if @user.nil?
+ 	if @user
+		@current_user = Manager.first(name: session[:name])
+		if @user != @current_user.name
+			redirect '/'
+		else
+			erb :admin, layout: false
+		end
+	else
 		redirect '/login'
-	else 
-		erb :admin, layout: false
 	end
+
 
 end
 
