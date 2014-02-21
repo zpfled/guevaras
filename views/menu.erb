@@ -2,30 +2,85 @@
   <div class="inner">
     <h1>Menu</h1>
 
-    <!-- Menu accordion for -xs and -sm screens -->
-
-    <div id="accordion">
-      <div class="menu nav-tabs visible-xs visible-sm">
-        <div>
-          <% @menu.each do |menu| %>
-          <h2>
-            <a data-toggle="tab" data-parent="#accordion" href="#<%= menu.split(' ').join('-') %>">
-              <%= menu %>
-            </a>
-          </h2>
-          <% end %>
-        </div>
-    </div>
-
     <!-- Menu tabs for -md and -lg screens -->
 
     <ul class="menu nav nav-tabs visible-md visible-lg">
-      <% @menu.each do |menu| %>
+      <% @menus.each do |menu| %>
         <li class="h2 <%= 'active' if menu == 'dinner' %>">
           <a href="#<%= menu.split(' ').join('-') %>" data-toggle="tab"><%= menu %></a>
         </li>
       <% end %>
     </ul>
+
+
+    <!-- Menu accordion for -xs and -sm screens -->
+
+    <div class="panel-group" id="accordion">
+      <% @menus.each do |menu| %>
+      <div class="visible-xs visible-sm panel panel-default">
+        <div class="panel-heading">
+          <h2 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#<%= menu.split(' ').join('-') %>">
+              <%= menu %>
+            </a>
+          </h2>
+        </div>
+        <div id="<%= menu.split(' ').join('-') %>" class="panel-collapse collapse">
+          <div class="panel-body">
+            <% @categories.each do |category| %>
+              
+              <% @relevant_items = @menu_items.select { |item| item.menu == menu && item.category == category } %>
+              <% @relevant_categories = [] %>
+
+              <!-- NEED TO CHANGE THIS SO THAT @RELEVANT_ITEMS ONLY HAS UNIQUE ELEMENTS -->
+              <% @relevant_items.each do |item| %>
+                <% @relevant_categories.push(item.category) unless @relevant_categories.include?(item.category) %>
+              <% end %>
+              
+              <% @relevant_categories.each do |relevant_category| %>  
+
+              <h3><%= relevant_category %></h3>
+
+              <% @relevant_items.each do |item| %>
+                <article>
+                <dt class="item-name">
+                  <%= item.name %>
+                  <span class="item-price pull-right">
+                    <%= item.price %>
+                  </span>
+                </dt>
+                <dd class="item-description">
+                  <%= item.description %>
+                </dd>
+                <% if @admin %>
+                  <div class="row">
+                    <form action="/raise" method="post">
+                      <button class="btn btn-lg btn-warning col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        raise price by $1
+                      </button>
+                    </form>
+                    <form action="/reduce" method="post">
+                      <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        reduce price by $1
+                      </button>
+                    </form>
+                    <form action="/menu" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <button class="btn btn-lg btn-danger col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+                        delete
+                      </button>
+                    </form>
+                  </div>
+                <% end %>
+                </article>
+                <% end %>
+              <% end %>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
     <!-- Menus -->
 
