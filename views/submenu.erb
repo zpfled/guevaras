@@ -1,0 +1,48 @@
+
+  <% @categories.each do |category| %>
+    
+    <% @relevant_items = @menu_items.select { |item| item.menu == menu && item.category == category } %>
+    <% @relevant_categories = [] %>
+    <% @relevant_items.each do |item| %>
+      <% @relevant_categories.push(item.category) unless @relevant_categories.include?(item.category) %>
+    <% end %>
+    
+    <% @relevant_categories.each do |relevant_category| %>  
+
+    <h3><%= relevant_category %></h3>
+
+    <% @relevant_items.each do |item| %>
+      <article>
+      <dt class="item-name">
+        <%= item.name %>
+        <span class="item-price pull-right">
+          <%= item.price %>
+        </span>
+      </dt>
+      <dd class="item-description">
+        <%= item.description %>
+      </dd>
+      <% if @admin %>
+        <div class="row">
+          <form action="/raise" method="post">
+            <button class="btn btn-lg btn-warning col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+              raise price by $1
+            </button>
+          </form>
+          <form action="/reduce" method="post">
+            <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+              reduce price by $1
+            </button>
+          </form>
+          <form action="/menu" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button class="btn btn-lg btn-danger col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+              delete
+            </button>
+          </form>
+        </div>
+      <% end %>
+      </article>
+      <% end %>
+    <% end %>
+  <% end %>
