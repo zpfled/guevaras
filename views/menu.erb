@@ -31,7 +31,7 @@
 
       <!-- I think we need to use the collapse plugin without the accordion parent for the tabs in the big menu. That will make for the cleanest and driest code, plus, I like the animation of the collapsing elements anyway. -->
 
-      <ul class="nav nav-tabs visible-md visible-lg">
+      <ul class="nav nav-tabs nav-justified visible-md visible-lg">
         <% @menus.each do |menu| %>
           <li class="h2 <%= 'active' if menu == 'lunch' %>">
             <a href="#<%= menu.split(' ').join('-') %>" data-toggle="tab">

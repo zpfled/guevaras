@@ -8,6 +8,7 @@
 
  .nav>li>a {
   border-radius: 0;
+  white-space: nowrap;
  }
 
  .nav>li>a:hover, .nav>li>a:focus {
@@ -124,7 +125,7 @@ body {
 .inner {
   padding: 20px;
   margin: 0 auto;
-  max-width: 960px;
+  max-width: 1000px;
 }
 
 /*
