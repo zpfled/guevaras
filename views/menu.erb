@@ -29,41 +29,23 @@
 
       <!-- Nav tabs -->
 
-      <!-- I think we need to use the collapse plugin without the accordion parent for the tabs in the big menu. That will make for the cleanest and driest code, plus, I like the animation of the collapsing elements anyway. -->
-
       <ul class="nav nav-tabs nav-justified visible-md visible-lg">
         <% @menus.each do |menu| %>
           <li class="h2 <%= 'active' if menu == 'lunch' %>">
-            <a href="#<%= menu.split(' ').join('-') %>" data-toggle="tab">
+            <a href="#<%= menu.split(' ').join('-') + '-tab' %>" data-toggle="tab">
               <%= menu %>
             </a>
           </li>
         <% end %>
       </ul>
 
-      <button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo">
-        simple collapsible
-      </button>
-
-<div id="demo" class="collapse in">...</div>
-
       <!-- Tab panes -->
       <div class="tab-content">
-        <div class="tab-pane fade in active" id="lunch">
-          <%= erb(:submenu, :layout => false, :locals => { :menu => 'lunch' }) %>
-        </div>
-        <div class="tab-pane fade" id="dinner">
-          <%= erb(:submenu, :layout => false, :locals => { :menu => 'dinner' }) %>
-        </div>
-        <div class="tab-pane fade" id="small-plates">
-          <%= erb(:submenu, :layout => false, :locals => { :menu => 'small plates' }) %>
-        </div>
-        <div class="tab-pane fade" id="wine">
-          <%= erb(:submenu, :layout => false, :locals => { :menu => 'wine' }) %>
-        </div>
-        <div class="tab-pane fade" id="cocktails">
-          <%= erb(:submenu, :layout => false, :locals => { :menu => 'cocktails' }) %>
-        </div>
+        <% @menus.each do |menu| %>
+          <div class="tab-pane fade in" id="<%= menu.split(' ').join('-') + '-tab' %>">
+            <%= erb(:submenu, :layout => false, :locals => { :menu => menu }) %>
+          </div>
+        <% end %>
       </div>
 
 <!-- top level -->
