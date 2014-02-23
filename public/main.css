@@ -8,20 +8,46 @@
 
  .nav>li>a {
   border-radius: 0;
-  white-space: nowrap;
+  white-space: nowrap; /*fixes issue with text wrapping in nav-justified*/
  }
 
  .nav>li>a:hover, .nav>li>a:focus {
-  color: #666;
-  background-color: #fff;
+  color: #fff;
+  background-color: transparent;
  }
 
- .nav-pills>li.active>a, 
- .nav-pills>li.active>a:hover, 
- .nav-pills>li.active>a:focus {
-  color: #666;
-  background-color: #fff;
+.nav-tabs.nav-justified>li>a {
+  border: none;
  }
+
+ .nav-tabs.nav-justified>li>a:hover {
+  border-bottom: 2px solid #666;
+  border-left: none;
+  border-right: none;
+  border-top: 2px solid #666;
+  border-radius: 0;
+ }
+
+ .nav-tabs>li.active>a, 
+ .nav-tabs>li.active>a:hover, 
+ .nav-tabs>li.active>a:focus {
+  background-color: transparent;
+ }
+
+ .nav-tabs.nav-justified>.active>a, 
+ .nav-tabs.nav-justified>.active>a:hover, 
+ .nav-tabs.nav-justified>.active>a:focus {
+  border-bottom: 2px solid #fff;
+  border-left: none;
+  border-right: none;
+  border-top: 2px solid #fff;
+  border-radius: 0;
+  color: #fff;
+ }
+
+.nav-tabs.nav-justified {
+  margin: 0 auto;
+}
 
  .panel {
   background-color: transparent;
