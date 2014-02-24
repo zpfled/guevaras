@@ -4,12 +4,14 @@ $(function () {
 		event.preventDefault();
 
 		$.ajax({
-			type:	'post',
-			url:	'/menu',
-			data:	$(this).serialize(),
+			type:		'post',
+			url:		'/menu',
+			data:		$(this).serialize(),
+			dataType:	'html',
 			
-			success: function() {
+			success: function(data) {
 				$('#add-msg').html('success');
+				$('#menu').html(data)
 			},
 			error: function() {
 				$('#add-msg').html('sorry, that didn\'t work');

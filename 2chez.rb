@@ -119,6 +119,28 @@ get '/admin' do
 	end
 end
 
+get '/menu' do
+	@title = 'Dashboard'
+	@user = session[:name]
+	@admin = true ? @user : false
+	@menu_items = MenuItem.all
+	@menus = ['lunch', 'dinner', 'small plates', 'wine', 'cocktails']
+	@categories = ['small plates', 'starters', 'salads', 'sandwiches', 'chicken', 'veal', 'seafood', 'beef', 'lamb', 'pork', 'whites', 'reds', 'cocktails']
+
+ 	if @user
+		@current_user = Manager.first(name: session[:name])
+		if @user != @current_user.name
+			redirect '/'
+		elsif @auth == false
+			redirect '/'
+		else
+			erb :menu, layout: false
+		end
+	else
+		redirect '/login'
+	end
+end
+
 # untested
 post '/menu' do
 	item = MenuItem.new
@@ -129,7 +151,8 @@ post '/menu' do
 	item.category = params[:category]
 	item.save
 
-	redirect '/admin'
+	@auth = true
+	redirect '/menu'
 end
 
 # untested
