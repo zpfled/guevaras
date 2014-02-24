@@ -15,12 +15,13 @@ class Manager
 	property :admin,		Boolean,	default: false,		writer: :protected
 
 	def authenticate?(attempted_password)
-    	if self.password == attempted_password
-      		true
-    	else
-      		false
-    	end
-  	end
+		self.password == attempted_password ? true : false
+	end
+
+	def logged_in?(user)
+		self.name == user ? true : false
+	end
+
 end
 
 class MenuItem
@@ -50,12 +51,11 @@ get '/' do
 	@menu_items = MenuItem.all
 	@menus = ['lunch', 'dinner', 'small plates', 'wine', 'cocktails']
 	@categories = ['small plates', 'starters', 'salads', 'sandwiches', 'chicken', 'veal', 'seafood', 'beef', 'lamb', 'pork', 'whites', 'reds', 'cocktails']
+	
 	@admin = false
-	erb :index
-end
+	session.destroy
 
-post '/' do
-	redirect '/'
+	erb :index
 end
 
 #tested
@@ -101,58 +101,48 @@ end
 # untested
 get '/admin' do
 	@title = 'Dashboard'
+	
 	@user = session[:name]
 	@admin = true ? @user : false
+
 	@menu_items = MenuItem.all
 	@menus = ['lunch', 'dinner', 'small plates', 'wine', 'cocktails']
 	@categories = ['small plates', 'starters', 'salads', 'sandwiches', 'chicken', 'veal', 'seafood', 'beef', 'lamb', 'pork', 'whites', 'reds', 'cocktails']
 
- 	if @user
-		@current_user = Manager.first(name: session[:name])
-		if @user != @current_user.name
-			redirect '/'
-		else
-			erb :admin
-		end
-	else
-		redirect '/login'
-	end
+ 	if @user && Manager.first(name: session[:name]).logged_in?(@user)
+ 		erb :admin
+ 	else 
+ 		redirect '/login'
+ 	end
 end
 
 get '/menu' do
-	@title = 'Dashboard'
 	@user = session[:name]
 	@admin = true ? @user : false
+	
 	@menu_items = MenuItem.all
 	@menus = ['lunch', 'dinner', 'small plates', 'wine', 'cocktails']
 	@categories = ['small plates', 'starters', 'salads', 'sandwiches', 'chicken', 'veal', 'seafood', 'beef', 'lamb', 'pork', 'whites', 'reds', 'cocktails']
 
- 	if @user
-		@current_user = Manager.first(name: session[:name])
-		if @user != @current_user.name
-			redirect '/'
-		elsif @auth == false
-			redirect '/'
-		else
-			erb :menu, layout: false
-		end
-	else
-		redirect '/login'
-	end
+ 	if @user && Manager.first(name: session[:name]).logged_in?(@user)
+ 		erb :menu, layout: false
+ 	else
+ 		redirect '/'
+ 	end
 end
 
 # untested
 post '/menu' do
 	item = MenuItem.new
-	item.name = params[:name]
+	item.name = @new_item = params[:name]
 	item.description = params[:description]
 	item.price = params[:price]
 	item.menu = params[:menu].split('-').join(' ')
 	item.category = params[:category]
 	item.save
 
-	@auth = true
 	redirect '/menu'
+	
 end
 
 # untested
@@ -184,6 +174,5 @@ get '/follower_viz' do
   @user = params[:user]
   erb :follower
 end
-
 
 end
