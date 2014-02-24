@@ -53,7 +53,6 @@ get '/' do
 	@categories = ['small plates', 'starters', 'salads', 'sandwiches', 'chicken', 'veal', 'seafood', 'beef', 'lamb', 'pork', 'whites', 'reds', 'cocktails']
 	
 	@admin = false
-	session.destroy
 
 	erb :index
 end
