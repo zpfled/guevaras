@@ -1,3 +1,22 @@
+function raisePrice(id, event) {
+	event.preventDefault();
+
+	$.ajax({
+			type:		'post',
+			url:		'/' + id + '/raise',
+			data:		$(this).serialize(),
+			dataType:	'html',
+			
+			success: function(data) {
+				$('#success-msg').html('raised price by $1');
+				$('#menu').html(data);
+			},
+			error: function() {
+				$('#error-msg').html('your device will self-destruct in 5 seconds');
+		}
+	});
+}
+
 $(function () {
 	$('#add-item').on('submit', function(event) {
 		
@@ -11,7 +30,7 @@ $(function () {
 			
 			success: function(data) {
 				$('#add-msg').html('success');
-				$('#menu').html(data)
+				$('#menu').html(data);
 			},
 			error: function() {
 				$('#add-msg').html('sorry, that didn\'t work');
@@ -19,6 +38,8 @@ $(function () {
 		});
 	});
 });
+
+
 
 // $(function (){
 // 	$('#viz_form').on('submit', function(ev){

@@ -133,7 +133,7 @@ end
 # untested
 post '/menu' do
 	item = MenuItem.new
-	item.name = @new_item = params[:name]
+	item.name = params[:name]
 	item.description = params[:description]
 	item.price = params[:price]
 	item.menu = params[:menu].split('-').join(' ')
@@ -141,7 +141,6 @@ post '/menu' do
 	item.save
 
 	redirect '/menu'
-	
 end
 
 # untested
@@ -152,12 +151,12 @@ delete '/menu' do
 end
 
 # untested
-post '/raise' do
-	item = MenuItem.first(name: params[:name])
+post '/:id/raise' do
+	item = MenuItem.get params[:id]
 	item.price = item.price + 1
 	item.save
 
-	redirect '/admin'
+	redirect '/menu'
 end
 
 # untested
@@ -167,11 +166,6 @@ post '/reduce' do
 	item.save
 
 	redirect '/admin'
-end
-
-get '/follower_viz' do
-  @user = params[:user]
-  erb :follower
 end
 
 end
