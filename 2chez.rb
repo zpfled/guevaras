@@ -54,6 +54,10 @@ get '/' do
 	erb :index
 end
 
+post '/' do
+	redirect '/'
+end
+
 #tested
 get '/signup' do
 	@title = 'Signup'
@@ -151,6 +155,11 @@ post '/reduce' do
 	item.save
 
 	redirect '/admin'
+end
+
+get '/follower_viz' do
+  @user = params[:user]
+  erb :follower
 end
 
 
