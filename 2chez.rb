@@ -144,13 +144,6 @@ post '/menu' do
 end
 
 # untested
-delete '/menu' do
-	item = MenuItem.first(name: params[:name])
-	item.destroy
-	redirect '/admin'
-end
-
-# untested
 get '/:id/raise' do
 	item = MenuItem.get params[:id]
 	@price = item.price = item.price + 1
@@ -162,8 +155,19 @@ get '/:id/raise' do
 	else
 		redirect '/'
 	end
+end
 
+get '/:id/delete' do
+	item = MenuItem.get params[:id]
+	@price = item.price = item.price + 1
+	item.destroy
+	@name = item.name
 
+	if request.xhr?
+		halt 200, {name: @name, price: @price}.to_json
+	else
+		redirect '/'
+	end
 end
 
 # untested

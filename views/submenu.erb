@@ -25,18 +25,15 @@
         </dd>
         <% if @admin %>
           <div class="row">
-            <button onClick="raisePrice(<%= item.id %>, $(this), event);" class="btn btn-lg btn-warning col-xs-12 col-md-4">
+            <button onClick="raisePrice(<%= item.id %>, $(this));" class="btn btn-lg btn-warning col-xs-12 col-md-4">
               raise price by $1
             </button>
+            <button onClick="deleteItem(<%= item.id %>, $(this));" class="btn btn-lg btn-danger col-xs-12 col-md-4">
+              delete <%= item.name %>
+            </button>
             <form action="/reduce" method="post">
-              <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
+              <button onClick="deleteItem(<%= item.id %>, $(this));" class="btn btn-lg btn-primary col-xs-12 col-md-4">
                 reduce price by $1
-              </button>
-            </form>
-            <form action="/menu" method="post">
-              <input type="hidden" name="_method" value="delete">
-              <button class="btn btn-lg btn-danger col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
-                delete
               </button>
             </form>
           </div>
