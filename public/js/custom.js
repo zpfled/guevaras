@@ -1,41 +1,5 @@
 // Asynchronous Menu Updates
 
-function raisePrice(id, button) {
-
-	$.ajax({
-			type:		'get',
-			url:		'/' + id + '/raise',
-			accepts:	'application/json',
-			dataType:	'json',
-			
-			success: function(data) {
-				$('#success-msg').html('raised ' + data.name + ' price to $' + data.price);
-				$(button.parent().parent().find('.item-price')).html(data.price);
-			},
-			error: function() {
-				$('#error-msg').html('your device will self-destruct in 5 seconds');
-		}
-	});
-}
-
-function deleteItem(id, button) {
-
-	$.ajax({
-			type:		'get',
-			url:		'/' + id + '/delete',
-			accepts:	'application/json',
-			dataType:	'json',
-			
-			success: function(data) {
-				$('#success-msg').html('successfully deleted ' + data.name);
-				$(button.parent().parent()).remove();
-			},
-			error: function() {
-				$('#error-msg').html('your device will self-destruct in 5 seconds');
-		}
-	});
-}
-
 $(function () {
 	$('#add-item').on('submit', function(event) {
 		
@@ -57,6 +21,43 @@ $(function () {
 		});
 	});
 });
+
+function raisePrice(id, button) {
+
+	$.ajax({
+			type:		'get',
+			url:		'/' + id + '/raise',
+			accepts:	'application/json',
+			dataType:	'json',
+			
+			success: function(data) {
+				$(button.parent().find('.menu-msg')).html('raised ' + data.name + ' price to $' + data.price);
+				$(button.parent().parent().find('.item-price')).html(data.price);
+			},
+			error: function() {
+				$('#error-msg').html('your device will self-destruct in 5 seconds');
+		}
+	});
+}
+
+function deleteItem(id, button) {
+
+	$.ajax({
+			type:		'get',
+			url:		'/' + id + '/delete',
+			accepts:	'application/json',
+			dataType:	'json',
+			
+			success: function(data) {
+				$(button.parent().find('.menu-msg')).html('successfully deleted ' + data.name);
+				$(button.parent().parent()).remove();
+			},
+			error: function() {
+				$('#error-msg').html('your device will self-destruct in 5 seconds');
+		}
+	});
+}
+
 
 // Parallax Scrolling Fanciness
 

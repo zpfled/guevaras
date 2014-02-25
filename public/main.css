@@ -252,6 +252,18 @@ body {
   margin-bottom: 1em;
 }
 
+.menu-msg {
+  min-height: 20px;
+  min-width: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+.menu-msg:after {
+  content: '.';
+  visibility: hidden;
+}
+
 /*
 * Navbar
 */
