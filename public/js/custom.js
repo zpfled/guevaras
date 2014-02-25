@@ -1,3 +1,29 @@
+// Filter Menu and Category Inputs
+
+function filterCategories(menu) {
+	if (menu.options[menu.selectedIndex].text === 'Lunch') {
+		$('#lunch-cats').show();
+		$('#dinner-cats').hide();
+		$('#wine-cats').hide();
+		$('#general-cat').hide();
+	} else if (menu.options[menu.selectedIndex].text === 'Dinner') {
+		$('#dinner-cats').show();
+		$('#lunch-cats').hide();
+		$('#wine-cats').hide();
+		$('#general-cat').hide();
+	} else if (menu.options[menu.selectedIndex].text === 'Wine') {
+		$('#wine-cats').show();
+		$('#lunch-cats').hide();
+		$('#dinner-cats').hide();
+		$('#general-cat').hide();
+	} else {
+		$('#general-cat').show();
+		$('#lunch-cats').hide();
+		$('#dinner-cats').hide();
+		$('#wine-cats').hide();
+	}
+}
+
 // Asynchronous Menu Updates
 
 $(function () {
