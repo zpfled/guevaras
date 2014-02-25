@@ -1,15 +1,15 @@
-function raisePrice(id, event) {
-	event.preventDefault();
+function raisePrice(id, button, event) {
 
 	$.ajax({
-			type:		'post',
+			type:		'get',
 			url:		'/' + id + '/raise',
-			data:		$(this).serialize(),
-			dataType:	'html',
+			accepts:	'application/json',
+			dataType:	'json',
 			
 			success: function(data) {
-				$('#success-msg').html('raised price by $1');
-				$('#menu').html(data);
+				$('#success-msg').html('raised ' + data.name + ' price to $' + data.price);
+				$(button.parent().parent().find('.item-price')).html(data.price);
+				// $('#menu').html(data.name + ', ' + data.price);
 			},
 			error: function() {
 				$('#error-msg').html('your device will self-destruct in 5 seconds');

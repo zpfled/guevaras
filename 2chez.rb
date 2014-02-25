@@ -151,12 +151,19 @@ delete '/menu' do
 end
 
 # untested
-post '/:id/raise' do
+get '/:id/raise' do
 	item = MenuItem.get params[:id]
-	item.price = item.price + 1
+	@price = item.price = item.price + 1
 	item.save
+	@name = item.name
 
-	redirect '/menu'
+	if request.xhr?
+		halt 200, {name: @name, price: @price}.to_json
+	else
+		redirect '/'
+	end
+
+
 end
 
 # untested

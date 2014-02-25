@@ -16,7 +16,7 @@
       <article>
         <dt class="item-name">
           <%= item.name %>
-          <span class="item-price pull-right">
+          <span id="<%= item.id %>-price" class="item-price pull-right">
             <%= item.price %>
           </span>
         </dt>
@@ -25,11 +25,9 @@
         </dd>
         <% if @admin %>
           <div class="row">
-            <form action="/<%= item.id %>/raise" method="post" id="<%= item.id %>" onSubmit="raisePrice(<%= item.id %>, event)">
-              <button class="btn btn-lg btn-warning col-xs-12 col-md-4" name="<%= item.id %>" value="<%= item.name %>" type="submit">
-                raise price by $1
-              </button>
-            </form>
+            <button onClick="raisePrice(<%= item.id %>, $(this), event);" class="btn btn-lg btn-warning col-xs-12 col-md-4">
+              raise price by $1
+            </button>
             <form action="/reduce" method="post">
               <button class="btn btn-lg btn-primary col-xs-12 col-md-4" name="name" value="<%= item.name %>" type="submit">
                 reduce price by $1
