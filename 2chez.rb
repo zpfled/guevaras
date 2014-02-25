@@ -137,7 +137,8 @@ post '/menu' do
 	item.description = params[:description]
 	item.price = params[:price]
 	item.menu = params[:menu].split('-').join(' ')
-	item.category = params[:category]
+	cat = "#{params[:menu]}_category".to_sym
+	item.category = params[cat]
 	item.save
 
 	redirect '/menu'
