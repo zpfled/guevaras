@@ -9,7 +9,6 @@ function raisePrice(id, button, event) {
 			success: function(data) {
 				$('#success-msg').html('raised ' + data.name + ' price to $' + data.price);
 				$(button.parent().parent().find('.item-price')).html(data.price);
-				// $('#menu').html(data.name + ', ' + data.price);
 			},
 			error: function() {
 				$('#error-msg').html('your device will self-destruct in 5 seconds');
