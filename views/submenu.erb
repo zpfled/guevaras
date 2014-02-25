@@ -1,5 +1,4 @@
 <% @categories.each do |category| %>
-  
 
   <% @relevant_items = @menu_items.select { |item| item.menu == menu && item.category == category } %>
   <% @relevant_categories = [] %>
@@ -30,14 +29,12 @@
           <button onClick="raisePrice(<%= item.id %>, $(this));" class="btn btn-lg btn-warning col-xs-12 col-md-4">
             raise price by $1
           </button>
+          <button onClick="reducePrice(<%= item.id %>, $(this));" class="btn btn-lg btn-primary col-xs-12 col-md-4">
+            reduce price by $1
+          </button>
           <button onClick="deleteItem(<%= item.id %>, $(this));" class="btn btn-lg btn-danger col-xs-12 col-md-4">
             delete <%= item.name %>
           </button>
-          <form action="/reduce" method="post">
-            <button onClick="deleteItem(<%= item.id %>, $(this));" class="btn btn-lg btn-primary col-xs-12 col-md-4">
-              reduce price by $1
-            </button>
-          </form>
         </div>
       <% end %>
     </article>

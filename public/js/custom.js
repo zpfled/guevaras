@@ -40,6 +40,24 @@ function raisePrice(id, button) {
 	});
 }
 
+function reducePrice(id, button) {
+
+	$.ajax({
+			type:		'get',
+			url:		'/' + id + '/reduce',
+			accepts:	'application/json',
+			dataType:	'json',
+			
+			success: function(data) {
+				$(button.parent().find('.menu-msg')).html('reduced ' + data.name + ' price to $' + data.price);
+				$(button.parent().parent().find('.item-price')).html(data.price);
+			},
+			error: function() {
+				$('#error-msg').html('your device will self-destruct in 5 seconds');
+		}
+	});
+}
+
 function deleteItem(id, button) {
 
 	$.ajax({
