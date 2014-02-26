@@ -5,19 +5,29 @@ function filterCategories(menu) {
 		$('#lunch-cats').show();
 		$('#dinner-cats').hide();
 		$('#wine-cats').hide();
-		$('#general-cat').hide();
+		$('#small-plates-cat').hide();
+		$('#cocktails-cat').hide();
 	} else if (menu.options[menu.selectedIndex].text === 'Dinner') {
 		$('#dinner-cats').show();
 		$('#lunch-cats').hide();
 		$('#wine-cats').hide();
-		$('#general-cat').hide();
+		$('#small-plates-cat').hide();
+		$('#cocktails-cat').hide();
 	} else if (menu.options[menu.selectedIndex].text === 'Wine') {
 		$('#wine-cats').show();
 		$('#lunch-cats').hide();
 		$('#dinner-cats').hide();
-		$('#general-cat').hide();
+		$('#small-plates-cat').hide();
+		$('#cocktails-cat').hide();
+	} else if (menu.options[menu.selectedIndex].text === 'Cocktails') {
+		$('#cocktails-cat').show();
+		$('#small-plates-cat').hide();
+		$('#lunch-cats').hide();
+		$('#dinner-cats').hide();
+		$('#wine-cats').hide();
 	} else {
-		$('#general-cat').show();
+		$('#small-plates-cat').show();
+		$('#cocktails-cat').hide();
 		$('#lunch-cats').hide();
 		$('#dinner-cats').hide();
 		$('#wine-cats').hide();

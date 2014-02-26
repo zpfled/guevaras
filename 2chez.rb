@@ -45,10 +45,16 @@ class TwoChez < Sinatra::Application
 
 # Routes
 
+before do
+	@menu_items = MenuItem.all
+
+	@categories = []
+	@menu_items.map { |item| @categories.push(item.category) unless @categories.include?(item.category) }
+end
+
 #untested
 get '/' do
 	@title = 'Welcome'
-	@menu_items = MenuItem.all
 	@menus = ['lunch', 'dinner', 'small plates', 'wine', 'cocktails']
 	@categories = ['small plates', 'starters', 'salads', 'sandwiches', 'chicken', 'veal', 'seafood', 'beef', 'lamb', 'pork', 'whites', 'reds', 'cocktails']
 	
@@ -104,9 +110,7 @@ get '/admin' do
 	@user = session[:name]
 	@admin = true ? @user : false
 
-	@menu_items = MenuItem.all
 	@menus = ['lunch', 'dinner', 'small plates', 'wine', 'cocktails']
-	@categories = ['small plates', 'starters', 'salads', 'sandwiches', 'chicken', 'veal', 'seafood', 'beef', 'lamb', 'pork', 'whites', 'reds', 'cocktails']
 
  	if @user && Manager.first(name: session[:name]).logged_in?(@user)
  		erb :admin
@@ -119,9 +123,7 @@ get '/menu' do
 	@user = session[:name]
 	@admin = true ? @user : false
 	
-	@menu_items = MenuItem.all
 	@menus = ['lunch', 'dinner', 'small plates', 'wine', 'cocktails']
-	@categories = ['small plates', 'starters', 'salads', 'sandwiches', 'chicken', 'veal', 'seafood', 'beef', 'lamb', 'pork', 'whites', 'reds', 'cocktails']
 
  	if @user && Manager.first(name: session[:name]).logged_in?(@user)
  		erb :menu, layout: false

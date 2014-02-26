@@ -8,7 +8,7 @@
   
   <% @relevant_categories.each do |relevant_category| %>  
 
-  <h3><%= relevant_category unless relevant_category == menu %></h3>
+  <h3><%= relevant_category.split('-').each { |word| word.capitalize! }.join(' ') unless relevant_category == menu %></h3>
   
   <% @relevant_items.each do |item| %>
     <article>
