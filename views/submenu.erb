@@ -1,6 +1,7 @@
 <% @categories.each do |category| %>
 
   <% @relevant_items = @menu_items.select { |item| item.menu == menu && item.category == category } %>
+  <% @relevant_items.sort! { |x, y| x.price <=> y.price } %>
   <% @relevant_categories = [] %>
   <% @relevant_items.each do |item| %>
     <% @relevant_categories.push(item.category) unless @relevant_categories.include?(item.category) %>
