@@ -48,15 +48,18 @@ class TwoChez < Sinatra::Application
 before do
 	@menu_items = MenuItem.all
 
+	@menus = []
+	@menu_items.map { |item| @menus.push(item.menu) unless @menus.include?(item.menu) }
+	@menus.sort!
+
 	@categories = []
 	@menu_items.map { |item| @categories.push(item.category) unless @categories.include?(item.category) }
+	@categories.sort!
 end
 
 #untested
 get '/' do
 	@title = 'Welcome'
-	@menus = ['lunch', 'dinner', 'small plates', 'wine', 'cocktails']
-	@categories = ['small plates', 'starters', 'salads', 'sandwiches', 'chicken', 'veal', 'seafood', 'beef', 'lamb', 'pork', 'whites', 'reds', 'cocktails']
 	
 	@admin = false
 
@@ -110,8 +113,6 @@ get '/admin' do
 	@user = session[:name]
 	@admin = true ? @user : false
 
-	@menus = ['lunch', 'dinner', 'small plates', 'wine', 'cocktails']
-
  	if @user && Manager.first(name: session[:name]).logged_in?(@user)
  		erb :admin
  	else 
@@ -123,8 +124,6 @@ get '/menu' do
 	@user = session[:name]
 	@admin = true ? @user : false
 	
-	@menus = ['lunch', 'dinner', 'small plates', 'wine', 'cocktails']
-
  	if @user && Manager.first(name: session[:name]).logged_in?(@user)
  		erb :menu, layout: false
  	else
