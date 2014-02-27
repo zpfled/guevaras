@@ -103,7 +103,8 @@ function deleteItem(id, button) {
 			dataType:	'json',
 			
 			success: function(data) {
-				$(button.parent().find('.menu-msg')).html('successfully deleted ' + data.name);
+				$('.delete-msg h3').html('successfully deleted ' + data.name);
+				$('.delete-msg').fadeIn(200).delay(1500).fadeOut(200);
 				$(button.parent().parent()).remove();
 			},
 			error: function() {

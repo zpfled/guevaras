@@ -1,10 +1,12 @@
 @import url(http://fonts.googleapis.com/css?family=Quicksand:300+Habibi);
 
 /*
- * Globals
+ Globals
  */
 
- /* Bootstrap Overrides */
+ /*
+ Bootstrap Overrides
+  */
 
  .nav>li>a {
   border-radius: 0;
@@ -580,4 +582,20 @@ button {
 .admin-form select {
   background-color: #444;
   display: inherit;
+}
+
+.delete-msg {
+  position: fixed;
+  z-index: 100;
+  display: none;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.delete-msg h3 {
+  margin: 1em 1em auto 1em;
+
+  text-align: center;
+  font-weight: 700;
 }

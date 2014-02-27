@@ -36,7 +36,7 @@
           <button onClick="reducePrice(<%= item.id %>, $(this));" class="btn btn-lg btn-primary col-xs-12 col-md-4">
             reduce price by $1
           </button>
-          <button onClick="deleteItem(<%= item.id %>, $(this));" class="btn btn-lg btn-danger col-xs-12 col-md-4">
+          <button onClick="deleteItem(<%= item.id %>, $(this));" data-toggle="alert" class="btn btn-lg btn-danger col-xs-12 col-md-4">
             delete <%= item.name %>
           </button>
         </div>
