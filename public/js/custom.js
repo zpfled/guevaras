@@ -71,7 +71,7 @@ function raisePrice(id, button) {
 		url:		'/' + id + '/raise',
 		// accepts:	'application/json',
 		dataType:	'json',
-		
+
 		
 		success: function(data) {
 			$('.menu-msg h3').html('raised ' + data.name + ' price to $' + data.price);
@@ -91,7 +91,7 @@ function reducePrice(id, button) {
 		url:		'/' + id + '/reduce',
 		// accepts:	'application/json',
 		dataType:	'json',
-		
+
 		
 		success: function(data) {
 			$('.menu-msg h3').html('reduced ' + data.name + ' price to $' + data.price);
@@ -119,7 +119,7 @@ function deleteItem(id, button) {
 			url:		'/' + id + '/delete',
 			// accepts:	'application/json',
 			dataType:	'json',
-			
+
 			
 			success: function(data) {
 				$(button.parent().parent()).remove();

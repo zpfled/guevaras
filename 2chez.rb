@@ -170,7 +170,7 @@ get '/:id/raise' do
 end
 
 get '/:id/reduce' do
-	item = MenuItem.get params[:id]
+	item = MenuItem.first(id: params[:id])
 	@price = item.price = item.price - 1
 	item.save
 	@name = item.name
