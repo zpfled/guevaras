@@ -73,8 +73,9 @@ function raisePrice(id, button) {
 		dataType:	'json',
 		
 		success: function(data) {
-			$(button.parent().find('.menu-msg')).html('raised ' + data.name + ' price to $' + data.price);
+			$('.menu-msg h3').html('raised ' + data.name + ' price to $' + data.price);
 			$(button.parent().parent().find('.item-price')).html(data.price);
+			$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
 		},
 		error: function() {
 			errorMessage();
@@ -91,9 +92,9 @@ function reducePrice(id, button) {
 		dataType:	'json',
 		
 		success: function(data) {
-			$(button.parent().find('.menu-msg')).html('reduced ' + data.name + ' price to $' + data.price);
-			$(button.parent().find('.menu-msg')).fadeIn(200).delay(3000).fadeOut(200);
+			$('.menu-msg h3').html('reduced ' + data.name + ' price to $' + data.price);
 			$(button.parent().parent().find('.item-price')).html(data.price);
+			$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
 		},
 		error: function() {
 			errorMessage();
