@@ -96,20 +96,30 @@ function reducePrice(id, button) {
 
 function deleteItem(id, button) {
 
-	$.ajax({
-			type:		'get',
-			url:		'/' + id + '/delete',
-			accepts:	'application/json',
-			dataType:	'json',
-			
-			success: function(data) {
-				$('.delete-msg h3').html('successfully deleted ' + data.name);
-				$('.delete-msg').fadeIn(200).delay(1500).fadeOut(200);
-				$(button.parent().parent()).remove();
-			},
-			error: function() {
-				$('#error-msg').html('your device will self-destruct in 5 seconds');
-		}
+	$('.delete-confirmation').fadeToggle(200);
+
+	$('#no').click(function() {
+		$('.delete-confirmation').fadeOut(200);
+		return false;
+	});
+	$('#yes').click(function() {
+
+		$('.delete-confirmation').fadeOut(100);
+		$.ajax({
+				type:		'get',
+				url:		'/' + id + '/delete',
+				accepts:	'application/json',
+				dataType:	'json',
+				
+				success: function(data) {
+					$('.delete-msg h3').html('successfully deleted ' + data.name);
+					$('.delete-msg').fadeIn(100).delay(1500).fadeOut(200);
+					$(button.parent().parent()).remove();
+				},
+				error: function() {
+					$('#error-msg').html('your device will self-destruct in 5 seconds');
+			}
+		});
 	});
 }
 

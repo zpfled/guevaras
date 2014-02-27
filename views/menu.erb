@@ -41,7 +41,7 @@
       </ul>
 
       <!-- Tab panes -->
-      <div class="tab-content">
+      <div class="tab-content visible-md visible-lg">
         <% @menus.each do |menu| %>
           <div class="tab-pane fade in <%= 'active' if menu == 'lunch' %>" id="<%= menu.split(' ').join('-') + '-tab' %>">
             <%= erb(:submenu, :layout => false, :locals => { :menu => menu }) %>

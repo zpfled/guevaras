@@ -533,10 +533,10 @@ body {
 }
 
 /*
-Login Screen
+BlackOut Screen
 */
 
-.login-page-wrapper {
+.blackout-page-wrapper {
   position: fixed;
   background-color: rgba(100, 100, 100, .75);
   top: 0;
@@ -553,10 +553,6 @@ Login Screen
 /*
 Admin
  */
-
-.admin-content {
-  /*height: 100%;*/
-}
 
 .admin-form {
 }
@@ -584,7 +580,8 @@ button {
   display: inherit;
 }
 
-.delete-msg {
+.delete-msg,
+.delete-confirmation {
   position: fixed;
   z-index: 100;
   display: none;
@@ -593,7 +590,18 @@ button {
   background-color: rgba(0, 0, 0, .5);
 }
 
-.delete-msg h3 {
+.delete-confirmation div {
+  height: auto;
+  overflow: hidden;
+  margin: 1em 1em auto 1em;
+}
+
+.delete-confirmation div button {
+  margin-top: 1em;
+}
+
+.delete-msg h3,
+.delete-confirmation h3 {
   margin: 1em 1em auto 1em;
 
   text-align: center;
