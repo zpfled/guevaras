@@ -63,7 +63,6 @@ end
 
 after do
 	p @name
-	p @price.to_s
 end
 
 #untested
@@ -186,16 +185,13 @@ get '/:id/reduce' do
 end
 
 get '/:id/delete' do
-	item = MenuItem.get(:id)
+	item = MenuItem.get params[:id]
 	@price = item.price = item.price + 1
 	item.destroy
 	@name = item.name
 
-	puts @name
-	puts @price
-
 	if request.xhr?
-		halt 200, {name: @name, price: @price.to_s}.to_json
+		halt 200, {name: @name, price: @price}.to_json
 	else
 		redirect '/'
 	end
