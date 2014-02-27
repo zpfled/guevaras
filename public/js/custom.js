@@ -69,7 +69,7 @@ function raisePrice(id, button) {
 	$.ajax({
 		type:		'get',
 		url:		'/' + id + '/raise',
-		accepts:	'application/json',
+		// accepts:	'application/json',
 		dataType:	'json',
 		
 		success: function(data) {
@@ -88,7 +88,7 @@ function reducePrice(id, button) {
 	$.ajax({
 		type:		'get',
 		url:		'/' + id + '/reduce',
-		accepts:	'application/json',
+		// accepts:	'application/json',
 		dataType:	'json',
 		
 		success: function(data) {
@@ -115,7 +115,7 @@ function deleteItem(id, button) {
 		$.ajax({
 			type:		'get',
 			url:		'/' + id + '/delete',
-			accepts:	'application/json',
+			// accepts:	'application/json',
 			dataType:	'json',
 			
 			success: function(data) {
