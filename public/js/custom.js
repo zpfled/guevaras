@@ -69,8 +69,9 @@ function raisePrice(id, button) {
 	$.ajax({
 		type:		'get',
 		url:		'/' + id + '/raise',
-		// accepts:	'application/json',
+		accepts:	'application/json',
 		dataType:	'json',
+		
 		
 		success: function(data) {
 			$('.menu-msg h3').html('raised ' + data.name + ' price to $' + data.price);
@@ -88,8 +89,9 @@ function reducePrice(id, button) {
 	$.ajax({
 		type:		'get',
 		url:		'/' + id + '/reduce',
-		// accepts:	'application/json',
+		accepts:	'application/json',
 		dataType:	'json',
+		
 		
 		success: function(data) {
 			$('.menu-msg h3').html('reduced ' + data.name + ' price to $' + data.price);
@@ -115,8 +117,9 @@ function deleteItem(id, button) {
 		$.ajax({
 			type:		'get',
 			url:		'/' + id + '/delete',
-			// accepts:	'application/json',
+			accepts:	'application/json',
 			dataType:	'json',
+			
 			
 			success: function(data) {
 				$(button.parent().parent()).remove();

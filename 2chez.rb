@@ -56,6 +56,9 @@ before do
 	@categories = []
 	@menu_items.map { |item| @categories.push(item.category) unless @categories.include?(item.category) }
 	@categories.sort!
+
+	puts '[Params]'
+	p params
 end
 
 #untested
