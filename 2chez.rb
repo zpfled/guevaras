@@ -158,7 +158,7 @@ get '/:id/raise' do
 	@name = item.name
 
 	if request.xhr?
-		halt 200, {name: @name, price: @price}.to_json
+		status 200, {name: @name, price: @price}.to_json
 	else
 		redirect '/'
 	end
@@ -171,7 +171,7 @@ get '/:id/reduce' do
 	@name = item.name
 
 	if request.xhr?
-		halt 200, {name: @name, price: @price}.to_json
+		status 200, {name: @name, price: @price}.to_json
 	else
 		redirect '/'
 	end
@@ -184,19 +184,10 @@ get '/:id/delete' do
 	@name = item.name
 
 	if request.xhr?
-		halt 200, {name: @name, price: @price}.to_json
+		status 200, {name: @name, price: @price}.to_json
 	else
 		redirect '/'
 	end
-end
-
-# untested
-post '/reduce' do
-	item = MenuItem.first(name: params[:name])
-	item.price = item.price - 1
-	item.save
-
-	redirect '/admin'
 end
 
 end
