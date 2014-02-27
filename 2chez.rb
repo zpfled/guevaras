@@ -158,7 +158,9 @@ get '/:id/raise' do
 	@name = item.name
 
 	if request.xhr?
-		halt 200, {name: @name, price: @price}.to_json
+		# halt 200, {name: @name, price: @price}.to_json
+		status 200, {name: @name, price: @price}.to_json
+		halt
 	else
 		redirect '/'
 	end
@@ -171,7 +173,9 @@ get '/:id/reduce' do
 	@name = item.name
 
 	if request.xhr?
-		halt 200, {name: @name, price: @price}.to_json
+		# halt 200, {name: @name, price: @price}.to_json
+		status 200, {name: @name, price: @price}.to_json
+		halt
 	else
 		redirect '/'
 	end
@@ -184,7 +188,9 @@ get '/:id/delete' do
 	@name = item.name
 
 	if request.xhr?
-		halt 200, {name: @name, price: @price}.to_json
+		# halt 200, {name: @name, price: @price}.to_json
+		status 200, {name: @name, price: @price}.to_json
+		halt
 	else
 		redirect '/'
 	end

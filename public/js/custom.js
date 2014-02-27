@@ -78,9 +78,7 @@ function raisePrice(id, button) {
 			$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
 		},
 		error: function() {
-			$('.menu-msg h3').html('raised ' + data.name + ' price to $' + data.price);
-			$(button.parent().parent().find('.item-price')).html(data.price);
-			$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
+			errorMessage();
 		}
 	});
 }
@@ -99,9 +97,7 @@ function reducePrice(id, button) {
 			$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
 		},
 		error: function() {
-			$('.menu-msg h3').html('reduced ' + data.name + ' price to $' + data.price);
-			$(button.parent().parent().find('.item-price')).html(data.price);
-			$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
+			errorMessage();
 		}
 	});
 }
@@ -129,10 +125,7 @@ function deleteItem(id, button) {
 				$('.delete-msg').fadeIn(1500).fadeOut(1500);
 			},
 			error: function() {
-				$(button.parent().parent()).remove();
-				$('.delete-msg h3').html('successfully deleted ' + data.name);
-				$('.delete-confirmation').fadeOut(200);
-				$('.delete-msg').fadeIn(1500).fadeOut(1500);
+				errorMessage();
 			}
 		});
 	});
