@@ -61,6 +61,11 @@ before do
 	p params
 end
 
+after do
+	p @name
+	p @price.to_s
+end
+
 #untested
 get '/' do
 	@title = 'Welcome'
@@ -159,37 +164,38 @@ get '/:id/raise' do
 	@price = item.price = item.price + 1
 	item.save
 	@name = item.name
-	@price = '1'
-	@name = 'zach'
 
 	if request.xhr?
-		halt 200, {name: @name, price: @price}.to_json
+		halt 200, {name: @name, price: @price.to_s}.to_json
 	else
 		redirect '/'
 	end
 end
 
 get '/:id/reduce' do
-	item = MenuItem.first(id: params[:id])
+	item = MenuItem.get params[:id]
 	@price = item.price = item.price - 1
 	item.save
 	@name = item.name
 
 	if request.xhr?
-		halt 200, {name: @name, price: @price}.to_json
+		halt 200, {name: @name, price: @price.to_s}.to_json
 	else
 		redirect '/'
 	end
 end
 
 get '/:id/delete' do
-	item = MenuItem.get params[:id]
+	item = MenuItem.get(:id)
 	@price = item.price = item.price + 1
 	item.destroy
 	@name = item.name
 
+	puts @name
+	puts @price
+
 	if request.xhr?
-		halt 200, {name: @name, price: @price}.to_json
+		halt 200, {name: @name, price: @price.to_s}.to_json
 	else
 		redirect '/'
 	end

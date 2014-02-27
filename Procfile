@@ -1,0 +1,1 @@
+web: bundle exec ruby 2chez.rb -p $PORT
