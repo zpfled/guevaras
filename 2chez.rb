@@ -106,6 +106,11 @@ post '/login' do
 	end
 end
 
+post '/logout' do
+	session.destroy
+	redirect '/'
+end
+
 # untested
 get '/admin' do
 	@title = 'Dashboard'
