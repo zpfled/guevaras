@@ -2,11 +2,11 @@ source "https://rubygems.org"
 ruby "2.0.0"
 gem 'sinatra'
 gem 'data_mapper'
-gem 'shotgun'
 gem 'bcrypt-ruby',			require: 'bcrypt'
 gem 'multi_json', '1.8.4'
 
 group :development, :test do
+	gem 'shotgun'
 	gem 'rspec'
 	gem 'guard'
 
