@@ -1,7 +1,7 @@
 require 'bundler'
 Bundler.require(:default, :development)
 
-# DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://#{Dir.pwd}/2chez.db")
+# DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/2chez')
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
 
 class User
