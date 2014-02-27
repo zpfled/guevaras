@@ -121,7 +121,7 @@ function deleteItem(id, button) {
 			success: function(data) {
 				$(button.parent().parent()).remove();
 				$('.delete-msg h3').html('successfully deleted ' + data.name);
-				$('.delete-confirmation').fadeOut(1500);
+				$('.delete-confirmation').fadeOut(200);
 				$('.delete-msg').fadeIn(1500).fadeOut(1500);
 			},
 			error: function() {

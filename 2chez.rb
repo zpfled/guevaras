@@ -4,7 +4,7 @@ Bundler.require(:default, :development)
 # DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://#{Dir.pwd}/2chez.db")
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
 
-class Manager
+class User
 	include DataMapper::Resource
 	include BCrypt
 
@@ -70,13 +70,13 @@ end
 get '/signup' do
 	@title = 'Signup'
 	@action = 'sign up'
-	@users = Manager.all
+	@users = User.all
 	erb :login
 end
 
 #tested
 post '/signup' do
-	user = Manager.new
+	user = User.new
 	user.name = params[:name]
 	user.email = params[:email]
 	user.password = params[:password]
@@ -95,7 +95,7 @@ end
 post '/login' do
 	session[:name] = params[:name]
 	session[:password] = params[:password]
-	user = Manager.first(name: session[:name])
+	user = User.first(name: session[:name])
 
 	if user.nil?
 		redirect '/'
@@ -118,7 +118,7 @@ get '/admin' do
 	@user = session[:name]
 	@admin = true ? @user : false
 
- 	if @user && Manager.first(name: session[:name]).logged_in?(@user)
+ 	if @user && User.first(name: session[:name]).logged_in?(@user)
  		erb :admin
  	else 
  		redirect '/login'
@@ -129,7 +129,7 @@ get '/menu' do
 	@user = session[:name]
 	@admin = true ? @user : false
 	
- 	if @user && Manager.first(name: session[:name]).logged_in?(@user)
+ 	if @user && User.first(name: session[:name]).logged_in?(@user)
  		erb :menu, layout: false
  	else
  		redirect '/'
