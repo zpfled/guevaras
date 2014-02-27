@@ -1,3 +1,8 @@
+function errorMessage() {
+	$('.error-msg h3').html('sorry, that didn\'t work');
+	$('.error-msg').fadeIn(750).fadeOut(750);
+}
+
 // Filter Menu and Category Inputs
 
 function filterCategories(menu) {
@@ -48,11 +53,12 @@ $(function () {
 			dataType:	'html',
 			
 			success: function(data) {
-				$('#add-msg').html('success');
+				$('.add-msg h3').html('success');
+				$('.add-msg').fadeIn(750).fadeOut(750);
 				$('#menu').html(data);
 			},
 			error: function() {
-				$('#add-msg').html('sorry, that didn\'t work');
+				errorMessage();
 			}
 		});
 	});
@@ -61,17 +67,17 @@ $(function () {
 function raisePrice(id, button) {
 
 	$.ajax({
-			type:		'get',
-			url:		'/' + id + '/raise',
-			accepts:	'application/json',
-			dataType:	'json',
-			
-			success: function(data) {
-				$(button.parent().find('.menu-msg')).html('raised ' + data.name + ' price to $' + data.price);
-				$(button.parent().parent().find('.item-price')).html(data.price);
-			},
-			error: function() {
-				$('#error-msg').html('your device will self-destruct in 5 seconds');
+		type:		'get',
+		url:		'/' + id + '/raise',
+		accepts:	'application/json',
+		dataType:	'json',
+		
+		success: function(data) {
+			$(button.parent().find('.menu-msg')).html('raised ' + data.name + ' price to $' + data.price);
+			$(button.parent().parent().find('.item-price')).html(data.price);
+		},
+		error: function() {
+			errorMessage();
 		}
 	});
 }
@@ -79,17 +85,18 @@ function raisePrice(id, button) {
 function reducePrice(id, button) {
 
 	$.ajax({
-			type:		'get',
-			url:		'/' + id + '/reduce',
-			accepts:	'application/json',
-			dataType:	'json',
-			
-			success: function(data) {
-				$(button.parent().find('.menu-msg')).html('reduced ' + data.name + ' price to $' + data.price);
-				$(button.parent().parent().find('.item-price')).html(data.price);
-			},
-			error: function() {
-				$('#error-msg').html('your device will self-destruct in 5 seconds');
+		type:		'get',
+		url:		'/' + id + '/reduce',
+		accepts:	'application/json',
+		dataType:	'json',
+		
+		success: function(data) {
+			$(button.parent().find('.menu-msg')).html('reduced ' + data.name + ' price to $' + data.price);
+			$(button.parent().find('.menu-msg')).fadeIn(200).delay(3000).fadeOut(200);
+			$(button.parent().parent().find('.item-price')).html(data.price);
+		},
+		error: function() {
+			errorMessage();
 		}
 	});
 }
@@ -104,20 +111,20 @@ function deleteItem(id, button) {
 	});
 	$('#yes').click(function() {
 
-		$('.delete-confirmation').fadeOut(100);
 		$.ajax({
-				type:		'get',
-				url:		'/' + id + '/delete',
-				accepts:	'application/json',
-				dataType:	'json',
-				
-				success: function(data) {
-					$(button.parent().parent()).remove();
-					$('.delete-msg h3').html('successfully deleted ' + data.name);
-					$('.delete-msg').fadeIn(100).delay(1500).fadeOut(200);
-				},
-				error: function() {
-					$('#error-msg').html('your device will self-destruct in 5 seconds');
+			type:		'get',
+			url:		'/' + id + '/delete',
+			accepts:	'application/json',
+			dataType:	'json',
+			
+			success: function(data) {
+				$(button.parent().parent()).remove();
+				$('.delete-msg h3').html('successfully deleted ' + data.name);
+				$('.delete-confirmation').fadeOut(1500);
+				$('.delete-msg').fadeIn(1500).fadeOut(1500);
+			},
+			error: function() {
+				errorMessage();
 			}
 		});
 	});

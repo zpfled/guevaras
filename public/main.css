@@ -4,6 +4,9 @@
  Globals
  */
 
+.hidden {
+  display: none;
+}
  /*
  Bootstrap Overrides
   */
@@ -581,13 +584,26 @@ button {
 }
 
 .delete-msg,
-.delete-confirmation {
+.delete-confirmation,
+.menu-msg,
+.add-msg,
+.error-msg {
   position: fixed;
   z-index: 100;
   display: none;
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, .5);
+}
+
+.delete-msg h3,
+.delete-confirmation h3,
+.add-msg h3,
+.error-msg h3 {
+  margin: 1em 1em auto 1em;
+
+  text-align: center;
+  font-weight: 700;
 }
 
 .delete-confirmation div {
@@ -598,12 +614,4 @@ button {
 
 .delete-confirmation div button {
   margin-top: 1em;
-}
-
-.delete-msg h3,
-.delete-confirmation h3 {
-  margin: 1em 1em auto 1em;
-
-  text-align: center;
-  font-weight: 700;
 }
