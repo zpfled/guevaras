@@ -159,11 +159,11 @@ get '/:id/raise' do
 	@price = item.price = item.price + 1
 	item.save
 	@name = item.name
+	@price = '1'
+	@name = 'zach'
 
 	if request.xhr?
-		# content_type :json
-		# halt 200, {name: @name, price: @price}.to_json
-		redirect '/login'
+		halt 200, {name: @name, price: @price}.to_json
 	else
 		redirect '/'
 	end
