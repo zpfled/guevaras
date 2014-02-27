@@ -161,8 +161,9 @@ get '/:id/raise' do
 	@name = item.name
 
 	if request.xhr?
-		content_type :json
-		halt 200, {name: @name, price: @price}.to_json
+		# content_type :json
+		# halt 200, {name: @name, price: @price}.to_json
+		redirect '/login'
 	else
 		redirect '/'
 	end
