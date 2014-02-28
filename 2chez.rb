@@ -168,7 +168,7 @@ post '/menu' do
 	redirect '/menu'
 end
 
-post '/:id/raise' do
+get '/:id/raise' do
 	item = MenuItem.get params[:id]
 	@price = item.price = item.price + 1
 	item.save

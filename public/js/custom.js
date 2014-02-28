@@ -72,8 +72,8 @@ $(function () {
 		var button = $(this);
 
 		$.ajax({
-			
-			type:		'post',
+
+			type:		'get',
 			url:		'/' + id + '/raise',
 			// contentType: 'application/json',
 			data:		$(this.serialize),
@@ -86,7 +86,7 @@ $(function () {
 		
 			success: function(data) {
 				$('.menu-msg h3').html('raised ' + data.name + ' price to $' + data.price);
-				$(button.parent().parent().find('.item-price')).html(data.price);
+				// $(button.parent().parent().find('.item-price')).html(data.price);
 				$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
 			},
 			error: function() {
