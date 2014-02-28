@@ -78,7 +78,6 @@ end
 #untested
 get '/' do
 	@title = 'Welcome'
-	
 	@admin = false
 
 	erb :index
@@ -132,7 +131,6 @@ end
 # untested
 get '/admin' do
 	@title = 'Dashboard'
-	
 	@user = session[:name]
 	@admin = true ? @user : false
 

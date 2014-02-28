@@ -333,6 +333,10 @@ footer {
     width: 100%; /* Must be percentage or pixels for horizontal alignment */
   }
 
+  .content-block {
+    width: 100%;
+  }
+
   .bar-wrapper {
     margin-top: 30%;
   }
@@ -355,6 +359,7 @@ footer {
     margin-bottom: 1em;
     text-align: center;
   }
+
 
   .welcome-header h1 {
     text-align: left;

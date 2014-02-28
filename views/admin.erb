@@ -1,8 +1,18 @@
+<section id="task-bar" class="content">
+    <div class="inner">
+        <h1 class="dashboard-greeting">Hi, <%= @user.capitalize %></h1>
+        <ul class="nav">
+            <li>
+                <form action="/logout" method="post">
+                    <button class="btn btn-lg btn-primary" type="submit">log out</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+</section>
 
-<section class="inner content">
-    
-    <section class="welcome-header content">
-        <h1 class="dashboard-greeting">Hi, <%= @user.capitalize %>.</h1>
+<section class="content">
+    <section class="welcome-header inner">
         <div class="row">
             <div class="col-xs-12 col-md-4 admin-form">
                 <form action="/menu" method="post" id="add-item">
