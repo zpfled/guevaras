@@ -67,11 +67,15 @@ $(function () {
 function raisePrice(id, button) {
 
 	$.ajax({
+		headers: {
+			Accept : "text/plain; charset=utf-8",
+			"Content-Type": "text/plain; charset=utf-8"
+		},
 		type:		'post',
 		url:		'/' + id + '/raise',
 		data:		$(this.serialize),
 		accepts:	'application/json',
-		dataType:	'text',
+		dataType:	'json',
 
 		
 		success: function(data) {
@@ -88,11 +92,15 @@ function raisePrice(id, button) {
 function reducePrice(id, button) {
 
 	$.ajax({
+		headers: {
+			Accept : "text/plain; charset=utf-8",
+			"Content-Type": "text/plain; charset=utf-8"
+		},
 		type:		'post',
 		url:		'/' + id + '/reduce',
 		data:		$(this.serialize),
 		accepts:	'application/json',
-		dataType:	'text',
+		dataType:	'json',
 
 		
 		success: function(data) {
@@ -117,11 +125,15 @@ function deleteItem(id, button) {
 	$('#yes').click(function() {
 
 		$.ajax({
+			headers: {
+			Accept : "text/plain; charset=utf-8",
+			"Content-Type": "text/plain; charset=utf-8"
+		},
 			type:		'post',
 			url:		'/' + id + '/delete',
 			data:		$(this.serialize),
 			accepts:	'application/json',
-			dataType:	'text',
+			dataType:	'json',
 
 			
 			success: function(data) {
