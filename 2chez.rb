@@ -184,7 +184,6 @@ get '/:id/reduce' do
 	item = MenuItem.get params[:id]
 	@price = item.price = item.price - 1
 	item.save
-	@name = item.name
 
 	if request.xhr?
 		halt 200, "#{@price}"
@@ -195,7 +194,6 @@ end
 
 get '/:id/delete' do
 	item = MenuItem.get params[:id]
-	item.price = item.price + 1
 	item.destroy
 	@name = item.name
 
