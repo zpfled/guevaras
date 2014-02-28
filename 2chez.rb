@@ -59,10 +59,20 @@ before do
 
 	puts '[Params]'
 	p params
+
+	headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
+	headers['Access-Control-Allow-Origin'] = '*'
+	headers['Access-Control-Allow-Headers'] = 'accept, authorization, origin'
 end
 
 after do
 	p @name
+end
+
+options '/*' do
+    headers['Access-Control-Allow-Origin'] = "*"
+    headers['Access-Control-Allow-Methods'] = "GET, POST, PUT, DELETE, OPTIONS"
+    headers['Access-Control-Allow-Headers'] ="accept, authorization, origin"
 end
 
 #untested

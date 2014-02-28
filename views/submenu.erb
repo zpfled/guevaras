@@ -28,13 +28,13 @@
       </dd>
       <% if @admin %>
         <div class="row">
-          <button onClick="$(this).on('click', raisePrice(<%= item.id %>, $(this)));" class="btn btn-lg btn-warning col-xs-12 col-md-4">
+          <button onClick="raisePrice(<%= item.id %>, $(this));" class="btn btn-lg btn-warning col-xs-12 col-md-4">
             raise price by $1
           </button>
-          <button onClick="$(this).on('click', reducePrice(<%= item.id %>, $(this)));" class="btn btn-lg btn-primary col-xs-12 col-md-4">
+          <button onClick="reducePrice(<%= item.id %>, $(this));" class="btn btn-lg btn-primary col-xs-12 col-md-4">
             reduce price by $1
           </button>
-          <button onClick="$(this).on('click', deleteItem(<%= item.id %>, $(this)));" class="btn btn-lg btn-danger col-xs-12 col-md-4">
+          <button onClick="deleteItem(<%= item.id %>, $(this));" class="btn btn-lg btn-danger col-xs-12 col-md-4">
             delete <%= item.name %>
           </button>
         </div>
