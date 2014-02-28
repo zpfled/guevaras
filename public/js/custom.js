@@ -76,8 +76,8 @@ function raisePrice(id, button) {
 		data:		$(this.serialize),
 		accepts: {
 			xml: 'text/xml',
-			// text: 'text/plain'
-		// },
+			text: 'text/plain'
+		},
 		dataType:	'json',
 
 		
@@ -102,7 +102,7 @@ function reducePrice(id, button) {
 		type:		'post',
 		url:		'/' + id + '/reduce',
 		// data:		$(this.serialize),
-		// accepts:	'application/json',
+		accepts:	'application/json',
 		dataType:	'json',
 
 		
