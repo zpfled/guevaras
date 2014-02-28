@@ -158,7 +158,7 @@ post '/menu' do
 	redirect '/menu'
 end
 
-get '/:id/raise' do
+post '/:id/raise' do
 	item = MenuItem.get params[:id]
 	@price = item.price = item.price + 1
 	item.save
@@ -171,7 +171,7 @@ get '/:id/raise' do
 	end
 end
 
-get '/:id/reduce' do
+post '/:id/reduce' do
 	item = MenuItem.get params[:id]
 	@price = item.price = item.price - 1
 	item.save
@@ -184,7 +184,7 @@ get '/:id/reduce' do
 	end
 end
 
-get '/:id/delete' do
+post '/:id/delete' do
 	item = MenuItem.get params[:id]
 	@price = item.price = item.price + 1
 	item.destroy
