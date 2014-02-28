@@ -1,14 +1,12 @@
-<div class="inner">
-
-  <section class="welcome-header">
+<section class="welcome-header">
+  <div class="inner">
     <h1>Casual Fine Dining</h1>
-  </section>
+  </div>
+</section>
 
-</div>
-
-  <%= erb(:menu, :layout => false) %>
-
-  <section class="content">
+<section class="content-block  <%= 'push-down' unless @admin %>">
+  <%= erb :menu, layout: false %>
+  <section id="hours" class="content">
     <div class="inner">
       <h1>Hours</h1>
           <h2>Lunch</h2>
@@ -22,10 +20,12 @@
     </div>
   </section>
 
-  <section class="content">
+  <section id="story" class="content">
     <div class="inner">
       <h1>Our Story</h1>
       <p>We are a restaurant. We serve food and drinks. That's really all there is to the story. What did you expect, Garrison freakin' Keillor?!?</p>
     </div>
   </section>
 
+  <%= erb :footer, layout: false %>
+</section>
