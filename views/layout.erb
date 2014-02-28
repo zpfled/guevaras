@@ -56,21 +56,25 @@
 
     <div class="site-wrapper">
             <section class="welcome-container">
-                <div class="masthead">
+                <div class="masthead clearfix">
+                    <div class="inner">
+                        <h3 class="masthead-brand">
+                            <a class="logo-link" href="/">
+                                <span style="color: #d00; font-weight: 800; font-size: 1.1em">2</span>Chez
+                            </a>
+                            <a class="logo-link pull-right phone" href="tel:+13096912224" title="Call Us">
+                                <span class="glyphicon glyphicon-earphone"></span>
+                            </a>
+                        </h3>
+                    </div>
                     <% if @admin %>
                     <div class="inner">
                         <form action="/logout" method="post">
                             <button class="masthead-nav btn btn-lg btn-primary pull-right" type="submit">log out</button>
                         </form>
                     </div>
+                    <% else %>
                     <% end %>
-                    <div class="inner">
-                        <h3 class="masthead-brand">
-                            <a class="logo-link" href="/">
-                                <span style="color: #d00; font-weight: 800; font-size: 1.1em">2</span>Chez
-                            </a>
-                        </h3>
-                    </div>
                 </div>
             </section>
             
