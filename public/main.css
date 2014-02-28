@@ -131,7 +131,7 @@ html,
 body {
   height: 100%;
   background-color: #444;
-  background: url('./images/2chez-restaurant1.jpg') center scroll; 
+  background: url('./images/2chez-restaurant1.jpg') center no-repeat scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
