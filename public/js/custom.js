@@ -75,12 +75,7 @@ $(function () {
 
 			type:		'get',
 			url:		'/' + id + '/raise',
-			// contentType: 'application/json',
-			data:		$(this.serialize),
-			accepts: {
-				xml: 'text/xml',
-				text: 'text/plain'
-			},
+			data:		$(this).serialize(),
 			dataType:	'json',
 
 		

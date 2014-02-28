@@ -30,18 +30,18 @@
         <div class="row">
           <form action="/<%= item.id %>/raise" method="post" class="raise">
             <div class="id hidden"><%= item.id %></div>
-            <input name="<%= item.id %>" value="<%= item.id %>" type="hidden">
-            <input name="<%= item.id %>" type="submit" class="btn btn-lg btn-warning col-xs-12 col-md-4" value="raise price by $1">
+            <input name="id" label="id" value="<%= item.id %>" type="hidden">
+            <input type="submit" class="btn btn-lg btn-warning col-xs-12 col-md-4" value="raise price by $1">
           </form>
           <form action="/<%= item.id %>/raise" method="post" class="raise">
             <div class="id hidden"><%= item.id %></div>
-            <input name="<%= item.id %>" value="<%= item.id %>" type="hidden">
-            <input name="<%= item.id %>" type="submit" class="btn btn-lg btn-primary col-xs-12 col-md-4" value="reduce price by $1">
+            <input name="id" label="id" value="<%= item.id %>" type="hidden">
+            <input type="submit" class="btn btn-lg btn-primary col-xs-12 col-md-4" value="reduce price by $1">
           </form>
           <form action="/<%= item.id %>/raise" method="post" class="raise">
             <div class="id hidden"><%= item.id %></div>
-            <input name="<%= item.id %>" value="<%= item.id %>" type="hidden">
-            <input name="<%= item.id %>" type="submit" class="btn btn-lg btn-danger col-xs-12 col-md-4" value="delete <%= item.name %>">
+            <input name="id" label="id" value="<%= item.id %>" type="hidden">
+            <input type="submit" class="btn btn-lg btn-danger col-xs-12 col-md-4" value="delete <%= item.name %>">
           </form>
         </div>
       <% end %>
