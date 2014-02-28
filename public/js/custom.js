@@ -81,7 +81,7 @@ $(function () {
 		
 			success: function(data) {
 				$('.menu-msg h3').html('raised price to $' + data);
-				// $(button.parent().parent().find('.item-price')).html(data);
+				$(button.parent().parent().find('.item-price')).html(data);
 				$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
 			},
 			error: function() {
