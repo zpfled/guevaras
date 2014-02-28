@@ -91,74 +91,66 @@ $(function () {
 	});
 });
 
-function reducePrice(id, button) {
-
-	$.ajax({
-		// headers: {
-			// Accept : "json; charset=utf-8",
-			// "Content-Type": "text/plain; charset=utf-8"
-		// },
-		type:		'post',
-		url:		'/' + id + '/reduce',
-		contentType: 'application/json',
-		data:		$(this.serialize),
-		accepts: {
-			xml: 'text/xml',
-			text: 'text/plain'
-		},
-		dataType:	'json',
-
+$(function () {
+	$('.reduce').on('submit', function(event) {
 		
-		success: function(data) {
-			$('.menu-msg h3').html('reduced ' + data.name + ' price to $' + data.price);
-			$(button.parent().parent().find('.item-price')).html(data.price);
-			$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
-		},
-		error: function() {
-			errorMessage();
-		}
-	});
-}
-
-function deleteItem(id, button) {
-
-	$('.delete-confirmation').fadeToggle(200);
-
-	$('#no').click(function() {
-		$('.delete-confirmation').fadeOut(200);
-		return false;
-	});
-	$('#yes').click(function() {
+		event.preventDefault();
+		var id = $(this).find('.id').text();
+		var button = $(this);
 
 		$.ajax({
-			// headers: {
-			// Accept : "text/json=utf-8",
-			// "Content-Type": "text/plain; charset=utf-8"
-		// },
-			type:		'post',
-			url:		'/' + id + '/delete',
-			contentType: 'application/json',
-			data:		$(this.serialize),
-			accepts: {
-				xml: 'text/xml',
-				text: 'text/plain'
-			},
-			dataType:	'json',
 
-			
+			type:		'get',
+			url:		'/' + id + '/reduce',
+			data:		$(this).serialize(),
+			dataType:	'html',
+
+		
 			success: function(data) {
-				$(button.parent().parent()).remove();
-				$('.delete-msg h3').html('successfully deleted ' + data.name);
-				$('.delete-confirmation').fadeOut(200);
-				$('.delete-msg').fadeIn(1500).fadeOut(1500);
+				$('.menu-msg h3').html('reduced price to $' + data);
+				$(button.parent().parent().find('.item-price')).html(data);
+				$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
 			},
 			error: function() {
 				errorMessage();
 			}
 		});
 	});
-}
+});
 
+$(function () {
+	$('.delete').on('submit', function(event) {
+		event.preventDefault();
+		var id = $(this).find('.id').text();
+		var button = $(this);
+		
+		$('.delete-confirmation').fadeToggle(200);
+		
+		$('#no').click(function() {
+			$('.delete-confirmation').fadeOut(200);
+			return false;
+		});
+
+		$('#yes').click(function() {
+			$.ajax({
+
+				type:		'get',
+				url:		'/' + id + '/delete',
+				data:		$(this).serialize(),
+				dataType:	'html',
+				success: function(data) {
+					$(button.parent().parent()).remove();
+					$('.delete-msg h3').html('successfully deleted ' + data);
+					$('.delete-confirmation').fadeOut(200);
+					$('.delete-msg').fadeIn(1500).fadeOut(1500);
+				},
+				error: function() {
+					errorMessage();
+				}
+			});
+		});
+	});
+});
 
 // Parallax Scrolling Fanciness
 

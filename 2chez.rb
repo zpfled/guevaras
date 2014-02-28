@@ -173,30 +173,34 @@ get '/:id/raise' do
 	@price = item.price = item.price + 1
 	item.save
 
-	halt 200, "#{@price}"
+	if request.xhr?
+		halt 200, "#{@price}"
+	else
+		redirect '/'
+	end
 end
 
-post '/:id/reduce' do
+get '/:id/reduce' do
 	item = MenuItem.get params[:id]
 	@price = item.price = item.price - 1
 	item.save
 	@name = item.name
 
 	if request.xhr?
-		halt 200, {name: @name, price: @price.to_s}.to_json
+		halt 200, "#{@price}"
 	else
 		redirect '/'
 	end
 end
 
-post '/:id/delete' do
+get '/:id/delete' do
 	item = MenuItem.get params[:id]
-	@price = item.price = item.price + 1
+	item.price = item.price + 1
 	item.destroy
 	@name = item.name
 
 	if request.xhr?
-		halt 200, {name: @name, price: @price}.to_json
+		halt 200, "#{@name}"
 	else
 		redirect '/'
 	end
