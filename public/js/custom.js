@@ -67,10 +67,10 @@ $(function () {
 function raisePrice(id, button) {
 
 	$.ajax({
-		headers: {
-			Accept : "json; charset=utf-8",
-			"Content-Type": "json; charset=utf-8"
-		},
+		// headers: {
+			// Accept : "json; charset=utf-8",
+			// "Content-Type": "json; charset=utf-8"
+		// },
 		type:		'post',
 		url:		'/' + id + '/raise',
 		data:		$(this.serialize),
