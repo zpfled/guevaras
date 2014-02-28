@@ -75,7 +75,7 @@ $(function () {
 			
 			type:		'post',
 			url:		'/' + id + '/raise',
-			contentType: 'application/json',
+			// contentType: 'application/json',
 			data:		$(this.serialize),
 			accepts: {
 				xml: 'text/xml',
