@@ -69,6 +69,7 @@ function raisePrice(id, button) {
 	$.ajax({
 		type:		'post',
 		url:		'/' + id + '/raise',
+		data:		$(this.serialize),
 		accepts:	'application/json',
 		dataType:	'json',
 
@@ -89,6 +90,7 @@ function reducePrice(id, button) {
 	$.ajax({
 		type:		'post',
 		url:		'/' + id + '/reduce',
+		data:		$(this.serialize),
 		accepts:	'application/json',
 		dataType:	'json',
 
@@ -117,6 +119,7 @@ function deleteItem(id, button) {
 		$.ajax({
 			type:		'post',
 			url:		'/' + id + '/delete',
+			data:		$(this.serialize),
 			accepts:	'application/json',
 			dataType:	'json',
 
