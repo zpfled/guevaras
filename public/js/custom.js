@@ -71,7 +71,7 @@ function raisePrice(id, button) {
 		url:		'/' + id + '/raise',
 		data:		$(this.serialize),
 		accepts:	'application/json',
-		dataType:	'json',
+		dataType:	'text',
 
 		
 		success: function(data) {
@@ -92,7 +92,7 @@ function reducePrice(id, button) {
 		url:		'/' + id + '/reduce',
 		data:		$(this.serialize),
 		accepts:	'application/json',
-		dataType:	'json',
+		dataType:	'text',
 
 		
 		success: function(data) {
@@ -121,7 +121,7 @@ function deleteItem(id, button) {
 			url:		'/' + id + '/delete',
 			data:		$(this.serialize),
 			accepts:	'application/json',
-			dataType:	'json',
+			dataType:	'text',
 
 			
 			success: function(data) {
