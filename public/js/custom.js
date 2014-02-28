@@ -68,7 +68,7 @@ function raisePrice(id, button) {
 
 	$.ajax({
 		headers: {
-			Accept : "text/plain; charset=utf-8",
+			Accept : "json; charset=utf-8",
 			"Content-Type": "text/plain; charset=utf-8"
 		},
 		type:		'post',
@@ -93,7 +93,7 @@ function reducePrice(id, button) {
 
 	$.ajax({
 		headers: {
-			Accept : "text/plain; charset=utf-8",
+			Accept : "json; charset=utf-8",
 			"Content-Type": "text/plain; charset=utf-8"
 		},
 		type:		'post',
@@ -126,7 +126,7 @@ function deleteItem(id, button) {
 
 		$.ajax({
 			headers: {
-			Accept : "text/plain; charset=utf-8",
+			Accept : "text/json=utf-8",
 			"Content-Type": "text/plain; charset=utf-8"
 		},
 			type:		'post',
