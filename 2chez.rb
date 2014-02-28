@@ -174,11 +174,7 @@ post '/:id/raise' do
 	item.save
 	@name = item.name
 
-	if request.xhr?
-		halt 200, {name: @name, price: @price.to_s}.to_json
-	else
-		redirect '/'
-	end
+	halt 200, {name: @name, price: @price}.to_json
 end
 
 post '/:id/reduce' do
