@@ -66,9 +66,14 @@
                 </div>
                 <div class="col-xs-12 col-md-8">
                     <h2>Instructions</h2>
+                    <p>Hey, <%= @user.capitalize %>!</p>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, voluptate, dolorem eius cupiditate eligendi explicabo saepe omnis architecto impedit in fugiat officia at quas dolorum rerum molestiae deserunt fuga numquam.
+                        This is where you create new menu items. Fill in the item name, description, and price (e.g. '2Chez Salad', 'Grilled chicken breast with tomato, cucumber, kalamata olives, bacon, egg, fresh greens', and '9'). Then select which menu this item belongs on (e.g. 'Lunch'). Items on the lunch, dinner, and wine menus require a sub-category selection as well. Choose from the available options (e.g. 'Salads').
                     </p>
+                    <p>
+                        That's it! Hit 'add item' and the site will flash a quick message letting you know that the item was successfully added!
+                    </p>
+
                 </div>
             </div>
     </section>
@@ -82,11 +87,11 @@
 
 Goals for this page:
 
-- Be accessible only through a successful login
-- Redirect to login page if accessed by non-logged-in user
-- Allow admin to create MenuItems
-- Display current MenuItems, organized by menu (lunch, dinner, etc.)
-- Allow admin to edit existing MenuItem properties
-- Allow admin to destroy MenuItems, with confirmation prompt
+- Allow User to edit existing MenuItem properties
+X Redirect to login page if accessed by non-logged-in user
+X Allow User to create MenuItems
+X Display current MenuItems, organized by menu (lunch, dinner, etc.)
+X Allow User to destroy MenuItems, with confirmation prompt
+X Be accessible only through a successful login
 
 -->
