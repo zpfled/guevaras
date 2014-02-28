@@ -104,7 +104,10 @@ function reducePrice(id, button) {
 		url:		'/' + id + '/reduce',
 		contentType: 'application/json',
 		data:		$(this.serialize),
-		accepts:	'application/json',
+		accepts: {
+			xml: 'text/xml',
+			text: 'text/plain'
+		},
 		dataType:	'json',
 
 		
@@ -138,7 +141,10 @@ function deleteItem(id, button) {
 			url:		'/' + id + '/delete',
 			contentType: 'application/json',
 			data:		$(this.serialize),
-			// accepts:	'application/json',
+			accepts: {
+				xml: 'text/xml',
+				text: 'text/plain'
+			},
 			dataType:	'json',
 
 			
