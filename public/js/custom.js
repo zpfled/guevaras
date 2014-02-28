@@ -73,6 +73,7 @@ function raisePrice(id, button) {
 		// },
 		type:		'post',
 		url:		'/' + id + '/raise',
+		contentType: "application/json; charset=utf-8",
 		data:		JSON.stringify(id), //$(this.serialize),
 		accepts: {
 			xml: 'text/xml',
@@ -101,6 +102,7 @@ function reducePrice(id, button) {
 		// },
 		type:		'post',
 		url:		'/' + id + '/reduce',
+		contentType: "application/json; charset=utf-8",
 		data:		JSON.stringify(id), //$(this.serialize),
 		accepts:	'application/json',
 		dataType:	'json',
@@ -134,6 +136,7 @@ function deleteItem(id, button) {
 		// },
 			type:		'post',
 			url:		'/' + id + '/delete',
+			contentType: "application/json; charset=utf-8",
 			data:		JSON.stringify(id), //$(this.serialize),
 			// accepts:	'application/json',
 			dataType:	'json',
