@@ -5,7 +5,7 @@ gem 'data_mapper'
 gem 'bcrypt-ruby',			require: 'bcrypt'
 gem 'multi_json', '1.8.4'
 
-# group :development, :test do
+group :development, :test do
 	gem 'shotgun'
 	gem 'rspec'
 	gem 'guard'
@@ -15,20 +15,20 @@ gem 'multi_json', '1.8.4'
 	gem 'guard-spork', '1.4.2'
 	gem 'spork', '0.9.2'
 	gem 'growl'
-# end
+end
 
-# group :test do
+group :test do
 	gem 'rack-test'
 	gem 'capybara'
-# end
+end
 
-# group :development do
+group :development do
 	gem 'guard-livereload', require: false
 	gem 'sqlite3'
 	gem 'dm-sqlite-adapter'
-# end
+end
 
-# group :production do
+group :production do
 	gem 'pg'
 	gem 'dm-postgres-adapter'
-# end
+end
