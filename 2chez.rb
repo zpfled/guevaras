@@ -172,9 +172,8 @@ get '/:id/raise' do
 	item = MenuItem.get params[:id]
 	@price = item.price = item.price + 1
 	item.save
-	@name = item.name
 
-	halt 200, {name: @name, price: @price}.to_json
+	halt 200, "#{@price}"
 end
 
 post '/:id/reduce' do

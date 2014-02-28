@@ -76,12 +76,12 @@ $(function () {
 			type:		'get',
 			url:		'/' + id + '/raise',
 			data:		$(this).serialize(),
-			dataType:	'json',
+			dataType:	'html',
 
 		
 			success: function(data) {
-				$('.menu-msg h3').html('raised ' + data.name + ' price to $' + data.price);
-				// $(button.parent().parent().find('.item-price')).html(data.price);
+				$('.menu-msg h3').html('raised price to $' + data);
+				// $(button.parent().parent().find('.item-price')).html(data);
 				$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
 			},
 			error: function() {
