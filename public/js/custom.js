@@ -53,6 +53,8 @@ $(function () {
 			dataType:	'html',
 			
 			success: function(data) {
+				$('.modal').slideUp(200);
+				$('.modal-backdrop').fadeToggle(400);
 				$('.add-msg h3').html('success');
 				$('.add-msg').fadeIn(750).fadeOut(750);
 				$('#menu').html(data);
@@ -142,11 +144,11 @@ $(function () {
 					$(button.parent().parent()).remove();
 					$('.delete-msg h3').html('successfully deleted ' + data);
 					$('.delete-confirmation').fadeOut(200);
-					$('.delete-msg').fadeIn(1500).fadeOut(1500);
+					$('.delete-msg').fadeIn(500).fadeOut(2000);
 				},
-				error: function() {
-					errorMessage();
-				}
+				// error: function() {
+					// errorMessage();
+				// }
 			});
 		});
 	});

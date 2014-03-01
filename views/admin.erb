@@ -1,29 +1,37 @@
 <section id="task-bar" class="content">
-    <div class="inner">
+    <div class="inner container">
         <h1 class="dashboard-greeting">Hi, <%= @user.capitalize %></h1>
-        <ul class="nav">
+        <ul class="nav navbar-nav">
             <li>
                 <form action="/logout" method="post">
                     <button class="btn btn-lg btn-primary" type="submit">log out</button>
                 </form>
             </li>
+            <li>
+                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addItemModal">
+                    add item
+                </button>
+            </li>
         </ul>
     </div>
 </section>
 
-<section class="content">
-    <section class="welcome-header inner">
+<!-- AddItem Modal -->
+<div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="addItemModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
         <div class="row">
-            <div class="col-xs-12 col-md-4 admin-form">
+            <div class="col-xs-12 add-form">
                 <form action="/menu" method="post" id="add-item">
                     <!-- Name Field -->
-                    <input class="col-xs-12 admin-form" name="name" label="name" type="text" maxlength="30" placeholder="Item name">
+                    <input class="col-xs-12 add-form" name="name" label="name" type="text" maxlength="30" placeholder="Item name">
                     <!-- Description Field -->
-                    <input class="col-xs-12 admin-form" name="description" label="description" type="text" maxlength="255" placeholder="Item description">
+                    <input class="col-xs-12 add-form" name="description" label="description" type="text" maxlength="255" placeholder="Item description">
                     <!-- Price Field -->
-                    <input class="col-xs-12 admin-form" name="price" label="price" type="number" placeholder="Item price">
+                    <input class="col-xs-12 add-form" name="price" label="price" type="number" placeholder="Item price">
                     <!-- Menu Select -->
-                    <select onChange="filterCategories(this)"class="col-xs-12 admin-form" name="menu" label="menu">
+                    <select onChange="filterCategories(this)"class="col-xs-12 add-form" name="menu" label="menu">
                         <option value="lunch">Lunch</option>
                         <option value="dinner">Dinner</option>
                         <option value="small-plates">Small Plates</option>
@@ -31,7 +39,7 @@
                         <option value="cocktails">Cocktails</option>
                     </select>
                     <!-- Category Selects -->
-                        <select class="col-xs-12 admin-form" id="lunch-cats" name="lunch_category" label="category">
+                        <select class="col-xs-12 add-form" id="lunch-cats" name="lunch_category" label="category">
                             <option value="appetizers">Appetizers</option>
                             <option value="beef">Beef</option>
                             <option value="chicken">Chicken</option>
@@ -39,7 +47,7 @@
                             <option value="sandwiches">Sandwiches</option>
                             <option value="seafood">Seafood</option>
                         </select>
-                        <select style="display: none" class="col-xs-12 admin-form" id="dinner-cats" name="dinner_category" label="category">
+                        <select style="display: none" class="col-xs-12 add-form" id="dinner-cats" name="dinner_category" label="category">
                             <option value="appetizers">Appetizers</option>
                             <option value="beef">Beef</option>
                             <option value="chicken">Chicken</option>
@@ -49,7 +57,7 @@
                             <option value="seafood">Seafood</option>
                             <option value="veal">Veal</option>
                         </select>
-                        <select style="display: none" class="col-xs-12 admin-form" id="wine-cats" name="wine_category" label="category">
+                        <select style="display: none" class="col-xs-12 add-form" id="wine-cats" name="wine_category" label="category">
                             <option value="bubbly">Bubbly</option>
                             <option value="chardonnay">Chardonnay</option>
                             <option value="sauvignon-blanc">Sauvignon Blanc</option>
@@ -60,28 +68,26 @@
                             <option value="cabernet-sauvignon">Cabernet Sauvignon</option>
                             <option value="interesting-reds">Interesting Reds</option>
                         </select>
-                        <select style="display: none" class="col-xs-12 admin-form" id="small-plates-cat" name="small-plates_category" label="category">
+                        <select style="display: none" class="col-xs-12 add-form" id="small-plates-cat" name="small-plates_category" label="category">
                             <option value="small-plates">Small Plates</option>
                         </select>
-                        <select style="display: none" class="col-xs-12 admin-form" id="cocktails-cat" name="cocktails_category" label="category">
+                        <select style="display: none" class="col-xs-12 add-form" id="cocktails-cat" name="cocktails_category" label="category">
                             <option value="cocktails">Cocktails</option>
                         </select>
                     <!-- Submit Button -->
-                    <button type="submit" class="col-xs-12 admin-form btn btn-lg btn-success">
+                    <button type="submit" class="col-xs-12 btn btn-lg btn-success">
                         add item
+                    </button>
+                    <button type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
+                        cancel
                     </button>
                 </form>
             </div>
-            <div class="col-xs-12 col-md-8">
-                <p>
-                    This is where you create new menu items. Fill in the item name, description, and price (e.g. '2Chez Salad', 'Grilled chicken breast with tomato, cucumber, kalamata olives, bacon, egg, fresh greens', and '9'). Then select which menu this item belongs on (e.g. 'Lunch'). Items on the lunch, dinner, and wine menus require a sub-category selection as well. Choose from the available options (e.g. 'Salads').
-                </p>
-                <p>That's it! Hit 'add item' and you're done!</p>
-            </div>
         </div>
-    </section>
-</section>
-
+      </div>
+    </div>
+  </div>
+</div>
     
     <%= erb :menu, layout: false %>
 

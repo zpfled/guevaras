@@ -279,11 +279,8 @@ body {
 * Navbar
 */
 
-.navbar-fixed-bottom {
-  z-index: 0;
-  position: absolute;
-  bottom: 0;
-  top: auto;
+.navbar-nav li {
+  margin: 0 1em 0 1em;
 }
 
 .bottom-nav {
@@ -507,28 +504,40 @@ BlackOut Screen
 Admin
  */
 
-.admin-form {
+.modal-dialog {
+  background-color: #444;
+  border-radius: 1em;
+}
+.modal-content,
+.modal-body {
+  border-radius: inherit;
+  background-color: inherit;
+  color: inherit;
 }
 
-.admin-form input,
+.add-form input,
 select,
 button {
   margin-top: .5em;
   font-family: 'Quicksand', "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-.admin-form input, select {
+.add-form button {
+  margin-top: 2em;
+}
+
+.add-form input, select {
   background-color: transparent;
   color: #eee;
   border: 1px solid #eee;
   border-radius: .25em;
 }
 
-.admin-form input {
+.add-form input {
   padding-left: .4em
 }
 
-.admin-form select {
+.add-form select {
   background-color: #444;
   display: inherit;
 }
