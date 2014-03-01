@@ -255,6 +255,11 @@ body {
   font-size: .85em;
 }
 
+.panel-title:active,
+.panel-title:active {
+  color: #444;
+}
+
 .menu>dt {
   text-transform: uppercase;
 }
