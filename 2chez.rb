@@ -35,10 +35,8 @@ class MenuItem
 	property :price,		Integer, 	required: true
 end
 
-# User.create(name: 'Todd', email: 'toddhohulin@mchsi.com', password: 'foo', admin: true) ? User.all.length == 0 : false
-
-DataMapper.finalize.auto_upgrade!
-# DataMapper.finalize.auto_migrate!
+# DataMapper.finalize.auto_upgrade!
+DataMapper.finalize.auto_migrate!
 
 class TwoChez < Sinatra::Application
 	use Rack::Session::Cookie, 	secret: 		'kilimanjaro',
