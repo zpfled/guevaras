@@ -1,14 +1,19 @@
+<!-- <section class="inner"> -->
 <% @categories.each do |category| %>
 
   <% @relevant_items = @menu_items.select { |item| item.menu == menu && item.category == category } %>
+  <% @relevant_items.sort! { |x, y| x.price <=> y.price } %>
   <% @relevant_categories = [] %>
   <% @relevant_items.each do |item| %>
     <% @relevant_categories.push(item.category) unless @relevant_categories.include?(item.category) %>
+    <% @relevant_categories.sort! %>
   <% end %>
   
   <% @relevant_categories.each do |relevant_category| %>  
 
-  <h3><%= relevant_category unless relevant_category == menu %></h3>
+  <h3>
+    <%= relevant_category.split('-').each { |word| word.capitalize! }.join(' ') unless relevant_category == menu.split(' ').join('-') %>
+  </h3>
   
   <% @relevant_items.each do |item| %>
     <article>
@@ -23,9 +28,6 @@
       </dd>
       <% if @admin %>
         <div class="row">
-          <div class="menu-msg col-xs-12 col-md-4 col-md-offset-4">
-            
-          </div>
           <button onClick="raisePrice(<%= item.id %>, $(this));" class="btn btn-lg btn-warning col-xs-12 col-md-4">
             raise price by $1
           </button>
@@ -41,3 +43,4 @@
     <% end %>
   <% end %>
 <% end %>
+<!-- </section> -->

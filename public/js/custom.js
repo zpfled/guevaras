@@ -1,3 +1,8 @@
+function errorMessage() {
+	$('.error-msg h3').html('sorry, that didn\'t work');
+	$('.error-msg').fadeIn(750).fadeOut(750);
+}
+
 // Filter Menu and Category Inputs
 
 function filterCategories(menu) {
@@ -5,19 +10,29 @@ function filterCategories(menu) {
 		$('#lunch-cats').show();
 		$('#dinner-cats').hide();
 		$('#wine-cats').hide();
-		$('#general-cat').hide();
+		$('#small-plates-cat').hide();
+		$('#cocktails-cat').hide();
 	} else if (menu.options[menu.selectedIndex].text === 'Dinner') {
 		$('#dinner-cats').show();
 		$('#lunch-cats').hide();
 		$('#wine-cats').hide();
-		$('#general-cat').hide();
+		$('#small-plates-cat').hide();
+		$('#cocktails-cat').hide();
 	} else if (menu.options[menu.selectedIndex].text === 'Wine') {
 		$('#wine-cats').show();
 		$('#lunch-cats').hide();
 		$('#dinner-cats').hide();
-		$('#general-cat').hide();
+		$('#small-plates-cat').hide();
+		$('#cocktails-cat').hide();
+	} else if (menu.options[menu.selectedIndex].text === 'Cocktails') {
+		$('#cocktails-cat').show();
+		$('#small-plates-cat').hide();
+		$('#lunch-cats').hide();
+		$('#dinner-cats').hide();
+		$('#wine-cats').hide();
 	} else {
-		$('#general-cat').show();
+		$('#small-plates-cat').show();
+		$('#cocktails-cat').hide();
 		$('#lunch-cats').hide();
 		$('#dinner-cats').hide();
 		$('#wine-cats').hide();
@@ -38,11 +53,12 @@ $(function () {
 			dataType:	'html',
 			
 			success: function(data) {
-				$('#add-msg').html('success');
+				$('.add-msg h3').html('success');
+				$('.add-msg').fadeIn(750).fadeOut(750);
 				$('#menu').html(data);
 			},
 			error: function() {
-				$('#add-msg').html('sorry, that didn\'t work');
+				errorMessage();
 			}
 		});
 	});
@@ -51,17 +67,18 @@ $(function () {
 function raisePrice(id, button) {
 
 	$.ajax({
-			type:		'get',
-			url:		'/' + id + '/raise',
-			accepts:	'application/json',
-			dataType:	'json',
-			
-			success: function(data) {
-				$(button.parent().find('.menu-msg')).html('raised ' + data.name + ' price to $' + data.price);
-				$(button.parent().parent().find('.item-price')).html(data.price);
-			},
-			error: function() {
-				$('#error-msg').html('your device will self-destruct in 5 seconds');
+		type:		'get',
+		url:		'/' + id + '/raise',
+		accepts:	'application/json',
+		dataType:	'json',
+		
+		success: function(data) {
+			$('.menu-msg h3').html('raised ' + data.name + ' price to $' + data.price);
+			$(button.parent().parent().find('.item-price')).html(data.price);
+			$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
+		},
+		error: function() {
+			errorMessage();
 		}
 	});
 }
@@ -69,36 +86,48 @@ function raisePrice(id, button) {
 function reducePrice(id, button) {
 
 	$.ajax({
-			type:		'get',
-			url:		'/' + id + '/reduce',
-			accepts:	'application/json',
-			dataType:	'json',
-			
-			success: function(data) {
-				$(button.parent().find('.menu-msg')).html('reduced ' + data.name + ' price to $' + data.price);
-				$(button.parent().parent().find('.item-price')).html(data.price);
-			},
-			error: function() {
-				$('#error-msg').html('your device will self-destruct in 5 seconds');
+		type:		'get',
+		url:		'/' + id + '/reduce',
+		accepts:	'application/json',
+		dataType:	'json',
+		
+		success: function(data) {
+			$('.menu-msg h3').html('reduced ' + data.name + ' price to $' + data.price);
+			$(button.parent().parent().find('.item-price')).html(data.price);
+			$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
+		},
+		error: function() {
+			errorMessage();
 		}
 	});
 }
 
 function deleteItem(id, button) {
 
-	$.ajax({
+	$('.delete-confirmation').fadeToggle(200);
+
+	$('#no').click(function() {
+		$('.delete-confirmation').fadeOut(200);
+		return false;
+	});
+	$('#yes').click(function() {
+
+		$.ajax({
 			type:		'get',
 			url:		'/' + id + '/delete',
 			accepts:	'application/json',
 			dataType:	'json',
 			
 			success: function(data) {
-				$(button.parent().find('.menu-msg')).html('successfully deleted ' + data.name);
 				$(button.parent().parent()).remove();
+				$('.delete-msg h3').html('successfully deleted ' + data.name);
+				$('.delete-confirmation').fadeOut(200);
+				$('.delete-msg').fadeIn(1500).fadeOut(1500);
 			},
 			error: function() {
-				$('#error-msg').html('your device will self-destruct in 5 seconds');
-		}
+				errorMessage();
+			}
+		});
 	});
 }
 

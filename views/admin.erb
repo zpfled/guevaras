@@ -1,16 +1,20 @@
-<section class="inner content admin-content">
+
+<section class="inner content">
     
-    <section class="welcome-header">
+    <section class="welcome-header content">
         <h1 class="dashboard-greeting">
             Hi, <%= @user.capitalize %>.
         </h1>
-            <h3 id="add-msg"></h3>
             <div class="row">
                 <div class="col-xs-12 col-md-4 admin-form">
                     <form action="/menu" method="post" id="add-item">
+                        <!-- Name Field -->
                         <input class="col-xs-12 admin-form" name="name" label="name" type="text" maxlength="30" placeholder="Item name">
+                        <!-- Description Field -->
                         <input class="col-xs-12 admin-form" name="description" label="description" type="text" maxlength="255" placeholder="Item description">
+                        <!-- Price Field -->
                         <input class="col-xs-12 admin-form" name="price" label="price" type="number" placeholder="Item price">
+                        <!-- Menu Select -->
                         <select onChange="filterCategories(this)"class="col-xs-12 admin-form" name="menu" label="menu">
                             <option value="lunch">Lunch</option>
                             <option value="dinner">Dinner</option>
@@ -18,38 +22,43 @@
                             <option value="wine">Wine</option>
                             <option value="cocktails">Cocktails</option>
                         </select>
-                        <select class="col-xs-12 admin-form" id="lunch-cats" name="lunch_category" label="category">
-                            <option value="beef">Beef</option>
-                            <option value="chicken">Chicken</option>
-                            <option value="salads">Salads</option>
-                            <option value="sandwiches">Sandwiches</option>
-                            <option value="seafood">Seafood</option>
-                            <option value="starters">Starters</option>
-                        </select>
-                        <select style="display: none" class="col-xs-12 admin-form" id="dinner-cats" name="dinner_category" label="category">
-                            <option value="beef">Beef</option>
-                            <option value="chicken">Chicken</option>
-                            <option value="lamb">Lamb</option>
-                            <option value="pork">Pork</option>
-                            <option value="salads">Salads</option>
-                            <option value="seafood">Seafood</option>
-                            <option value="starters">Starters</option>
-                            <option value="veal">Veal</option>
-                        </select>
-                        <select style="display: none" class="col-xs-12 admin-form" id="wine-cats" name="wine_category" label="category">
-                            <option value="pinot-noir">Pinot Noir</option>
-                            <option value="merlot">Merlot</option>
-                            <option value="cabernet-sauvignon">Cabernet Sauvignon</option>
-                            <option value="interesting-reds">Interesting Reds</option>
-                            <option value="bubbly">Bubbly</option>
-                            <option value="chardonnay">Chardonnay</option>
-                            <option value="Pinot Grigio">Pinot Grigio</option>
-                            <option value="sauvignon-blanc">Sauvignon Blanc</option>
-                            <option value="interesting-whites">Interesting Whites</option>
-                        </select>
-                        <select style="display: none" class="col-xs-12 admin-form" id="general-cat" name="general_category" label="category">
-                            <option value="general">General</option>
-                        </select>
+                        <!-- Category Selects -->
+                            <select class="col-xs-12 admin-form" id="lunch-cats" name="lunch_category" label="category">
+                                <option value="appetizers">Appetizers</option>
+                                <option value="beef">Beef</option>
+                                <option value="chicken">Chicken</option>
+                                <option value="salads">Salads</option>
+                                <option value="sandwiches">Sandwiches</option>
+                                <option value="seafood">Seafood</option>
+                            </select>
+                            <select style="display: none" class="col-xs-12 admin-form" id="dinner-cats" name="dinner_category" label="category">
+                                <option value="appetizers">Appetizers</option>
+                                <option value="beef">Beef</option>
+                                <option value="chicken">Chicken</option>
+                                <option value="lamb">Lamb</option>
+                                <option value="pork">Pork</option>
+                                <option value="salads">Salads</option>
+                                <option value="seafood">Seafood</option>
+                                <option value="veal">Veal</option>
+                            </select>
+                            <select style="display: none" class="col-xs-12 admin-form" id="wine-cats" name="wine_category" label="category">
+                                <option value="bubbly">Bubbly</option>
+                                <option value="chardonnay">Chardonnay</option>
+                                <option value="sauvignon-blanc">Sauvignon Blanc</option>
+                                <option value="interesting-whites">Interesting Whites</option>
+                                <option value="Pinot Grigio">Pinot Grigio</option>
+                                <option value="pinot-noir">Pinot Noir</option>
+                                <option value="merlot">Merlot</option>
+                                <option value="cabernet-sauvignon">Cabernet Sauvignon</option>
+                                <option value="interesting-reds">Interesting Reds</option>
+                            </select>
+                            <select style="display: none" class="col-xs-12 admin-form" id="small-plates-cat" name="small-plates_category" label="category">
+                                <option value="small-plates">Small Plates</option>
+                            </select>
+                            <select style="display: none" class="col-xs-12 admin-form" id="cocktails-cat" name="cocktails_category" label="category">
+                                <option value="cocktails">Cocktails</option>
+                            </select>
+                        <!-- Submit Button -->
                         <button value="submit" name="submit" type="submit" class="col-xs-12 admin-form btn btn-lg btn-success">
                             add item
                         </button>

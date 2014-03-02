@@ -1,10 +1,10 @@
 require 'bundler'
 Bundler.require(:default, :development)
 
-# DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://#{Dir.pwd}/2chez.db")
+# DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/2chez')
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
 
-class Manager
+class User
 	include DataMapper::Resource
 	include BCrypt
 
@@ -35,6 +35,7 @@ class MenuItem
 	property :price,		Integer, 	required: true
 end
 
+User.create(name: 'Todd', email: 'toddhohulin@mchsi.com', password: 'foo', admin: true) ? User.all.length == 0 : false
 
 DataMapper.finalize.auto_upgrade!
 # DataMapper.finalize.auto_migrate!
@@ -45,12 +46,21 @@ class TwoChez < Sinatra::Application
 
 # Routes
 
+before do
+	@menu_items = MenuItem.all
+
+	@menus = []
+	@menu_items.map { |item| @menus.push(item.menu) unless @menus.include?(item.menu) }
+	@menus.sort!
+
+	@categories = []
+	@menu_items.map { |item| @categories.push(item.category) unless @categories.include?(item.category) }
+	@categories.sort!
+end
+
 #untested
 get '/' do
 	@title = 'Welcome'
-	@menu_items = MenuItem.all
-	@menus = ['lunch', 'dinner', 'small plates', 'wine', 'cocktails']
-	@categories = ['small plates', 'starters', 'salads', 'sandwiches', 'chicken', 'veal', 'seafood', 'beef', 'lamb', 'pork', 'whites', 'reds', 'cocktails']
 	
 	@admin = false
 
@@ -61,13 +71,13 @@ end
 get '/signup' do
 	@title = 'Signup'
 	@action = 'sign up'
-	@users = Manager.all
+	@users = User.all
 	erb :login
 end
 
 #tested
 post '/signup' do
-	user = Manager.new
+	user = User.new
 	user.name = params[:name]
 	user.email = params[:email]
 	user.password = params[:password]
@@ -86,7 +96,7 @@ end
 post '/login' do
 	session[:name] = params[:name]
 	session[:password] = params[:password]
-	user = Manager.first(name: session[:name])
+	user = User.first(name: session[:name])
 
 	if user.nil?
 		redirect '/'
@@ -97,6 +107,11 @@ post '/login' do
 	end
 end
 
+post '/logout' do
+	session.destroy
+	redirect '/'
+end
+
 # untested
 get '/admin' do
 	@title = 'Dashboard'
@@ -104,11 +119,7 @@ get '/admin' do
 	@user = session[:name]
 	@admin = true ? @user : false
 
-	@menu_items = MenuItem.all
-	@menus = ['lunch', 'dinner', 'small plates', 'wine', 'cocktails']
-	@categories = ['small plates', 'starters', 'salads', 'sandwiches', 'chicken', 'veal', 'seafood', 'beef', 'lamb', 'pork', 'whites', 'reds', 'cocktails']
-
- 	if @user && Manager.first(name: session[:name]).logged_in?(@user)
+ 	if @user && User.first(name: session[:name]).logged_in?(@user)
  		erb :admin
  	else 
  		redirect '/login'
@@ -119,11 +130,7 @@ get '/menu' do
 	@user = session[:name]
 	@admin = true ? @user : false
 	
-	@menu_items = MenuItem.all
-	@menus = ['lunch', 'dinner', 'small plates', 'wine', 'cocktails']
-	@categories = ['small plates', 'starters', 'salads', 'sandwiches', 'chicken', 'veal', 'seafood', 'beef', 'lamb', 'pork', 'whites', 'reds', 'cocktails']
-
- 	if @user && Manager.first(name: session[:name]).logged_in?(@user)
+ 	if @user && User.first(name: session[:name]).logged_in?(@user)
  		erb :menu, layout: false
  	else
  		redirect '/'

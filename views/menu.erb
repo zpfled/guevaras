@@ -18,7 +18,7 @@
           <div id="<%= menu.split(' ').join('-') %>" class="panel-collapse collapse">
             <div class="panel-body">
   
-            <%= erb(:submenu, :layout => false, :locals => { :menu => menu }) %>
+              <%= erb(:submenu, :layout => false, :locals => { :menu => menu }) %>
           
             </div>
           </div>
@@ -41,7 +41,7 @@
       </ul>
 
       <!-- Tab panes -->
-      <div class="tab-content">
+      <div class="tab-content visible-md visible-lg">
         <% @menus.each do |menu| %>
           <div class="tab-pane fade in <%= 'active' if menu == 'lunch' %>" id="<%= menu.split(' ').join('-') + '-tab' %>">
             <%= erb(:submenu, :layout => false, :locals => { :menu => menu }) %>

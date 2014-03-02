@@ -1,10 +1,15 @@
 @import url(http://fonts.googleapis.com/css?family=Quicksand:300+Habibi);
 
 /*
- * Globals
+ Globals
  */
 
- /* Bootstrap Overrides */
+.hidden {
+  display: none;
+}
+ /*
+ Bootstrap Overrides
+  */
 
  .nav>li>a {
   border-radius: 0;
@@ -531,10 +536,10 @@ body {
 }
 
 /*
-Login Screen
+BlackOut Screen
 */
 
-.login-page-wrapper {
+.blackout-page-wrapper {
   position: fixed;
   background-color: rgba(100, 100, 100, .75);
   top: 0;
@@ -551,10 +556,6 @@ Login Screen
 /*
 Admin
  */
-
-.admin-content {
-  /*height: 100%;*/
-}
 
 .admin-form {
 }
@@ -580,4 +581,38 @@ button {
 .admin-form select {
   background-color: #444;
   display: inherit;
+}
+
+.delete-msg,
+.delete-confirmation,
+.menu-msg,
+.add-msg,
+.error-msg {
+  position: fixed;
+  z-index: 100;
+  display: none;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.delete-msg h3,
+.delete-confirmation h3,
+.add-msg h3,
+.error-msg h3,
+.menu-msg h3 {
+  margin: 1em 1em auto 1em;
+
+  text-align: center;
+  font-weight: 700;
+}
+
+.delete-confirmation div {
+  height: auto;
+  overflow: hidden;
+  margin: 1em 1em auto 1em;
+}
+
+.delete-confirmation div button {
+  margin-top: 1em;
 }
