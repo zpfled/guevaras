@@ -59,7 +59,7 @@ before do
 end
 
 after do
-	p @name
+	"Params: #{params}"
 end
 
 options '/*' do
