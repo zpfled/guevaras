@@ -17,7 +17,8 @@
           <a href="/">return to main site</a>
           <!-- delete below -->
           <% User.all.each do |user| %>
-            <p><%= "#{user.name}, #{user.password}" %></p>
+          <h3>Registered Users:</h3>
+            <p><%= "#{user.name}" %></p>
           <% end %>
           <!-- delete above -->
         </form>  
