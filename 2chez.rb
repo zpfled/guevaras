@@ -110,7 +110,6 @@ post '/logout' do
 	redirect '/'
 end
 
-# untested
 get '/admin' do
 	@title = 'Dashboard'
 	
@@ -135,7 +134,6 @@ get '/menu' do
  	end
 end
 
-# untested
 post '/menu' do
 	item = MenuItem.new
 	item.name = params[:name]
@@ -188,7 +186,6 @@ get '/:id/delete' do
 	end
 end
 
-# untested
 post '/reduce' do
 	item = MenuItem.first(name: params[:name])
 	item.price = item.price - 1
