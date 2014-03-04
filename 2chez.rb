@@ -41,12 +41,14 @@ DataMapper.finalize.auto_upgrade!
 # DataMapper.finalize.auto_migrate!
 
 class TwoChez < Sinatra::Application
-	use Rack::Session::Cookie, 	secret: 		'kilimanjaro',
-								expire_after: 	3600 # session expires after 1 hour
+	enable :sessions
+		set :session_secret, 'persenukedipsekjonukpunon',
+		expire_after: 	3600 # session expires after 1 hour
 
 # Routes
 
 before do
+	@users = User.all
 	@menu_items = MenuItem.all
 
 	@menus = []
@@ -58,7 +60,7 @@ before do
 	@categories.sort!
 end
 
-#untested
+
 get '/' do
 	@title = 'Welcome'
 	
@@ -67,7 +69,6 @@ get '/' do
 	erb :index
 end
 
-#tested
 get '/signup' do
 	@title = 'Signup'
 	@action = 'sign up'
@@ -75,7 +76,6 @@ get '/signup' do
 	erb :login
 end
 
-#tested
 post '/signup' do
 	user = User.new
 	user.name = params[:name]
@@ -85,14 +85,12 @@ post '/signup' do
 	redirect '/login'
 end
 
-#tested
 get '/login' do
 	@title = 'Login'
 	@action = 'log in'
 	erb :login
 end
 
-#tested
 post '/login' do
 	session[:name] = params[:name]
 	session[:password] = params[:password]
