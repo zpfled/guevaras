@@ -35,16 +35,20 @@ class MenuItem
 	property :price,		Integer, 	required: true
 end
 
+# User.create(name: 'Todd', email: 'toddhohulin@mchsi.com', password: 'foo', admin: true) ? User.all.length == 0 : false
+
 DataMapper.finalize.auto_upgrade!
 # DataMapper.finalize.auto_migrate!
 
 class TwoChez < Sinatra::Application
-	use Rack::Session::Cookie, 	secret: 		'kilimanjaro',
-								expire_after: 	3600 # session expires after 1 hour
+	enable :sessions
+		set :session_secret, 'persenukedipsekjonukpunon',
+		expire_after: 	3600 # session expires after 1 hour
 
 # Routes
 
 before do
+	@users = User.all
 	@menu_items = MenuItem.all
 
 	@menus = []
@@ -54,34 +58,17 @@ before do
 	@categories = []
 	@menu_items.map { |item| @categories.push(item.category) unless @categories.include?(item.category) }
 	@categories.sort!
-
-	puts '[Params]'
-	p params
-
-	headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
-	headers['Access-Control-Allow-Origin'] = '*'
-	headers['Access-Control-Allow-Headers'] = 'accept, authorization, origin'
 end
 
-after do
-	p @name
-end
 
-options '/*' do
-    headers['Access-Control-Allow-Origin'] = "*"
-    headers['Access-Control-Allow-Methods'] = "GET, POST, PUT, DELETE, OPTIONS"
-    headers['Access-Control-Allow-Headers'] ="accept, authorization, origin"
-end
-
-#untested
 get '/' do
 	@title = 'Welcome'
+	
 	@admin = false
 
 	erb :index
 end
 
-#tested
 get '/signup' do
 	@title = 'Signup'
 	@action = 'sign up'
@@ -89,7 +76,6 @@ get '/signup' do
 	erb :login
 end
 
-#tested
 post '/signup' do
 	user = User.new
 	user.name = params[:name]
@@ -99,14 +85,12 @@ post '/signup' do
 	redirect '/login'
 end
 
-#tested
 get '/login' do
 	@title = 'Login'
 	@action = 'log in'
 	erb :login
 end
 
-#tested
 post '/login' do
 	session[:name] = params[:name]
 	session[:password] = params[:password]
@@ -126,9 +110,9 @@ post '/logout' do
 	redirect '/'
 end
 
-# untested
 get '/admin' do
 	@title = 'Dashboard'
+	
 	@user = session[:name]
 	@admin = true ? @user : false
 
@@ -150,7 +134,6 @@ get '/menu' do
  	end
 end
 
-# untested
 post '/menu' do
 	item = MenuItem.new
 	item.name = params[:name]
@@ -168,9 +151,10 @@ get '/:id/raise' do
 	item = MenuItem.get params[:id]
 	@price = item.price = item.price + 1
 	item.save
+	@name = item.name
 
 	if request.xhr?
-		halt 200, "#{@price}"
+		halt 200, {name: @name, price: @price}.to_json
 	else
 		redirect '/'
 	end
@@ -180,9 +164,10 @@ get '/:id/reduce' do
 	item = MenuItem.get params[:id]
 	@price = item.price = item.price - 1
 	item.save
+	@name = item.name
 
 	if request.xhr?
-		halt 200, "#{@price}"
+		halt 200, {name: @name, price: @price}.to_json
 	else
 		redirect '/'
 	end
@@ -190,14 +175,23 @@ end
 
 get '/:id/delete' do
 	item = MenuItem.get params[:id]
+	@price = item.price = item.price + 1
 	item.destroy
 	@name = item.name
 
 	if request.xhr?
-		halt 200, "#{@name}"
+		halt 200, {name: @name, price: @price}.to_json
 	else
 		redirect '/'
 	end
+end
+
+post '/reduce' do
+	item = MenuItem.first(name: params[:name])
+	item.price = item.price - 1
+	item.save
+
+	redirect '/admin'
 end
 
 end
