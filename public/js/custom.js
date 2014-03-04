@@ -53,9 +53,12 @@ $(function () {
 			dataType:	'html',
 			
 			success: function(data) {
+				$('.modal').slideUp(200);
+				$('.modal-backdrop').fadeToggle(200);
 				$('.add-msg h3').html('success');
 				$('.add-msg').fadeIn(750).fadeOut(750);
 				$('#menu').html(data);
+				$('#cancel').click();
 			},
 			error: function() {
 				errorMessage();
@@ -64,73 +67,93 @@ $(function () {
 	});
 });
 
-function raisePrice(id, button) {
-
-	$.ajax({
-		type:		'get',
-		url:		'/' + id + '/raise',
-		accepts:	'application/json',
-		dataType:	'json',
+$(function () {
+	$('.raise').on('submit', function(event) {
 		
-		success: function(data) {
-			$('.menu-msg h3').html('raised ' + data.name + ' price to $' + data.price);
-			$(button.parent().parent().find('.item-price')).html(data.price);
-			$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
-		},
-		error: function() {
-			errorMessage();
-		}
-	});
-}
-
-function reducePrice(id, button) {
-
-	$.ajax({
-		type:		'get',
-		url:		'/' + id + '/reduce',
-		accepts:	'application/json',
-		dataType:	'json',
-		
-		success: function(data) {
-			$('.menu-msg h3').html('reduced ' + data.name + ' price to $' + data.price);
-			$(button.parent().parent().find('.item-price')).html(data.price);
-			$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
-		},
-		error: function() {
-			errorMessage();
-		}
-	});
-}
-
-function deleteItem(id, button) {
-
-	$('.delete-confirmation').fadeToggle(200);
-
-	$('#no').click(function() {
-		$('.delete-confirmation').fadeOut(200);
-		return false;
-	});
-	$('#yes').click(function() {
+		event.preventDefault();
+		var id = $(this).find('.id').text();
+		var button = $(this);
 
 		$.ajax({
+
 			type:		'get',
-			url:		'/' + id + '/delete',
-			accepts:	'application/json',
-			dataType:	'json',
-			
+			url:		'/' + id + '/raise',
+			data:		$(this).serialize(),
+			dataType:	'html',
+
+		
 			success: function(data) {
-				$(button.parent().parent()).remove();
-				$('.delete-msg h3').html('successfully deleted ' + data.name);
-				$('.delete-confirmation').fadeOut(200);
-				$('.delete-msg').fadeIn(1500).fadeOut(1500);
+				$('.menu-msg h3').html('raised price to $' + data);
+				$(button.parent().parent().find('.item-price')).html(data);
+				$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
 			},
 			error: function() {
 				errorMessage();
 			}
 		});
 	});
-}
+});
 
+$(function () {
+	$('.reduce').on('submit', function(event) {
+		
+		event.preventDefault();
+		var id = $(this).find('.id').text();
+		var button = $(this);
+
+		$.ajax({
+
+			type:		'get',
+			url:		'/' + id + '/reduce',
+			data:		$(this).serialize(),
+			dataType:	'html',
+
+		
+			success: function(data) {
+				$('.menu-msg h3').html('reduced price to $' + data);
+				$(button.parent().parent().find('.item-price')).html(data);
+				$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
+			},
+			error: function() {
+				errorMessage();
+			}
+		});
+	});
+});
+
+$(function () {
+	$('.delete').on('submit', function(event) {
+		event.preventDefault();
+		var id = $(this).find('.id').text();
+		var button = $(this);
+		
+		$('.delete-confirmation').fadeToggle(200);
+		
+		$('#no').click(function() {
+			$('.delete-confirmation').fadeOut(200);
+			return false;
+		});
+
+		$('#yes').click(function() {
+			$.ajax({
+
+				type:		'get',
+				url:		'/' + id + '/delete',
+				data:		$(this).serialize(),
+				dataType:	'html',
+				success: function(data) {
+					$(button.parent().parent()).remove();
+					$('.delete-msg h3').html('successfully deleted ' + data);
+					$('.delete-confirmation').fadeOut(200);
+					$('.delete-msg').fadeIn(500).fadeOut(2000);
+				},
+				// error: function() {
+					// errorMessage();
+				// }
+			});
+		});
+	});
+});
 
 // Parallax Scrolling Fanciness
 
