@@ -16,8 +16,8 @@
           </button>
           <a href="/">return to main site</a>
           <!-- delete below -->
-          <% User.all.each do |user| %>
           <h3>Registered Users:</h3>
+          <% User.all.each do |user| %>
             <p><%= "#{user.name}" %></p>
           <% end %>
           <!-- delete above -->
