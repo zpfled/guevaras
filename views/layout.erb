@@ -54,11 +54,16 @@
         
 <!-- Main -->
 
-    <div class="site-wrapper">
         <section id="welcome" class="homeSlide">
-            <div class="bcg">
-                <div class="inner hsContainer">
-                    <div class="hsContent">
+            <div class="bcg" 
+            data-center="background-position: 50% 0px;"
+            data-top-bottom="background-position: 50% -100px;"
+            data-anchor-target="#welcome">
+                <div class="hsContainer">
+                    <div class="hsContent"
+                    data-center="bottom: 200px; opacity: 1"
+                    data-top="bottom: 1200px; opacity: 0"
+                    data-anchor-target="#welcome h1">
                         <h1 class="masthead-brand">
                             <a class="logo-link" href="/">
                                 <span style="color: #d00; font-weight: 800; font-size: 1.1em">2</span>Chez
@@ -75,7 +80,6 @@
         
         <%= yield %>
         
-    </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -83,8 +87,8 @@
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="/js/custom.js"></script>
-    <!-- <script src="/js/imagesloaded.js"></script> 
-    <script src="/js/skrollr.js"></script>-->
+    <!-- <script src="/js/imagesloaded.js"></script> -->
+    <script src="/js/skrollr.js"></script>
     <!-- <script src="../../assets/js/docs.min.js"></script> -->
 </body>
 </html>

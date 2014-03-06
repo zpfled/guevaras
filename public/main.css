@@ -131,11 +131,11 @@ html,
 body {
   height: 100%;
   background-color: #444;
-  background: url('./images/2chez-restaurant1.jpg') center no-repeat scroll;
+/*  background: url('./images/2chez-restaurant1.jpg') center no-repeat scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover;*/
   text-rendering: optimizeLegibility;
   z-index: -1;
 }
@@ -265,57 +265,36 @@ body {
 
 .hsContent {
   max-width: 700px;
-  position: absolute;
+  /*position: absolute;*/
   left: 50%;
   top: 50%;
 }
 
-  .hsContent h2  {
-    color: #fff8de;
-    background-color: rgba(0,0,0,0.5);
-    padding: 10px 5px;
-    font-size: 35px;
-    line-height: 38px;
-    margin-bottom: 12px;
-  }
-  .hsContent p {
-    width: 400px;
-    color: #b2b2b2;
-  }
-  .hsContent a {
-    color: #b2b2b2;
-    text-decoration: underline;
-  }
-
 /* Slide 1 */
-#welcome .bcg {background-image:url('../img/bcg_slide-1.jpg')}
+#welcome .bcg {background-image:url('./images/2chez-restaurant1.jpg')}
 #welcome .hsContent {
   bottom: 200px;
   top: auto;
 }
 
 /* Slide 2 */
-#menu .bcg {background-image:url('../img/bcg_menu.jpg')}
+#menu .bcg {background-image:url('./images/2chez-restaurant2.jpg')}
 #menu .hsContent {
-  margin-left: -450px;
+  /*margin-left: -450px;*/
   bottom: 200px;
   top: auto;
 }
 
 /* Slide 3 */
-#hours .bcg {background-image:url('../img/bcg_slide-3.jpg')}
+#hours .bcg {background-image:url('./images/2chez-restaurant3.jpg')}
 #hours .hsContent {
-  margin-left: -239px;
+  /*margin-left: -239px;*/
 }
-  #hours h1 {
-    color: #f2ead6;
-    background-color: rgba(0,0,0,0.6);
-  }
 
 /* Slide 4 */
-#story .bcg {background-image:url('../img/bcg_slide-4.jpg')}
+#story .bcg {background-image:url('./images/2chez-restaurant4.jpg')}
 #story .hsContent {
-  margin-left: -450px;
+  /*margin-left: -450px;*/
 }
   #story h1 {
     background: none;
@@ -323,10 +302,10 @@ body {
     padding-right: 0;
   }
 
-/* Slide 3 */
-footer .bcg {background-image:url('../img/bcg_slide-3.jpg')}
+/* Slide 5 */
+footer .bcg {background-image:url('./images/2chez-restaurant5.jpg')}
 footer .hsContent {
-  margin-left: -239px;
+  /*margin-left: -239px;*/
 }
 
 /* Menu */
