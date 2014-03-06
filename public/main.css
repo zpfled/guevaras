@@ -143,10 +143,6 @@ body {
   color: #fff;
 }
 
-.welcome-container {
-  border-bottom: 1px solid #fff;
-}
-
 .bar-wrapper {
   width: 100%;
   background-color: rgba(255, 255, 255, .75);
@@ -218,6 +214,7 @@ body {
 @media (min-width: 768px) {
   .masthead-brand {
     font-size: 8em;
+    text-align: left;
   }
   .masthead-nav {
     float: right;
@@ -330,7 +327,6 @@ footer {
 
   /* Handle the widths */
   .masthead,
-  .welcome-container,
   .bar-wrapper {
     width: 100%; /* Must be percentage or pixels for horizontal alignment */
   }
