@@ -15,7 +15,7 @@ class User
 	property :admin,		Boolean,	default: false,		writer: :protected
 
 	def authenticate?(attempted_password)
-		self.password != attempted_password ? true : false
+		self.password == attempted_password ? true : false
 	end
 
 	def logged_in?(user)
