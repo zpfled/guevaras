@@ -39,7 +39,7 @@ DataMapper.finalize.auto_upgrade!
 # DataMapper.finalize.auto_migrate!
 
 class TwoChez < Sinatra::Application
-	enable :sessions, :logging
+	enable :sessions
 		set :session_secret, 'persenukedipsekjonukpunon',
 		expire_after: 	3600 # session expires after 1 hour
 
@@ -59,7 +59,7 @@ before do
 end
 
 after do
-	"Params: #{params}"
+	p "Params: #{params}"
 end
 
 options '/*' do
