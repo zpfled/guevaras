@@ -51,7 +51,7 @@ before do
 
 	@menus = []
 	@menu_items.map { |item| @menus.push(item.menu) unless @menus.include?(item.menu) }
-	@menus.sort!
+	@menus.sort.rotate!
 
 	@categories = []
 	@menu_items.map { |item| @categories.push(item.category) unless @categories.include?(item.category) }
