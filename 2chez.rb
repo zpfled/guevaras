@@ -35,8 +35,6 @@ class MenuItem
 	property :price,		Integer, 	required: true
 end
 
-# User.create(name: 'Todd', email: 'toddhohulin@mchsi.com', password: 'foo', admin: true) ? User.all.length == 0 : false
-
 DataMapper.finalize.auto_upgrade!
 # DataMapper.finalize.auto_migrate!
 
@@ -53,39 +51,56 @@ before do
 
 	@menus = []
 	@menu_items.map { |item| @menus.push(item.menu) unless @menus.include?(item.menu) }
-	@menus.sort!
+	@menus.sort.rotate!
 
 	@categories = []
 	@menu_items.map { |item| @categories.push(item.category) unless @categories.include?(item.category) }
 	@categories.sort!
 end
 
+after do
+	p "Params: #{params}"
+end
+
+options '/*' do
+    headers['Access-Control-Allow-Origin'] = "*"
+    headers['Access-Control-Allow-Methods'] = "GET, POST, PUT, DELETE, OPTIONS"
+    headers['Access-Control-Allow-Headers'] ="accept, authorization, origin"
+end
 
 get '/' do
 	@title = 'Welcome'
-	
 	@admin = false
 
 	erb :index
 end
 
 get '/signup' do
+	@message = ' '
 	@title = 'Signup'
 	@action = 'sign up'
-	@users = User.all
 	erb :login
 end
 
 post '/signup' do
-	user = User.new
-	user.name = params[:name]
-	user.email = params[:email]
-	user.password = params[:password]
-	user.save
-	redirect '/login'
+	@user_exists = false
+
+ 	@users.each { |user| @user_exists = true if params[:name] == user.name }
+
+ 	if @user_exists
+ 		redirect '/'
+ 	else
+		user = User.new
+		user.name = params[:name]
+		user.email = params[:email]
+		user.password = params[:password]
+		user.save
+		redirect '/login'
+	end
 end
 
 get '/login' do
+	@message = "#{User.last.name}, #{User.last.password}"
 	@title = 'Login'
 	@action = 'log in'
 	erb :login
@@ -93,15 +108,16 @@ end
 
 post '/login' do
 	session[:name] = params[:name]
-	session[:password] = params[:password]
+	@password = session[:password] = params[:password]
+	
 	user = User.first(name: session[:name])
 
 	if user.nil?
 		redirect '/'
-	elsif user.authenticate?(session[:password])
+	elsif user.authenticate?(@password)
 		redirect '/admin'
 	else
-		redirect '/login'
+		redirect "/#{user.password}"
 	end
 end
 
@@ -112,7 +128,6 @@ end
 
 get '/admin' do
 	@title = 'Dashboard'
-	
 	@user = session[:name]
 	@admin = true ? @user : false
 
@@ -120,6 +135,7 @@ get '/admin' do
  		erb :admin
  	else 
  		redirect '/login'
+ 		# erb :admin
  	end
 end
 
@@ -151,10 +167,9 @@ get '/:id/raise' do
 	item = MenuItem.get params[:id]
 	@price = item.price = item.price + 1
 	item.save
-	@name = item.name
 
 	if request.xhr?
-		halt 200, {name: @name, price: @price}.to_json
+		halt 200, "#{@price}"
 	else
 		redirect '/'
 	end
@@ -164,10 +179,9 @@ get '/:id/reduce' do
 	item = MenuItem.get params[:id]
 	@price = item.price = item.price - 1
 	item.save
-	@name = item.name
 
 	if request.xhr?
-		halt 200, {name: @name, price: @price}.to_json
+		halt 200, "#{@price}"
 	else
 		redirect '/'
 	end
@@ -175,23 +189,14 @@ end
 
 get '/:id/delete' do
 	item = MenuItem.get params[:id]
-	@price = item.price = item.price + 1
 	item.destroy
 	@name = item.name
 
 	if request.xhr?
-		halt 200, {name: @name, price: @price}.to_json
+		halt 200, "#{@name}"
 	else
 		redirect '/'
 	end
-end
-
-post '/reduce' do
-	item = MenuItem.first(name: params[:name])
-	item.price = item.price - 1
-	item.save
-
-	redirect '/admin'
 end
 
 end

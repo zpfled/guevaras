@@ -54,10 +54,11 @@ $(function () {
 			
 			success: function(data) {
 				$('.modal').slideUp(200);
-				$('.modal-backdrop').fadeToggle(400);
+				$('.modal-backdrop').fadeToggle(200);
 				$('.add-msg h3').html('success');
 				$('.add-msg').fadeIn(750).fadeOut(750);
 				$('#menu').html(data);
+				$('#cancel').click();
 			},
 			error: function() {
 				errorMessage();
