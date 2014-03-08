@@ -282,10 +282,6 @@ body {
 #welcome .bcg {
   position: absolute;
   background: url('./images/final/welcome.png');
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
 }
 
 @media (min-width: 768px) {
