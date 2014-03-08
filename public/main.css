@@ -271,7 +271,11 @@ body {
 }
 
 /* Slide 1 */
-#welcome .bcg {background-image:url('./images/2chez-restaurant1.jpg')}
+#welcome .bcg {
+  background-image:url('./images/2chez-restaurant1.jpg');
+  position: absolute;
+
+}
 #welcome .hsContent {
   bottom: 200px;
   top: auto;
