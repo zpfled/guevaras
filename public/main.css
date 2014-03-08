@@ -255,7 +255,6 @@ body {
   height: 100%;
   overflow: hidden;
   position: relative;
-  /*opacity: 0;*/
 }
 
 .hsContent {
@@ -265,7 +264,6 @@ body {
   vertical-align: middle;
   color: #eee;
   padding: 0 8%;
-  /*text-align: center*/
 }
 
 .bcg {
@@ -293,17 +291,6 @@ body {
   -o-background-size: cover;
   background-size: cover;
   }
-
-  #welcome .bcg:before {
-  content: "";
-  opacity: 0.5;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: 0;  
-  }
 }
 
 #welcome .hsContent {
@@ -312,17 +299,38 @@ body {
 }
 
 /* Slide 2 */
-#menu .bcg {background-image:url('./images/2chez-restaurant2.jpg')}
-#menu .hsContent {
+#menu-intro .bcg {
+    background: none;
+    background-color: #111;
+}
+
+#menu-intro .hsContent {
   /*margin-left: -450px;*/
   bottom: 200px;
   top: auto;
 }
 
 /* Slide 3 */
-#hours .bcg {background-image:url('./images/2chez-restaurant3.jpg')}
+#hours .bcg {
+  background-image:url('./images/final/hours.png');
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  #hours .bcg {
+  background-attachment: fixed;
+  background: url('./images/final/hours.png');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding: 6em 0 6em 0;
+  }
+}
+
 #hours .hsContent {
-  /*margin-left: -239px;*/
+  bottom: 200px;
+  top: auto;
 }
 
 /* Slide 4 */

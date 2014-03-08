@@ -2,7 +2,7 @@
 <section class="content-block push-down">
 
   <%= erb :menu, layout: false %>
-
+<!-- 
   <section id="hours" class="homeSlide">
     <div class="bcg">
       <div class="hsContainer">
@@ -19,19 +19,47 @@
         </div>
       </div>
     </div>
+  </section> -->
+
+  <section id="hours" class="homeSlide">
+      <div class="bcg"
+          data-center="background-position: 0px 50%;"
+          data-bottom-top="background-position: 0px 40%;"
+          data-top-bottom="background-position: -20px 50%;"
+          data-anchor-target="#hours">
+          <div class="hsContainer">
+              <div class="hsContent">
+                  <div class="plaxEl"
+                      data-bottom="opacity: 0; top: 206px; width: 100%; left: 0;"
+                      data-center="opacity: 1;"
+                      data-anchor-target="#hours">
+                      <h2>Hours</h2>
+                      <h3>Lunch</h3>
+                        <p>Monday - Friday</p>
+                        <p>11am - 2pm</p>
+                      <h3>Dinner</32>
+                        <p class="remove-bottom-margin">Monday - Thursday</p>
+                        <p>5 - 9pm</p>
+                        <p class="remove-bottom-margin">Friday &amp; Saturday</p>
+                        <p>5 - 10pm</p>
+                  </div>
+              </div>
+          </div>   
+      </div>
   </section>
 
-<section id="story" class="homeSlide">
-  <div class="bcg">
-    <div class="hsContainer">
-      <div class="hsContent">
-        <h1>Our Story</h1>
-        <p>We are a restaurant. We serve food and drinks. That's really all there is to the story. What did you expect, Garrison freakin' Keillor?!?</p>
+  <section id="story" class="homeSlide">
+    <div class="bcg">
+      <div class="hsContainer">
+        <div class="hsContent">
+          <h1>Our Story</h1>
+          <p>We are a restaurant. We serve food and drinks. That's really all there is to the story. What did you expect, Garrison freakin' Keillor?!?</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<%= erb :footer, layout: false %>
+
+  <%= erb :footer, layout: false %>
 
 </section>
