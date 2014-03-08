@@ -164,17 +164,18 @@ body {
   z-index: 1;
 }
 
-.masthead-brand {
+.brand {
   margin-top: 10px;
   margin-bottom: 10px;
   display: block;
   position: relative;
+  z-index: 1
 }
 
-.masthead-brand a:hover,
-.masthead-brand a:focus {
+.brand a:hover,
+.brand a:focus {
   border-bottom: 3px solid;
-  border-bottom-color: rgba(255,255,255,.25);
+  border-bottom-color: rgba(255,255,255,.5);
 }
 
 .masthead-nav {
@@ -212,7 +213,7 @@ body {
 }
 
 @media (min-width: 768px) {
-  .masthead-brand {
+  .brand {
     font-size: 8em;
     text-align: left;
   }
@@ -271,26 +272,44 @@ body {
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: scroll; /*Has to be scroll, otherwise it doesn't work on ios*/
+  background-size: cover;
   height: 100%;
-  width: 100%;
+  /*width: 100%;*/
 }
 
 
 /* Slide 1 */
 #welcome .bcg {
-  background: url('./images/2chez-restaurant1.jpg');
   position: absolute;
+  background: url('./images/final/welcome.png');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 @media (min-width: 768px) {
   #welcome .bcg {
   background-attachment: fixed;
+  background: url('./images/final/welcome.png');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   }
+
+  #welcome .bcg:before {
+  content: "";
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: 0;  
+  }
 }
+
 #welcome .hsContent {
   bottom: 200px;
   top: auto;
