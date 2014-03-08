@@ -270,17 +270,26 @@ body {
 .bcg {
   background-position: center center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+  background-attachment: scroll; /*Has to be scroll, otherwise it doesn't work on ios*/
   height: 100%;
   width: 100%;
 }
 
+
 /* Slide 1 */
 #welcome .bcg {
-  background-image:url('./images/2chez-restaurant1.jpg');
+  background: url('./images/2chez-restaurant1.jpg');
   position: absolute;
+}
 
+@media (min-width: 768px) {
+  #welcome .bcg {
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
 }
 #welcome .hsContent {
   bottom: 200px;
