@@ -1,3 +1,9 @@
+// $(function () {
+// 	$('#map-btn').on('click', function() {
+// 		$('iframe').fadeToggle();
+// 	});
+// });
+
 function errorMessage() {
 	$('.error-msg h3').html('sorry, that didn\'t work');
 	$('.error-msg').fadeIn(750).fadeOut(750);
