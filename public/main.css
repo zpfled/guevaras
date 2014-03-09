@@ -392,6 +392,10 @@ footer .hsContent {
   font-size: .85em;
 }
 
+article {
+  padding-bottom: 1em;
+}
+
 .panel-title:active,
 .panel-title:active {
   color: #444;
