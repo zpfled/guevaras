@@ -246,6 +246,11 @@ body {
   margin-bottom: 1em;
 }
 
+.sm-img {
+  height: 300px;
+  width: auto;
+}
+
 /* PARALLAX SCROLLING STUFF */
 
 .hsContainer {
@@ -396,6 +401,10 @@ article {
   padding-bottom: 1em;
 }
 
+.panel-group {
+  padding-bottom: 1em;
+}
+
 .panel-title:active,
 .panel-title:active {
   color: #444;
@@ -407,6 +416,10 @@ article {
 
 .menu>dd {  
   margin-bottom: 1em;
+}
+
+.menu-intro {
+  padding-bottom: 1em;
 }
 
 .menu-msg {
