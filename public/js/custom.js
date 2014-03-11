@@ -45,6 +45,40 @@ function filterCategories(menu) {
 	}
 }
 
+function editFilterCategories(menu) {
+	if (menu.options[menu.selectedIndex].text === 'Lunch') {
+		$('#lunch-edit').show();
+		$('#dinner-edit').hide();
+		$('#wine-edit').hide();
+		$('#small-plates-edit').hide();
+		$('#cocktails-edit').hide();
+	} else if (menu.options[menu.selectedIndex].text === 'Dinner') {
+		$('#dinner-edit').show();
+		$('#lunch-edit').hide();
+		$('#wine-edit').hide();
+		$('#small-plates-edit').hide();
+		$('#cocktails-edit').hide();
+	} else if (menu.options[menu.selectedIndex].text === 'Wine') {
+		$('#wine-edit').show();
+		$('#lunch-edit').hide();
+		$('#dinner-edit').hide();
+		$('#small-plates-edit').hide();
+		$('#cocktails-edit').hide();
+	} else if (menu.options[menu.selectedIndex].text === 'Cocktails') {
+		$('#cocktails-edit').show();
+		$('#small-plates-edit').hide();
+		$('#lunch-edit').hide();
+		$('#dinner-edit').hide();
+		$('#wine-edit').hide();
+	} else {
+		$('#small-plates-edit').show();
+		$('#cocktails-edit').hide();
+		$('#lunch-edit').hide();
+		$('#dinner-edit').hide();
+		$('#wine-edit').hide();
+	}
+}
+
 // Asynchronous Menu Updates
 
 $(function () {
@@ -64,7 +98,33 @@ $(function () {
 				$('.add-msg h3').html('success');
 				$('.add-msg').fadeIn(750).fadeOut(750);
 				$('#menu').html(data);
-				$('#cancel').click();
+				$('#cancel-add').click();
+			},
+			error: function() {
+				errorMessage();
+			}
+		});
+	});
+});
+
+$(function () {
+	$('#edit-item').on('submit', function(event) {
+		
+		event.preventDefault();
+
+		$.ajax({
+			type:		'post',
+			url:		'/edit',
+			data:		$(this).serialize(),
+			dataType:	'html',
+			
+			success: function(data) {
+				$('.modal').slideUp(200);
+				$('.modal-backdrop').fadeToggle(200);
+				$('.add-msg h3').html('changes saved');
+				$('.add-msg').fadeIn(750).fadeOut(750);
+				$('#menu').html(data);
+				$('#cancel-edit').click();
 			},
 			error: function() {
 				errorMessage();

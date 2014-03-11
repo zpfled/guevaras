@@ -127,13 +127,8 @@ p {
 
 html,
 body {
-  height: 100%;
+  height: 100% !important;
   background-color: #444;
-/*  background: url('./images/2chez-restaurant1.jpg') center no-repeat scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;*/
   text-rendering: optimizeLegibility;
   z-index: -1;
 }
@@ -239,6 +234,10 @@ body {
   bottom: auto;
 }
 
+.half-down {
+  top: 50%;
+}
+
 .menu.nav {
   border-bottom: 1px solid #fff;
   margin-bottom: 1em;
@@ -300,7 +299,7 @@ iframe {
 @media (min-width: 768px) {
   #welcome .bcg {
   background-attachment: fixed;
-  background: url('./images/bike-basket1.jpg');
+  background: url('./images/final/welcome.png') center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -314,12 +313,12 @@ iframe {
 }
 
 /* Slide 2 */
-#menu-intro .bcg {
+#menu .bcg {
     background: none;
     background-color: #111;
 }
 
-#menu-intro .hsContent {
+#menu .hsContent {
   /*margin-left: -450px;*/
   bottom: 200px;
   top: auto;
@@ -684,6 +683,7 @@ Admin
 }
 
 .add-form input,
+.edit-form input,
 select,
 button {
   margin-top: .5em;
@@ -694,14 +694,17 @@ button {
   margin-top: 2em;
 }
 
-.add-form input, select {
+.add-form input,
+.edit-form input,
+select {
   background-color: transparent;
   color: #eee;
   border: 1px solid #eee;
   border-radius: .25em;
 }
 
-.add-form input {
+.add-form input,
+.edit-form input {
   padding-left: .4em
 }
 

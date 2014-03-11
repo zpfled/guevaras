@@ -12,6 +12,11 @@
                     add item
                 </button>
             </li>
+            <li>
+                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#editItemModal">
+                    edit item
+                </button>
+            </li>
         </ul>
     </div>
 </section>
@@ -78,7 +83,80 @@
                     <button type="submit" class="col-xs-12 btn btn-lg btn-success">
                         add item
                     </button>
-                    <button id="cancel" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
+                    <button id="cancel-add" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
+                        cancel
+                    </button>
+                </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EditItem Modal -->
+<div class="modal fade" id="editItemModal" tabindex="-1" role="dialog" aria-labelledby="editItemModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-12 edit-form">
+                <form action="/edit" method="post" id="edit-item">
+                    <!-- Menu Select -->
+                    <select onChange="editFilterCategories(this)"class="col-xs-12 edit-form" name="menu">
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                        <option value="small-plates">Small Plates</option>
+                        <option value="wine">Wine</option>
+                        <option value="cocktails">Cocktails</option>
+                    </select>
+                    <!-- Item Select -->
+                        <select class="col-xs-12 edit-form" id="lunch-edit" name="lunch_edit">
+                            <% @menu_items.each do |item| %>
+                                <% if item.menu == 'lunch' %>
+                                    <option value="<%= item.id %>"><%= item.name %></option>
+                                <% end %>
+                            <% end %>
+                        </select>
+                        <select style="display: none" class="col-xs-12 edit-form" id="dinner-edit" name="dinner_edit">
+                            <% @menu_items.each do |item| %>
+                                <% if item.menu == 'dinner' %>
+                                    <option value="<%= item.id %>"><%= item.name %></option>
+                                <% end %>
+                            <% end %>
+                        </select>
+                        <select style="display: none" class="col-xs-12 edit-form" id="wine-edit" name="wine_edit">
+                            <% @menu_items.each do |item| %>
+                                <% if item.menu == 'wine' %>
+                                    <option value="<%= item.id %>"><%= item.name %></option>
+                                <% end %>
+                            <% end %>
+                        </select>
+                        <select style="display: none" class="col-xs-12 edit-form" id="small-plates-edit" name="small-plates_edit">
+                            <% @menu_items.each do |item| %>
+                                <% if item.menu == 'small plates' %>
+                                    <option value="<%= item.id %>"><%= item.name %></option>
+                                <% end %>
+                            <% end %>
+                        </select>
+                        <select style="display: none" class="col-xs-12 edit-form" id="cocktails-edit" name="cocktails_edit">
+                            <% @menu_items.each do |item| %>
+                                <% if item.menu == 'cocktails' %>
+                                    <option value="<%= item.id %>"><%= item.name %></option>
+                                <% end %>
+                            <% end %>
+                        </select>
+                    <!-- Name Change -->
+                    <input class="col-xs-12 add-form" name="name" label="name" type="text" maxlength="30" placeholder="Change item name">
+                    <!-- Description Change -->
+                    <input class="col-xs-12 add-form" name="description" label="description" type="text" maxlength="255" placeholder="Change item description">
+                    <!-- Price Change -->
+                    <input class="col-xs-12 add-form" name="price" label="price" type="number" placeholder="Change item price">
+                    <!-- Submit Button -->
+                    <button type="submit" class="col-xs-12 btn btn-lg btn-success">
+                        save changes
+                    </button>
+                    <button id="cancel-edit" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
                         cancel
                     </button>
                 </form>
@@ -89,7 +167,9 @@
   </div>
 </div>
     
+<section class="content-block half-down">
     <%= erb :menu, layout: false %>
+</section>
 
 
 <!-- 

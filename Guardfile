@@ -26,3 +26,10 @@ guard 'rspec', :wait => 60, :all_after_pass => false, :cli => '--drb' do
   watch(%r{^spec/support/(.+)\.rb$})          { "spec" }
   watch('myapp.rb')                           { "spec" }
 end
+
+guard 'shotgun' do
+  watch 'config.ru'
+  watch %r{^(guevaras|app)/.*\.rb}
+  watch %r{^(views)/.*\.erb}
+  watch(%r{public/.+\.(css|js|html)})
+end

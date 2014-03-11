@@ -69,13 +69,17 @@
                     data-anchor-target="#welcome h1">
                         <h1 class="brand">
                             <a class="logo-link" href="/">
-                                <span style="color: #d00; font-weight: 800; font-size: 1.1em">2</span>Chez
+                                <span style="color: #c00; font-family: 'Josefin Slab'; font-weight: 800; font-size: 1.1em">2</span>Chez
                             </a>
+                            <% unless @admin %>
                             <a class="logo-link pull-right phone" href="tel:+13096912224" title="Call Us">
                                 <span class="glyphicon glyphicon-earphone"></span>
                             </a>
+                            <% end %>
                         </h1>
+                        <% unless @admin %>
                         <h2 class="h1 text-right">Casual Fine Dining</h2>
+                        <% end %>
                     </div>
                 </div>
             </div>

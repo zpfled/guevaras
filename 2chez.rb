@@ -163,6 +163,23 @@ post '/menu' do
 	redirect '/menu'
 end
 
+post '/edit' do
+	selector = "#{params[:menu]}_edit".to_sym
+	item = MenuItem.first(id: params[selector])
+	if params[:name] != ""
+		item.name = params[:name]
+	end
+	if params[:description] != ""
+		item.description = params[:description]
+	end
+	if params[:price] != ""
+		item.price = params[:price]
+	end
+	item.save
+			
+	redirect '/menu'
+end
+
 get '/:id/raise' do
 	item = MenuItem.get params[:id]
 	@price = item.price = item.price + 1
