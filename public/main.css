@@ -215,7 +215,7 @@ body {
 @media (min-width: 768px) {
   .brand {
     font-size: 8em;
-    text-align: left;
+    text-align: right;
   }
   .masthead-nav {
     float: right;
@@ -278,9 +278,10 @@ iframe {
   max-width: 450px;
   margin: -150px auto 0 auto;
   display: table-cell;
-  vertical-align: middle;
+  vertical-align: top;
   color: #eee;
   padding: 0 8%;
+  text-align: right;
 }
 
 .bcg {
