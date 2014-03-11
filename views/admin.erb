@@ -1,24 +1,23 @@
 <section id="task-bar" class="content">
-    <div class="inner container">
-        <h1 class="dashboard-greeting">Hi, <%= @user.capitalize %></h1>
-        <ul class="nav navbar-nav">
-            <li>
-                <form action="/logout" method="post">
-                    <button class="btn btn-lg btn-primary" type="submit">log out</button>
-                </form>
-            </li>
-            <li>
-                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addItemModal">
-                    add item
-                </button>
-            </li>
-            <li>
-                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#editItemModal">
-                    edit item
-                </button>
-            </li>
-        </ul>
-    </div>
+    <ul data-spy="affix" data-offset-top="370" class="taskbar affix nav navbar-nav">
+        <li>
+            <form action="/logout" method="post">
+                <button class="btn btn-lg btn-primary" type="submit">log out</button>
+            </form>
+        </li>
+        <li>
+            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addItemModal">add item</button>
+        </li>
+        <li>
+            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#editItemModal">edit item</button>
+        </li>
+        <li>
+            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addUserModal">add user</button>
+        </li>
+        <li>
+            <button class="btn btn-lg btn-danger" data-toggle="modal" data-target="deleteUserModal">delete user</button>
+        </li>
+    </ul>
 </section>
 
 <!-- AddItem Modal -->
@@ -166,6 +165,65 @@
     </div>
   </div>
 </div>
+
+<!-- NewUser Modal -->
+<div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-12 user-form">
+                <!-- Create User Form -->
+                <form action="/signup" method="post" id="new-user">
+                    <!-- Name Field -->
+                    <input class="col-xs-12 add-form" name="name" type="text" maxlength="30" placeholder="New User Name">
+                    <!-- Email Field -->
+                    <input class="col-xs-12 add-form" name="email" type="text" maxlength="100" placeholder="New User Email Address">
+                    <!-- Submit to Create User -->
+                    <button type="submit" class="col-xs-12 btn btn-lg btn-warning">create user</button>
+                </form>
+                <button id="cancel-add" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
+                    cancel
+                </button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+<!-- DeleteUser Modal -->
+<div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="deleteUserModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-12 user-form">
+                <!-- Delete User Form -->
+                <form action="/user/delete" method="post" id="delete-user">
+                    <select class="col-xs-12 edit-form" id="delete-name" name="name">
+                        <% @users.each do |user| %>
+                            <% unless user.admin %>
+                                <option value="<%= user.name %>"><%= user.name.capitalize %></option>
+                            <% end %>
+                        <% end %>
+                    </select>
+                    <button type="submit" class="col-xs-12 btn btn-lg btn-danger">delete user</button>
+                </form>
+                <button id="cancel-delete" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
+                    cancel
+                </button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
     
 <section class="content-block half-down">
     <%= erb :menu, layout: false %>

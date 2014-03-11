@@ -671,6 +671,35 @@ BlackOut Screen
 Admin
  */
 
+.taskbar {
+  position: absolute;
+  top: 50%;
+  bottom: auto;
+
+  height: 60px;
+  width: 100%;
+
+  margin-top: -60px;
+
+  background-color: rgba(1, 1, 1, .8);
+  display: inline-block;
+  z-index: 99
+}
+
+.taskbar.affix {
+  position: fixed;
+  top: 0;
+  bottom: auto;
+  
+  margin-top: 0;
+  display: inline-block;
+}
+
+.taskbar li,
+.taskbar.affix li {
+  display: inline-block;
+}
+
 .modal-dialog {
   background-color: #444;
   border-radius: 1em;
@@ -683,6 +712,7 @@ Admin
 }
 
 .add-form input,
+.user-form input,
 .edit-form input,
 select,
 button {
@@ -690,11 +720,14 @@ button {
   font-family: 'Quicksand', "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-.add-form button {
+.add-form button,
+.edit-form button,
+.user-form button {
   margin-top: 2em;
 }
 
 .add-form input,
+.user-form input,
 .edit-form input,
 select {
   background-color: transparent;
@@ -704,11 +737,14 @@ select {
 }
 
 .add-form input,
+.user-form input,
 .edit-form input {
   padding-left: .4em
 }
 
-.add-form select {
+.add-form select,
+.user-form select,
+.edit-form select {
   background-color: #444;
   display: inherit;
 }

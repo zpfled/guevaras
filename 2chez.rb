@@ -46,6 +46,7 @@ class TwoChez < Sinatra::Application
 # Routes
 
 before do
+	@user = session[:name]
 	@users = User.all
 	@menu_items = MenuItem.all
 
@@ -76,10 +77,7 @@ get '/' do
 end
 
 get '/signup' do
-	@message = ' '
-	@title = 'Signup'
-	@action = 'sign up'
-	erb :login
+	redirect '/login'
 end
 
 post '/signup' do
@@ -88,14 +86,26 @@ post '/signup' do
  	@users.each { |user| @user_exists = true if params[:name] == user.name }
 
  	if @user_exists
- 		redirect '/'
+ 		halt 404
  	else
 		user = User.new
 		user.name = params[:name]
 		user.email = params[:email]
-		user.password = params[:password]
+		user.password = 'password'
 		user.save
-		redirect '/login'
+
+		redirect '/menu'
+	end
+end
+
+post '/user/delete' do
+	user = User.first(name: params[:name])
+	if user.name == session[:name] || user.admin
+		halt 500
+		redirect '/menu' 
+	else
+		user.destroy
+		redirect '/menu'
 	end
 end
 
@@ -140,7 +150,6 @@ get '/admin' do
 end
 
 get '/menu' do
-	@user = session[:name]
 	@admin = true ? @user : false
 	
  	if @user && User.first(name: session[:name]).logged_in?(@user)

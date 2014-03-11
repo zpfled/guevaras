@@ -79,6 +79,60 @@ function editFilterCategories(menu) {
 	}
 }
 
+// Asynchronous User Updates
+
+$(function () {
+	$('#new-user').on('submit', function(event) {
+		
+		event.preventDefault();
+
+		$.ajax({
+			type:		'post',
+			url:		'/signup',
+			data:		$(this).serialize(),
+			dataType:	'html',
+			
+			success: function(data) {
+				$('.modal').slideUp(200);
+				$('.modal-backdrop').fadeToggle(200);
+				$('.add-msg h3').html('success');
+				$('.add-msg').fadeIn(750).fadeOut(750);
+				$('#menu').html(data);
+				$('#cancel-users').click();
+			},
+			error: function() {
+				errorMessage();
+			}
+		});
+	});
+});
+
+$(function () {
+	$('#delete-user').on('submit', function(event) {
+		
+		event.preventDefault();
+
+		$.ajax({
+			type:		'post',
+			url:		'/user/delete',
+			data:		$(this).serialize(),
+			dataType:	'html',
+			
+			success: function(data) {
+				$('.modal').slideUp(200);
+				$('.modal-backdrop').fadeToggle(200);
+				$('.add-msg h3').html('success');
+				$('.add-msg').fadeIn(750).fadeOut(750);
+				$('#menu').html(data);
+				$('#cancel-users').click();
+			},
+			error: function() {
+				errorMessage();
+			}
+		});
+	});
+});
+
 // Asynchronous Menu Updates
 
 $(function () {

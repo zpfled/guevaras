@@ -77,7 +77,9 @@
                             </a>
                             <% end %>
                         </h1>
-                        <% unless @admin %>
+                        <% if @admin %>
+                        <h2 class="h1 text-right"><%= "Hello, #{@user.capitalize}" %></h2>
+                        <% else %>
                         <h2 class="h1 text-right">Casual Fine Dining</h2>
                         <% end %>
                     </div>
