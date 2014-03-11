@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Quicksand:300+Habibi);
+@import url(http://fonts.googleapis.com/css?family=Quicksand:300+Josefin+Slab:400);
 
 /*
  Globals
@@ -98,7 +98,7 @@ a:hover {
 /* Typography */
 
 html, body {
-  font-family: 'Habibi', Georgia, "Times New Roman", serif;
+  font-family: 'Josefin Slab', Georgia, "Times New Roman", serif;
   font-size: 1.1em;
 }
 
@@ -281,7 +281,6 @@ iframe {
   vertical-align: top;
   color: #eee;
   padding: 0 8%;
-  text-align: right;
 }
 
 .bcg {
