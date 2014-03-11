@@ -300,7 +300,7 @@ iframe {
 @media (min-width: 768px) {
   #welcome .bcg {
   background-attachment: fixed;
-  background: url('./images/final/welcome.png');
+  background: url('./images/bike-basket1.jpg');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
