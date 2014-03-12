@@ -272,7 +272,6 @@ iframe {
 }
 
 .hsContent {
-  max-width: 450px;
   margin: -150px auto 0 auto;
   display: table-cell;
   vertical-align: top;
