@@ -45,6 +45,8 @@ class TwoChez < Sinatra::Application
 
 # Routes
 
+# Before/After Blocks
+
 before do
 	@user = session[:name]
 	@users = User.all
@@ -69,6 +71,8 @@ options '/*' do
     headers['Access-Control-Allow-Headers'] ="accept, authorization, origin"
 end
 
+# Public Routes 
+
 get '/' do
 	@title = 'Welcome'
 	@admin = false
@@ -77,64 +81,34 @@ get '/' do
 end
 
 get '/signup' do
+	# Protect '/signup' from unauthorized users
 	redirect '/login'
 end
 
-post '/signup' do
-	@user_exists = false
-
- 	@users.each { |user| @user_exists = true if params[:name] == user.name }
-
- 	if @user_exists
- 		halt 404
- 	else
-		user = User.new
-		user.name = params[:name]
-		user.email = params[:email]
-		user.password = 'password'
-		user.save
-
-		redirect '/menu'
+	# Login Routes 
+	get '/login' do
+		@message = "#{User.last.name}, #{User.last.password}"
+		@title = 'Login'
+		@action = 'log in'
+		erb :login
 	end
-end
 
-post '/user/delete' do
-	user = User.first(name: params[:name])
-	if user.name == session[:name] || user.admin
-		halt 500
-		redirect '/menu' 
-	else
-		user.destroy
-		redirect '/menu'
+	post '/login' do
+		session[:name] = params[:name]
+		@password = session[:password] = params[:password]
+		
+		user = User.first(name: session[:name])
+
+		if user.nil?
+			redirect '/'
+		elsif user.authenticate?(@password)
+			redirect '/admin'
+		else
+			redirect "/#{user.password}"
+		end
 	end
-end
 
-get '/login' do
-	@message = "#{User.last.name}, #{User.last.password}"
-	@title = 'Login'
-	@action = 'log in'
-	erb :login
-end
-
-post '/login' do
-	session[:name] = params[:name]
-	@password = session[:password] = params[:password]
-	
-	user = User.first(name: session[:name])
-
-	if user.nil?
-		redirect '/'
-	elsif user.authenticate?(@password)
-		redirect '/admin'
-	else
-		redirect "/#{user.password}"
-	end
-end
-
-post '/logout' do
-	session.destroy
-	redirect '/'
-end
+# Admin Routes
 
 get '/admin' do
 	if session[:name]
@@ -144,13 +118,14 @@ get '/admin' do
 	@admin = true ? @user : false
 
  	if @user && User.first(name: session[:name]).logged_in?(@user)
+ 		# only render admin view if logged in
  		erb :admin
  	else 
+ 		# redirect to '/login' if unauthorized user tries to access '/admin'
  		redirect '/login'
- 		# erb :admin
  	end
 end
-
+	
 get '/menu' do
 	@admin = true ? @user : false
 	
@@ -161,93 +136,134 @@ get '/menu' do
  	end
 end
 
-post '/menu' do
-	item = MenuItem.new
-	item.name = params[:name]
-	item.description = params[:description]
-	item.price = params[:price]
-	item.menu = params[:menu].split('-').join(' ')
-	cat = "#{params[:menu]}_category".to_sym
-	item.category = params[cat]
-	item.save
 
-	redirect '/menu'
-end
+	# Single-Button Menu Updates
+	get '/:id/raise' do
+		item = MenuItem.get params[:id]
+		@price = item.price = item.price + 1
+		item.save
 
-post '/edit' do
-	selector = "#{params[:menu]}_edit".to_sym
-	item = MenuItem.first(id: params[selector])
-	if params[:name] != ""
-		item.name = params[:name]
-	end
-	if params[:description] != ""
-		item.description = params[:description]
-	end
-	if params[:price] != ""
-		item.price = params[:price]
-	end
-	item.save
-			
-	redirect '/menu'
-end
-
-post '/:id/update' do
-	user = User.first(id: params[:id])
-	if params[:email] != ""
-		# send email to user.email
-		user.email = params[:email]
-		halt 200, "email change success"
-	end
-	if params[:old_password] != ""
-		if params[:old_password] == user.password && params[:new_password] == params[:confirm_password] && request.xhr?
-			user.password = params[:new_password]
-			# send email to user.email
-			halt 200, "password change success"
+		if request.xhr?
+			halt 200, "#{@price}"
 		else
-			halt 500, "password change failed"
-			# send email to user.email
+			redirect '/'
 		end
 	end
-	user.save
 
-	redirect '/admin'
-end
+	get '/:id/reduce' do
+		item = MenuItem.get params[:id]
+		@price = item.price = item.price - 1
+		item.save
 
-
-get '/:id/raise' do
-	item = MenuItem.get params[:id]
-	@price = item.price = item.price + 1
-	item.save
-
-	if request.xhr?
-		halt 200, "#{@price}"
-	else
-		redirect '/'
+		if request.xhr?
+			halt 200, "#{@price}"
+		else
+			redirect '/'
+		end
 	end
-end
 
-get '/:id/reduce' do
-	item = MenuItem.get params[:id]
-	@price = item.price = item.price - 1
-	item.save
+	get '/:id/delete' do
+		item = MenuItem.get params[:id]
+		item.destroy
+		@name = item.name
 
-	if request.xhr?
-		halt 200, "#{@price}"
-	else
-		redirect '/'
+		if request.xhr?
+			halt 200, "#{@name}"
+		else
+			redirect '/'
+		end
 	end
-end
+		
+	# Taskbar
+		# Update Personal Info
+		post '/:id/update' do
+			user = User.first(id: params[:id])
+			if params[:email] != ""
+				# send email to user.email
+				user.email = params[:email]
+				halt 200, "email change success"
+			end
+			if params[:old_password] != ""
+				if params[:old_password] == user.password && params[:new_password] == params[:confirm_password] && request.xhr?
+					user.password = params[:new_password]
+					# send email to user.email
+					halt 200, "password change success"
+				else
+					halt 500, "password change failed"
+					# send email to user.email
+				end
+			end
+			user.save
 
-get '/:id/delete' do
-	item = MenuItem.get params[:id]
-	item.destroy
-	@name = item.name
+			redirect '/admin'
+		end
 
-	if request.xhr?
-		halt 200, "#{@name}"
-	else
-		redirect '/'
-	end
-end
+		# Manage Users
+		post '/signup' do
+			@user_exists = false
+
+		 	@users.each { |user| @user_exists = true if params[:name] == user.name }
+
+		 	if @user_exists
+		 		halt 404
+		 	else
+				user = User.new
+				user.name = params[:name]
+				user.email = params[:email]
+				user.password = 'password'
+				user.save
+
+				redirect '/menu'
+			end
+		end
+
+		post '/user/delete' do
+			user = User.first(name: params[:name])
+			if user.name == session[:name] || user.admin
+				halt 500
+				redirect '/menu' 
+			else
+				user.destroy
+				redirect '/menu'
+			end
+		end
+
+		# Manage Menu
+		post '/menu' do
+			item = MenuItem.new
+			item.name = params[:name]
+			item.description = params[:description]
+			item.price = params[:price]
+			item.menu = params[:menu].split('-').join(' ')
+			cat = "#{params[:menu]}_category".to_sym
+			item.category = params[cat]
+			item.save
+
+			redirect '/menu'
+		end
+
+		post '/edit' do
+			selector = "#{params[:menu]}_edit".to_sym
+			item = MenuItem.first(id: params[selector])
+			if params[:name] != ""
+				item.name = params[:name]
+			end
+			if params[:description] != ""
+				item.description = params[:description]
+			end
+			if params[:price] != ""
+				item.price = params[:price]
+			end
+			item.save
+					
+			redirect '/menu'
+		end
+		
+		# Logout
+		post '/logout' do
+			session.destroy
+			redirect '/'
+		end
+
 
 end
