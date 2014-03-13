@@ -4,7 +4,8 @@ gem 'sinatra'
 gem 'data_mapper'
 gem 'shotgun'
 gem 'bcrypt',			require: 'bcrypt'
-gem 'multi_json', '1.8.4'
+gem 'multi_json', 		'1.8.4'
+gem 'pony'
 
 group :development, :test do
 	# gem 'shotgun'
@@ -13,8 +14,8 @@ group :development, :test do
 
 	gem 'guard-rspec'
 
-	gem 'guard-spork', '1.4.2'
-	gem 'spork', '0.9.2'
+	gem 'guard-spork', 	'1.4.2'
+	gem 'spork', 		'0.9.2'
 	gem 'growl'
 end
 

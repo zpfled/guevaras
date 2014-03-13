@@ -12,6 +12,11 @@
                     
                     <div class="backdrop">
 
+                        <li>
+                            <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#updateInfoModal">
+                                update my info
+                            </button>
+                        </li>
 
                         <li>
                             <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#addUserModal">
@@ -51,6 +56,11 @@
     <!-- SM- to LG-Screen Taskbar -->
     <ul data-spy="affix" data-offset-top="370" class="visible-sm visible-md visible-lg taskbar half-down affix nav navbar-nav">
         <div class="row">
+            <li class="col-md-2">
+                <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#updateInfoModal">
+                    update my info
+                </button>
+            </li>
             <li class="col-md-2 dropdown">
                 <button class="col-xs-12 btn btn-lg nav-btn" id="manageUsersButton" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
                     manage users <span class="caret"></span>
@@ -97,6 +107,42 @@
         </div>
     </ul>
 </section>
+
+<!-- UpdateInfo Modal -->
+<div class="modal fade" id="updateInfoModal" tabindex="-1" role="dialog" aria-labelledby="updateInfoModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-12 user-form">
+                
+                <!-- Create User Form -->
+                <form action="/signup" method="post" id="new-user">
+                    
+                    <!-- Name Field -->
+                    <label for="name">
+                        New user name (this person can modify the menu):
+                    </label>
+                    <input class="col-xs-12 add-form" name="name" type="text" maxlength="30" placeholder="New User Name">
+                    
+                    <!-- Email Field -->
+                    <label for="email">
+                        New user's email address:
+                    </label>
+                    <input class="col-xs-12 add-form" name="email" type="text" maxlength="100" placeholder="New User Email Address">
+                    
+                    <!-- Submit to Create User -->
+                    <button type="submit" class="col-xs-12 btn btn-lg btn-primary">create user</button>
+                </form>
+                <button id="cancel-add" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
+                    cancel
+                </button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- AddItem Modal -->
 <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="addItemModal" aria-hidden="true">
