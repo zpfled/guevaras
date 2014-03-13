@@ -1,22 +1,50 @@
 <section id="task-bar" class="content">
-    <ul data-spy="affix" data-offset-top="370" class="taskbar affix nav navbar-nav">
-        <li>
-            <form action="/logout" method="post">
-                <button class="btn btn-lg btn-primary" type="submit">log out</button>
-            </form>
-        </li>
-        <li>
-            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addItemModal">add item</button>
-        </li>
-        <li>
-            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#editItemModal">edit item</button>
-        </li>
-        <li>
-            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addUserModal">add user</button>
-        </li>
-        <li>
-            <button class="btn btn-lg btn-danger" data-toggle="modal" data-target="deleteUserModal">delete user</button>
-        </li>
+    <ul data-spy="affix" data-offset-top="370" class="visible-sm visible-md visible-lg taskbar affix nav navbar-nav">
+        <div class="row">
+            <li class="col-md-2">
+                <form action="/logout" method="post">
+                    <button class="col-xs-12 btn btn-lg nav-btn" type="submit">log out</button>
+                </form>
+            </li>
+            <li class="col-md-2 dropdown">
+                <button class="col-xs-12 btn btn-lg nav-btn" id="manageUsersButton" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
+                    manage users <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu btn-lg" role="menu" aria-labelledby="manageUsersButton">
+                    <div class="container backdrop">
+                        <li class-"row">
+                            <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#addUserModal">
+                                add user
+                            </button>
+                        </li>
+                        <li>
+                            <button class="col-xs-12 btn btn-lg nav-btn" data-toggle="modal" data-target="#deleteUserModal">
+                                delete user
+                            </button>
+                        </li>
+                    </div>
+                </ul>
+            </li>
+            <li class="col-md-2 dropdown">
+                <button class="col-xs-12 btn btn-lg nav-btn" id="manageMenuButton" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
+                    manage menu <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu btn-lg" role="menu" aria-labelledby="manageMenuButton">
+                    <div class="container backdrop">
+                        <li class-"row">
+                            <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#addItemModal">
+                                add item
+                            </button>
+                        </li>
+                        <li>
+                            <button class="col-xs-12 btn btn-lg nav-btn" data-toggle="modal" data-target="#editItemModal">
+                                edit item
+                            </button>
+                        </li>
+                    </div>
+                </ul>
+            </li>
+        </div>
     </ul>
 </section>
 
