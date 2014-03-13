@@ -251,14 +251,24 @@
       <div class="modal-body">
         <div class="row">
             <div class="col-xs-12 user-form">
+                
                 <!-- Create User Form -->
                 <form action="/signup" method="post" id="new-user">
+                    
                     <!-- Name Field -->
+                    <label for="name">
+                        New user name (this person can modify the menu):
+                    </label>
                     <input class="col-xs-12 add-form" name="name" type="text" maxlength="30" placeholder="New User Name">
+                    
                     <!-- Email Field -->
+                    <label for="email">
+                        New user's email address:
+                    </label>
                     <input class="col-xs-12 add-form" name="email" type="text" maxlength="100" placeholder="New User Email Address">
+                    
                     <!-- Submit to Create User -->
-                    <button type="submit" class="col-xs-12 btn btn-lg btn-warning">create user</button>
+                    <button type="submit" class="col-xs-12 btn btn-lg btn-primary">create user</button>
                 </form>
                 <button id="cancel-add" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
                     cancel
@@ -277,8 +287,12 @@
       <div class="modal-body">
         <div class="row">
             <div class="col-xs-12 user-form">
+                
                 <!-- Delete User Form -->
                 <form action="/user/delete" method="post" id="delete-user">
+                    <label for="name">
+                        Select a user to delete (this can not be undone!):
+                    </label>
                     <select class="col-xs-12 edit-form" id="delete-name" name="name">
                         <% @users.each do |user| %>
                             <% unless user.admin %>
@@ -286,7 +300,7 @@
                             <% end %>
                         <% end %>
                     </select>
-                    <button type="submit" class="col-xs-12 btn btn-lg btn-danger">delete user</button>
+                    <button type="submit" class="col-xs-12 btn btn-lg btn-primary">delete user</button>
                 </form>
                 <button id="cancel-delete" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
                     cancel

@@ -159,6 +159,10 @@ body {
   max-width: 1000px;
 }
 
+label {
+  margin-top: 1em;
+}
+
 /*
  * Header
  */

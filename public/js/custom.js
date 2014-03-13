@@ -98,7 +98,7 @@ $(function () {
 				$('.add-msg h3').html('success');
 				$('.add-msg').fadeIn(750).fadeOut(750);
 				$('#menu').html(data);
-				$('#cancel-users').click();
+				$('#cancel-add').click();
 			},
 			error: function() {
 				errorMessage();
@@ -124,7 +124,7 @@ $(function () {
 				$('.add-msg h3').html('success');
 				$('.add-msg').fadeIn(750).fadeOut(750);
 				$('#menu').html(data);
-				$('#cancel-users').click();
+				$('#cancel-delete').click();
 			},
 			error: function() {
 				errorMessage();
