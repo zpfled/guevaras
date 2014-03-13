@@ -466,7 +466,6 @@ article {
 .nav-btn:hover,
 .nav-btn:active,
 .nav-btn:focus {
-  border: none;
   outline: none;
   box-shadow: none;
   text-decoration: underline;
@@ -474,7 +473,7 @@ article {
 }
 
 .backdrop {
-  background-color: #222;
+  background-color: rgba(75, 75, 75, .9);
   padding: 1em 0 1em 0;
   border: 1px solid #444;
   border-radius: 1em;
@@ -701,27 +700,28 @@ BlackOut Screen
   padding-top: 4em;
 }
 
-@media (min-width: 768px) {
-  
-}
-
 /*
 Admin
  */
 
 .taskbar {
   position: absolute;
-  top: 50%;
   bottom: auto;
 
+  text-align: center;
   height: 60px;
   width: 100%;
 
   margin-top: -60px;
 
   background-color: rgba(1, 1, 1, .9);
-  display: inline-block;
   z-index: 99
+}
+
+@media (min-width: 768px) {
+  .taskbar {
+    width: 100%;
+  }
 }
 
 .taskbar.affix {
@@ -736,6 +736,19 @@ Admin
 .taskbar li,
 .taskbar.affix li {
   display: inline-block;
+}
+
+.btn-taskbar {
+  background-color: rgba(75, 75, 75, .75);
+  color: #fff;
+}
+
+.btn-taskbar:hover,
+.btn-taskbar:active,
+.btn-taskbar:focus {
+  outline: none;
+  color: #fff;
+  text-decoration: underline;
 }
 
 .modal-dialog {

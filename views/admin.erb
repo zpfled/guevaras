@@ -1,24 +1,69 @@
 <section id="task-bar" class="content">
-    <ul data-spy="affix" data-offset-top="370" class="visible-sm visible-md visible-lg taskbar affix nav navbar-nav">
-        <div class="row">
-            <li class="col-md-2">
-                <form action="/logout" method="post">
-                    <button class="col-xs-12 btn btn-lg nav-btn" type="submit">log out</button>
-                </form>
+    
+    <!-- XS-Screen Taskbar -->
+
+    <ul data-spy="affix" data-offset-top="370" class="visible-xs taskbar half-down affix nav">
+        <div class="row container">
+            <li class="dropdown col-xs-12">
+                <button class="col-xs-12 btn btn-lg btn-taskbar" id="taskbar" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
+                    admin tools
+                </button>
+                <ul class="dropdown-menu btn-lg inner" role="menu" aria-labelledby="taskbar">
+                    
+                    <div class="backdrop">
+
+
+                        <li>
+                            <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#addUserModal">
+                                add user
+                            </button>
+                        </li>
+
+                        <li>
+                            <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#deleteUserModal">
+                                delete user
+                            </button>
+                        </li>
+                        
+                        <li>
+                            <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#addItemModal">
+                                add item
+                            </button>
+                        </li>
+
+                        <li>
+                            <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#editItemModal">
+                                edit item
+                            </button>
+                        </li>
+
+                        <li>
+                            <form action="/logout" method="post">
+                                <button class="btn btn-lg nav-btn" type="submit">log out</button>
+                            </form>
+                        </li>
+                    </div>
+                </ul>
             </li>
+        </div>
+    </ul>
+
+    <!-- SM- to LG-Screen Taskbar -->
+    <ul data-spy="affix" data-offset-top="370" class="visible-sm visible-md visible-lg taskbar half-down affix nav navbar-nav">
+        <div class="row">
             <li class="col-md-2 dropdown">
                 <button class="col-xs-12 btn btn-lg nav-btn" id="manageUsersButton" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
                     manage users <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu btn-lg" role="menu" aria-labelledby="manageUsersButton">
                     <div class="container backdrop">
-                        <li class-"row">
+                        <li class="row">
                             <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#addUserModal">
                                 add user
                             </button>
                         </li>
                         <li>
-                            <button class="col-xs-12 btn btn-lg nav-btn" data-toggle="modal" data-target="#deleteUserModal">
+                            <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#deleteUserModal">
                                 delete user
                             </button>
                         </li>
@@ -31,18 +76,23 @@
                 </button>
                 <ul class="dropdown-menu btn-lg" role="menu" aria-labelledby="manageMenuButton">
                     <div class="container backdrop">
-                        <li class-"row">
+                        <li class="row">
                             <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#addItemModal">
                                 add item
                             </button>
                         </li>
                         <li>
-                            <button class="col-xs-12 btn btn-lg nav-btn" data-toggle="modal" data-target="#editItemModal">
+                            <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#editItemModal">
                                 edit item
                             </button>
                         </li>
                     </div>
                 </ul>
+            </li>
+            <li class="col-md-2">
+                <form action="/logout" method="post">
+                    <button class="col-xs-12 btn btn-lg nav-btn" type="submit">log out</button>
+                </form>
             </li>
         </div>
     </ul>
