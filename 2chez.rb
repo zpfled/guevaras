@@ -71,7 +71,7 @@ options '/*' do
     headers['Access-Control-Allow-Headers'] ="accept, authorization, origin"
 end
 
-# Public Routes 
+# Public Routes ---------------------------------------------------------------
 
 get '/' do
 	@title = 'Welcome'
@@ -108,7 +108,7 @@ end
 		end
 	end
 
-# Admin Routes
+# Admin Routes ---------------------------------------------------------------
 
 get '/admin' do
 	if session[:name]
@@ -177,16 +177,23 @@ end
 	# Taskbar
 		# Update Personal Info
 		post '/:id/update' do
+			admin = User.first
 			user = User.first(id: params[:id])
+			old_password = params[:old_password]
+			new_password = params[:new_password]
+			confirm_password = params[:confirm_password]
+
+
 			if params[:email] != ""
 				# send email to user.email
 				user.email = params[:email]
 				halt 200, "email change success"
 			end
 			if params[:old_password] != ""
-				if params[:old_password] == user.password && params[:new_password] == params[:confirm_password] && request.xhr?
-					user.password = params[:new_password]
-					# send email to user.email
+				if old_password == user.password && new_password == confirm_password && request.xhr?
+					user.password = new_password
+					# email confirmation here
+
 					halt 200, "password change success"
 				else
 					halt 500, "password change failed"
