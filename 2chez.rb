@@ -137,8 +137,10 @@ post '/logout' do
 end
 
 get '/admin' do
+	if session[:name]
+		@id = User.first(name: session[:name]).id
+	end
 	@title = 'Dashboard'
-	@user = session[:name]
 	@admin = true ? @user : false
 
  	if @user && User.first(name: session[:name]).logged_in?(@user)
@@ -188,6 +190,29 @@ post '/edit' do
 			
 	redirect '/menu'
 end
+
+post '/:id/update' do
+	user = User.first(id: params[:id])
+	if params[:email] != ""
+		# send email to user.email
+		user.email = params[:email]
+		halt 200, "email change success"
+	end
+	if params[:old_password] != ""
+		if params[:old_password] == user.password && params[:new_password] == params[:confirm_password] && request.xhr?
+			user.password = params[:new_password]
+			# send email to user.email
+			halt 200, "password change success"
+		else
+			halt 500, "password change failed"
+			# send email to user.email
+		end
+	end
+	user.save
+
+	redirect '/admin'
+end
+
 
 get '/:id/raise' do
 	item = MenuItem.get params[:id]

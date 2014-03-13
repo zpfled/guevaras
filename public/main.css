@@ -161,6 +161,7 @@ body {
 
 label {
   margin-top: 1em;
+  width: 100%;
 }
 
 /*
@@ -251,6 +252,10 @@ label {
 
 .half-down {
   top: 50%;
+}
+
+.center {
+  text-align: center;
 }
 
 .menu.nav {
@@ -765,6 +770,8 @@ Admin
   background-color: inherit;
   color: inherit;
 }
+
+
 
 .add-form input,
 .user-form input,

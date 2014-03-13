@@ -1,15 +1,11 @@
-// $(function () {
-// 	$('#map-btn').on('click', function() {
-// 		$('iframe').fadeToggle();
-// 	});
-// });
+
 
 function errorMessage() {
 	$('.error-msg h3').html('sorry, that didn\'t work');
 	$('.error-msg').fadeIn(750).fadeOut(750);
 }
 
-// Filter Menu and Category Inputs
+// Filter Menu and Category Inputs --------------------------------------------------------------------------------------
 
 function filterCategories(menu) {
 	if (menu.options[menu.selectedIndex].text === 'Lunch') {
@@ -79,7 +75,41 @@ function editFilterCategories(menu) {
 	}
 }
 
-// Asynchronous User Updates
+// Asynchronous Account Updates --------------------------------------------------------------------------------------
+
+$(function () {
+	$('#update-info').on('submit', function(event) {
+		
+		event.preventDefault();
+		var id = $(this).find('.id').text();
+		var button = $(this);
+
+		$.ajax({
+
+			type:		'post',
+			url:		'/' + id + '/update',
+			data:		$(this).serialize(),
+			dataType:	'html',
+
+		
+			success: function(data) {
+				$('.modal').slideUp(200);
+				$('.modal-backdrop').fadeToggle(200);
+				$('.menu-msg h3').html(data);
+				$(button.parent().parent().find('.item-price')).html(data);
+				$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
+				$('#cancel-edit').click();
+
+			},
+			error: function() {
+				$('#cancel-edit').click();
+				errorMessage();
+			}
+		});
+	});
+});
+
+// Asynchronous User Updates --------------------------------------------------------------------------------------
 
 $(function () {
 	$('#new-user').on('submit', function(event) {
@@ -133,7 +163,7 @@ $(function () {
 	});
 });
 
-// Asynchronous Menu Updates
+// Asynchronous Menu Updates --------------------------------------------------------------------------------------
 
 $(function () {
 	$('#add-item').on('submit', function(event) {
@@ -275,7 +305,7 @@ $(function () {
 	});
 });
 
-// Parallax Scrolling Fanciness
+// Parallax Scrolling Fanciness --------------------------------------------------------------------------------------
 
 ( function( $ ) {
     // Init Skrollr
