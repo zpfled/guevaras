@@ -185,14 +185,18 @@ end
 
 
 			if params[:email] != ""
-				# send email to user.email
+				Pony.mail 	:to => 'zpfled@gmail.com',
+            				:from => "epfled@gmail.com",
+            				:subject => "Thanks for signing my guestbook, #{user.name}!",
+            				:body => 'Hi pardner.'
+
 				user.email = params[:email]
 				halt 200, "email change success"
 			end
 			if params[:old_password] != ""
 				if old_password == user.password && new_password == confirm_password && request.xhr?
 					user.password = new_password
-					# email confirmation here
+					
 
 					halt 200, "password change success"
 				else
@@ -219,6 +223,11 @@ end
 				user.email = params[:email]
 				user.password = 'password'
 				user.save
+
+				Pony.mail 	:to => params[:email],
+            				:from => "noreply@2Chez.com",
+            				:subject => "Welcome to the big show, #{params[:name].capitalize}!",
+            				:body => erb(:new_user, layout: false, locals: { user: user, admin: User.first })
 
 				redirect '/menu'
 			end
