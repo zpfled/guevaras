@@ -12,7 +12,7 @@ class User
 	property :name, 		Text,		required: true,		unique: true,	key: true
 	property :email,		Text,		required: true,		unique: true,	format: :email_address
 	property :password, 	BCryptHash, required: true,		length: 8..255
-	property :admin,		Boolean,	default: false,		writer: :protected
+	property :admin,		Boolean,	default: false#,		writer: :protected
 
 	def authenticate?(attempted_password)
 		self.password == attempted_password ? true : false
@@ -45,7 +45,7 @@ class TwoChez < Sinatra::Application
 
 # Routes
 
-# Before/After Blocks
+# Before/After Blocks ----------------------------------------------------------
 
 before do
 	@user = session[:name]
@@ -59,10 +59,14 @@ before do
 	@categories = []
 	@menu_items.map { |item| @categories.push(item.category) unless @categories.include?(item.category) }
 	@categories.sort!
+
+	# Set admin
+	@users.each { |user| user.admin = true ? user.name == 'zach' || user.name == 'dave' : false; user.save }
 end
 
 after do
 	p "Params: #{params}"
+	p User.first.admin
 end
 
 options '/*' do
@@ -112,16 +116,19 @@ end
 
 get '/admin' do
 	if session[:name]
-		@id = User.first(name: session[:name]).id
+		user = User.first(name: session[:name])
+		@id = user.id
+		@boss = true ? user.admin == true : false
 	end
+	
 	@title = 'Dashboard'
 	@admin = true ? @user : false
 
  	if @user && User.first(name: session[:name]).logged_in?(@user)
- 		# only render admin view if logged in
+ 		# Only render admin view if logged in
  		erb :admin
  	else 
- 		# redirect to '/login' if unauthorized user tries to access '/admin'
+ 		# Redirect to '/login' if unauthorized user tries to access '/admin'
  		redirect '/login'
  	end
 end
@@ -185,26 +192,39 @@ end
 
 
 			if params[:email] != ""
-				Pony.mail 	:to => 'zpfled@gmail.com',
-            				:from => "epfled@gmail.com",
-            				:subject => "Thanks for signing my guestbook, #{user.name}!",
-            				:body => 'Hi pardner.'
+				# Email change confirmation to new email address, cc: old email address
+				Pony.mail 	to: 		"#{user.email}",
+							cc: 		"#{params[:email]}",
+            				from: 		"noreply@2Chez.com",
+            				subject: 	"Email Change Confirmation",
+            				body: 		erb(:email_email, layout: false, locals: { user: user, admin: admin })
 
 				user.email = params[:email]
+				user.save
+				
 				halt 200, "email change success"
 			end
-			if params[:old_password] != ""
+			if params[:old_password] != "" && request.xhr?
 				if old_password == user.password && new_password == confirm_password && request.xhr?
+					# Email confirmation every time password is changed
+					Pony.mail 	to: 		"#{user.email}",
+            					from: 		"noreply@2Chez.com",
+            					subject: 	"#{user.name/capitalize}, your password has been changed",
+            					body: 		erb(:password_email, layout: false, locals: { user: user, admin: admin })
+
 					user.password = new_password
-					
+					user.save			
 
 					halt 200, "password change success"
 				else
-					halt 500, "password change failed"
-					# send email to user.email
+					halt 500
+					# Send email to user upon failed password change attempt
+					Pony.mail 	to: 		"#{user.email}",
+            					from: 		"noreply@2Chez.com",
+            					subject: 	"Failed password change",
+            					body: 		erb(:failed_password_email, layout: false, locals: { user: user, admin: admin })
 				end
 			end
-			user.save
 
 			redirect '/admin'
 		end
@@ -212,11 +232,12 @@ end
 		# Manage Users
 		post '/signup' do
 			@user_exists = false
+			admin = User.first
 
 		 	@users.each { |user| @user_exists = true if params[:name] == user.name }
 
 		 	if @user_exists
-		 		halt 404
+		 		halt 404, "#{params[:name].capitalize} is already registered"
 		 	else
 				user = User.new
 				user.name = params[:name]
@@ -224,22 +245,38 @@ end
 				user.password = 'password'
 				user.save
 
-				Pony.mail 	:to => params[:email],
-            				:from => "noreply@2Chez.com",
-            				:subject => "Welcome to the big show, #{params[:name].capitalize}!",
-            				:body => erb(:new_user, layout: false, locals: { user: user, admin: User.first })
+				# Send email to new user
+				Pony.mail 	to:  		params[:email],
+            				from:  		"noreply@2Chez.com",
+            				subject:  	"Welcome to the big show, #{params[:name].capitalize}!",
+            				body:  		erb(:new_user, layout: false, locals: { user: user, admin: admin })
+
+            	# Send confirmation email to Todd
+            	Pony.mail 	to:  		admin.email,
+            				from:  		"noreply@2Chez.com",
+            				subject:  	"Did you grant #{params[:name].capitalize} access to the 2Chez website?",
+            				body:  		erb(:new_user_admin, layout: false, locals: { user: user, admin: admin })
 
 				redirect '/menu'
 			end
 		end
 
 		post '/user/delete' do
+			admin = User.first
 			user = User.first(name: params[:name])
+
 			if user.name == session[:name] || user.admin
 				halt 500
 				redirect '/menu' 
 			else
 				user.destroy
+				
+				# Send confirmation email to Todd
+            	Pony.mail 	to: 	 	admin.email,
+            				from: 		"noreply@2Chez.com",
+            				subject: 	"Deleted #{params[:name].capitalize}",
+            				body: 		erb(:delete_user_admin, layout: false, locals: { user: user, admin: admin })
+			
 				redirect '/menu'
 			end
 		end
