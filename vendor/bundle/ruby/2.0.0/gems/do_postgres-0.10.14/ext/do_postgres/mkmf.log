@@ -1,0 +1,169 @@
+have_library: checking for main() in -lpq... -------------------- yes
+
+"xcrun clang -o conftest -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0/universal-darwin13 -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0/ruby/backward -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0 -I. -I/usr/local/Cellar/postgresql/9.3.1/include -I/usr/local/Cellar/postgresql/9.3.1/include/server -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -g -Os -pipe -DHAVE_NO_DATETIME_NEWBANG conftest.c  -L. -L/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib -L/usr/local/Cellar/postgresql/9.3.1/lib -L. -L/usr/local/lib       -lruby.2.0.0  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"xcrun clang -o conftest -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0/universal-darwin13 -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0/ruby/backward -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0 -I. -I/usr/local/Cellar/postgresql/9.3.1/include -I/usr/local/Cellar/postgresql/9.3.1/include/server -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -g -Os -pipe -DHAVE_NO_DATETIME_NEWBANG conftest.c  -L. -L/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib -L/usr/local/Cellar/postgresql/9.3.1/lib -L. -L/usr/local/lib       -lruby.2.0.0 -lpq  -lpthread -ldl -lobjc "
+conftest.c:5:57: error: use of undeclared identifier 'main'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
+ 6: int main(int argc, char **argv)
+ 7: {
+ 8:   if (argc > 1000000) {
+ 9:     printf("%p", &t);
+10:   }
+11: 
+12:   return 0;
+13: }
+/* end */
+
+"xcrun clang -o conftest -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0/universal-darwin13 -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0/ruby/backward -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0 -I. -I/usr/local/Cellar/postgresql/9.3.1/include -I/usr/local/Cellar/postgresql/9.3.1/include/server -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -g -Os -pipe -DHAVE_NO_DATETIME_NEWBANG conftest.c  -L. -L/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib -L/usr/local/Cellar/postgresql/9.3.1/lib -L. -L/usr/local/lib       -lruby.2.0.0 -lpq  -lpthread -ldl -lobjc "
+conftest.c:5:15: warning: implicit declaration of function 'main' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { main(); return 0; }
+              ^
+1 warning generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int t(void) { main(); return 0; }
+ 6: int main(int argc, char **argv)
+ 7: {
+ 8:   if (argc > 1000000) {
+ 9:     printf("%p", &t);
+10:   }
+11: 
+12:   return 0;
+13: }
+/* end */
+
+--------------------
+
+have_header: checking for libpq-fe.h... -------------------- yes
+
+"xcrun clang -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0/universal-darwin13 -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0/ruby/backward -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0 -I. -I/usr/local/Cellar/postgresql/9.3.1/include -I/usr/local/Cellar/postgresql/9.3.1/include/server -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -g -Os -pipe -DHAVE_NO_DATETIME_NEWBANG     -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <libpq-fe.h>
+/* end */
+
+--------------------
+
+have_header: checking for libpq/libpq-fs.h... -------------------- yes
+
+"xcrun clang -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0/universal-darwin13 -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0/ruby/backward -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0 -I. -I/usr/local/Cellar/postgresql/9.3.1/include -I/usr/local/Cellar/postgresql/9.3.1/include/server -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -g -Os -pipe -DHAVE_NO_DATETIME_NEWBANG     -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <libpq/libpq-fs.h>
+/* end */
+
+--------------------
+
+have_header: checking for postgres.h... -------------------- yes
+
+"xcrun clang -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0/universal-darwin13 -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0/ruby/backward -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0 -I. -I/usr/local/Cellar/postgresql/9.3.1/include -I/usr/local/Cellar/postgresql/9.3.1/include/server -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -g -Os -pipe -DHAVE_NO_DATETIME_NEWBANG     -c conftest.c"
+In file included from conftest.c:3:
+In file included from /usr/local/Cellar/postgresql/9.3.1/include/server/postgres.h:47:
+/usr/local/Cellar/postgresql/9.3.1/include/server/c.h:98:9: warning: '_' macro redefined
+#define _(x) gettext(x)
+        ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0/ruby/defines.h:42:10: note: previous definition is here
+# define _(args) args
+         ^
+1 warning generated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <postgres.h>
+/* end */
+
+--------------------
+
+have_header: checking for mb/pg_wchar.h... -------------------- no
+
+"xcrun clang -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0/universal-darwin13 -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0/ruby/backward -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/include/ruby-2.0.0 -I. -I/usr/local/Cellar/postgresql/9.3.1/include -I/usr/local/Cellar/postgresql/9.3.1/include/server -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -g -Os -pipe -DHAVE_NO_DATETIME_NEWBANG     -c conftest.c"
+In file included from conftest.c:3:
+/usr/local/Cellar/postgresql/9.3.1/include/server/mb/pg_wchar.h:360:16: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+typedef bool (*mbcharacter_incrementer) (unsigned char *mbstr, int len);
+              ~^
+/usr/local/Cellar/postgresql/9.3.1/include/server/mb/pg_wchar.h:360:9: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+typedef bool (*mbcharacter_incrementer) (unsigned char *mbstr, int len);
+~~~~~~~ ^
+/usr/local/Cellar/postgresql/9.3.1/include/server/mb/pg_wchar.h:360:14: error: function cannot return function type 'int (unsigned char *, int)'
+typedef bool (*mbcharacter_incrementer) (unsigned char *mbstr, int len);
+             ^
+/usr/local/Cellar/postgresql/9.3.1/include/server/mb/pg_wchar.h:385:2: error: unknown type name 'uint32'
+        uint32          utf;                    /* UTF-8 */
+        ^
+/usr/local/Cellar/postgresql/9.3.1/include/server/mb/pg_wchar.h:386:2: error: unknown type name 'uint32'
+        uint32          code;                   /* local code */
+        ^
+/usr/local/Cellar/postgresql/9.3.1/include/server/mb/pg_wchar.h:394:2: error: unknown type name 'uint32'
+        uint32          code;                   /* local code */
+        ^
+/usr/local/Cellar/postgresql/9.3.1/include/server/mb/pg_wchar.h:395:2: error: unknown type name 'uint32'
+        uint32          utf;                    /* UTF-8 */
+        ^
+/usr/local/Cellar/postgresql/9.3.1/include/server/mb/pg_wchar.h:403:2: error: unknown type name 'uint32'
+        uint32          utf1;                   /* UTF-8 code 1 */
+        ^
+/usr/local/Cellar/postgresql/9.3.1/include/server/mb/pg_wchar.h:404:2: error: unknown type name 'uint32'
+        uint32          utf2;                   /* UTF-8 code 2 */
+        ^
+/usr/local/Cellar/postgresql/9.3.1/include/server/mb/pg_wchar.h:405:2: error: unknown type name 'uint32'
+        uint32          code;                   /* local code */
+        ^
+/usr/local/Cellar/postgresql/9.3.1/include/server/mb/pg_wchar.h:413:2: error: unknown type name 'uint32'
+        uint32          code;                   /* local code */
+        ^
+/usr/local/Cellar/postgresql/9.3.1/include/server/mb/pg_wchar.h:414:2: error: unknown type name 'uint32'
+        uint32          utf1;                   /* UTF-8 code 1 */
+        ^
+/usr/local/Cellar/postgresql/9.3.1/include/server/mb/pg_wchar.h:415:2: error: unknown type name 'uint32'
+        uint32          utf2;                   /* UTF-8 code 2 */
+        ^
+/usr/local/Cellar/postgresql/9.3.1/include/server/mb/pg_wchar.h:473:8: error: unknown type name 'mbcharacter_incrementer'
+extern mbcharacter_incrementer pg_database_encoding_character_incrementer(void);
+       ^
+/usr/local/Cellar/postgresql/9.3.1/include/server/mb/pg_wchar.h:513:27: error: function cannot return function type 'bool' (aka 'int (int *)')
+extern bool pg_verifymbstr(const char *mbstr, int len, bool noError);
+                          ^
+/usr/local/Cellar/postgresql/9.3.1/include/server/mb/pg_wchar.h:514:28: error: function cannot return function type 'bool' (aka 'int (int *)')
+extern bool pg_verify_mbstr(int encoding, const char *mbstr, int len,
+                           ^
+/usr/local/Cellar/postgresql/9.3.1/include/server/mb/pg_wchar.h:542:28: error: function cannot return function type 'bool' (aka 'int (int *)')
+extern bool pg_utf8_islegal(const unsigned char *source, int length);
+                           ^
+2 warnings and 15 errors generated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <mb/pg_wchar.h>
+/* end */
+
+--------------------
+
