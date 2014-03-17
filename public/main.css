@@ -287,7 +287,7 @@ iframe {
     background: -o-linear-gradient(top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);  
     background: linear-gradient(top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%); 
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll;
 }
 
 @media (min-width: 768px) {
@@ -323,7 +323,7 @@ iframe {
   height: 100%;
   background-position: center center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
   background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
