@@ -135,6 +135,10 @@ p {
   color: #666;
 }
 
+.text-right {
+  text-align: right;
+}
+
 
 /*
  * Base structure
