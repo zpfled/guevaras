@@ -126,6 +126,15 @@ p {
   margin-bottom: 0;
 }
 
+.copyright {
+  color: #666;
+  font-size: .65em;
+}
+
+.copyright a {
+  color: #666;
+}
+
 
 /*
  * Base structure
