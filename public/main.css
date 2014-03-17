@@ -294,13 +294,7 @@ iframe {
     bottom: 0;
     top: auto;
 
-    background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);  
-      background: -moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);  
-      background: -ms-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);  
-      background: -o-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);  
-      background: linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); 
-    background-position: center;
-    background-attachment: fixed;
+    background: none;
   }
 }
 
