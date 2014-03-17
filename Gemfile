@@ -8,7 +8,7 @@ gem 'multi_json', 		'1.8.4'
 gem 'pony'
 
 group :development, :test do
-	# gem 'shotgun'
+	#  gem 'shotgun'
 	gem 'rspec'
 	gem 'guard'
 
@@ -26,7 +26,7 @@ end
 
 group :development do
 	gem 'guard-livereload', require: false
-	# gem 'guard-shotgun', :git => 'https://github.com/rchampourlier/guard-shotgun.git'
+	gem 'guard-shotgun', :git => 'https://github.com/rchampourlier/guard-shotgun.git'
 	gem 'sqlite3'
 	gem 'dm-sqlite-adapter'
 end
