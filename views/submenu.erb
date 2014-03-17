@@ -1,4 +1,4 @@
-<!-- <section class="inner"> -->
+<section class="menu-bcg inner container">
 <% @categories.each do |category| %>
 
   <% @relevant_items = @menu_items.select { |item| item.menu == menu && item.category == category } %>
@@ -11,7 +11,7 @@
   
   <% @relevant_categories.each do |relevant_category| %>  
 
-  <h3>
+  <h3 class="category-section">
     <%= relevant_category.split('-').each { |word| word.capitalize! }.join(' ') unless relevant_category == menu.split(' ').join('-') %>
   </h3>
   
@@ -31,17 +31,17 @@
           <form action="/<%= item.id %>/raise" method="get" class="raise">
             <div class="id hidden"><%= item.id %></div>
             <input name="id" label="id" value="<%= item.id %>" type="hidden">
-            <button type="submit" class="btn btn-lg btn-warning col-xs-12 col-md-4">raise price by $1</button>
+            <button type="submit" class="btn btn-lg btn-success col-xs-12 col-md-6">raise price by $1</button>
           </form>
           <form action="/<%= item.id %>/reduce" method="get" class="reduce">
             <div class="id hidden"><%= item.id %></div>
             <input name="id" label="id" value="<%= item.id %>" type="hidden">
-            <button type="submit" class="btn btn-lg btn-primary col-xs-12 col-md-4">reduce price by $1</button>
+            <button type="submit" class="btn btn-lg btn-primary col-xs-12 col-md-6">reduce price by $1</button>
           </form>
           <form action="/<%= item.id %>/delete" method="get" class="delete">
             <div class="id hidden"><%= item.id %></div>
             <input name="id" label="id" value="<%= item.id %>" type="hidden">
-            <button type="submit" class="btn btn-lg btn-danger col-xs-12 col-md-4">delete <%= item.name %></button>
+            <button type="submit" class="btn btn-lg btn-danger col-xs-12 col-md-12">delete <%= item.name %></button>
           </form>
         </div>
       <% end %>
@@ -49,4 +49,4 @@
     <% end %>
   <% end %>
 <% end %>
-<!-- </section> -->
+</section>

@@ -456,6 +456,32 @@ footer .hsContent {
   font-size: .85em;
 }
 
+.menu-bcg {
+  background: url('./images/final/menu-bcg.png') repeat center scroll;
+  color: #444;
+  width: 100%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border: .75em solid #222;
+  border-radius: .25em;
+}
+
+@media (min-width: 768px) {
+  .menu-bcg {
+  background: url('./images/final/menu-bcg.png') repeat center scroll;
+  color: #444;
+  width: 50%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border: .75em solid #222;
+  border-radius: .25em;
+}
+}
+
+.menu-intro {
+  padding-bottom: 1em;
+}
+
 article {
   padding-bottom: 1em;
 }
@@ -469,17 +495,20 @@ article {
   color: #444;
 }
 
-.menu>dt {
+.category-section {
   text-transform: uppercase;
-}
-
-.menu>dd {  
+  text-decoration: underline;
   margin-bottom: 1em;
 }
 
-.menu-intro {
-  padding-bottom: 1em;
+.item-name {
+  font-size: 1.2em;
 }
+
+.item-description {
+  font-style: italic;
+}
+
 
 .menu-msg {
   min-height: 20px;
@@ -497,21 +526,6 @@ article {
 * Navbar
 */
 
-.nav-btn {
-  border: none;
-  background-color: inherit;
-  color: #fff;
-}
-
-.nav-btn:hover,
-.nav-btn:active,
-.nav-btn:focus {
-  outline: none;
-  box-shadow: none;
-  text-decoration: underline;
-  color: #fff;
-}
-
 .backdrop {
   background-color: rgba(75, 75, 75, .9);
   padding: 1em 0 1em 0;
@@ -523,35 +537,6 @@ article {
 .dropdown-menu li {
   width: 100%;
 }
-
-/*.navbar-nav li {
-  margin: 0 1em 0 1em;
-}
-
-.bottom-nav {
-  background-color: #555;
-  width: 100%;
-}
-
-.welcome-menu {
-  text-shadow: none;
-  width: 100%;
-  bottom: 100%;
-  top: auto !important;
-}
-
-.welcome-hours {
-  background-color: rgba(0, 0, 0, .2);
-  border-bottom: 1px solid #666;
-  border-top: 1px solid #666;
-  padding: 15px 0;
-}
-
-.welcome-hours li {
-  display: block;
-  text-decoration: none;
-  font-size: 13px;
-}*/
 
 /*
  * Footer
@@ -569,25 +554,9 @@ footer {
 @media (min-width: 768px) {
 
   /* Handle the widths */
-  .masthead,
-  .bar-wrapper {
-    width: 100%; /* Must be percentage or pixels for horizontal alignment */
-  }
 
   .content-block {
     width: 100%;
-  }
-
-  .bar-wrapper {
-    margin-top: 30%;
-  }
-
-  .mobile {
-    display: none;
-  }
-
-  .non-mobile {
-    display: inherit;
   }
 }
 
@@ -674,29 +643,7 @@ footer {
     color: #fff;
     opacity: 1;
   }
-  
-  .phone {
-    visibility: visible;
-    display: inherit;
-  }
 
-  .contact-jumbotron {
-    margin-top: 50px !important;
-    overflow: hidden;
-    width: 100%;
-  }
-
-  .mobile {
-    display: inherit;
-  }
-
-  .non-mobile {
-    display: none;
-  }
-
-  .inner-dividers div {
-    border-left: none;
-  }
 }
 
 .btn-bottom {
@@ -715,15 +662,6 @@ footer {
 
 .right-align {
   text-align: right;
-}
-
-.inner-dividers div {
-  border-left: 1px solid #eee;
-  height: 100%;
-}
-
-.inner-dividers div:first-child {
-  border-left: none;
 }
 
 /*
