@@ -146,14 +146,7 @@ body {
   background-color: #444;
   text-rendering: optimizeLegibility;
   z-index: -1;
-}
-body {
   color: #fff;
-}
-
-.bar-wrapper {
-  width: 100%;
-  background-color: rgba(255, 255, 255, .75);
 }
 
 /* Padding for spacing */
@@ -172,66 +165,28 @@ label {
  * Header
  */
 
-.masthead {
-  position: relative;
-  z-index: 1;
-}
-
 .brand {
+  width: 100%;
+  text-align: right;
+  font-size: 4em;
   margin-top: 10px;
   margin-bottom: 10px;
   display: block;
   position: relative;
-  z-index: 1
+  border-bottom: 1px solid #eee;
 }
 
 .brand a:hover,
 .brand a:focus {
-  border-bottom: 3px solid;
-  border-bottom-color: rgba(255,255,255,.5);
-}
-
-.masthead-nav {
-  z-index: 2;
-  display: block;
-}
-
-.masthead-nav li {
-  display: inline-block;
-  z-index: 3;
-  position: relative;
-}
-.masthead-nav > li + li {
-  margin-left: 20px;
-}
-.masthead-nav > li > a {
-  padding-left: 0;
-  padding-right: 0;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff; /* IE8 proofing */
-  color: rgba(255,255,255,.75);
-  border-bottom: 2px solid transparent;
-}
-.masthead-nav > li > a:hover,
-.masthead-nav > li > a:focus {
-  background-color: transparent;
-  border-bottom-color: rgba(255,255,255,.25);
-}
-.masthead-nav > .active > a,
-.masthead-nav > .active > a:hover,
-.masthead-nav > .active > a:focus {
-  color: #fff;
-  border-bottom-color: #fff;
+  border-bottom: 4px solid;
+  border-bottom-color: rgba(255,255,255,.75);
 }
 
 @media (min-width: 768px) {
   .brand {
+    border: none;
     font-size: 8em;
     text-align: right;
-  }
-  .masthead-nav {
-    float: right;
   }
 }
 
@@ -289,6 +244,7 @@ label {
 iframe {
   padding: 1em 0 1em 0;
 
+/* make map black and white */
   -webkit-filter: grayscale(100%);
   -moz-filter: grayscale(100%);
   -ms-filter: grayscale(100%);
@@ -314,6 +270,40 @@ iframe {
 
 /* PARALLAX SCROLLING STUFF */
 
+.bcg-gradient {
+  position: fixed;
+  height: 100%;
+  width: auto;
+  bottom: 0;
+  top: auto;
+
+  background: -webkit-linear-gradient(top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);  
+    background: -moz-linear-gradient(top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);  
+    background: -ms-linear-gradient(top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);  
+    background: -o-linear-gradient(top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);  
+    background: linear-gradient(top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%); 
+  background-position: center;
+  background-attachment: fixed;
+}
+
+@media (min-width: 768px) {
+  .bcg-gradient {
+    position: fixed;
+    height: 100%;
+    width: auto;
+    bottom: 0;
+    top: auto;
+
+    background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);  
+      background: -moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);  
+      background: -ms-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);  
+      background: -o-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);  
+      background: linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); 
+    background-position: center;
+    background-attachment: fixed;
+  }
+}
+
 .hsContainer {
   display: table;
   table-layout: fixed;
@@ -332,29 +322,40 @@ iframe {
 }
 
 .bcg {
+  height: 100%;
   background-position: center center;
   background-repeat: no-repeat;
-  background-attachment: scroll; /*Has to be scroll, otherwise it doesn't work on ios*/
+  background-attachment: fixed;
   background-size: cover;
-  height: 100%;
-  /*width: 100%;*/
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+@media (min-width: 768px) {
+  .bcg {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    height: 100%;
+  }
 }
 
 
 /* Slide 1 */
 #welcome .bcg {
   position: absolute;
-  background: url('./images/final/welcome.png');
+  background-image: url('./images/final/welcome-sm.png');
 }
 
 @media (min-width: 768px) {
   #welcome .bcg {
   background-attachment: fixed;
-  background: url('./images/final/welcome.png') center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background-image: url('./images/final/welcome.png');
   }
 }
 

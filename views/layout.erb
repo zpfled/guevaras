@@ -59,29 +59,30 @@
 
         <section id="welcome" class="homeSlide">
             <div class="bcg" 
-            data-center="background-position: 50% 0px;"
-            data-bottom-top="background-position: 0 50%;"
-            data-top-bottom="background-position: 75px 50%;">
-                <div class="hsContainer">
+            data-center="background-position: 100% 0px;"
+            data-top-bottom="background-position: 100% -200px;">
+                <div class="hsContainer bcg-gradient"
+                    data-center="background-position: 100% 0px;"
+                    data-top-bottom="background-position: 100% -200px;">
                     <div class="hsContent"
                     data-bottom="position: fixed; top: 150px; right: 0;"
                     data--30p-top="opacity: 1;"
                     data--80p-top="opacity: 0;"
                     data-anchor-target="#welcome">
-                        <h1 class="brand">
+                        <h1 class="h1 brand">
                             <a class="logo-link" href="/">
                                 <span style="color: #c00; font-family: 'Josefin Slab'; font-weight: 800; font-size: 1.1em">2</span>Chez
                             </a>
                             <% unless @admin %>
-                            <a class="logo-link pull-right phone" href="tel:+13096912224" title="Call Us">
+                            <!-- <a class="phone pull-right visible-xs visible-sm" href="tel:+13096912224" title="Call Us">
                                 <span class="glyphicon glyphicon-earphone"></span>
-                            </a>
+                            </a> -->
                             <% end %>
                         </h1>
                         <% if @admin %>
-                        <h2 class="h1 text-right"><%= "Hello, #{@user.capitalize}" %></h2>
+                        <h2 class="h1"><%= "Hello, #{@user.capitalize}" %></h2>
                         <% else %>
-                        <h2 class="h1 text-right">Casual Fine Dining</h2>
+                        <h2 class="h1">Casual Fine Dining</h2>
                         <% end %>
                     </div>
                 </div>

@@ -1,0 +1,128 @@
+# Logfile created on 2014-03-16 16:42:47 -0500 by logger.rb/41954
+I, [2014-03-16T16:42:47.438024 #18211]  INFO -- : 0:  i18n (0.6.9) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/i18n-0.6.9.gemspec
+I, [2014-03-16T16:42:49.047397 #18211]  INFO -- : 0:  minitest (4.7.5) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/minitest-4.7.5.gemspec
+I, [2014-03-16T16:42:50.187722 #18211]  INFO -- : 0:  multi_json (1.8.4) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/multi_json-1.8.4.gemspec
+I, [2014-03-16T16:42:52.260662 #18213]  INFO -- : 0:  i18n (0.6.9) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/i18n-0.6.9.gemspec
+I, [2014-03-16T16:42:52.307738 #18213]  INFO -- : 0:  minitest (4.7.5) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/minitest-4.7.5.gemspec
+I, [2014-03-16T16:42:52.357635 #18213]  INFO -- : 0:  multi_json (1.8.4) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/multi_json-1.8.4.gemspec
+E, [2014-03-16T16:42:52.595456 #18211] ERROR -- : Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension.
+
+    /Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/bin/ruby extconf.rb 
+checking for libkern/OSAtomic.h... *** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of necessary
+libraries and/or headers.  Check the mkmf.log file for more details.  You may
+need configuration options.
+
+Provided configuration options:
+	--with-opt-dir
+	--without-opt-dir
+	--with-opt-include
+	--without-opt-include=${opt-dir}/include
+	--with-opt-lib
+	--without-opt-lib=${opt-dir}/lib
+	--with-make-prog
+	--without-make-prog
+	--srcdir=.
+	--curdir
+	--ruby=/Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/bin/ruby
+	--with-atomic_reference-dir
+	--without-atomic_reference-dir
+	--with-atomic_reference-include
+	--without-atomic_reference-include=${atomic_reference-dir}/include
+	--with-atomic_reference-lib
+	--without-atomic_reference-lib=${atomic_reference-dir}/
+/Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/mkmf.rb:434:in `try_do': The compiler failed to generate an executable file. (RuntimeError)
+You have to install development tools first.
+	from /Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/mkmf.rb:565:in `try_cpp'
+	from /Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/mkmf.rb:1044:in `block in have_header'
+	from /Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/mkmf.rb:895:in `block in checking_for'
+	from /Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/mkmf.rb:340:in `block (2 levels) in postpone'
+	from /Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/mkmf.rb:310:in `open'
+	from /Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/mkmf.rb:340:in `block in postpone'
+	from /Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/mkmf.rb:310:in `open'
+	from /Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/mkmf.rb:336:in `postpone'
+	from /Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/mkmf.rb:894:in `checking_for'
+	from /Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/mkmf.rb:1043:in `have_header'
+	from extconf.rb:17:in `<main>'
+
+
+Gem files will remain installed in /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/gems/atomic-1.1.15 for inspection.
+Results logged to /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/gems/atomic-1.1.15/ext/gem_make.out
+
+/Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/site_ruby/2.0.0/rubygems/ext/builder.rb:77:in `run'  \n/Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/site_ruby/2.0.0/rubygems/ext/ext_conf_builder.rb:39:in `block in build'  \n/Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/tempfile.rb:324:in `open'  \n/Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/site_ruby/2.0.0/rubygems/ext/ext_conf_builder.rb:19:in `build'  \n/Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/site_ruby/2.0.0/rubygems/ext/builder.rb:148:in `block (2 levels) in build_extension'  \n/Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/site_ruby/2.0.0/rubygems/ext/builder.rb:147:in `chdir'  \n/Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/site_ruby/2.0.0/rubygems/ext/builder.rb:147:in `block in build_extension'  \n/Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/site_ruby/2.0.0/rubygems/ext/builder.rb:146:in `synchronize'  \n/Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/site_ruby/2.0.0/rubygems/ext/builder.rb:146:in `build_extension'  \n/Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/site_ruby/2.0.0/rubygems/ext/builder.rb:180:in `block in build_extensions'  \n/Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/site_ruby/2.0.0/rubygems/ext/builder.rb:177:in `each'  \n/Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/site_ruby/2.0.0/rubygems/ext/builder.rb:177:in `build_extensions'  \n/Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/site_ruby/2.0.0/rubygems/installer.rb:667:in `build_extensions'  \n/Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/site_ruby/2.0.0/rubygems/installer.rb:225:in `install'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.5.1/lib/bundler/source/rubygems.rb:101:in `block in install'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.5.1/lib/bundler/rubygems_integration.rb:118:in `preserve_paths'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.5.1/lib/bundler/source/rubygems.rb:94:in `install'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.5.1/lib/bundler/installer.rb:111:in `block in install_gem_from_spec'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.5.1/lib/bundler/rubygems_integration.rb:150:in `with_build_args'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.5.1/lib/bundler/installer.rb:110:in `install_gem_from_spec'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.5.1/lib/bundler/installer.rb:295:in `block in install_sequentially'  \n/Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/forwardable.rb:171:in `each'  \n/Users/zpfled/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/forwardable.rb:171:in `each'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.5.1/lib/bundler/installer.rb:294:in `install_sequentially'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.5.1/lib/bundler/installer.rb:97:in `run'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.5.1/lib/bundler/installer.rb:15:in `install'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.5.1/lib/bundler/cli.rb:257:in `install'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.5.1/lib/bundler/vendor/thor/command.rb:27:in `run'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.5.1/lib/bundler/vendor/thor/invocation.rb:120:in `invoke_command'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.5.1/lib/bundler/vendor/thor.rb:363:in `dispatch'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.5.1/lib/bundler/vendor/thor/base.rb:438:in `start'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.5.1/lib/bundler/cli.rb:10:in `start'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.5.1/bin/bundle:22:in `block in <top (required)>'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.5.1/lib/bundler/friendly_errors.rb:5:in `with_friendly_errors'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.5.1/bin/bundle:22:in `<top (required)>'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/bin/bundle:23:in `load'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/bin/bundle:23:in `<main>'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353/bin/ruby_executable_hooks:15:in `eval'  \n/Users/zpfled/.rvm/gems/ruby-2.0.0-p353/bin/ruby_executable_hooks:15:in `<main>'
+I, [2014-03-16T16:42:53.908632 #18213]  INFO -- : 0:  atomic (1.1.15) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/atomic-1.1.15.gemspec
+I, [2014-03-16T16:42:55.431324 #18213]  INFO -- : 0:  thread_safe (0.2.0) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/thread_safe-0.2.0.gemspec
+I, [2014-03-16T16:42:57.660688 #18213]  INFO -- : 0:  tzinfo (0.3.39) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/tzinfo-0.3.39.gemspec
+I, [2014-03-16T16:43:01.323451 #18213]  INFO -- : 0:  activesupport (4.0.3) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/activesupport-4.0.3.gemspec
+I, [2014-03-16T16:43:02.438817 #18213]  INFO -- : 0:  addressable (2.3.5) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/addressable-2.3.5.gemspec
+I, [2014-03-16T16:43:04.098677 #18213]  INFO -- : 0:  bcrypt (3.1.7) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/bcrypt-3.1.7.gemspec
+I, [2014-03-16T16:43:05.184648 #18213]  INFO -- : 0:  bcrypt-ruby (3.1.5) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/bcrypt-ruby-3.1.5.gemspec
+I, [2014-03-16T16:43:06.700850 #18213]  INFO -- : 0:  mime-types (2.1) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/mime-types-2.1.gemspec
+I, [2014-03-16T16:43:07.989139 #18213]  INFO -- : 0:  mini_portile (0.5.2) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/mini_portile-0.5.2.gemspec
+I, [2014-03-16T16:45:02.009683 #18213]  INFO -- : 0:  nokogiri (1.6.1) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/nokogiri-1.6.1.gemspec
+I, [2014-03-16T16:45:05.018105 #18213]  INFO -- : 0:  rack (1.5.2) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/rack-1.5.2.gemspec
+I, [2014-03-16T16:45:05.895437 #18213]  INFO -- : 0:  rack-test (0.6.2) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/rack-test-0.6.2.gemspec
+I, [2014-03-16T16:45:07.343326 #18213]  INFO -- : 0:  xpath (2.0.0) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/xpath-2.0.0.gemspec
+I, [2014-03-16T16:45:09.214445 #18213]  INFO -- : 0:  capybara (2.2.1) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/capybara-2.2.1.gemspec
+I, [2014-03-16T16:45:10.308417 #18213]  INFO -- : 0:  timers (1.1.0) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/timers-1.1.0.gemspec
+I, [2014-03-16T16:45:11.676602 #18213]  INFO -- : 0:  celluloid (0.15.2) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/celluloid-0.15.2.gemspec
+I, [2014-03-16T16:45:14.719266 #18213]  INFO -- : 0:  nio4r (1.0.0) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/nio4r-1.0.0.gemspec
+I, [2014-03-16T16:45:16.515227 #18213]  INFO -- : 0:  celluloid-io (0.15.0) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/celluloid-io-0.15.0.gemspec
+I, [2014-03-16T16:45:22.689949 #18213]  INFO -- : 0:  ffi (1.9.3) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/ffi-1.9.3.gemspec
+I, [2014-03-16T16:45:24.261072 #18213]  INFO -- : 0:  childprocess (0.5.1) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/childprocess-0.5.1.gemspec
+I, [2014-03-16T16:45:24.901396 #18213]  INFO -- : 0:  coderay (1.1.0) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/coderay-1.1.0.gemspec
+I, [2014-03-16T16:45:27.182915 #18213]  INFO -- : 0:  dm-core (1.2.1) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/dm-core-1.2.1.gemspec
+I, [2014-03-16T16:45:28.059747 #18213]  INFO -- : 0:  dm-aggregates (1.2.0) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/dm-aggregates-1.2.0.gemspec
+I, [2014-03-16T16:45:28.943655 #18213]  INFO -- : 0:  dm-constraints (1.2.0) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/dm-constraints-1.2.0.gemspec
+I, [2014-03-16T16:45:29.837053 #18213]  INFO -- : 0:  dm-migrations (1.2.0) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/dm-migrations-1.2.0.gemspec
+I, [2014-03-16T16:45:30.598243 #18213]  INFO -- : 0:  fastercsv (1.5.5) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/fastercsv-1.5.5.gemspec
+I, [2014-03-16T16:45:34.109284 #18213]  INFO -- : 0:  json (1.8.1) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/json-1.8.1.gemspec
+I, [2014-03-16T16:45:36.352410 #18213]  INFO -- : 0:  json_pure (1.8.1) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/json_pure-1.8.1.gemspec
+I, [2014-03-16T16:45:37.512338 #18213]  INFO -- : 0:  dm-serializer (1.2.2) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/dm-serializer-1.2.2.gemspec
+I, [2014-03-16T16:45:38.249810 #18213]  INFO -- : 0:  dm-timestamps (1.2.0) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/dm-timestamps-1.2.0.gemspec
+I, [2014-03-16T16:45:39.036902 #18213]  INFO -- : 0:  dm-transactions (1.2.0) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/dm-transactions-1.2.0.gemspec
+I, [2014-03-16T16:45:40.099964 #18213]  INFO -- : 0:  stringex (1.5.1) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/stringex-1.5.1.gemspec
+I, [2014-03-16T16:45:41.822778 #18213]  INFO -- : 0:  uuidtools (2.1.4) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/uuidtools-2.1.4.gemspec
+I, [2014-03-16T16:45:43.026379 #18213]  INFO -- : 0:  dm-types (1.2.2) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/dm-types-1.2.2.gemspec
+I, [2014-03-16T16:45:44.066499 #18213]  INFO -- : 0:  dm-validations (1.2.0) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/dm-validations-1.2.0.gemspec
+I, [2014-03-16T16:45:44.641484 #18213]  INFO -- : 0:  data_mapper (1.2.0) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/data_mapper-1.2.0.gemspec
+I, [2014-03-16T16:45:45.907465 #18213]  INFO -- : 0:  data_objects (0.10.14) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/data_objects-0.10.14.gemspec
+I, [2014-03-16T16:45:47.240831 #18213]  INFO -- : 0:  diff-lcs (1.2.5) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/diff-lcs-1.2.5.gemspec
+I, [2014-03-16T16:45:48.358712 #18213]  INFO -- : 0:  dm-do-adapter (1.2.0) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/dm-do-adapter-1.2.0.gemspec
+I, [2014-03-16T16:45:51.221728 #18213]  INFO -- : 0:  do_postgres (0.10.14) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/do_postgres-0.10.14.gemspec
+I, [2014-03-16T16:45:51.950403 #18213]  INFO -- : 0:  dm-postgres-adapter (1.2.0) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/dm-postgres-adapter-1.2.0.gemspec
+I, [2014-03-16T16:45:54.590258 #18213]  INFO -- : 0:  do_sqlite3 (0.10.14) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/do_sqlite3-0.10.14.gemspec
+I, [2014-03-16T16:45:55.114981 #18213]  INFO -- : 0:  dm-sqlite-adapter (1.2.0) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/dm-sqlite-adapter-1.2.0.gemspec
+I, [2014-03-16T16:46:08.167483 #18213]  INFO -- : 0:  eventmachine (1.0.3) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/eventmachine-1.0.3.gemspec
+I, [2014-03-16T16:46:09.627630 #18213]  INFO -- : 0:  http_parser.rb (0.5.3) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/http_parser.rb-0.5.3.gemspec
+I, [2014-03-16T16:46:11.786280 #18213]  INFO -- : 0:  em-websocket (0.5.0) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/em-websocket-0.5.0.gemspec
+I, [2014-03-16T16:46:12.543458 #18213]  INFO -- : 0:  formatador (0.2.4) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/formatador-0.2.4.gemspec
+I, [2014-03-16T16:46:13.371240 #18213]  INFO -- : 0:  growl (1.0.3) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/growl-1.0.3.gemspec
+I, [2014-03-16T16:46:14.735439 #18213]  INFO -- : 0:  rb-fsevent (0.9.4) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/rb-fsevent-0.9.4.gemspec
+I, [2014-03-16T16:46:16.067223 #18213]  INFO -- : 0:  rb-inotify (0.9.3) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/rb-inotify-0.9.3.gemspec
+I, [2014-03-16T16:46:17.331765 #18213]  INFO -- : 0:  listen (2.7.0) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/listen-2.7.0.gemspec
+I, [2014-03-16T16:46:18.609864 #18213]  INFO -- : 0:  lumberjack (1.0.4) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/lumberjack-1.0.4.gemspec
+I, [2014-03-16T16:46:19.957314 #18213]  INFO -- : 0:  method_source (0.8.2) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/method_source-0.8.2.gemspec
+I, [2014-03-16T16:46:21.057554 #18213]  INFO -- : 0:  slop (3.4.7) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/slop-3.4.7.gemspec
+I, [2014-03-16T16:46:23.362339 #18213]  INFO -- : 0:  pry (0.9.12.6) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/pry-0.9.12.6.gemspec
+I, [2014-03-16T16:46:25.722155 #18213]  INFO -- : 0:  thor (0.18.1) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/thor-0.18.1.gemspec
+I, [2014-03-16T16:46:26.954921 #18213]  INFO -- : 0:  guard (2.5.1) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/guard-2.5.1.gemspec
+I, [2014-03-16T16:46:28.434157 #18213]  INFO -- : 0:  guard-livereload (2.1.1) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/guard-livereload-2.1.1.gemspec
+I, [2014-03-16T16:46:31.072510 #18213]  INFO -- : 0:  rspec-core (2.14.8) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/rspec-core-2.14.8.gemspec
+I, [2014-03-16T16:46:32.711944 #18213]  INFO -- : 0:  rspec-expectations (2.14.5) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/rspec-expectations-2.14.5.gemspec
+I, [2014-03-16T16:46:34.076849 #18213]  INFO -- : 0:  rspec-mocks (2.14.6) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/rspec-mocks-2.14.6.gemspec
+I, [2014-03-16T16:46:35.034695 #18213]  INFO -- : 0:  rspec (2.14.1) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/rspec-2.14.1.gemspec
+I, [2014-03-16T16:46:36.378572 #18213]  INFO -- : 0:  guard-rspec (4.2.8) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/guard-rspec-4.2.8.gemspec
+I, [2014-03-16T16:46:36.996294 #18213]  INFO -- : 0:  spork (0.9.2) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/spork-0.9.2.gemspec
+I, [2014-03-16T16:46:38.434078 #18213]  INFO -- : 0:  guard-spork (1.4.2) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/guard-spork-1.4.2.gemspec
+I, [2014-03-16T16:46:39.607507 #18213]  INFO -- : 0:  polyglot (0.3.4) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/polyglot-0.3.4.gemspec
+I, [2014-03-16T16:46:41.256987 #18213]  INFO -- : 0:  treetop (1.5.1) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/treetop-1.5.1.gemspec
+I, [2014-03-16T16:46:42.331294 #18213]  INFO -- : 0:  mail (2.2.7) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/mail-2.2.7.gemspec
+I, [2014-03-16T16:46:50.183438 #18213]  INFO -- : 0:  pg (0.17.1) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/pg-0.17.1.gemspec
+I, [2014-03-16T16:46:51.653621 #18213]  INFO -- : 0:  pony (1.8) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/pony-1.8.gemspec
+I, [2014-03-16T16:46:52.242040 #18213]  INFO -- : 0:  rack-protection (1.5.2) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/rack-protection-1.5.2.gemspec
+I, [2014-03-16T16:46:53.075121 #18213]  INFO -- : 0:  shotgun (0.9) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/shotgun-0.9.gemspec
+I, [2014-03-16T16:46:53.729872 #18213]  INFO -- : 0:  tilt (1.4.1) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/tilt-1.4.1.gemspec
+I, [2014-03-16T16:46:54.938526 #18213]  INFO -- : 0:  sinatra (1.4.4) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/sinatra-1.4.4.gemspec
+I, [2014-03-16T16:46:58.784857 #18213]  INFO -- : 0:  sqlite3 (1.3.9) from /Users/zpfled/dev/guevaras/vendor/ruby/2.0.0/specifications/sqlite3-1.3.9.gemspec
+I, [2014-03-16T16:46:58.785488 #18213]  INFO -- : 0:  bundler (1.5.1) from /Users/zpfled/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.5.1/lib/bundler/source
