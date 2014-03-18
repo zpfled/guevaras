@@ -303,7 +303,7 @@ iframe {
 }
 
 .bcg-gradient {
-  position: fixed;
+  position: scroll;
   height: 100%;
   width: auto;
   bottom: 0;
@@ -321,11 +321,6 @@ iframe {
 @media (min-width: 768px) {
   .bcg-gradient {
     position: fixed;
-    height: 100%;
-    width: auto;
-    bottom: 0;
-    top: auto;
-
     background: none;
   }
 }
@@ -357,26 +352,19 @@ iframe {
     -o-background-size: cover;
   height: 100%;
 }
-/*
+
 @media (min-width: 768px) {
   .bcg {
-    background-position: center center;
-    background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     height: 100%;
   }
 }
 
-*/
+
 /* Slide 1 */
 #welcome .bcg {
   position: absolute;
   background-image: url('./images/final/welcome-sm.png');
-  background-attachment: scroll;
 }
 
 @media (min-width: 768px) {
