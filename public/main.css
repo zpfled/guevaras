@@ -303,7 +303,7 @@ iframe {
 }
 
 .bcg-gradient {
-  position: scroll;
+  position: fixed;
   height: 100%;
   width: auto;
   bottom: 0;
@@ -463,7 +463,7 @@ footer .hsContent {
 }
 
 .menu-bcg {
-  background: url('./images/final/menu-bcg.png') repeat center scroll;
+  background: url('./images/final/menu-bcg.png') repeat center;
   color: #444;
   width: 100%;
   margin-top: 2em;
