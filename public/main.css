@@ -281,11 +281,11 @@ iframe {
   bottom: 0;
   top: auto;
 
-  background: -webkit-linear-gradient(top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);  
-    background: -moz-linear-gradient(top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);  
-    background: -ms-linear-gradient(top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);  
-    background: -o-linear-gradient(top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);  
-    background: linear-gradient(top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%); 
+  background: -webkit-linear-gradient(top, rgba(15,15,15,1) 50%, rgba(15,15,15,0) 100%);  
+    background: -moz-linear-gradient(top, rgba(15,15,15,1) 50%, rgba(15,15,15,0) 100%);  
+    background: -ms-linear-gradient(top, rgba(15,15,15,1) 50%, rgba(15,15,15,0) 100%);  
+    background: -o-linear-gradient(top, rgba(15,15,15,1) 50%, rgba(15,15,15,0) 100%);  
+    background: linear-gradient(top, rgba(15,15,15,1) 50%, rgba(15,15,15,0) 100%); 
   background-position: center;
   background-attachment: fixed;
 }
