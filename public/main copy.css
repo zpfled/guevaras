@@ -497,7 +497,7 @@ article {
 
 .category-section {
   text-transform: uppercase;
-  text-decoration: underline;
+  /*text-decoration: underline;*/
   margin-bottom: 1em;
 }
 
