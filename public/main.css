@@ -250,8 +250,8 @@ label {
 }
 
 .sm-img {
-  height: 300px;
-  width: auto;
+  height: auto;
+  width: 100%;
 }
 
 .map {
@@ -462,17 +462,7 @@ iframe {
 
 
 /* Slide 4 */
-#story .bcg {background-image:url('./images/2chez-restaurant4.jpg')}
-#story .hsContent {
-  /*margin-left: -450px;*/
-}
-  #story h1 {
-    background: none;
-    padding-left: 0;
-    padding-right: 0;
-  }
 
-/* Slide 5 */
 footer .bcg {background-image:url('./images/2chez-restaurant5.jpg')}
 footer .hsContent {
   /*margin-left: -239px;*/
@@ -488,21 +478,13 @@ footer .hsContent {
   background: url('./images/final/menu-bcg.png') repeat center scroll;
   color: #444;
   width: 100%;
-  margin-top: 1em;
+  margin-top: 2em;
   margin-bottom: 1em;
-  border: .75em solid #222;
-  border-radius: .25em;
 }
 
 @media (min-width: 768px) {
   .menu-bcg {
-  background: url('./images/final/menu-bcg.png') repeat center scroll;
-  color: #444;
   width: 50%;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  border: .75em solid #222;
-  border-radius: .25em;
 }
 }
 
