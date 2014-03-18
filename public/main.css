@@ -417,7 +417,7 @@ iframe {
 
 #contact .bcg {
   background-image:url('./images/final/contact.png');
-  background-size: 250%;
+  /*background-size: 100%;*/
   text-align: right;
 }
 
