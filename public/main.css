@@ -376,11 +376,12 @@ iframe {
 #welcome .bcg {
   /*position: fixed;*/
   background-image: url('./images/final/welcome-sm.png');
-  background-attachment: fixed;
+  background-attachment: scroll;
 }
 
 @media (min-width: 768px) {
   #welcome .bcg {
+  background-attachment: fixed;
   background-image: url('./images/final/welcome.png');
   }
 }
