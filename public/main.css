@@ -164,12 +164,9 @@ p {
  * Base structure
  */
 
-body {
-  /*height: 100% !important;*/
-}
-
 html,
 body {
+  height: 100% !important;
   background-color: #444;
   text-rendering: optimizeLegibility;
   z-index: -1;
@@ -296,6 +293,11 @@ iframe {
 }
 
 /* PARALLAX SCROLLING STUFF */
+
+#skrollr-body {
+  height: 100%;
+  /*position: absolute;*/
+}
 
 .bcg-gradient {
   position: fixed;
