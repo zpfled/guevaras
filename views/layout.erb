@@ -28,7 +28,6 @@
 </head>
 
 <body style="height: auto;">
-    <div id="skrollr-body">
 
 <!-- Full-Screen Messages -->
 
@@ -89,8 +88,10 @@
                 </div>
             </div>
         </section>
-
-        <%= yield %>
+        
+        <div id="skrollr-body">
+            <%= yield %>
+        </div> <!-- close skrollr-body -->
         
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -103,6 +104,5 @@
     <script src="/js/custom.js"></script>
     <!-- <script src="/js/imagesloaded.js"></script> -->
     <!-- <script src="../../assets/js/docs.min.js"></script> -->
-    </div>
 </body>
 </html>
