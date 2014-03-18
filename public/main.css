@@ -374,7 +374,7 @@ iframe {
 
 /* Slide 1 */
 #welcome .bcg {
-  position: absolute;
+  position: fixed;
   background-image: url('./images/final/welcome-sm.png');
 }
 
