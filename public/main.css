@@ -315,7 +315,7 @@ iframe {
     background: -o-linear-gradient(top, rgba(15,15,15,1) 50%, rgba(15,15,15,0) 100%);  
     background: linear-gradient(top, rgba(15,15,15,1) 50%, rgba(15,15,15,0) 100%); 
   background-position: center;
-  background-attachment: scroll;
+  background-attachment: fixed;
 }
 
 @media (min-width: 768px) {
@@ -348,7 +348,6 @@ iframe {
 }
 
 .bcg {
-  height: 100%;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -356,8 +355,9 @@ iframe {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
+  height: 100%;
 }
-
+/*
 @media (min-width: 768px) {
   .bcg {
     background-position: center center;
@@ -371,10 +371,10 @@ iframe {
   }
 }
 
-
+*/
 /* Slide 1 */
 #welcome .bcg {
-  position: fixed;
+  position: absolute;
   background-image: url('./images/final/welcome-sm.png');
 }
 
