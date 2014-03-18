@@ -1,9 +1,6 @@
 <div id="skrollr-body">
 <section id="menu" class="homeSlide">
-  <div class="bcg"
-    data-0="background-color:rgb(5,25,55);"
-    data-0-top="background-color:(0,0,0);" 
-    data-anchor-target="#menu">
+  <div class="bcg">
     <div class="hsContainer">
       <div class="hsContent"
         data-0-bottom="opacity: 0"                   
@@ -30,13 +27,13 @@
         <div class="visible-xs visible-sm panel-group" id="accordion">
           <% @menus.each do |menu| %>
             <div class="panel panel-default">
-              <div class="panel-heading">
-                <h2 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#<%= menu.split(' ').join('-') %>">
+              <a data-toggle="collapse" data-parent="#accordion" href="#<%= menu.split(' ').join('-') %>">
+                <div class="panel-heading">
+                  <h2 class="panel-title">
                     <%= menu %>
-                  </a>
-                </h2>
-              </div>
+                  </h2>
+                </div>
+              </a>
               <div id="<%= menu.split(' ').join('-') %>" class="panel-collapse collapse">
                 <div class="panel-body">
       
