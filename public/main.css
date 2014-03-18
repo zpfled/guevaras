@@ -376,7 +376,7 @@ iframe {
 #welcome .bcg {
   position: absolute;
   background-image: url('./images/final/welcome-sm.png');
-  background-attachment: fixed;
+  /*background-attachment: fixed;*/
 }
 
 @media (min-width: 768px) {
