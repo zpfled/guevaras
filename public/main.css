@@ -296,7 +296,7 @@ iframe {
 
 #skrollr-body {
   height: 100%;
-  /*position: absolute;*/
+  position: relative;
 }
 
 .bcg-gradient {
