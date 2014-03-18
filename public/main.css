@@ -164,9 +164,12 @@ p {
  * Base structure
  */
 
-html,
 body {
   height: 100% !important;
+}
+
+html,
+body {
   background-color: #444;
   text-rendering: optimizeLegibility;
   z-index: -1;
