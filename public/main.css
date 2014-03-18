@@ -374,13 +374,13 @@ iframe {
 */
 /* Slide 1 */
 #welcome .bcg {
-  position: absolute;
+  /*position: fixed;*/
   background-image: url('./images/final/welcome-sm.png');
+  background-attachment: fixed;
 }
 
 @media (min-width: 768px) {
   #welcome .bcg {
-  background-attachment: fixed;
   background-image: url('./images/final/welcome.png');
   }
 }
