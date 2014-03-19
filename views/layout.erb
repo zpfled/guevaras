@@ -28,7 +28,8 @@
 </head>
 
 <body>
-    <div id="skrollr-body" class="skrollr-body">
+    <!-- The data-end="height: 160%" is a janky hack that temporarily solves our footer problem. -->
+    <div id="skrollr-body" class="skrollr-body" data-start="height: 100%" data-end="height: 160%">
 
 <!-- Full-Screen Messages -->
 
@@ -91,7 +92,8 @@
         </section>
         
             <%= yield %>
-    </div> 
+    </div>
+
     <!-- close skrollr-body -->
         
         

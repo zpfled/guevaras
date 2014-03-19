@@ -349,9 +349,9 @@ iframe {
 /* Slide 1 */
 #welcome .bcg {
   position: absolute;
-  height: 100%;
-  /*top: 0;*/
-  /*bottom: auto;*/
+  height: 110%;
+  top: 0;
+  bottom: -10%;
   background-image: url('./images/final/welcome-sm.png');
 }
 
