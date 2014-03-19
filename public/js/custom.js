@@ -310,14 +310,14 @@ $(function () {
 ( function( $ ) {
     // Init Skrollr
     var s = skrollr.init({
-    	forceheight: false,
+		forceheight: false,
         render: function(data) {
-            //Debugging - Log the current scroll position.
-            //console.log(data.curTop);
+            // Debugging - Log the current scroll position.
+            console.log(data.curTop);
         }
     });
 	// Refresh Skrollr after resizing our sections
-	// s.refresh($('.homeSlide'));
+	s.refresh($('.homeSlide'));
 } )( jQuery );
 
 // ( function( $ ) {

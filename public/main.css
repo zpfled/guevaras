@@ -93,7 +93,6 @@
   box-shadow: none;
   width: 100%;
   text-align: center;
-  /*bottom: 100%;*/
   bottom: auto !important;
   padding: 0 0 0 0;
 }
@@ -113,12 +112,6 @@ a:hover {
 .logo-link:hover,
 .logo-link:focus {
   text-decoration: none;
-}
-
-.link-img {
-  height: 20px;
-  width: auto;
-  opacity: .75;
 }
 
 .glyphicon {
@@ -172,6 +165,20 @@ p {
 }
 }
 
+  /*Menu Typography*/
+      
+    .category-section {
+      text-transform: uppercase;
+      margin-bottom: 1em;
+    }
+
+    .item-name {
+      font-size: 1.2em;
+    }
+
+    .item-description {
+      font-style: italic;
+    }
 
 /*
  * Base structure
@@ -196,6 +203,10 @@ body {
 label {
   margin-top: 1em;
   width: 100%;
+}
+
+article {
+  padding-bottom: 1em;
 }
 
 /*
@@ -235,19 +246,9 @@ label {
   position: absolute;
 }
 
-.content {
-  background: rgba(52,52,52, 1);
-  margin-bottom: 1.5em;
-  padding-bottom: 1em;
-}
-
 .push-down {
   top: 100%;
   bottom: auto;
-}
-
-.half-down {
-  top: 50%;
 }
 
 .center {
@@ -264,22 +265,8 @@ label {
   width: 100%;
 }
 
-.map {
-  position: relative;
-  overflow: hidden;
-  height: 540px;
-  width: 640px;
-}
-
-.map img {
-  /*position: absolute;*/
-  height: inherit;
-  width: inherit;
-  z-index: 100;
-}
-
 iframe {
-  padding: 1em 0 1em 0;
+  margin: 1em 0 1em 0;
 
 /* make map black and white */
   -webkit-filter: grayscale(100%);
@@ -291,20 +278,6 @@ iframe {
   filter: gray; /* IE 6-9 */
 }
 
-.map iframe { 
-  height: 240px;
-  width: 370px;
-  position: absolute;
-  z-index: 0;
-  top: 50%;
-  left: 50%;
-  margin-top: -140px;
-  margin-left:  -170px;
-  padding: 0 0 0 0;
-  /*margin-bottom: 1em;*/
-  /*width: 100%;*/
-}
-
 /* PARALLAX SCROLLING STUFF */
 
 #skrollr-body {
@@ -313,7 +286,6 @@ iframe {
 }
 
 .bcg-gradient {
-  position: relative;
   height: 100%;
   width: auto;
   bottom: 0;
@@ -330,7 +302,6 @@ iframe {
 
 @media (min-width: 768px) {
   .bcg-gradient {
-    position: fixed;
     background: none;
   }
 }
@@ -339,13 +310,15 @@ iframe {
   display: table;
   table-layout: fixed;
   width: 100%;
-  /*height: 100%;*/
+  height: 100%;
   overflow: hidden;
   position: relative;
 }
 
 .hsContent {
   margin: -150px auto 0 auto;
+  bottom: 200px;
+  top: auto;
   display: table-cell;
   vertical-align: top;
   color: #eee;
@@ -360,20 +333,15 @@ iframe {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-  height: 100%;
+  height: inherit;
+  overflow: hidden;
+  position: relative;
 }
-
-@media (min-width: 768px) {
-  .bcg {
-    background-attachment: fixed;
-  }
-}
-
 
 /* Slide 1 */
 #welcome .bcg {
   position: absolute;
-  /*height: 100%;*/
+  height: 100%;
   background-image: url('./images/final/welcome-sm.png');
 }
 
@@ -383,69 +351,36 @@ iframe {
   }
 }
 
-#welcome .hsContent {
-  bottom: 200px;
-  top: auto;
-}
-
 /* Slide 2 */
 #menu .bcg {
     background: none;
     background-color: #333;
 }
 
-#menu .hsContent {
-  /*margin-left: -450px;*/
-  bottom: 200px;
-  top: auto;
-}
-
 /* Slide 3 */
 #hours .bcg {
   background-image:url('./images/final/hours.png');
-  position: relative;
 }
 
 @media (min-width: 768px) {
   #hours .bcg {
-  background-attachment: fixed;
-  background: url('./images/final/hours.png');
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  padding: 6em 0 6em 0;
+    background: url('./images/final/hours.png');
+    padding: 6em 0 6em 0;
   }
-}
-
-#hours .hsContent {
-  bottom: 200px;
-  top: auto;
 }
 
 /* Contact Slide */
 
 #contact .bcg {
   background-image:url('./images/final/contact.png');
-  /*background-size: 100%;*/
   text-align: right;
 }
 
 @media (min-width: 768px) {
   #contact .bcg {
-  background-attachment: fixed;
-  background: url('./images/final/contact.png');
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  padding: 6em 0 6em 0;
+    background: url('./images/final/contact.png');
+    padding: 6em 0 6em 0;
   }
-}
-
-#contact .hsContent {
-  bottom: 200px;
-  top: auto;
 }
 
 #contact .btn-info {
@@ -462,10 +397,8 @@ iframe {
 /* Slide 4 */
 
 .footer .bcg {
-  background: url('./images/2chez-restaurant5.jpg')
-}
-.footer .hsContent {
-  /*margin-left: -239px;*/
+  background: url('./images/2chez-restaurant5.jpg');
+  height: auto;
 }
 
 /* Menu */
@@ -475,7 +408,6 @@ iframe {
 }
 
 .menu-bcg {
-  background-color: #444;
   width: 100%;
   margin-top: 2em;
   margin-bottom: 1em;
@@ -491,10 +423,6 @@ iframe {
   padding-bottom: 1em;
 }
 
-article {
-  padding-bottom: 1em;
-}
-
 .panel-group {
   padding-bottom: 1em;
 }
@@ -503,21 +431,6 @@ article {
 .panel-title:active {
   color: #444;
 }
-
-.category-section {
-  text-transform: uppercase;
-  /*text-decoration: underline;*/
-  margin-bottom: 1em;
-}
-
-.item-name {
-  font-size: 1.2em;
-}
-
-.item-description {
-  font-style: italic;
-}
-
 
 .menu-msg {
   min-height: 20px;
@@ -554,8 +467,8 @@ article {
 .footer {
   background-color: rgba(0, 0, 0, .7);
   width: 100%;
-  /*position: absolute;*/
-  /*bottom: 0 !important;*/
+  position: absolute;
+  bottom: 0 !important;
   /*top: auto !important;*/
   /*overflow: hidden;*/
 }
@@ -587,94 +500,6 @@ article {
   .welcome-header h1 {
     text-align: left;
   }
-}
-
-
-
-
-
-/*
-* For iPhones
-*/
-
-@media (max-width: 767px) {
-  body {
-    background-color: inherit;
-  }
-
-  .footer {
-    /*position: relative;*/
-  }
-
-  .welcome-heading {
-    font-size: 1.5em;
-  }
-
-  .bar-wrapper {
-    margin-top: 30%;
-  }
-
-  .welcome-menu {
-    width: 100%;
-    position: static;
-    font-size: 1.5em;
-    font-weight: 100;
-    margin-top: 2em;
-  }
-
-  .welcome-menu li {
-    padding: .3em 0 .3em 0;
-  }
-  
-  .welcome-hours {
-    width: 100%;
-    position: static;
-    text-align: center;
-  }
-
-  .divider {
-    display: none;
-  }
-
-  .navbar-fixed-bottom {
-    position: relative;
-  }
-
-  .btn-group {
-    min-width: 100%;
-  }
-
-  .link-img {
-      height: 20px;
-    width: auto;
-    opacity: 1;
-  }
-
-  .glyphicon {
-    font-size: 20px;
-    vertical-align: bottom;
-    color: #fff;
-    opacity: 1;
-  }
-
-}
-
-.btn-bottom {
-  width: 100%;
-}
-
-.btn-disabled {
-  color: #ffffff;
-  background-color: inherit;
-  border-color: #eee;
-}
-
-.left-align {
-  text-align: left;
-}
-
-.right-align {
-  text-align: right;
 }
 
 /*
@@ -752,8 +577,6 @@ Admin
   background-color: inherit;
   color: inherit;
 }
-
-
 
 .add-form input,
 .user-form input,
