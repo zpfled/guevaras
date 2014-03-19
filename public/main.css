@@ -281,7 +281,8 @@ iframe {
 /* PARALLAX SCROLLING STUFF */
 
 #skrollr-body {
-  height: 100% !important;
+  height: 100%;
+  position: relative;
 }
 
 .bcg-gradient {
@@ -339,7 +340,7 @@ iframe {
 
 /* Slide 1 */
 #welcome .bcg {
-  position: absolute;
+  position: fixed;
   /*height: 100%;*/
   top: auto;
   bottom: 0;
