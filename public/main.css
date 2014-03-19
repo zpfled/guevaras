@@ -281,8 +281,7 @@ iframe {
 /* PARALLAX SCROLLING STUFF */
 
 #skrollr-body {
-  height: 100%;
-  position: relative;
+  height: 100% !important;
 }
 
 .bcg-gradient {
@@ -398,7 +397,8 @@ iframe {
 
 .footer .bcg {
   background: url('./images/2chez-restaurant5.jpg');
-  height: auto;
+  margin-top: 3em;
+  position: absolute;
 }
 
 /* Menu */
