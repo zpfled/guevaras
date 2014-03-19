@@ -187,7 +187,7 @@ p {
 html,
 body {
   height: 100% !important;
-  background-color: #444;
+  background-color: #222;
   text-rendering: optimizeLegibility;
   z-index: -1;
   color: #fff;
@@ -235,6 +235,7 @@ article {
     border: none;
     font-size: 8em;
     text-align: right;
+    margin-top: -.8em;
   }
 }
 
@@ -244,11 +245,12 @@ article {
 
 .content-block {
   position: absolute;
+  width: 100%;
+
 }
 
 .push-down {
   top: 100%;
-  bottom: auto;
 }
 
 .center {
@@ -280,9 +282,15 @@ iframe {
 
 /* PARALLAX SCROLLING STUFF */
 
-#skrollr-body {
+#skrollr-body,
+.skrollr-body {
   height: 100%;
+  background: inherit;
   position: relative;
+}
+
+.homeSlide {
+  /*position: fixed;*/
 }
 
 .bcg-gradient {
@@ -316,7 +324,7 @@ iframe {
 }
 
 .hsContent {
-  margin: auto auto 0 auto;
+  /*margin: -2em auto 0 auto;*/
   bottom: 200px;
   top: auto;
   display: table-cell;
@@ -335,15 +343,15 @@ iframe {
     -o-background-size: cover;
   height: 100%;
   /*overflow: hidden;*/
-  /*position: relative;*/
+  position: relative;
 }
 
 /* Slide 1 */
 #welcome .bcg {
-  position: fixed;
-  /*height: 100%;*/
-  top: auto;
-  bottom: 0;
+  position: absolute;
+  height: 100%;
+  /*top: 0;*/
+  /*bottom: auto;*/
   background-image: url('./images/final/welcome-sm.png');
 }
 
@@ -399,8 +407,7 @@ iframe {
 /* Slide 4 */
 
 .footer .bcg {
-  background: url('./images/2chez-restaurant5.jpg');
-  position: absolute;
+  /*background: inherit;*/
 }
 
 /* Menu */
@@ -467,41 +474,9 @@ iframe {
  */
 
 .footer {
-  background-color: rgba(0, 0, 0, .7);
+  background: inherit;
   width: 100%;
   position: absolute;
-  bottom: 0 !important;
-  /*top: auto !important;*/
-  /*overflow: hidden;*/
-}
-
-/*
- * For tablets and bigger
- */
-
-@media (min-width: 768px) {
-
-  /* Handle the widths */
-
-  .content-block {
-    width: 100%;
-  }
-}
-
-/*
-* For laptops and bigger
-*/
-
-@media (min-width: 992px) {
-  h1 {
-    margin-bottom: 1em;
-    text-align: center;
-  }
-
-
-  .welcome-header h1 {
-    text-align: left;
-  }
 }
 
 /*

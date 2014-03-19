@@ -305,18 +305,20 @@ $(function () {
 	});
 });
 
-// Parallax Scrolling Fanciness --------------------------------------------------------------------------------------
+// Parallax Scrolling Fanciocity --------------------------------------------------------------------------------------
 
 ( function( $ ) {
     // Init Skrollr
-    var s = skrollr.init({
-        render: function(data) {
-            // Debugging - Log the current scroll position.
-            console.log(data.curTop);
-        }
-    });
-	// Refresh Skrollr after resizing our sections
-	// s.refresh($('.homeSlide'));
+    // if(!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)){
+    	var s = skrollr.init({
+    	    render: function(data) {
+    	        // Debugging - Log the current scroll position.
+    	        console.log(data.curTop);
+    	    }
+    	});
+		// Refresh Skrollr after resizing our sections
+		s.refresh($('.homeSlide'));
+	// }
 } )( jQuery );
 
 // ( function( $ ) {
