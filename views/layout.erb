@@ -27,23 +27,24 @@
   <style id="holderjs-style" type="text/css"></style>
 </head>
 
-<body style="height: auto;">
+<body>
+    <div id="skrollr-body">
 
 <!-- Full-Screen Messages -->
 
-        <div class="error-msg container">
+        <div class="bcg error-msg container">
             <h3 id="error-msg" class="alert alert-warning"></h3>
         </div>
 
-        <div class="add-msg container">
+        <div class="bcg add-msg container">
             <h3 id="add-msg" class="alert alert-success"></h3>
         </div>
         
-        <div class="menu-msg container">
+        <div class="bcg menu-msg container">
             <h3 id="menu-msg" class="alert alert-info"></h3>
         </div>
 
-        <div class="delete-confirmation container">
+        <div class="bcg delete-confirmation container">
             <div class="alert alert-info">
                 <h3>Are you sure you want to delete this?</h3>
                 <button class="btn btn-big btn-danger col-xs-12 col-md-4 col-md-offset-4" id="no">no</button>
@@ -60,12 +61,12 @@
         <section id="welcome" class="homeSlide">
             <div class="bcg" 
             data-center="background-position: 100% 0px;"
-            data-top-bottom="background-position: 100% -200px;">
+            data-top-bottom="background-position: 100% -100px;">
                 <div class="hsContainer bcg-gradient"
                     data-center="background-position: 100% 0px;"
-                    data-top-bottom="background-position: 100% -200px;">
+                    data-top-bottom="background-position: 100% 0px;">
                     <div class="hsContent"
-                    data-bottom="position: fixed; top: 150px; right: 0;"
+                    data-bottom="position: fixed; top: 150px; right: 0px;"
                     data--30p-top="opacity: 1;"
                     data--80p-top="opacity: 0;"
                     data-anchor-target="#welcome">
@@ -80,18 +81,18 @@
                             <% end %>
                         </h1>
                         <% if @admin %>
-                        <h2 class="h1 text-right"><%= "Hello, #{@user.capitalize}" %></h2>
+                        <h2 class="h1 subheading text-right"><%= "Hello, #{@user.capitalize}" %></h2>
                         <% else %>
-                        <h2 class="h1 text-right">Casual Fine Dining</h2>
+                        <h2 class="h1 subheading text-right">Casual Fine Dining</h2>
                         <% end %>
                     </div>
                 </div>
             </div>
         </section>
         
-        <div id="skrollr-body">
             <%= yield %>
-        </div> <!-- close skrollr-body -->
+    </div> <!-- close skrollr-body -->
+        
         
     <!-- Bootstrap core JavaScript
     ================================================== -->

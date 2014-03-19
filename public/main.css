@@ -9,6 +9,10 @@
  Bootstrap Overrides
   */
 
+.modal {
+  overflow: visible; /*This ensures that modals display correctly in ios*/
+}
+
  .nav>li>a {
   border-radius: 0;
   white-space: nowrap; /*fixes issue with text wrapping in nav-justified*/
@@ -162,6 +166,12 @@ p {
   text-align: right;
 }
 
+@media (max-width: 767px) {
+  .subheading {
+    font-size: 1.5em;
+}
+}
+
 
 /*
  * Base structure
@@ -303,7 +313,7 @@ iframe {
 }
 
 .bcg-gradient {
-  position: fixed;
+  position: relative;
   height: 100%;
   width: auto;
   bottom: 0;
@@ -329,7 +339,7 @@ iframe {
   display: table;
   table-layout: fixed;
   width: 100%;
-  height: 100%;
+  /*height: 100%;*/
   overflow: hidden;
   position: relative;
 }
@@ -356,7 +366,6 @@ iframe {
 @media (min-width: 768px) {
   .bcg {
     background-attachment: fixed;
-    height: 100%;
   }
 }
 
@@ -364,6 +373,7 @@ iframe {
 /* Slide 1 */
 #welcome .bcg {
   position: absolute;
+  /*height: 100%;*/
   background-image: url('./images/final/welcome-sm.png');
 }
 
@@ -451,8 +461,10 @@ iframe {
 
 /* Slide 4 */
 
-footer .bcg {background-image:url('./images/2chez-restaurant5.jpg')}
-footer .hsContent {
+.footer .bcg {
+  background: url('./images/2chez-restaurant5.jpg')
+}
+.footer .hsContent {
   /*margin-left: -239px;*/
 }
 
@@ -540,9 +552,13 @@ article {
  * Footer
  */
 
-footer {
+.footer {
   background-color: rgba(0, 0, 0, .7);
   width: 100%;
+  /*position: absolute;*/
+  /*bottom: 0 !important;*/
+  /*top: auto !important;*/
+  /*overflow: hidden;*/
 }
 
 /*
@@ -587,8 +603,8 @@ footer {
     background-color: inherit;
   }
 
-  footer {
-    position: relative;
+  .footer {
+    /*position: relative;*/
   }
 
   .welcome-heading {
