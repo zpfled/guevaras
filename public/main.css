@@ -309,7 +309,7 @@ iframe {
   display: table;
   table-layout: fixed;
   width: 100%;
-  height: 100%;
+  /*height: 100%;*/
   overflow: hidden;
   position: relative;
 }
@@ -332,15 +332,17 @@ iframe {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-  height: inherit;
-  overflow: hidden;
-  position: relative;
+  height: 100%;
+  /*overflow: hidden;*/
+  /*position: relative;*/
 }
 
 /* Slide 1 */
 #welcome .bcg {
   position: absolute;
-  height: 100%;
+  /*height: 100%;*/
+  top: auto;
+  bottom: 0;
   background-image: url('./images/final/welcome-sm.png');
 }
 
