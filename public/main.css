@@ -315,7 +315,7 @@ iframe {
 }
 
 .hsContent {
-  margin: -150px auto 0 auto;
+  margin: auto auto 0 auto;
   bottom: 200px;
   top: auto;
   display: table-cell;
@@ -397,7 +397,6 @@ iframe {
 
 .footer .bcg {
   background: url('./images/2chez-restaurant5.jpg');
-  margin-top: 3em;
   position: absolute;
 }
 
