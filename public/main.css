@@ -202,6 +202,13 @@ body {
   color: #fff;
 }
 
+@media (max-width:767px) {
+  body {
+    position: relative;
+    background: inherit;
+  }
+}
+
 /* Padding for spacing */
 .inner {
   padding: 20px;
