@@ -28,7 +28,7 @@
 
         <!-- Menu accordion for -xs and -sm screens -->
 
-        <div class="visible-xs visible-sm panel-group" id="accordion">
+        <div class="visible-xs visible-sm panel-group scrim" id="accordion">
           <% @menus.each do |menu| %>
             <div class="panel panel-default">
               <a data-toggle="collapse" data-parent="#accordion" href="#<%= menu.split(' ').join('-') %>">
@@ -66,7 +66,7 @@
           <!-- Tab panes -->
           <div class="tab-content visible-md visible-lg">
             <% @menus.each do |menu| %>
-              <div class="tab-pane fade in <%= 'active' if menu == 'lunch' %>" id="<%= menu.split(' ').join('-') + '-tab' %>">
+              <div class="tab-pane fade in scrim <%= 'active' if menu == 'lunch' %>" id="<%= menu.split(' ').join('-') + '-tab' %>">
                 <%= erb(:submenu, :layout => false, :locals => { :menu => menu }) %>
               </div>
             <% end %>
