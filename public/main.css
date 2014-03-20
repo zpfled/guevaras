@@ -366,8 +366,8 @@ iframe {
 
 /* Slide 2 */
 #menu .bcg {
-    /*background: none;*/
-    background-color: #222;
+    /*background-color: #222;*/
+    background-image:url('./images/dinner-lamb2.jpg');
 }
 
 /* Slide 3 */
