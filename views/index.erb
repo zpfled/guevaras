@@ -1,31 +1,41 @@
+<section id="welcome">
+    <div class="bcg" 
+    data-center="background-position: 150% 0px;"
+    data-top-bottom="background-position: 150% -80px;">
+        <div class="hsContainer bcg-gradient">
+            <div class="hsContent"
+            data-bottom="position: fixed; top: 150px; right: 0px;"
+            data--30p-top="opacity: 1;"
+            data--80p-top="opacity: 0;"
+            data-anchor-target="#brand">
+                <h1 id="brand" class="h1 brand">
+                    <a class="logo-link" href="/">
+                        <span style="color: #c00; font-family: 'Josefin Slab'; font-size: 1.1em">2</span>Chez
+                    </a>
+                    <% unless @admin %>
+                    <!-- <a class="phone pull-right visible-xs visible-sm" href="tel:+13096912224" title="Call Us">
+                        <span class="glyphicon glyphicon-earphone"></span>
+                    </a> -->
+                    <% end %>
+                </h1>
+                <% if @admin %>
+                <h2 class="h1 subheading text-right"><%= "Hello, #{@user.capitalize}" %></h2>
+                <% else %>
+                <h2 class="h1 subheading text-right">Casual Fine Dining</h2>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="content-block push-down">
 
   <%= erb :menu, layout: false %>
 
-  <section id="hours" class="homeSlide">
-      <div class="bcg"
-          data-center="background-position: 50% 0px;"
-          data-top-bottom="background-position: 50% -100px;"
-          data-anchor-target="#hours">
-          <div class="hsContainer">
-              <div class="hsContent">
-                  <div class="plaxEl"
-                      data-bottom="opacity: 0;"
-                      data-center="opacity: 1;"
-                      data-anchor-target="#hours">
-                      <h1>Hours</h1>
-                      <h2>Lunch</h2>
-                        <p class="remove-bottom-margin">Monday - Friday</p>
-                        <p>11am - 2pm</p>
-                      <h2>Dinner</h2>
-                        <p class="remove-bottom-margin">Monday - Thursday</p>
-                        <p>5 - 9pm</p>
-                        <p class="remove-bottom-margin">Friday &amp; Saturday</p>
-                        <p>5 - 10pm</p>
-                  </div>
-              </div>
-          </div>   
-      </div>
+  <%= erb :hours, layout: false %>
+
+  <section>
+    
   </section>
 
   <%= erb :contact, layout: false %>
