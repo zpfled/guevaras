@@ -368,7 +368,6 @@ iframe {
 #welcome .bcg {
   position: fixed;
   height: 100%;
-  top: 0;
   background-image: url('./images/final/welcome-sm.png');
 }
 
