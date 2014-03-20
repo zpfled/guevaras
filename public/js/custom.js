@@ -5,7 +5,8 @@
         return this.each(function() {
             var email_add = $(this).attr("href").replace(/\s*\(.+\)\s*/, "@");
             var email_text = $(this).html();
-            $(this).before('<a href="mailto:' + email_add + '" rel="nofollow" title="Email ' + email_add + '">' + email_text + '</a>').remove();
+            var email_class = $(this).attr("class");
+            $(this).before('<a class="' + email_class + '" href="mailto:' + email_add + '" rel="nofollow" title="Email ' + email_add + '">' + email_text + '</a>').remove();
         });
     };
 

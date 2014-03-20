@@ -1,7 +1,7 @@
 <section id="welcome">
     <div class="bcg" 
     data-center="background-position: 100% 0px;"
-    data-top-bottom="background-position: 100% -80px;">
+    data-top-bottom="background-position: 0% -80px;">
         <div class="hsContainer bcg-gradient">
             <div class="hsContent"
             data-bottom="position: fixed; top: 150px; right: 0px;"
@@ -56,7 +56,41 @@
 
   <%= erb :hours, layout: false %>
 
-  <%= erb :contact, layout: false %>
+  <section id="menu-msg">
+    <div class="bcg">
+      <div class="hsContainer">
+        <div class="hsContent">
+            <div class="col-xs-12">
+              <h2 class="center h2 underline">
+                Reservations
+              </h2>
+                <div class="inner">
+                  <p>
+                    Give us a call at 309.691.2224 to make your reservation. We will be answering phones between 10am and 10pm, every day except Sunday. We look forward to seeing you.
+                  </p>
+                  <a href="tel:+13096912224" class="col-xs-12 btn btn-lg btn-info visible-xs visible-sm">
+                    make reservation
+                  </a>
+                </div>
+
+              <h2 class="center h2 underline">Private Parties & Catering</h2>
+                <div class="inner">
+                  <p>
+                    Looking to host a party? Let 2Chez make it an unforgettable one! Call or email Todd to ask about availability, menu options, and pricing.
+                  </p>
+                  <p class="visible-md visible-lg center">
+                    Email: <a href="<%= @site_email.gsub('@', '(at)') %>" class="email"><%= @site_email %></a> or Call: 309.691.2224.
+                  </p>
+                  <a class="email col-xs-12 btn btn-lg btn-info visible-xs visible-sm" href="<%= @site_email.gsub('@', '(at)') %>">
+                    email Todd
+                  </a>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <%= erb :find, layout: false %>
 
   <%= erb :footer, layout: false %>
 
