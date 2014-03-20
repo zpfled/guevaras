@@ -201,13 +201,13 @@ body {
   z-index: -1;
   color: #fff;
 }
-
+/*
 @media (max-width:767px) {
   body {
     position: relative;
     background: inherit;
   }
-}
+}*/
 
 /* Padding for spacing */
 .inner {
@@ -368,6 +368,7 @@ iframe {
 #welcome .bcg {
   position: fixed;
   height: 100%;
+  top: 0;
   background-image: url('./images/final/welcome-sm.png');
 }
 
@@ -377,20 +378,19 @@ iframe {
   }
 }
 
-/* Slide 2a */
+/* Menu */
 
 #menu-msg .bcg {
     background-color: #222;
     padding: 20px 0 20px 0;
 }
 
-/* Slide 2b */
 #menu .bcg {
     /*background: none;*/
     background-color: #222;
 }
 
-/* Slide 3 */
+/* Hours */
 #hours .bcg {
   background-image:url('./images/final/hours-sm.png');
 }
@@ -402,7 +402,11 @@ iframe {
   }
 }
 
-/* Contact Slide */
+/* Contact */
+
+#contact .bcg {
+  background-color: #222;
+}
 
 #find-us .bcg {
   background-image:url('./images/final/find-us.png');
