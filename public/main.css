@@ -56,6 +56,10 @@
   margin: 0 auto;
 }
 
+.visible-lg.nav {
+  margin-bottom: 1em;
+}
+
  .panel {
   background-color: transparent;
   border-bottom: 0;
@@ -417,8 +421,11 @@ iframe {
 
 .menu-bcg {
   width: 100%;
-  margin-top: 2em;
   margin-bottom: 1em;
+}
+
+.menu-bcg.inner {
+  padding: 0 20px;
 }
 
 @media (min-width: 768px) {
