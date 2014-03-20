@@ -1,7 +1,7 @@
 <section id="welcome">
     <div class="bcg" 
-    data-center="background-position: 150% 0px;"
-    data-top-bottom="background-position: 150% -80px;">
+    data-center="background-position: 100% 0px;"
+    data-top-bottom="background-position: 100% -80px;">
         <div class="hsContainer bcg-gradient">
             <div class="hsContent"
             data-bottom="position: fixed; top: 150px; right: 0px;"
@@ -30,13 +30,31 @@
 
 <section class="content-block push-down">
 
+  <section id="menu-msg">
+    <div class="bcg">
+      <div class="hsContainer">
+        <div class="hsContent">
+          <h1 class="h1 center">
+            Menu
+          </h1>
+          <div class="clearfix menu-intro">
+            <div class="col-xs-12 col-md-5 pull-left">
+              <img class="sm-img" src="./images/dinner-duck.jpg" alt="Duck">
+            </div>
+            <div class="col-xs-12 col-md-7 pull-right">
+              <h2>Food &amp; Drink</h2>
+              <p>At 2Chez, we create authentic, rustic dishes inspired by classic, old-world flavors. Every dish is hand-crafted from scratch with carefully selected ingredients. This is the kind of food that is meant to be shared over a bottle of good wine with even better friends.</p>
+              <p class="visible-md visible-lg">Our drinks list is all about complementing our food. Every bottle of wine, craft beer, and seasonal cocktail has been carefully curated to bring out the best in what we create. We even have a small plates menu, available only at the bar, for those who want a quick bite to eat with their cocktail.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <%= erb :menu, layout: false %>
 
   <%= erb :hours, layout: false %>
-
-  <section>
-    
-  </section>
 
   <%= erb :contact, layout: false %>
 
