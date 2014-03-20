@@ -1,4 +1,23 @@
+// Email Obfuscation ------------------------------------------------------------------------------------------------
 
+(function($) {
+    jQuery.fn.mailto = function() {
+        return this.each(function() {
+            var email_add = $(this).attr("href").replace(/\s*\(.+\)\s*/, "@");
+            var email_text = $(this).html();
+            $(this).before('<a href="mailto:' + email_add + '" rel="nofollow" title="Email ' + email_add + '">' + email_text + '</a>').remove();
+        });
+    };
+
+})(jQuery);
+
+$(document).ready(function() {
+    $(function() {
+        $('.email').mailto();
+    });
+});
+
+// Error Message -------------------------------------------------------------------------------------------------------
 
 function errorMessage() {
 	$('.error-msg h3').html('sorry, that didn\'t work');
