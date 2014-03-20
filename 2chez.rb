@@ -80,6 +80,7 @@ end
 get '/' do
 	@title = 'Welcome'
 	@admin = false
+	@site_email = User.first.email
 
 	erb :index
 end
