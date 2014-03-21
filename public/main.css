@@ -399,6 +399,7 @@ iframe {
 /* Hours */
 #hours .bcg {
   background-image:url('./images/final/hours-sm.png');
+  text-align: right;
 }
 
 @media (min-width: 768px) {
