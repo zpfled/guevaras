@@ -398,12 +398,12 @@ iframe {
 
 /* Hours */
 #hours .bcg {
-  background-image:url('./images/final/hours-sm.png');
+  background-image:url('./images/lunch-bruschetta2.jpg');
 }
 
 @media (min-width: 768px) {
   #hours .bcg {
-    background-image:url('./images/final/hours.png');
+    background-image:url('./images/lunch-bruschetta2.jpg');
     padding: 6em 0 6em 0;
   }
 }
