@@ -391,6 +391,10 @@ iframe {
     padding: 20px 0 20px 0;
 }
 
+#menu-msg h1 {
+  margin: 1em 0;
+}
+
 #menu .bcg {
     /*background-color: #222;*/
     background-image:url('./images/dinner-lamb2.jpg');
