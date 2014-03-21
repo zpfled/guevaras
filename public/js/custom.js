@@ -1,4 +1,25 @@
 
+// Email Obfuscation ------------------------------------------------------------------------------------------------
+
+(function($) {
+    jQuery.fn.mailto = function() {
+        return this.each(function() {
+            var email_add = $(this).attr("href").replace(/\s*\(.+\)\s*/, "@");
+            var email_text = $(this).html();
+            var email_class = $(this).attr("class");
+            $(this).before('<a class="' + email_class + '" href="mailto:' + email_add + '" rel="nofollow" title="Email ' + email_add + '">' + email_text + '</a>').remove();
+        });
+    };
+
+})(jQuery);
+
+$(document).ready(function() {
+    $(function() {
+        $('.email').mailto();
+    });
+});
+
+// Error Message -------------------------------------------------------------------------------------------------------
 
 function errorMessage() {
 	$('.error-msg h3').html('sorry, that didn\'t work');
@@ -308,59 +329,15 @@ $(function () {
 // Parallax Scrolling Fanciocity --------------------------------------------------------------------------------------
 
 ( function( $ ) {
-    // Init Skrollr
-    // if(!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)){
-    	var s = skrollr.init({
-    	    render: function(data) {
-    	        // Debugging - Log the current scroll position.
-    	        console.log(data.curTop);
-    	    }
-    	});
+	// Init Skrollr
+	if(!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)){
+		var s = skrollr.init({
+			render: function(data) {
+				// Debugging - Log the current scroll position.
+				console.log(data.curTop);
+			}
+		});
 		// Refresh Skrollr after resizing our sections
 		s.refresh($('.homeSlide'));
-	// }
+	}
 } )( jQuery );
-
-// ( function( $ ) {
-	
-// 	// Setup variables
-// 	$window = $(window);
-// 	$slide = $('.homeSlide');
-// 	$body = $('body');
-	
-//  //    //FadeIn all sections   
-// 	// $body.imagesLoaded( function() {
-// 	// 	setTimeout(function() {
-		      
-// 	// 	      // Resize sections
-// 	// 	      adjustWindow();
-		      
-// 	// 	      // Fade in sections
-// 	// 		  $body.removeClass('loading').addClass('loaded');
-			  
-// 	// 	}, 800);
-// 	// });
-	
-// 	function adjustWindow(){
-		
-// 		// Init Skrollr
-// 		var s = skrollr.init();
-		
-// 		// Get window size
-// 	    winH = $window.height();
-	    
-// 	    // Keep minimum height 550
-// 	    if(winH <= 550) {
-// 			winH = 550;
-// 		} 
-	    
-// 	    // Resize our slides
-// 	    $slide.height(winH);
-	    
-// 	    // Refresh Skrollr after resizing our sections
-// 	    s.refresh($('.homeSlide'));
-	    
-	    
-// 	}
-		
-// } )( jQuery );

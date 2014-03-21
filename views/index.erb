@@ -1,34 +1,96 @@
+<section id="welcome">
+    <div class="bcg" 
+    data-center="background-position: 100% 0px;"
+    data-top-bottom="background-position: 0% -80px;">
+        <div class="hsContainer bcg-gradient">
+            <div class="hsContent"
+            data-bottom="position: fixed; top: 150px; right: 0px;"
+            data--30p-top="opacity: 1;"
+            data--80p-top="opacity: 0;"
+            data-anchor-target="#brand">
+                <h1 id="brand" class="h1 brand">
+                    <a class="logo-link" href="/">
+                        <span style="color: #c00; font-family: 'Josefin Slab'; font-size: 1.1em">2</span>Chez
+                    </a>
+                    <% unless @admin %>
+                    <!-- <a class="phone pull-right visible-xs visible-sm" href="tel:+13096912224" title="Call Us">
+                        <span class="glyphicon glyphicon-earphone"></span>
+                    </a> -->
+                    <% end %>
+                </h1>
+                <% if @admin %>
+                <h2 class="h1 subheading text-right"><%= "Hello, #{@user.capitalize}" %></h2>
+                <% else %>
+                <h2 class="h1 subheading text-right">Casual Fine Dining</h2>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="content-block push-down">
+
+  <section id="menu-msg">
+    <div class="bcg">
+      <div class="hsContainer">
+        <div class="hsContent">
+          <h1 class="h1 center">
+            Menu
+          </h1>
+          <div class="clearfix menu-intro">
+            <div class="col-xs-12 col-md-5 pull-left">
+              <img class="sm-img" src="./images/dinner-duck.jpg" alt="Duck">
+            </div>
+            <div class="col-xs-12 col-md-7 pull-right">
+              <h2>Food &amp; Drink</h2>
+              <p>At 2Chez, we create authentic, rustic dishes inspired by classic, old-world flavors. Every dish is hand-crafted from scratch with carefully selected ingredients. This is the kind of food that is meant to be shared over a bottle of good wine with even better friends.</p>
+              <p class="visible-md visible-lg">Our drinks list is all about complementing our food. Every bottle of wine, craft beer, and seasonal cocktail has been carefully curated to bring out the best in what we create. We even have a small plates menu, available only at the bar, for those who want a quick bite to eat with their cocktail.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <%= erb :menu, layout: false %>
 
-  <section id="hours" class="homeSlide">
-      <div class="bcg"
-          data-center="background-position: 50% 0px;"
-          data-top-bottom="background-position: 50% -100px;"
-          data-anchor-target="#hours">
-          <div class="hsContainer">
-              <div class="hsContent">
-                  <div class="plaxEl"
-                      data-bottom="opacity: 0;"
-                      data-center="opacity: 1;"
-                      data-anchor-target="#hours">
-                      <h1>Hours</h1>
-                      <h2>Lunch</h2>
-                        <p class="remove-bottom-margin">Monday - Friday</p>
-                        <p>11am - 2pm</p>
-                      <h2>Dinner</h2>
-                        <p class="remove-bottom-margin">Monday - Thursday</p>
-                        <p>5 - 9pm</p>
-                        <p class="remove-bottom-margin">Friday &amp; Saturday</p>
-                        <p>5 - 10pm</p>
-                  </div>
-              </div>
-          </div>   
-      </div>
-  </section>
+  <%= erb :hours, layout: false %>
 
-  <%= erb :contact, layout: false %>
+  <section id="contact">
+    <div class="bcg">
+      <div class="hsContainer">
+        <div class="hsContent">
+            <div class="col-xs-12">
+              <h2 class="center h2 underline">
+                Reservations
+              </h2>
+                <div class="inner">
+                  <p>
+                    Give us a call at 309.691.2224 to make your reservation. We will be answering phones between 10am and 10pm, every day except Sunday. We look forward to seeing you.
+                  </p>
+                  <a href="tel:+13096912224" class="col-xs-12 btn btn-lg btn-info visible-xs visible-sm">
+                    make reservation
+                  </a>
+                </div>
+
+              <h2 class="center h2 underline">Private Parties & Catering</h2>
+                <div class="inner">
+                  <p>
+                    Looking to host a party? Let 2Chez make it an unforgettable one! Call or email Todd to ask about availability, menu options, and pricing.
+                  </p>
+                  <p class="visible-md visible-lg center">
+                    Email: <a href="<%= @site_email.gsub('@', '(at)') %>" class="email"><%= @site_email %></a> or Call: 309.691.2224.
+                  </p>
+                  <a class="email col-xs-12 btn btn-lg btn-info visible-xs visible-sm" href="<%= @site_email.gsub('@', '(at)') %>">
+                    email Todd
+                  </a>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <%= erb :find, layout: false %>
 
   <%= erb :footer, layout: false %>
 
