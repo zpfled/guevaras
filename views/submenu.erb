@@ -1,4 +1,4 @@
-<section class="menu-bcg inner container">
+<section class="menu-bcg scrim inner container">
 <% @categories.each do |category| %>
 
   <% @relevant_items = @menu_items.select { |item| item.menu == menu && item.category == category } %>

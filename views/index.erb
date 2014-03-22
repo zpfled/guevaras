@@ -2,33 +2,34 @@
     <div class="bcg" 
     data-center="background-position: 100% 0px;"
     data-top-bottom="background-position: 0% -80px;">
-        <div class="hsContainer bcg-gradient">
-            <div class="hsContent"
-            data-bottom="position: fixed; top: 150px; right: 0px;"
+        <div class="hsContainer">
+            <div class="hsContent welcome-head"
             data--30p-top="opacity: 1;"
             data--80p-top="opacity: 0;"
             data-anchor-target="#brand">
-                <h1 id="brand" class="h1 brand">
-                    <a class="logo-link" href="/">
-                        <span style="color: #c00; font-family: 'Josefin Slab'; font-size: 1.1em">2</span>Chez
-                    </a>
-                    <% unless @admin %>
-                    <!-- <a class="phone pull-right visible-xs visible-sm" href="tel:+13096912224" title="Call Us">
-                        <span class="glyphicon glyphicon-earphone"></span>
-                    </a> -->
-                    <% end %>
-                </h1>
-                <% if @admin %>
-                <h2 class="h1 subheading text-right"><%= "Hello, #{@user.capitalize}" %></h2>
-                <% else %>
-                <h2 class="h1 subheading text-right">Casual Fine Dining</h2>
-                <% end %>
+                <!-- <div class="scrim"> -->
+                  <h1 id="brand" class="h1 brand">
+                      <a class="logo-link" href="/">
+                          <span style="color: #c00; font-family: 'Josefin Slab'; font-size: 1.1em">2</span>Chez
+                      </a>
+                      <% unless @admin %>
+                      <!-- <a class="phone pull-right visible-xs visible-sm" href="tel:+13096912224" title="Call Us">
+                          <span class="glyphicon glyphicon-earphone"></span>
+                      </a> -->
+                      <% end %>
+                  </h1>
+                  <% if @admin %>
+                  <h2 class="h1 subheading text-right"><%= "Hello, #{@user.capitalize}" %></h2>
+                  <% else %>
+                  <h2 class="h1 subheading text-right">Casual Fine Dining</h2>
+                  <% end %>
+                <!-- </div> -->
             </div>
         </div>
     </div>
 </section>
 
-<section class="content-block push-down">
+<section class="push-down">
 
   <section id="menu-msg">
     <div class="bcg">
@@ -43,7 +44,7 @@
             </div>
             <div class="col-xs-12 col-md-5 pull-right">
               <p class="lead">At 2Chez, we create authentic, rustic dishes inspired by classic, old-world flavors. Every dish is hand-crafted from scratch with carefully selected ingredients. This is the kind of food that is meant to be shared over a bottle of good wine with even better friends.</p>
-              <p class="lead">Our drinks list is all about complementing our food. Every bottle of wine, craft beer, and seasonal cocktail has been carefully curated to bring out the best in what we create. We even have a small plates menu, available only at the bar, for those who want a quick bite to eat with their cocktail.</p>
+              <p class="lead visible-md visible-lg">Our drinks list is all about complementing our food. Every bottle of wine, craft beer, and seasonal cocktail has been carefully curated to bring out the best in what we create. We even have a small plates menu, available only at the bar, for those who want a quick bite to eat with their cocktail.</p>
             </div>
           </div>
         </div>
@@ -67,7 +68,7 @@
                   <p>
                     Give us a call at 309.691.2224 to make your reservation. We answer between 10am and 10pm every day except Sunday.
                   </p>
-                  <a href="tel:+13096912224" class="col-xs-12 btn btn-lg btn-info visible-xs visible-sm">
+                  <a href="tel:+13096912224" class="col-xs-12 btn btn-lg btn-info visible-xs visible-sm contact-btn">
                     Call Now
                   </a>
                 </div>
@@ -80,7 +81,7 @@
                   <p class="visible-md visible-lg center">
                     Email: <a href="<%= @site_email.gsub('@', '(at)') %>" class="email"><%= @site_email %></a> or Call: 309.691.2224.
                   </p>
-                  <a class="email col-xs-12 btn btn-lg btn-info visible-xs visible-sm" href="<%= @site_email.gsub('@', '(at)') %>">
+                  <a class="email col-xs-12 btn btn-lg btn-info visible-xs visible-sm contact-btn" href="<%= @site_email.gsub('@', '(at)') %>">
                     email Todd
                   </a>
                 </div>
