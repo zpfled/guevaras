@@ -318,9 +318,9 @@ $(function () {
 					$('.delete-confirmation').fadeOut(200);
 					$('.delete-msg').fadeIn(500).fadeOut(2000);
 				},
-				// error: function() {
-					// errorMessage();
-				// }
+				error: function() {
+					errorMessage();
+				}
 			});
 		});
 	});
