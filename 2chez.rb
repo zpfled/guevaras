@@ -1,8 +1,8 @@
 require 'bundler'
 Bundler.require(:default, :development)
 
-# DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/2chez')
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
+DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/2chez')
+# DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
 
 class User
 	include DataMapper::Resource
@@ -48,6 +48,21 @@ class TwoChez < Sinatra::Application
 # Before/After Blocks ----------------------------------------------------------
 
 before do
+	# Create initial user
+	if User.all.length == 0
+		zach = 	User.create 	name: 		'todd',
+								email: 		'toddhohulin@mchsi.com',
+								password: 	'password',
+								admin: 		'true'
+		zach.save
+		todd = 	User.create 	name: 		'zach',
+								email: 		'zpfled@gmail.com',
+								password: 	'password',
+								admin: 		true
+		todd.save
+	end
+
+
 	@user = session[:name]
 	@users = User.all
 	@menu_items = MenuItem.all

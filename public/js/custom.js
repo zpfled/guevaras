@@ -313,7 +313,7 @@ $(function () {
 				data:		$(this).serialize(),
 				dataType:	'html',
 				success: function(data) {
-					$(button.parent().parent()).remove();
+					$(button.parent().parent().parent()).remove();
 					$('.delete-msg h3').html('successfully deleted ' + data);
 					$('.delete-confirmation').fadeOut(200);
 					$('.delete-msg').fadeIn(500).fadeOut(2000);

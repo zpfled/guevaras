@@ -5,6 +5,18 @@
 .hidden {
   display: none;
 }
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.relative {
+  position: relative;
+}
  /*
  Bootstrap Overrides
   */
@@ -288,6 +300,10 @@ article {
 .push-down {
   position: absolute;
   top: 100%;
+}
+
+.half-down {
+  top: 60%;
 }
 
 .menu.nav {
