@@ -328,16 +328,17 @@ $(function () {
 
 // Parallax Scrolling Fanciocity --------------------------------------------------------------------------------------
 
-( function( $ ) {
+$(function() {
 	// Init Skrollr
 	if(!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)){
-		var s = skrollr.init({
-			render: function(data) {
-				// Debugging - Log the current scroll position.
-				console.log(data.curTop);
-			}
-		});
+		var s = skrollr.init;
+		// var s = skrollr.init({
+		// 	render: function(data) {
+		// 		// Debugging - Log the current scroll position.
+		// 		console.log(data.curTop);
+		// 	}
+		// });
 		// Refresh Skrollr after resizing our sections
-		s.refresh($('.homeSlide'));
+		// s.refresh($('.homeSlide'));
 	}
-} )( jQuery );
+});
