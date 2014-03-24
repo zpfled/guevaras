@@ -53,7 +53,7 @@ before do
 		zach = 	User.create 	name: 		'todd',
 								email: 		'toddhohulin@mchsi.com',
 								password: 	'password',
-								admin: 		'true'
+								admin: 		true
 		zach.save
 		todd = 	User.create 	name: 		'zach',
 								email: 		'zpfled@gmail.com',
@@ -76,7 +76,7 @@ before do
 	@categories.sort!
 
 	# Set admin
-	@users.each { |user| user.admin = true ? user.name == 'zach' || user.name == 'dave' : false; user.save }
+	@users.each { |user| user.admin = true ? user.name == 'zach' || user.name == 'dave' || user.name = 'todd' : false; user.save }
 end
 
 after do
@@ -96,7 +96,13 @@ get '/' do
 	@title = 'Welcome'
 	@admin = false
 	@site_email = User.first.email
+	@first_user = User.first
 
+
+	Pony.mail 					to: 		"zpfled@gmail.com",
+            					from: 		"noreply@2Chez.com",
+            					subject: 	"Email works now!",
+            					body: 		"erb(:failed_password_email, layout: false, locals: { user: user, admin: admin })"
 	erb :index
 end
 
