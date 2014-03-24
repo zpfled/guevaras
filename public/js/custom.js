@@ -1,23 +1,23 @@
 
 // Email Obfuscation ------------------------------------------------------------------------------------------------
 
-// (function($) {
-//     jQuery.fn.mailto = function() {
-//         return this.each(function() {
-//             var email_add = $(this).attr("href").replace(/\s*\(.+\)\s*/, "@");
-//             var email_text = $(this).html();
-//             var email_class = $(this).attr("class");
-//             $(this).before('<a class="' + email_class + '" href="mailto:' + email_add + '" rel="nofollow" title="Email ' + email_add + '">' + email_text + '</a>').remove();
-//         });
-//     };
+(function($) {
+    jQuery.fn.mailto = function() {
+        return this.each(function() {
+            var email_add = $(this).attr("href").replace(/\s*\(.+\)\s*/, "@");
+            var email_text = $(this).html();
+            var email_class = $(this).attr("class");
+            $(this).before('<a class="' + email_class + '" href="mailto:' + email_add + '" rel="nofollow" title="Email ' + email_add + '">' + email_text + '</a>').remove();
+        });
+    };
 
-// })(jQuery);
+})(jQuery);
 
-// $(document).ready(function() {
-//     $(function() {
-//         $('.email').mailto();
-//     });
-// });
+$(document).ready(function() {
+    $(function() {
+        $('.email').mailto();
+    });
+});
 
 // Error Message -------------------------------------------------------------------------------------------------------
 
@@ -228,8 +228,8 @@ $(function () {
 				$('.modal-backdrop').fadeToggle(200);
 				$('.add-msg h3').html('changes saved');
 				$('.add-msg').fadeIn(750).fadeOut(750);
-				$('#menu').html(data);
 				$('#cancel-edit').click();
+				$('#menu').html(data);
 			},
 			error: function() {
 				errorMessage();
