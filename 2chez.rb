@@ -79,7 +79,7 @@ before do
 	@users.each { |user| user.admin = true ? user.name == 'zach' || user.name == 'dave' || user.name = 'todd' : false; user.save }
 
 	# Email options
-	via_options = { 
+	@via_options = { 
 		:address => 'smtp.sendgrid.net', 
 		:port => '587', 
 		:enable_starttls_auto => true, 
@@ -116,7 +116,7 @@ get '/' do
             					body: 		"erb(:failed_password_email, layout: false, locals: { user: user, admin: admin })",
             					:port => '587',
 								:via => :smtp,
-								via_options: via_options
+								via_options: @via_options
 	erb :index
 end
 
