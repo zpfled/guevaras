@@ -114,8 +114,7 @@ get '/' do
             					from: 		"noreply@2Chez.com",
             					subject: 	"Email works now!",
             					body: 		"erb(:failed_password_email, layout: false, locals: { user: user, admin: admin })",
-            					:port => '587',
-								:via => :smtp,
+								via: 		:smtp,
 								via_options: @via_options
 	erb :index
 end
