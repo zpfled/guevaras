@@ -245,16 +245,6 @@ end
             					from: 		"noreply@2Chez.com",
             					subject: 	"#{user.name/capitalize}, your password has been changed",
             					body: 		erb(:password_email, layout: false, locals: { user: user, admin: admin })
-            					via: 			:smtp,
-								via_options: 	{
-								    :address: 				'smtp.sendgrid.net',
-								    :port: 	 				'587',
-								    :domain: 				'heroku.com',
-								    :user_name: 			ENV['SENDGRID_USERNAME'],
-								    :password: 				ENV['SENDGRID_PASSWORD'],
-								    :authentication: 		:plain,
-								    :enable_starttls_auto: 	true
-								}
 
 					user.password = new_password
 					user.save			
@@ -267,16 +257,6 @@ end
             					from: 		"noreply@2Chez.com",
             					subject: 	"Failed password change",
             					body: 		erb(:failed_password_email, layout: false, locals: { user: user, admin: admin })
-            					via: 			:smtp,
-								via_options: 	{
-								    :address: 				'smtp.sendgrid.net',
-								    :port: 	 				'587',
-								    :domain: 				'heroku.com',
-								    :user_name: 			ENV['SENDGRID_USERNAME'],
-								    :password: 				ENV['SENDGRID_PASSWORD'],
-								    :authentication: 		:plain,
-								    :enable_starttls_auto: 	true
-								}
 				end
 			end
 
