@@ -77,6 +77,17 @@ before do
 
 	# Set admin
 	@users.each { |user| user.admin = true ? user.name == 'zach' || user.name == 'dave' || user.name = 'todd' : false; user.save }
+
+	# Email options
+	via_options = { 
+		:address => 'smtp.sendgrid.net', 
+		:port => '587', 
+		:enable_starttls_auto => true, 
+		:user_name => ENV['SENDGRID_USERNAME'], 
+		:password => ENV['SENDGRID_PASSWORD'], 
+		:authentication => :plain, 
+		:domain => ENV['SENDGRID_DOMAIN']
+	}
 end
 
 after do
@@ -102,7 +113,10 @@ get '/' do
 	Pony.mail 					to: 		"zpfled@gmail.com",
             					from: 		"noreply@2Chez.com",
             					subject: 	"Email works now!",
-            					body: 		"erb(:failed_password_email, layout: false, locals: { user: user, admin: admin })"
+            					body: 		"erb(:failed_password_email, layout: false, locals: { user: user, admin: admin })",
+            					:port => '587',
+								:via => :smtp,
+								via_options: via_options
 	erb :index
 end
 
