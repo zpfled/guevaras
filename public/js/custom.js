@@ -228,8 +228,8 @@ $(function () {
 				$('.modal-backdrop').fadeToggle(200);
 				$('.add-msg h3').html('changes saved');
 				$('.add-msg').fadeIn(750).fadeOut(750);
-				$('#cancel-edit').click();
 				$('#menu').html(data);
+				$('#cancel-edit').click();
 			},
 			error: function() {
 				errorMessage();
@@ -328,7 +328,7 @@ $(function () {
 
 // Parallax Scrolling Fanciocity --------------------------------------------------------------------------------------
 
-( function( $ ) {
+$(function() {
 	// Init Skrollr
 	if(!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)){
 		var s = skrollr.init({
@@ -340,4 +340,6 @@ $(function () {
 		// Refresh Skrollr after resizing our sections
 		s.refresh($('.homeSlide'));
 	}
-} )( jQuery );
+});
+
+

@@ -1,8 +1,8 @@
-<section id="task-bar" class="">
+<section id="task-bar">
     
     <!-- XS-Screen Taskbar ---------------------------------------------------------- -->
 
-    <ul data-spy="affix" data-offset-top="370" class="visible-xs taskbar half-down affix nav">
+    <ul data-spy="affix" data-offset-top="864" class="visible-xs taskbar push-down affix nav">
         <div class="row container">
             <li class="dropdown col-xs-12">
                 <button class="col-xs-12 btn btn-lg btn-taskbar" id="taskbar" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
@@ -59,10 +59,11 @@
 
     <!-- SM- to LG-Screen Taskbar ---------------------------------------------------------- -->
 
-    <ul data-spy="affix" data-offset-top="370" class="visible-sm visible-md visible-lg taskbar half-down affix nav navbar-nav">
+    <!-- The affix plugin does not work on an iPhone -->
+    <ul data-spy="affix" data-offset-top="200" class="visible-sm visible-md visible-lg taskbar push-down affix nav navbar-nav">
         <div class="row">
             <li class="col-md-2">
-                <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#updateInfoModal">
+                <button class="col-xs-12 btn btn-lg nav-btn" data-toggle="modal" data-target="#updateInfoModal">
                     update my info
                 </button>
             </li>
@@ -378,7 +379,7 @@
   </div>
 </div>
 
-<section class="absolute half-down">
+<section class="absolute push-down">
     <%= erb :menu, layout: false %>
 </section>
 
