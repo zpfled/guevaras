@@ -36,7 +36,23 @@ class MenuItem
 end
 
 DataMapper.finalize.auto_upgrade!
-# DataMapper.finalize.auto_migrate!
+
+configure :production do
+	set :email_options, {
+		via: 			:smtp,
+		via_options: 	{
+			address: 				'smtp.sendgrid.net',
+			port: 	 				'587',
+			domain: 				'heroku.com',
+			user_name: 				ENV['SENDGRID_USERNAME'],
+			password: 				ENV['SENDGRID_PASSWORD'],
+			authentication: 		:plain,
+			enable_starttls_auto: 	true
+		}
+	}
+end
+
+Pony.options = settings.email_options
 
 class TwoChez < Sinatra::Application
 	enable :sessions
@@ -216,16 +232,6 @@ end
             				from: 		"noreply@2Chez.com",
             				subject: 	"Email Change Confirmation",
             				body: 		erb(:email_email, layout: false, locals: { user: user, admin: admin })
-            				via: 			:smtp,
-							via_options: 	{
-							    :address: 				'smtp.sendgrid.net',
-							    :port: 	 				'587',
-							    :domain: 				'heroku.com',
-							    :user_name: 			ENV['SENDGRID_USERNAME'],
-							    :password: 				ENV['SENDGRID_PASSWORD'],
-							    :authentication: 		:plain,
-							    :enable_starttls_auto: 	true
-							}
 
 				user.email = params[:email]
 				user.save
@@ -298,32 +304,12 @@ end
             				from:  		"noreply@2Chez.com",
             				subject:  	"Welcome to the big show, #{params[:name].capitalize}!",
             				body:  		erb(:new_user, layout: false, locals: { user: user, admin: admin })
-            				via: 			:smtp,
-							via_options: 	{
-							    :address: 				'smtp.sendgrid.net',
-							    :port: 	 				'587',
-							    :domain: 				'heroku.com',
-							    :user_name: 			ENV['SENDGRID_USERNAME'],
-							    :password: 				ENV['SENDGRID_PASSWORD'],
-							    :authentication: 		:plain,
-							    :enable_starttls_auto: 	true
-							}
 
             	# Send confirmation email to Todd
             	Pony.mail 	to:  		admin.email,
             				from:  		"noreply@2Chez.com",
             				subject:  	"Did you grant #{params[:name].capitalize} access to the 2Chez website?",
             				body:  		erb(:new_user_admin, layout: false, locals: { user: user, admin: admin })
-            				via: 			:smtp,
-							via_options: 	{
-							    :address: 				'smtp.sendgrid.net',
-							    :port: 	 				'587',
-							    :domain: 				'heroku.com',
-							    :user_name: 			ENV['SENDGRID_USERNAME'],
-							    :password: 				ENV['SENDGRID_PASSWORD'],
-							    :authentication: 		:plain,
-							    :enable_starttls_auto: 	true
-							}
 
 				redirect '/menu'
 			end
@@ -344,16 +330,6 @@ end
             				from: 		"noreply@2Chez.com",
             				subject: 	"Deleted #{params[:name].capitalize}",
             				body: 		erb(:delete_user_admin, layout: false, locals: { user: user, admin: admin })
-            				via: 			:smtp,
-							via_options: 	{
-							    :address: 				'smtp.sendgrid.net',
-							    :port: 	 				'587',
-							    :domain: 				'heroku.com',
-							    :user_name: 			ENV['SENDGRID_USERNAME'],
-							    :password: 				ENV['SENDGRID_PASSWORD'],
-							    :authentication: 		:plain,
-							    :enable_starttls_auto: 	true
-							}
 			
 				redirect '/menu'
 			end
