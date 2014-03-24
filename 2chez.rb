@@ -81,7 +81,6 @@ before do
 	# Email options
 	@via_options = { 
 		:address => 'smtp.sendgrid.net', 
-		:port => '587', 
 		:enable_starttls_auto => true, 
 		:user_name => ENV['SENDGRID_USERNAME'], 
 		:password => ENV['SENDGRID_PASSWORD'], 
@@ -114,6 +113,7 @@ get '/' do
             					from: 		"noreply@2Chez.com",
             					subject: 	"Email works now!",
             					body: 		"erb(:failed_password_email, layout: false, locals: { user: user, admin: admin })",
+								port: 		'587', 
 								via: 		:smtp,
 								via_options: @via_options
 	erb :index
