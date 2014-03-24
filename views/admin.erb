@@ -59,7 +59,6 @@
 
     <!-- SM- to LG-Screen Taskbar ---------------------------------------------------------- -->
 
-    <!-- The affix plugin does not work on an iPhone -->
     <ul data-spy="affix" data-offset-top="864" class="visible-sm visible-md visible-lg taskbar push-down affix nav navbar-nav">
         <div class="row">
             <li class="col-md-2">
@@ -69,43 +68,15 @@
             </li>
             <% if @boss %>
             <li class="col-md-2 dropdown">
-                <button class="col-xs-12 btn btn-lg nav-btn" id="manageUsersButton" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
-                    manage users <span class="caret"></span>
+                <button class="col-xs-12 btn btn-lg nav-btn" data-toggle="modal" data-target="#manageUsersModal">
+                    manage users
                 </button>
-                <ul class="dropdown-menu btn-lg" role="menu" aria-labelledby="manageUsersButton">
-                    <div class="container backdrop">
-                        <li class="row">
-                            <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#addUserModal">
-                                add user
-                            </button>
-                        </li>
-                        <li>
-                            <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#deleteUserModal">
-                                delete user
-                            </button>
-                        </li>
-                    </div>
-                </ul>
             </li>
             <% end %>
             <li class="col-md-2 dropdown">
-                <button class="col-xs-12 btn btn-lg nav-btn" id="manageMenuButton" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
-                    manage menu <span class="caret"></span>
+                <button class="col-xs-12 btn btn-lg nav-btn" data-toggle="modal" data-target="#manageMenuModal">
+                    manage menu
                 </button>
-                <ul class="dropdown-menu btn-lg" role="menu" aria-labelledby="manageMenuButton">
-                    <div class="container backdrop">
-                        <li class="row">
-                            <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#addItemModal">
-                                add item
-                            </button>
-                        </li>
-                        <li>
-                            <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#editItemModal">
-                                edit item
-                            </button>
-                        </li>
-                    </div>
-                </ul>
             </li>
             <li class="col-md-2">
                 <form action="/logout" method="post">
@@ -115,6 +86,62 @@
         </div>
     </ul>
 </section>
+
+<!-- ManageUsers Modal ---------------------------------------------------------- -->
+<div class="modal fade" id="manageUsersModal" tabindex="-1" role="dialog" aria-labelledby="manageUsersModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+            <ul class="col-xs-12 btn-lg" role="menu" aria-labelledby="manageUsersButton">
+                <li>
+                    <button class="col-xs-12 btn btn-lg btn-primary" data-toggle="modal" data-target="#addUserModal">
+                        add user
+                    </button>
+                </li>
+                <li>
+                    <button class="col-xs-12 btn btn-lg btn-warning" data-toggle="modal" data-target="#deleteUserModal">
+                        delete user
+                    </button>
+                </li>
+            </ul>
+            <!-- Cancel Button -->
+            <button id="cancel-edit-user" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
+                cancel
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ManageMenu Modal ---------------------------------------------------------- -->
+<div class="modal fade" id="manageMenuModal" tabindex="-1" role="dialog" aria-labelledby="manageMenuModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+            <ul class="col-xs-12 btn-lg" role="menu" aria-labelledby="manageUsersButton">
+                <li>
+                    <button class="col-xs-12 btn btn-lg btn-success" data-toggle="modal" data-target="#addItemModal">
+                        add item
+                    </button>
+                </li>
+                <li>
+                    <button class="col-xs-12 btn btn-lg btn-primary" data-toggle="modal" data-target="#editItemModal">
+                        edit item
+                    </button>
+                </li>
+            </ul>
+            <!-- Cancel Button -->
+            <button id="cancel-edit-user" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
+                cancel
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- AddItem Modal ---------------------------------------------------------- -->
 <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="addItemModal" aria-hidden="true">
@@ -274,7 +301,7 @@
                 <!-- Update User Form -->
                 <form action="/<%= @id %>/update" method="post" id="update-info">
                     <div class="id hidden"><%= @id %></div>
-                    <% user = User.first(id: @id) %>
+                    <% user = @current_user %>
                         <% name_array = user.email.split('@')[0].split('') %>
                         <% email = user.email.split('@')[1] %>
                         <% hidden_email = "#{name_array[0]}#{name_array.map { |x| x = '*' }.join }@#{email}" %>
@@ -357,6 +384,7 @@
                 
                 <!-- Delete User Form -->
                 <form action="/user/delete" method="post" id="delete-user">
+                    <h3>Are you sure?</h3>
                     <label for="name">
                         Select a user to delete (this can not be undone!):
                     </label>

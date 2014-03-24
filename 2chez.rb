@@ -50,9 +50,11 @@ configure :production do
 			enable_starttls_auto: 	true
 		}
 	}
-end
 
 Pony.options = settings.email_options
+
+end
+
 
 class TwoChez < Sinatra::Application
 	enable :sessions
@@ -151,6 +153,7 @@ end
 get '/admin' do
 	if session[:name]
 		user = User.first(name: session[:name])
+		@current_user = user
 		@id = user.id
 		@boss = true ? user.admin == true : false
 	end
