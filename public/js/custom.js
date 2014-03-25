@@ -119,11 +119,11 @@ $(function () {
 				$('.menu-msg h3').html(data);
 				$(button.parent().parent().find('.item-price')).html(data);
 				$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
-				$('#cancel-edit').click();
+				$('#cancel-edit-user').click();
 
 			},
 			error: function() {
-				$('#cancel-edit').click();
+				$('#cancel-edit-user').click();
 				errorMessage();
 			}
 		});
@@ -149,7 +149,7 @@ $(function () {
 				$('.add-msg h3').html('success');
 				$('.add-msg').fadeIn(750).fadeOut(750);
 				$('#menu').html(data);
-				$('#cancel-add').click();
+				$('#cancel-add-user').click();
 			},
 			error: function() {
 				errorMessage();
@@ -175,7 +175,7 @@ $(function () {
 				$('.add-msg h3').html('success');
 				$('.add-msg').fadeIn(750).fadeOut(750);
 				$('#menu').html(data);
-				$('#cancel-delete').click();
+				$('#cancel-delete-user').click();
 			},
 			error: function() {
 				errorMessage();
@@ -342,3 +342,6 @@ $(function() {
 		// s.refresh($('.homeSlide'));
 	}
 });
+
+
+>>>>>>> master

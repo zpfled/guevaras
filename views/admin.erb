@@ -1,8 +1,8 @@
-<section id="task-bar" class="">
+<section id="task-bar">
     
     <!-- XS-Screen Taskbar ---------------------------------------------------------- -->
 
-    <ul data-spy="affix" data-offset-top="370" class="visible-xs taskbar half-down affix nav">
+    <ul data-spy="affix" data-offset-top="400" class="visible-xs taskbar push-down affix nav">
         <div class="row container">
             <li class="dropdown col-xs-12">
                 <button class="col-xs-12 btn btn-lg btn-taskbar" id="taskbar" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
@@ -59,52 +59,24 @@
 
     <!-- SM- to LG-Screen Taskbar ---------------------------------------------------------- -->
 
-    <ul data-spy="affix" data-offset-top="370" class="visible-sm visible-md visible-lg taskbar half-down affix nav navbar-nav">
+    <ul data-spy="affix" data-offset-top="864" class="visible-sm visible-md visible-lg taskbar push-down affix nav navbar-nav">
         <div class="row">
             <li class="col-md-2">
-                <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#updateInfoModal">
+                <button class="col-xs-12 btn btn-lg nav-btn" data-toggle="modal" data-target="#updateInfoModal">
                     update my info
                 </button>
             </li>
             <% if @boss %>
             <li class="col-md-2 dropdown">
-                <button class="col-xs-12 btn btn-lg nav-btn" id="manageUsersButton" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
-                    manage users <span class="caret"></span>
+                <button class="col-xs-12 btn btn-lg nav-btn" data-toggle="modal" data-target="#manageUsersModal">
+                    manage users
                 </button>
-                <ul class="dropdown-menu btn-lg" role="menu" aria-labelledby="manageUsersButton">
-                    <div class="container backdrop">
-                        <li class="row">
-                            <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#addUserModal">
-                                add user
-                            </button>
-                        </li>
-                        <li>
-                            <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#deleteUserModal">
-                                delete user
-                            </button>
-                        </li>
-                    </div>
-                </ul>
             </li>
             <% end %>
             <li class="col-md-2 dropdown">
-                <button class="col-xs-12 btn btn-lg nav-btn" id="manageMenuButton" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
-                    manage menu <span class="caret"></span>
+                <button class="col-xs-12 btn btn-lg nav-btn" data-toggle="modal" data-target="#manageMenuModal">
+                    manage menu
                 </button>
-                <ul class="dropdown-menu btn-lg" role="menu" aria-labelledby="manageMenuButton">
-                    <div class="container backdrop">
-                        <li class="row">
-                            <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#addItemModal">
-                                add item
-                            </button>
-                        </li>
-                        <li>
-                            <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#editItemModal">
-                                edit item
-                            </button>
-                        </li>
-                    </div>
-                </ul>
             </li>
             <li class="col-md-2">
                 <form action="/logout" method="post">
@@ -115,48 +87,56 @@
     </ul>
 </section>
 
-<!-- UpdateInfo Modal ---------------------------------------------------------- -->
-<div class="modal fade" id="updateInfoModal" tabindex="-1" role="dialog" aria-labelledby="updateInfoModal" aria-hidden="true">
+<!-- ManageUsers Modal ---------------------------------------------------------- -->
+<div class="modal fade" id="manageUsersModal" tabindex="-1" role="dialog" aria-labelledby="manageUsersModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
         <div class="row">
-            <div class="col-xs-12 edit-form">
-                
-                <!-- Update User Form -->
-                <form action="/<%= @id %>/update" method="post" id="update-info">
-                    <div class="id hidden"><%= @id %></div>
-                    <% user = User.first(id: @id) %>
-                        <% name_array = user.email.split('@')[0].split('') %>
-                        <% email = user.email.split('@')[1] %>
-                        <% hidden_email = "#{name_array[0]}#{name_array.map { |x| x = '*' }.join }@#{email}" %>
-
-                    <input type="hidden" name="id" value="<%= @id %>">
-                    
-                    <!-- Update Email -->
-                    <h2 class="col-xs-12 center">Email (<%= hidden_email %>)</h2>
-                    <label for="email">Update your email address:</label>
-                    <input class="col-xs-12" name="email" type="text" maxlength="30" placeholder="New Email Address">
-                    
-                    <!-- Change Password -->
-                    <h2 class="col-xs-12 center">Password</h2>
-                    <label for="old_password">Enter your current password:</label>
-                    <input class="col-xs-12" name="old_password" type="password" maxlength="30" placeholder="Enter Current Password">
-
-                    <label for="new_password">Enter your new password:</label>
-                    <input class="col-xs-12" name="new_password" type="password" maxlength="30" placeholder="Enter New Password">
-                    <input class="col-xs-12" name="confirm_password" type="password" maxlength="30" placeholder="Confirm New Password">
-                    
-                    <!-- Submit Button -->
-                    <button type="submit" class="col-xs-12 btn btn-lg btn-primary">
-                        save changes
+            <ul class="col-xs-12 btn-lg" role="menu" aria-labelledby="manageUsersButton">
+                <li>
+                    <button class="col-xs-12 btn btn-lg btn-primary" data-toggle="modal" data-target="#addUserModal">
+                        add user
                     </button>
-                    <!-- Cancel Button -->
-                    <button id="cancel-edit" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
-                        cancel
+                </li>
+                <li>
+                    <button class="col-xs-12 btn btn-lg btn-warning" data-toggle="modal" data-target="#deleteUserModal">
+                        delete user
                     </button>
-                </form>
-            </div>
+                </li>
+            </ul>
+            <!-- Cancel Button -->
+            <button id="cancel-edit-user" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
+                cancel
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ManageMenu Modal ---------------------------------------------------------- -->
+<div class="modal fade" id="manageMenuModal" tabindex="-1" role="dialog" aria-labelledby="manageMenuModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+            <ul class="col-xs-12 btn-lg" role="menu" aria-labelledby="manageUsersButton">
+                <li>
+                    <button class="col-xs-12 btn btn-lg btn-success" data-toggle="modal" data-target="#addItemModal">
+                        add item
+                    </button>
+                </li>
+                <li>
+                    <button class="col-xs-12 btn btn-lg btn-primary" data-toggle="modal" data-target="#editItemModal">
+                        edit item
+                    </button>
+                </li>
+            </ul>
+            <!-- Cancel Button -->
+            <button id="cancel-edit-user" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
+                cancel
+            </button>
         </div>
       </div>
     </div>
@@ -310,6 +290,54 @@
   </div>
 </div>
 
+<!-- UpdateInfo Modal ---------------------------------------------------------- -->
+<div class="modal fade" id="updateInfoModal" tabindex="-1" role="dialog" aria-labelledby="updateInfoModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-12 edit-form">
+                
+                <!-- Update User Form -->
+                <form action="/<%= @id %>/update" method="post" id="update-info">
+                    <div class="id hidden"><%= @id %></div>
+                    <% user = @current_user %>
+                        <% name_array = user.email.split('@')[0].split('') %>
+                        <% email = user.email.split('@')[1] %>
+                        <% hidden_email = "#{name_array[0]}#{name_array.map { |x| x = '*' }.join }@#{email}" %>
+
+                    <input type="hidden" name="id" value="<%= @id %>">
+                    
+                    <!-- Update Email -->
+                    <h2 class="col-xs-12 center">Email (<%= hidden_email %>)</h2>
+                    <label for="email">Update your email address:</label>
+                    <input class="col-xs-12" name="email" type="text" maxlength="30" placeholder="New Email Address">
+                    
+                    <!-- Change Password -->
+                    <h2 class="col-xs-12 center">Password</h2>
+                    <label for="old_password">Enter your current password:</label>
+                    <input class="col-xs-12" name="old_password" type="password" maxlength="30" placeholder="Enter Current Password">
+
+                    <label for="new_password">Enter your new password:</label>
+                    <input class="col-xs-12" name="new_password" type="password" maxlength="30" placeholder="Enter New Password">
+                    <input class="col-xs-12" name="confirm_password" type="password" maxlength="30" placeholder="Confirm New Password">
+                    
+                    <!-- Submit Button -->
+                    <button type="submit" class="col-xs-12 btn btn-lg btn-primary">
+                        save changes
+                    </button>
+                    <!-- Cancel Button -->
+                    <button id="cancel-edit-user" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
+                        cancel
+                    </button>
+                </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- NewUser Modal ---------------------------------------------------------- -->
 <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModal" aria-hidden="true">
   <div class="modal-dialog">
@@ -336,7 +364,7 @@
                     <!-- Submit to Create User -->
                     <button type="submit" class="col-xs-12 btn btn-lg btn-primary">create user</button>
                 </form>
-                <button id="cancel-add" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
+                <button id="cancel-add-user" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
                     cancel
                 </button>
             </div>
@@ -356,6 +384,7 @@
                 
                 <!-- Delete User Form -->
                 <form action="/user/delete" method="post" id="delete-user">
+                    <h3>Are you sure?</h3>
                     <label for="name">
                         Select a user to delete (this can not be undone!):
                     </label>
@@ -368,7 +397,7 @@
                     </select>
                     <button type="submit" class="col-xs-12 btn btn-lg btn-primary">delete user</button>
                 </form>
-                <button id="cancel-delete" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
+                <button id="cancel-delete-user" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
                     cancel
                 </button>
             </div>
@@ -378,7 +407,7 @@
   </div>
 </div>
 
-<section class="absolute half-down">
+<section class="absolute push-down">
     <%= erb :menu, layout: false %>
 </section>
 

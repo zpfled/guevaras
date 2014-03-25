@@ -36,7 +36,25 @@ class MenuItem
 end
 
 DataMapper.finalize.auto_upgrade!
-# DataMapper.finalize.auto_migrate!
+
+configure :production do
+	set :email_options, {
+		via: 			:smtp,
+		via_options: 	{
+			address: 				'smtp.sendgrid.net',
+			port: 	 				'587',
+			domain: 				'heroku.com',
+			user_name: 				ENV['SENDGRID_USERNAME'],
+			password: 				ENV['SENDGRID_PASSWORD'],
+			authentication: 		:plain,
+			enable_starttls_auto: 	true
+		}
+	}
+
+Pony.options = settings.email_options
+
+end
+
 
 class TwoChez < Sinatra::Application
 	enable :sessions
@@ -53,7 +71,7 @@ before do
 		zach = 	User.create 	name: 		'todd',
 								email: 		'toddhohulin@mchsi.com',
 								password: 	'password',
-								admin: 		'true'
+								admin: 		true
 		zach.save
 		todd = 	User.create 	name: 		'zach',
 								email: 		'zpfled@gmail.com',
@@ -76,7 +94,8 @@ before do
 	@categories.sort!
 
 	# Set admin
-	@users.each { |user| user.admin = true ? user.name == 'zach' || user.name == 'dave' : false; user.save }
+	@users.each { |user| user.admin = true ? user.name == 'zach' || user.name == 'dave' || user.name = 'todd' : false; user.save }
+
 end
 
 after do
@@ -96,6 +115,7 @@ get '/' do
 	@title = 'Welcome'
 	@admin = false
 	@site_email = User.first.email
+	@first_user = User.first
 
 	erb :index
 end
@@ -133,6 +153,7 @@ end
 get '/admin' do
 	if session[:name]
 		user = User.first(name: session[:name])
+		@current_user = user
 		@id = user.id
 		@boss = true ? user.admin == true : false
 	end
