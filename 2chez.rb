@@ -95,7 +95,7 @@ before do
 	@categories.sort!
 
 	# Set admin
-	# @users.each { |user| user.admin = true ? user.name == 'zach' || user.name == 'dave' || user.name = 'todd' : false; user.save }
+	@users.each { |user| user.admin = true ? user.name == 'zach' || user.name == 'dave' || user.name = 'todd' : false; user.save }
 
 end
 
