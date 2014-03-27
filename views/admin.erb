@@ -338,7 +338,7 @@
             <div class="col-xs-12 edit-form">
                 <form action="/delete" method="post" id="delete-item">
                     <!-- Menu Select -->
-                    <select onChange="editFilterCategories(this)" class="col-xs-12 edit-form" name="menu">
+                    <select onChange="deleteFilterCategories(this)" class="col-xs-12 edit-form" name="menu">
                         <option value="lunch">Lunch</option>
                         <option value="dinner">Dinner</option>
                         <option value="small-plates">Small Plates</option>
@@ -346,7 +346,7 @@
                         <option value="cocktails">Cocktails</option>
                     </select>
                     <!-- Item Select -->
-                        <select class="col-xs-12 edit-form" id="lunch-edit" name="lunch_delete">
+                        <select class="col-xs-12 edit-form" id="lunch-delete" name="lunch_delete">
                             <% @menu_items.each do |item| %>
                                 <% if item.menu == 'lunch' %>
                                     <option value="<%= item.id %>"><%= item.name %></option>

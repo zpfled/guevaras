@@ -96,6 +96,40 @@ function editFilterCategories(menu) {
 	}
 }
 
+function deleteFilterCategories(menu) {
+	if (menu.options[menu.selectedIndex].text === 'Lunch') {
+		$('#lunch-delete').show();
+		$('#dinner-delete').hide();
+		$('#wine-delete').hide();
+		$('#small-plates-delete').hide();
+		$('#cocktails-delete').hide();
+	} else if (menu.options[menu.selectedIndex].text === 'Dinner') {
+		$('#dinner-delete').show();
+		$('#lunch-delete').hide();
+		$('#wine-delete').hide();
+		$('#small-plates-delete').hide();
+		$('#cocktails-delete').hide();
+	} else if (menu.options[menu.selectedIndex].text === 'Wine') {
+		$('#wine-delete').show();
+		$('#lunch-delete').hide();
+		$('#dinner-delete').hide();
+		$('#small-plates-delete').hide();
+		$('#cocktails-delete').hide();
+	} else if (menu.options[menu.selectedIndex].text === 'Cocktails') {
+		$('#cocktails-delete').show();
+		$('#small-plates-delete').hide();
+		$('#lunch-delete').hide();
+		$('#dinner-delete').hide();
+		$('#wine-delete').hide();
+	} else {
+		$('#small-plates-delete').show();
+		$('#cocktails-delete').hide();
+		$('#lunch-delete').hide();
+		$('#dinner-delete').hide();
+		$('#wine-delete').hide();
+	}
+}
+
 // Asynchronous Account Updates --------------------------------------------------------------------------------------
 
 $(function () {
