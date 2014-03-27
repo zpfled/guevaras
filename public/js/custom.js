@@ -99,7 +99,7 @@ function editFilterCategories(menu) {
 // Asynchronous Account Updates --------------------------------------------------------------------------------------
 
 $(function () {
-	$('#update-info').on('submit', function(event) {
+	$('#update-email').on('submit', function(event) {
 		
 		event.preventDefault();
 		var id = $(this).find('.id').text();
@@ -108,7 +108,7 @@ $(function () {
 		$.ajax({
 
 			type:		'post',
-			url:		'/' + id + '/update',
+			url:		'/' + id + '/update/email',
 			data:		$(this).serialize(),
 			dataType:	'html',
 
@@ -118,12 +118,12 @@ $(function () {
 				$('.modal-backdrop').fadeToggle(200);
 				$('.menu-msg h3').html(data);
 				$(button.parent().parent().find('.item-price')).html(data);
-				$('#cancel-edit-user').click();
+				$('#cancel-edit-email').click();
 				$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
 
 			},
 			error: function() {
-				$('#cancel-edit-user').click();
+				$('#cancel-edit-email').click();
 				errorMessage();
 			}
 		});

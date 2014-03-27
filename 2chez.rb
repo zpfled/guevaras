@@ -57,6 +57,7 @@ end
 
 
 class TwoChez < Sinatra::Application
+	include BCrypt
 	enable :sessions
 		set :session_secret, 'persenukedipsekjonukpunon',
 		expire_after: 	3600 # session expires after 1 hour
@@ -220,7 +221,7 @@ end
 		
 	# Taskbar
 		# Update Personal Info
-		post '/:id/update' do
+		post '/:id/update/email' do
 			admin = User.first
 			user = User.first(id: params[:id])
 
