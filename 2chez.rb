@@ -240,7 +240,9 @@ end
 				user.save
 				
 				halt 200, "email change success"
-			elsif params[:old_password] != "" && request.xhr?
+			end
+			
+			if params[:old_password] != ""
 				if old_password == user.password && new_password == confirm_password
 					# Email confirmation every time password is changed
 					Pony.mail 	to: 		"#{user.email}",
@@ -260,8 +262,6 @@ end
             					subject: 	"Failed password change",
             					body: 		erb(:failed_password_email, layout: false, locals: { user: user, admin: admin })
 				end
-			else
-				halt 500
 			end
 
 			redirect '/admin'

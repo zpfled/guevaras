@@ -148,12 +148,12 @@ $(function () {
 				$('.modal-backdrop').fadeToggle(200);
 				$('.add-msg h3').html('success');
 				$('.add-msg').fadeIn(750).fadeOut(750);
-				$('#manageUserModal').click();
+				$('#cancel-manage-users').click();
 				$('#cancel-add-user').click();
 				$('#menu').html(data);
 			},
 			error: function() {
-				$('#manageUserModal').click();
+				$('#cancel-manage-users').click();
 				$('#cancel-add-user').click();
 				errorMessage();
 			}
@@ -178,11 +178,11 @@ $(function () {
 				$('.add-msg h3').html('success');
 				$('.add-msg').fadeIn(750).fadeOut(750);
 				$('#menu').html(data);
-				$('#manageUserModal').click();
+				$('#cancel-manage-users').click();
 				$('#cancel-delete-user').click();
 			},
 			error: function() {
-				$('#manageUserModal').click();
+				$('#cancel-manage-users').click();
 				$('#cancel-delete-user').click();
 				errorMessage();
 			}
@@ -209,11 +209,11 @@ $(function () {
 				$('.add-msg h3').html('success');
 				$('.add-msg').fadeIn(750).fadeOut(750);
 				$('#menu').html(data);
-				$('#manageMenuModal').click();
+				$('#cancel-manage-menu').click();
 				$('#cancel-add').click();
 			},
 			error: function() {
-				$('#manageMenuModal').click();
+				$('#cancel-manage-menu').click();
 				$('#cancel-add').click();
 				errorMessage();
 			}
@@ -238,11 +238,11 @@ $(function () {
 				$('.add-msg h3').html('changes saved');
 				$('.add-msg').fadeIn(750).fadeOut(750);
 				$('#menu').html(data);
-				$('#manageMenuModal').click();
+				$('#cancel-manage-menu').click();
 				$('#cancel-edit').click();
 			},
 			error: function() {
-				$('#manageMenuModal').click();
+				$('#cancel-manage-menu').click();
 				$('#cancel-edit').click();
 				errorMessage();
 			}
