@@ -29,6 +29,14 @@
   top: 0;
 }
 
+.alert-modal {
+  background: rgba(50,50,50,.65);
+  border-radius: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+}
+
  /*
  Bootstrap Overrides
   */
