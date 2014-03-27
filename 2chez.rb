@@ -244,16 +244,16 @@ end
 
 		end
 
-		post '/:id/update/email' do
+		post '/:id/update/password' do
 			admin = User.first
 			user = User.first(id: params[:id])
 
 			if params[:old_password] != ""
-				old_password = BCrypt::Password.create(params[:old_password])
+				old_password = params[:old_password]
 				new_password = params[:new_password]
 				confirm_password = params[:confirm_password]
 
-				if old_password == user.password && new_password == confirm_password
+				if user.password == old_password.to_s  && new_password == confirm_password
 					# Email confirmation every time password is changed
 					Pony.mail 	to: 		"#{user.email}",
             					from: 		"noreply@2Chez.com",
