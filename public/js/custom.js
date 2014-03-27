@@ -118,8 +118,8 @@ $(function () {
 				$('.modal-backdrop').fadeToggle(200);
 				$('.menu-msg h3').html(data);
 				$(button.parent().parent().find('.item-price')).html(data);
-				$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
 				$('#cancel-edit-user').click();
+				$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
 
 			},
 			error: function() {
@@ -148,10 +148,12 @@ $(function () {
 				$('.modal-backdrop').fadeToggle(200);
 				$('.add-msg h3').html('success');
 				$('.add-msg').fadeIn(750).fadeOut(750);
-				$('#menu').html(data);
+				$('#manageUserModal').click();
 				$('#cancel-add-user').click();
+				$('#menu').html(data);
 			},
 			error: function() {
+				$('#manageUserModal').click();
 				$('#cancel-add-user').click();
 				errorMessage();
 			}
@@ -176,9 +178,11 @@ $(function () {
 				$('.add-msg h3').html('success');
 				$('.add-msg').fadeIn(750).fadeOut(750);
 				$('#menu').html(data);
+				$('#manageUserModal').click();
 				$('#cancel-delete-user').click();
 			},
 			error: function() {
+				$('#manageUserModal').click();
 				$('#cancel-delete-user').click();
 				errorMessage();
 			}
@@ -205,9 +209,11 @@ $(function () {
 				$('.add-msg h3').html('success');
 				$('.add-msg').fadeIn(750).fadeOut(750);
 				$('#menu').html(data);
+				$('#manageMenuModal').click();
 				$('#cancel-add').click();
 			},
 			error: function() {
+				$('#manageMenuModal').click();
 				$('#cancel-add').click();
 				errorMessage();
 			}
@@ -232,9 +238,11 @@ $(function () {
 				$('.add-msg h3').html('changes saved');
 				$('.add-msg').fadeIn(750).fadeOut(750);
 				$('#menu').html(data);
+				$('#manageMenuModal').click();
 				$('#cancel-edit').click();
 			},
 			error: function() {
+				$('#manageMenuModal').click();
 				$('#cancel-edit').click();
 				errorMessage();
 			}

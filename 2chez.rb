@@ -94,7 +94,7 @@ before do
 	@categories.sort!
 
 	# Set admin
-	@users.each { |user| user.admin = true ? user.name == 'zach' || user.name == 'dave' || user.name = 'todd' : false; user.save }
+	# @users.each { |user| user.admin = true ? user.name == 'zach' || user.name == 'dave' || user.name = 'todd' : false; user.save }
 
 end
 
@@ -144,7 +144,7 @@ end
 		elsif user.authenticate?(@password)
 			redirect '/admin'
 		else
-			redirect "/#{user.password}"
+			redirect '/login'
 		end
 	end
 
@@ -240,9 +240,8 @@ end
 				user.save
 				
 				halt 200, "email change success"
-			end
-			if params[:old_password] != "" && request.xhr?
-				if old_password == user.password && new_password == confirm_password && request.xhr?
+			elsif params[:old_password] != "" && request.xhr?
+				if old_password == user.password && new_password == confirm_password
 					# Email confirmation every time password is changed
 					Pony.mail 	to: 		"#{user.email}",
             					from: 		"noreply@2Chez.com",
@@ -261,6 +260,8 @@ end
             					subject: 	"Failed password change",
             					body: 		erb(:failed_password_email, layout: false, locals: { user: user, admin: admin })
 				end
+			else
+				halt 500
 			end
 
 			redirect '/admin'
@@ -274,7 +275,7 @@ end
 		 	@users.each { |user| @user_exists = true if params[:name] == user.name }
 
 		 	if @user_exists
-		 		halt 404, "#{params[:name].capitalize} is already registered"
+		 		halt 500, "#{params[:name].capitalize} is already registered"
 		 	else
 				user = User.new
 				user.name = params[:name]
