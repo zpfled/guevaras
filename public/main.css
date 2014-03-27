@@ -208,6 +208,12 @@ p {
   background: rgba(25,25,25,0.65);
 }
 
+@media (max-width:767px) {
+  .mobile-scrim {
+    background: rgba(25,25,25,0.65);
+  }
+}
+
   /*Menu Typography*/
       
     .category-section {
