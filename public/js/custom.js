@@ -117,13 +117,47 @@ $(function () {
 				$('.modal').slideUp(200);
 				$('.modal-backdrop').fadeToggle(200);
 				$('.menu-msg h3').html(data);
-				$(button.parent().parent().find('.item-price')).html(data);
+				$('#cancel-update-info').click();
 				$('#cancel-edit-email').click();
 				$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
 
 			},
 			error: function() {
+				$('#cancel-update-info').click();
 				$('#cancel-edit-email').click();
+				errorMessage();
+			}
+		});
+	});
+});
+
+$(function () {
+	$('#update-password').on('submit', function(event) {
+		
+		event.preventDefault();
+		var id = $(this).find('.id').text();
+		var button = $(this);
+
+		$.ajax({
+
+			type:		'post',
+			url:		'/' + id + '/update/password',
+			data:		$(this).serialize(),
+			dataType:	'html',
+
+		
+			success: function(data) {
+				$('.modal').slideUp(200);
+				$('.modal-backdrop').fadeToggle(200);
+				$('.menu-msg h3').html(data);
+				$('#cancel-update-info').click();
+				$('#cancel-edit-password').click();
+				$('.menu-msg').fadeIn(200).delay(800).fadeOut(1000);
+
+			},
+			error: function() {
+				$('#cancel-update-info').click();
+				$('#cancel-edit-password').click();
 				errorMessage();
 			}
 		});

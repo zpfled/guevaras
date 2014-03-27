@@ -240,6 +240,14 @@ end
 				halt 200, "email change success"
 			end
 
+			redirect '/admin'
+
+		end
+
+		post '/:id/update/email' do
+			admin = User.first
+			user = User.first(id: params[:id])
+
 			if params[:old_password] != ""
 				old_password = BCrypt::Password.create(params[:old_password])
 				new_password = params[:new_password]

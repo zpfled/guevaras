@@ -87,6 +87,34 @@
     </ul>
 </section>
 
+<!-- UpdateInfo Modal ---------------------------------------------------------- -->
+<div class="modal fade" id="updateInfoModal" tabindex="-1" role="dialog" aria-labelledby="updateInfoModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+            <ul class="col-xs-12 btn-lg" role="menu" aria-labelledby="updateInfoButton">
+                <li>
+                    <button class="col-xs-12 btn btn-lg btn-primary" data-toggle="modal" data-target="#updateEmailModal">
+                        change email
+                    </button>
+                </li>
+                <li>
+                    <button class="col-xs-12 btn btn-lg btn-primary" data-toggle="modal" data-target="#updatePasswordModal">
+                        change password
+                    </button>
+                </li>
+            </ul>
+            <!-- Cancel Button -->
+            <button id="cancel-update-info" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
+                cancel
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ManageUsers Modal ---------------------------------------------------------- -->
 <div class="modal fade" id="manageUsersModal" tabindex="-1" role="dialog" aria-labelledby="manageUsersModal" aria-hidden="true">
   <div class="modal-dialog">
@@ -290,8 +318,8 @@
   </div>
 </div>
 
-<!-- UpdateInfo Modal ---------------------------------------------------------- -->
-<div class="modal fade" id="updateInfoModal" tabindex="-1" role="dialog" aria-labelledby="updateInfoModal" aria-hidden="true">
+<!-- UpdateEmail Modal ---------------------------------------------------------- -->
+<div class="modal fade" id="updateEmailModal" tabindex="-1" role="dialog" aria-labelledby="updateEmailModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
@@ -313,6 +341,37 @@
                     <label for="email">Update your email address:</label>
                     <input class="col-xs-12" name="email" type="text" maxlength="30" placeholder="New Email Address">
                     
+                    <!-- Submit Button -->
+                    <button type="submit" class="col-xs-12 btn btn-lg btn-primary">
+                        save changes
+                    </button>
+                    <!-- Cancel Button -->
+                    <button id="cancel-edit-email" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
+                        cancel
+                    </button>
+                </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UpdatePassword Modal ---------------------------------------------------------- -->
+<div class="modal fade" id="updatePasswordModal" tabindex="-1" role="dialog" aria-labelledby="updatePasswordModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-12 edit-form">
+                
+                <!-- Update User Form -->
+                <form action="/<%= @id %>/update/password" method="post" id="update-password">
+                    <div class="id hidden"><%= @id %></div>
+                    <% user = @current_user %>
+
+                    <input type="hidden" name="id" value="<%= @id %>">
+
                     <!-- Change Password -->
                     <h2 class="col-xs-12 center">Password</h2>
                     <label for="old_password">Enter your current password:</label>
@@ -327,7 +386,7 @@
                         save changes
                     </button>
                     <!-- Cancel Button -->
-                    <button id="cancel-edit-email" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
+                    <button id="cancel-edit-password" type="button" class="col-xs-12 btn btn-lg btn-danger" data-dismiss="modal">
                         cancel
                     </button>
                 </form>
