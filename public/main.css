@@ -404,14 +404,14 @@ iframe {
 /* Slide 1 */
 #welcome .bcg {
   position: fixed;
-  background-image: url('./images/final/welcome-sm.jpg');
+  background-image: url('./images/welcome-sm.jpg');
   background-position: top;
 
 }
 
 @media (min-width: 768px) {
   #welcome .bcg {
-  background-image: url('./images/final/welcome.jpg');
+  background-image: url('./images/welcome.jpg');
   }
 }
 
@@ -428,23 +428,23 @@ iframe {
 
 #menu .bcg {
     /*background-color: #222;*/
-    background-image:url('./images/final/menu-sm.jpg');
+    background-image:url('./images/menu-sm.jpg');
 }
 
 @media (min-width: 768px) {
   #menu .bcg {
-  background-image: url('./images/final/menu.jpg');
+  background-image: url('./images/menu.jpg');
   }
 }
 
 /* Hours */
 #hours .bcg {
-  background-image:url('./images/final/hours-sm.jpg');
+  background-image:url('./images/hours-sm.jpg');
 }
 
 @media (min-width: 768px) {
   #hours .bcg {
-    background-image:url('./images/final/hours.jpg');
+    background-image:url('./images/hours.jpg');
     padding: 6em 0 6em 0;
   }
 }
@@ -468,13 +468,13 @@ iframe {
 }
 
 #find-us .bcg {
-  background-image:url('./images/final/find-us-sm.jpg');
+  background-image:url('./images/find-us-sm.jpg');
   text-align: left;
 }
 
 @media (min-width: 768px) {
   #find-us .bcg {
-    background-image: url('./images/final/find-us.jpg');
+    background-image: url('./images/find-us.jpg');
     padding: 6em 0 6em 0;
   }
 }
