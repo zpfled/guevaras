@@ -152,6 +152,7 @@ $(function () {
 				$('#cancel-add-user').click();
 			},
 			error: function() {
+				$('#cancel-add-user').click();
 				errorMessage();
 			}
 		});
@@ -178,6 +179,7 @@ $(function () {
 				$('#cancel-delete-user').click();
 			},
 			error: function() {
+				$('#cancel-delete-user').click();
 				errorMessage();
 			}
 		});
@@ -206,6 +208,7 @@ $(function () {
 				$('#cancel-add').click();
 			},
 			error: function() {
+				$('#cancel-add').click();
 				errorMessage();
 			}
 		});
@@ -232,6 +235,7 @@ $(function () {
 				$('#cancel-edit').click();
 			},
 			error: function() {
+				$('#cancel-edit').click();
 				errorMessage();
 			}
 		});
