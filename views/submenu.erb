@@ -38,11 +38,6 @@
             <input name="id" label="id" value="<%= item.id %>" type="hidden">
             <button type="submit" class="btn btn-lg btn-primary col-xs-12 col-md-6">reduce price by $1</button>
           </form>
-          <form action="/<%= item.id %>/delete" method="get" class="delete">
-            <div class="id hidden"><%= item.id %></div>
-            <input name="id" label="id" value="<%= item.id %>" type="hidden">
-            <button type="submit" class="btn btn-lg btn-danger col-xs-12 col-md-12">delete <%= item.name %></button>
-          </form>
         </div>
       <% end %>
     </article>

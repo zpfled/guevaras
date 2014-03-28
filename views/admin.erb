@@ -45,6 +45,12 @@
                                 edit item
                             </button>
                         </li>
+                        
+                        <li>
+                            <button class="btn btn-lg nav-btn" data-toggle="modal" data-target="#deleteItemModal">
+                                delete item
+                            </button>
+                        </li>
 
                         <li>
                             <form action="/logout" method="post">
@@ -158,6 +164,11 @@
                 <li>
                     <button class="col-xs-12 btn btn-lg btn-primary" data-toggle="modal" data-target="#editItemModal">
                         edit item
+                    </button>
+                </li>
+                <li>
+                    <button class="col-xs-12 btn btn-lg btn-warning" data-toggle="modal" data-target="#deleteItemModal">
+                        delete item
                     </button>
                 </li>
             </ul>
@@ -318,6 +329,72 @@
   </div>
 </div>
 
+<!-- DeleteItem Modal ---------------------------------------------------------- -->
+<div class="modal fade" id="deleteItemModal" tabindex="-1" role="dialog" aria-labelledby="deleteItemModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-12 edit-form">
+                <form action="/delete" method="post" id="delete-item">
+                    <!-- Menu Select -->
+                    <select onChange="deleteFilterCategories(this)" class="col-xs-12 edit-form" name="menu">
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                        <option value="small-plates">Small Plates</option>
+                        <option value="wine">Wine</option>
+                        <option value="cocktails">Cocktails</option>
+                    </select>
+                    <!-- Item Select -->
+                        <select class="col-xs-12 edit-form" id="lunch-delete" name="lunch_delete">
+                            <% @menu_items.each do |item| %>
+                                <% if item.menu == 'lunch' %>
+                                    <option value="<%= item.id %>"><%= item.name %></option>
+                                <% end %>
+                            <% end %>
+                        </select>
+                        <select style="display: none" class="col-xs-12 edit-form" id="dinner-delete" name="dinner_delete">
+                            <% @menu_items.each do |item| %>
+                                <% if item.menu == 'dinner' %>
+                                    <option value="<%= item.id %>"><%= item.name %></option>
+                                <% end %>
+                            <% end %>
+                        </select>
+                        <select style="display: none" class="col-xs-12 edit-form" id="wine-delete" name="wine_delete">
+                            <% @menu_items.each do |item| %>
+                                <% if item.menu == 'wine' %>
+                                    <option value="<%= item.id %>"><%= item.name %></option>
+                                <% end %>
+                            <% end %>
+                        </select>
+                        <select style="display: none" class="col-xs-12 edit-form" id="small-plates-delete" name="small-plates_delete">
+                            <% @menu_items.each do |item| %>
+                                <% if item.menu == 'small plates' %>
+                                    <option value="<%= item.id %>"><%= item.name %></option>
+                                <% end %>
+                            <% end %>
+                        </select>
+                        <select style="display: none" class="col-xs-12 edit-form" id="cocktails-delete" name="cocktails_delete">
+                            <% @menu_items.each do |item| %>
+                                <% if item.menu == 'cocktails' %>
+                                    <option value="<%= item.id %>"><%= item.name %></option>
+                                <% end %>
+                            <% end %>
+                        </select>
+                    <!-- Submit Button -->
+                    <button type="submit" class="col-xs-12 btn btn-lg btn-danger">
+                        delete this
+                    </button>
+                    <button id="cancel-delete" type="button" class="col-xs-12 btn btn-lg btn-primary" data-dismiss="modal">
+                        cancel
+                    </button>
+                </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- UpdateEmail Modal ---------------------------------------------------------- -->
 <div class="modal fade" id="updateEmailModal" tabindex="-1" role="dialog" aria-labelledby="updateEmailModal" aria-hidden="true">
   <div class="modal-dialog">

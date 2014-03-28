@@ -206,18 +206,6 @@ end
 			redirect '/'
 		end
 	end
-
-	get '/:id/delete' do
-		item = MenuItem.get params[:id]
-		item.destroy
-		@name = item.name
-
-		if request.xhr?
-			halt 200, "#{@name}"
-		else
-			redirect '/'
-		end
-	end
 		
 	# Taskbar
 		# Update Personal Info
@@ -357,6 +345,15 @@ end
 			end
 			item.save
 					
+			redirect '/menu'
+		end
+
+		post '/delete' do
+			selector = "#{params[:menu]}_delete".to_sym
+			item = MenuItem.first(id: params[selector])
+
+			item.destroy
+
 			redirect '/menu'
 		end
 		

@@ -96,6 +96,40 @@ function editFilterCategories(menu) {
 	}
 }
 
+function deleteFilterCategories(menu) {
+	if (menu.options[menu.selectedIndex].text === 'Lunch') {
+		$('#lunch-delete').show();
+		$('#dinner-delete').hide();
+		$('#wine-delete').hide();
+		$('#small-plates-delete').hide();
+		$('#cocktails-delete').hide();
+	} else if (menu.options[menu.selectedIndex].text === 'Dinner') {
+		$('#dinner-delete').show();
+		$('#lunch-delete').hide();
+		$('#wine-delete').hide();
+		$('#small-plates-delete').hide();
+		$('#cocktails-delete').hide();
+	} else if (menu.options[menu.selectedIndex].text === 'Wine') {
+		$('#wine-delete').show();
+		$('#lunch-delete').hide();
+		$('#dinner-delete').hide();
+		$('#small-plates-delete').hide();
+		$('#cocktails-delete').hide();
+	} else if (menu.options[menu.selectedIndex].text === 'Cocktails') {
+		$('#cocktails-delete').show();
+		$('#small-plates-delete').hide();
+		$('#lunch-delete').hide();
+		$('#dinner-delete').hide();
+		$('#wine-delete').hide();
+	} else {
+		$('#small-plates-delete').show();
+		$('#cocktails-delete').hide();
+		$('#lunch-delete').hide();
+		$('#dinner-delete').hide();
+		$('#wine-delete').hide();
+	}
+}
+
 // Asynchronous Account Updates --------------------------------------------------------------------------------------
 
 $(function () {
@@ -285,6 +319,35 @@ $(function () {
 });
 
 $(function () {
+	$('#delete-item').on('submit', function(event) {
+		
+		event.preventDefault();
+
+		$.ajax({
+			type:		'post',
+			url:		'/delete',
+			data:		$(this).serialize(),
+			dataType:	'html',
+			
+			success: function(data) {
+				$('.modal').slideUp(200);
+				$('.modal-backdrop').fadeToggle(200);
+				$('.add-msg h3').html('changes saved');
+				$('.add-msg').fadeIn(750).fadeOut(750);
+				$('#menu').html(data);
+				$('#cancel-manage-menu').click();
+				$('#cancel-delete').click();
+			},
+			error: function() {
+				$('#cancel-manage-menu').click();
+				$('#cancel-delete').click();
+				errorMessage();
+			}
+		});
+	});
+});
+
+$(function () {
 	$('.raise').on('submit', function(event) {
 		
 		event.preventDefault();
@@ -334,40 +397,6 @@ $(function () {
 			error: function() {
 				errorMessage();
 			}
-		});
-	});
-});
-
-$(function () {
-	$('.delete').on('submit', function(event) {
-		event.preventDefault();
-		var id = $(this).find('.id').text();
-		var button = $(this);
-		
-		$('.delete-confirmation').fadeToggle(200);
-		
-		$('#no').click(function() {
-			$('.delete-confirmation').fadeOut(200);
-			return false;
-		});
-
-		$('#yes').click(function() {
-			$.ajax({
-
-				type:		'get',
-				url:		'/' + id + '/delete',
-				data:		$(this).serialize(),
-				dataType:	'html',
-				success: function(data) {
-					$(button.parent().parent().parent()).remove();
-					$('.delete-msg h3').html('successfully deleted ' + data);
-					$('.delete-confirmation').fadeOut(200);
-					$('.delete-msg').fadeIn(500).fadeOut(2000);
-				},
-				error: function() {
-					errorMessage();
-				}
-			});
 		});
 	});
 });
