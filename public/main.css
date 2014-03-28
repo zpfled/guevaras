@@ -135,6 +135,17 @@
   padding: 0 0 0 0;
 }
 
+.btn-info {
+  color: #887C64;
+  background-color: #D5C9A3;
+  border: none;
+}
+
+.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open .dropdown-toggle.btn-info {
+  color: #D5C9A3;
+  background-color: #887C64;
+}
+
 /* Links */
 a,
 a:focus,
