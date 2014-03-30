@@ -99,11 +99,6 @@ before do
 
 end
 
-after do
-	p "Params: #{params}"
-	p User.first.admin
-end
-
 options '/*' do
     headers['Access-Control-Allow-Origin'] = "*"
     headers['Access-Control-Allow-Methods'] = "GET, POST, PUT, DELETE, OPTIONS"
