@@ -38,11 +38,11 @@
 }
 
 .down-gradient {
-    background: linear-gradient(top, rgba(10,10,10,1) 30%, rgba(10,10,10,0) 100%); 
-    background: -webkit-linear-gradient(top, rgba(10,10,10,1) 30%, rgba(10,10,10,0) 100%);  
-    background: -moz-linear-gradient(top, rgba(10,10,10,1) 30%, rgba(10,10,10,0) 100%);  
-    background: -ms-linear-gradient(top, rgba(10,10,10,1) 30%, rgba(10,10,10,0) 100%);  
-    background: -o-linear-gradient(top, rgba(10,10,10,1) 30%, rgba(10,10,10,0) 100%);
+    background: linear-gradient(bottom, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 1040px); 
+    background: -webkit-linear-gradient(bottom, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 1040px);  
+    background: -moz-linear-gradient(bottom, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 1040px);  
+    background: -ms-linear-gradient(bottom, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 1040px);  
+    background: -o-linear-gradient(bottom, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 1040px);
 }
 
  /*
