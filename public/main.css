@@ -353,7 +353,8 @@ article {
 }
 
 iframe {
-  margin: 1em 0 1em 0;
+  position: relative;
+  margin: 150px 0 0 0;
 
 /* make map black and white */
   -webkit-filter: grayscale(100%);
@@ -401,6 +402,10 @@ iframe {
   padding-left: 8%;
 }
 
+/*
+ Images
+ */
+
 .bcg {
   background-position: center center;
   background-repeat: no-repeat;
@@ -414,22 +419,24 @@ iframe {
 
 @media (min-width: 768px) {
   .bcg {
-    background-attachment: fixed;    
+    /*Make images fit-to-screen on ios devices*/
+    background-attachment: scroll; 
   }
 }
 
-/* Slide 1 */
+/* Welcome */
+
+@media (min-width:320px) { #welcome .bcg {background-image: url('./images/welcome/welcome_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }
+@media (min-width:481px) { #welcome .bcg {background-image: url('./images/welcome/welcome_481.jpg');}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media (min-width:641px) { #welcome .bcg {background-image: url('./images/welcome/welcome_641.jpg');}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (min-width:961px) { #welcome .bcg {background-image: url('./images/welcome/welcome_961.jpg');}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (min-width:1025px) { #welcome .bcg {background-image: url('./images/welcome/welcome_1025.jpg');}/* big landscape tablets, laptops, and desktops */ }
+@media (min-width:1281px) { #welcome .bcg {background-image: url('./images/welcome/welcome_1281.jpg');}/* hi-res laptops and desktops */ }
+
 #welcome .bcg {
   position: fixed;
-  background-image: url('./images/welcome-sm.jpg');
   background-position: top;
 
-}
-
-@media (min-width: 768px) {
-  #welcome .bcg {
-  background-image: url('./images/welcome.jpg');
-  }
 }
 
 /* Menu */
@@ -444,25 +451,39 @@ iframe {
 }
 
 #menu .bcg {
-    /*background-color: #222;*/
-    background-image:url('./images/menu-sm.jpg');
+  background-attachment: scroll;
 }
 
-@media (min-width: 768px) {
-  #menu .bcg {
-  background-image: url('./images/menu.jpg');
-  }
+@media (max-height:320px) { .menu-bcg {height: 280px}/* smartphones, iPhone, portrait 480x320 phones */ }
+@media (max-height:481px) { .menu-bcg {height: 420px}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media (max-height:641px) { .menu-bcg {height: 540px}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (max-height:961px) { .menu-bcg {height: 860px}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (max-height:1025px) { .menu-bcg {height: 920px;}/* big landscape tablets, laptops, and desktops */ }
+@media (max-height:1281px) { .menu-bcg {height: 1140px;}/* hi-res laptops and desktops */ }
+.menu-bcg {
+  overflow: scroll;
+  height: 600px;
 }
+
+@media (min-width:320px) { #menu .bcg {background-image: url('./images/menu/menu_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }
+@media (min-width:481px) { #menu .bcg {background-image: url('./images/menu/menu_481.jpg');}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media (min-width:641px) { #menu .bcg {background-image: url('./images/menu/menu_641.jpg');}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (min-width:961px) { #menu .bcg {background-image: url('./images/menu/menu_961.jpg');}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (min-width:1025px) { #menu .bcg {background-image: url('./images/menu/menu_1025.jpg');}/* big landscape tablets, laptops, and desktops */ }
+@media (min-width:1281px) { #menu .bcg {background-image: url('./images/menu/menu_1281.jpg');}/* hi-res laptops and desktops */ }
 
 /* Hours */
-#hours .bcg {
-  background-image:url('./images/hours-sm.jpg');
-}
+
+@media (min-width:320px) { #hours .bcg {background-image: url('./images/hours/hours_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }
+@media (min-width:481px) { #hours .bcg {background-image: url('./images/hours/hours_481.jpg');}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media (min-width:641px) { #hours .bcg {background-image: url('./images/hours/hours_641.jpg');}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (min-width:961px) { #hours .bcg {background-image: url('./images/hours/hours_961.jpg');}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (min-width:1025px) { #hours .bcg {background-image: url('./images/hours/hours_1025.jpg');}/* big landscape tablets, laptops, and desktops */ }
+@media (min-width:1281px) { #hours .bcg {background-image: url('./images/hours/hours_1281.jpg');}/* hi-res laptops and desktops */ }
 
 @media (min-width: 768px) {
   #hours .bcg {
-    background-image:url('./images/hours.jpg');
-    padding: 6em 0 6em 0;
+    padding: 8em 0 8em 0;
   }
 }
 
@@ -484,15 +505,23 @@ iframe {
   margin-bottom: 1em;
 }
 
+/* Find Us */
+
+@media (min-width:320px) { #find-us .bcg {background-image: url('./images/find-us/find-us_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }
+@media (min-width:481px) { #find-us .bcg {background-image: url('./images/find-us/find-us_481.jpg');}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media (min-width:641px) { #find-us .bcg {background-image: url('./images/find-us/find-us_641.jpg');}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (min-width:961px) { #find-us .bcg {background-image: url('./images/find-us/find-us_961.jpg');}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (min-width:1025px) { #find-us .bcg {background-image: url('./images/find-us/find-us_1025.jpg');}/* big landscape tablets, laptops, and desktops */ }
+@media (min-width:1281px) { #find-us .bcg {background-image: url('./images/find-us/find-us_1281.jpg');}/* hi-res laptops and desktops */ }
+
+
 #find-us .bcg {
-  background-image:url('./images/find-us-sm.jpg');
   text-align: left;
 }
 
 @media (min-width: 768px) {
   #find-us .bcg {
-    background-image: url('./images/find-us.jpg');
-    padding: 6em 0 6em 0;
+    padding: 8em 0 8em 0;
   }
 }
 
