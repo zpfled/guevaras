@@ -426,11 +426,12 @@ iframe {
 
 /* Welcome */
 
-@media (min-width:320px) { #welcome .bcg {background-image: url('./images/welcome/welcome_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }
-@media (min-width:481px) { #welcome .bcg {background-image: url('./images/welcome/welcome_481.jpg');}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
-@media (min-width:641px) { #welcome .bcg {background-image: url('./images/welcome/welcome_641.jpg');}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
-@media (min-width:961px) { #welcome .bcg {background-image: url('./images/welcome/welcome_961.jpg');}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
-@media (min-width:1025px) { #welcome .bcg {background-image: url('./images/welcome/welcome_1025.jpg');}/* big landscape tablets, laptops, and desktops */ }
+@media (max-width:320px) { #welcome .bcg {background-image: url('./images/welcome/welcome_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }
+@media (max-width:481px) { #welcome .bcg {background-image: url('./images/welcome/welcome_481.jpg');}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media (max-width:641px) { #welcome .bcg {background-image: url('./images/welcome/welcome_641.jpg');}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (max-width:961px) { #welcome .bcg {background-image: url('./images/welcome/welcome_961.jpg');}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (max-width:1025px) { #welcome .bcg {background-image: url('./images/welcome/welcome_1025.jpg');}/* big landscape tablets, laptops, and desktops */ }
+@media (max-width:1280px) { #welcome .bcg {background-image: url('./images/welcome/welcome_1281.jpg');}/* hi-res laptops and desktops */ }
 @media (min-width:1281px) { #welcome .bcg {background-image: url('./images/welcome/welcome_1281.jpg');}/* hi-res laptops and desktops */ }
 
 #welcome .bcg {
@@ -465,20 +466,22 @@ iframe {
   height: 600px;
 }
 
-@media (min-width:320px) { #menu .bcg {background-image: url('./images/menu/menu_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }
-@media (min-width:481px) { #menu .bcg {background-image: url('./images/menu/menu_481.jpg');}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
-@media (min-width:641px) { #menu .bcg {background-image: url('./images/menu/menu_641.jpg');}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
-@media (min-width:961px) { #menu .bcg {background-image: url('./images/menu/menu_961.jpg');}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
-@media (min-width:1025px) { #menu .bcg {background-image: url('./images/menu/menu_1025.jpg');}/* big landscape tablets, laptops, and desktops */ }
+@media (max-width:320px) { #menu .bcg {background-image: url('./images/menu/menu_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }
+@media (max-width:481px) { #menu .bcg {background-image: url('./images/menu/menu_481.jpg');}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media (max-width:641px) { #menu .bcg {background-image: url('./images/menu/menu_641.jpg');}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (max-width:961px) { #menu .bcg {background-image: url('./images/menu/menu_961.jpg');}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (max-width:1025px) { #menu .bcg {background-image: url('./images/menu/menu_1025.jpg');}/* big landscape tablets, laptops, and desktops */ }
+@media (max-width:1280px) { #menu .bcg {background-image: url('./images/menu/menu_1281.jpg');}/* hi-res laptops and desktops */ }
 @media (min-width:1281px) { #menu .bcg {background-image: url('./images/menu/menu_1281.jpg');}/* hi-res laptops and desktops */ }
 
 /* Hours */
 
-@media (min-width:320px) { #hours .bcg {background-image: url('./images/hours/hours_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }
-@media (min-width:481px) { #hours .bcg {background-image: url('./images/hours/hours_481.jpg');}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
-@media (min-width:641px) { #hours .bcg {background-image: url('./images/hours/hours_641.jpg');}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
-@media (min-width:961px) { #hours .bcg {background-image: url('./images/hours/hours_961.jpg');}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
-@media (min-width:1025px) { #hours .bcg {background-image: url('./images/hours/hours_1025.jpg');}/* big landscape tablets, laptops, and desktops */ }
+@media (max-width:320px) { #hours .bcg {background-image: url('./images/hours/hours_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }
+@media (max-width:481px) { #hours .bcg {background-image: url('./images/hours/hours_481.jpg');}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media (max-width:641px) { #hours .bcg {background-image: url('./images/hours/hours_641.jpg');}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (max-width:961px) { #hours .bcg {background-image: url('./images/hours/hours_961.jpg');}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (max-width:1025px) { #hours .bcg {background-image: url('./images/hours/hours_1025.jpg');}/* big landscape tablets, laptops, and desktops */ }
+@media (max-width:1280px) { #hours .bcg {background-image: url('./images/hours/hours_1281.jpg');}/* hi-res laptops and desktops */ }
 @media (min-width:1281px) { #hours .bcg {background-image: url('./images/hours/hours_1281.jpg');}/* hi-res laptops and desktops */ }
 
 @media (min-width: 768px) {
@@ -507,11 +510,12 @@ iframe {
 
 /* Find Us */
 
-@media (min-width:320px) { #find-us .bcg {background-image: url('./images/find-us/find-us_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }
-@media (min-width:481px) { #find-us .bcg {background-image: url('./images/find-us/find-us_481.jpg');}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
-@media (min-width:641px) { #find-us .bcg {background-image: url('./images/find-us/find-us_641.jpg');}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
-@media (min-width:961px) { #find-us .bcg {background-image: url('./images/find-us/find-us_961.jpg');}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
-@media (min-width:1025px) { #find-us .bcg {background-image: url('./images/find-us/find-us_1025.jpg');}/* big landscape tablets, laptops, and desktops */ }
+@media (max-width:320px) { #find-us .bcg {background-image: url('./images/find-us/find-us_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }
+@media (max-width:481px) { #find-us .bcg {background-image: url('./images/find-us/find-us_481.jpg');}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media (max-width:641px) { #find-us .bcg {background-image: url('./images/find-us/find-us_641.jpg');}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (max-width:961px) { #find-us .bcg {background-image: url('./images/find-us/find-us_961.jpg');}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (max-width:1025px) { #find-us .bcg {background-image: url('./images/find-us/find-us_1025.jpg');}/* big landscape tablets, laptops, and desktops */ }
+@media (max-width:1280px) { #find-us .bcg {background-image: url('./images/find-us/find-us_1281.jpg');}/* hi-res laptops and desktops */ }
 @media (min-width:1281px) { #find-us .bcg {background-image: url('./images/find-us/find-us_1281.jpg');}/* hi-res laptops and desktops */ }
 
 
