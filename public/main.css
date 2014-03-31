@@ -37,6 +37,14 @@
   float: none;
 }
 
+.down-gradient {
+    background: linear-gradient(top, rgba(10,10,10,1) 30%, rgba(10,10,10,0) 100%); 
+    background: -webkit-linear-gradient(top, rgba(10,10,10,1) 30%, rgba(10,10,10,0) 100%);  
+    background: -moz-linear-gradient(top, rgba(10,10,10,1) 30%, rgba(10,10,10,0) 100%);  
+    background: -ms-linear-gradient(top, rgba(10,10,10,1) 30%, rgba(10,10,10,0) 100%);  
+    background: -o-linear-gradient(top, rgba(10,10,10,1) 30%, rgba(10,10,10,0) 100%);
+}
+
  /*
  Bootstrap Overrides
   */
@@ -259,7 +267,7 @@ p {
 html,
 body {
   height: 100% !important;
-  background-color: #222;
+  background-color: rgb(10, 10, 10);
   text-rendering: optimizeLegibility;
   z-index: -1;
   color: #fff;
@@ -443,7 +451,7 @@ iframe {
 /* Menu */
 
 #menu-msg .bcg {
-    background-color: #222;
+    background-color: rgb(10, 10, 10);
     padding: 20px 0 20px 0;
 }
 
@@ -452,18 +460,10 @@ iframe {
 }
 
 #menu .bcg {
+  background-color: rgb(10, 10, 10);
+  background-position: bottom center;
+  background-size: 100%;
   background-attachment: scroll;
-}
-
-@media (max-height:320px) { .menu-bcg {height: 280px}/* smartphones, iPhone, portrait 480x320 phones */ }
-@media (max-height:481px) { .menu-bcg {height: 420px}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
-@media (max-height:641px) { .menu-bcg {height: 540px}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
-@media (max-height:961px) { .menu-bcg {height: 860px}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
-@media (max-height:1025px) { .menu-bcg {height: 920px;}/* big landscape tablets, laptops, and desktops */ }
-@media (max-height:1281px) { .menu-bcg {height: 1140px;}/* hi-res laptops and desktops */ }
-.menu-bcg {
-  overflow: scroll;
-  height: 600px;
 }
 
 @media (max-width:320px) { #menu .bcg {background-image: url('./images/menu/menu_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }
@@ -493,7 +493,7 @@ iframe {
 /* Contact */
 
 #contact .bcg {
-  background-color: #222;
+  background-color: rgb(10, 10, 10);
 }
 
 
@@ -543,7 +543,7 @@ iframe {
 /* Slide 4 */
 
 .footer .bcg {
-  background: #222;
+  background: #111;
 }
 
 /* Menu */
@@ -613,7 +613,7 @@ iframe {
  */
 
 .footer {
-  background: ##222;
+  background: ##111;
   width: 100%;
   position: absolute;
 }
