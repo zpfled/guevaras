@@ -30,6 +30,7 @@
 }
 
 .alert-modal {
+  background: rgb(50,50,50);
   background: rgba(50,50,50,.65);
   border-radius: 1em;
   margin-left: auto;
@@ -546,7 +547,7 @@ iframe {
 @media (min-width: 768px) {
   .bcg {
     /*Make images fit-to-screen on ios devices*/
-    /*background-attachment: scroll; */
+    background-attachment: scroll; 
   }
 }
 
@@ -740,7 +741,7 @@ iframe {
 BlackOut Screen
 */
 
-.blackout-page-wrapper {
+/*.blackout-page-wrapper {
   position: fixed;
   background-color: rgba(100, 100, 100, .75);
   top: 0;
@@ -749,7 +750,7 @@ BlackOut Screen
   z-index: 3;
   padding-top: 4em;
 }
-
+*/
 /*
 Admin
  */
@@ -808,7 +809,6 @@ Admin
 }
 .modal-content,
 .modal-body {
-  border-radius: inherit;
   background-color: inherit;
   color: inherit;
 }

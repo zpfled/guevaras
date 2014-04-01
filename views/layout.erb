@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <meta name="description" content=""> -->
-    <!-- <meta name="author" content=""> -->
+    <meta name="description" content="">
+    <meta name="author" content="">
     <link rel="shortcut icon" href="/images/icon.png">
     <title><%= @title %> | 2Chez</title>
 
@@ -24,7 +24,7 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  <!-- /*<style id="holderjs-style" type="text/css"></style>*/ -->
+  <style id="holderjs-style" type="text/css"></style>
 
 </head>
 
@@ -38,19 +38,24 @@
 <!-- Welcome section, viewable at '/' or '/admin' -->
 
     <section id="welcome">
-    <div class="bcg" >
+    <div class="bcg" 
+    data-center="background-position: 100% 0px;"
+    data-top-bottom="background-position: 0% -80px;">
         <div class="hsContainer">
-            <div class="hsContent welcome-head">
-                <h1 id="brand" class="h1 brand">
-                    <a class="logo-link" href="/">
-                        <span style="color: #c00; font-family: 'Josefin Slab'; font-size: 1.1em">2</span>Chez
-                    </a>
-                </h1>
-                <% if @admin %>
-                <h2 class="h1 subheading text-right"><%= "Hello, #{@user.capitalize}" %></h2>
-                <% else %>
-                <h2 class="h1 subheading text-right">Casual Fine Dining</h2>
-                <% end %>
+            <div class="hsContent welcome-head"
+            data--30p-top="opacity: 1;"
+            data--80p-top="opacity: 0;"
+            data-anchor-target="#brand">
+              <h1 id="brand" class="h1 brand">
+                  <a class="logo-link" href="/">
+                      <span style="color: #c00; font-family: 'Josefin Slab'; font-size: 1.1em">2</span>Chez
+                  </a>
+              </h1>
+              <% if @admin %>
+              <h2 class="h1 subheading text-right"><%= "Hello, #{@user.capitalize}" %></h2>
+              <% else %>
+              <h2 class="h1 subheading text-right">Casual Fine Dining</h2>
+              <% end %>
             </div>
         </div>
     </div>
@@ -58,7 +63,7 @@
 
 <!-- index.erb || admin.erb-->
         
-    <%# yield %>
+    <%= yield %>
 
 <!-- Close skrollr-body -->
     
@@ -93,11 +98,11 @@
 
 <!-- Bootstrap core JavaScript -------------------------------------------------------------------------------- -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <!--<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
     <script src="/js/skrollr.js"></script>
-    <script src="/js/custom.js"></script> -->
+    <script src="/js/custom.js"></script> 
     <!-- <script src="/js/imagesloaded.js"></script> -->
     <!-- <script src="../../assets/js/docs.min.js"></script> -->
 
