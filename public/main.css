@@ -386,7 +386,7 @@ p {
 
 html,
 body {
-  height: 100% !important;
+  /*height: 100% !important;*/
   background-color: rgb(10, 10, 10);
   text-rendering: optimizeLegibility;
   z-index: -1;
