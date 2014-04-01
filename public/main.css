@@ -40,71 +40,71 @@
 @media (min-width:320px) { 
   .down-gradient {
     /*background-attachment: scroll;*/
-    background: linear-gradient(bottom, rgba(10,10,10,0) 100px, rgba(10,10,10,1) 200px); 
-    background: -webkit-linear-gradient(bottom, rgba(10,10,10,0) 100px, rgba(10,10,10,1) 200px);  
-    background: -moz-linear-gradient(bottom, rgba(10,10,10,0) 100px, rgba(10,10,10,1) 200px);  
-    background: -ms-linear-gradient(bottom, rgba(10,10,10,0) 100px, rgba(10,10,10,1) 200px);  
-    background: -o-linear-gradient(bottom, rgba(10,10,10,0) 100px, rgba(10,10,10,1) 200px);
+    background: linear-gradient(bottom right, rgba(10,10,10,0) 100px, rgba(10,10,10,1) 200px); 
+    background: -webkit-linear-gradient(bottom right, rgba(10,10,10,0) 100px, rgba(10,10,10,1) 200px);  
+    background: -moz-linear-gradient(bottom right, rgba(10,10,10,0) 100px, rgba(10,10,10,1) 200px);  
+    background: -ms-linear-gradient(bottom right, rgba(10,10,10,0) 100px, rgba(10,10,10,1) 200px);  
+    background: -o-linear-gradient(bottom right, rgba(10,10,10,0) 100px, rgba(10,10,10,1) 200px);
   }
 }
 @media (min-width:481px) { 
   .down-gradient {
     /*background-attachment: scroll;*/
-    background: linear-gradient(bottom, rgba(10,10,10,0) 200px, rgba(10,10,10,1) 310px); 
-    background: -webkit-linear-gradient(bottom, rgba(10,10,10,0) 200px, rgba(10,10,10,1) 310px);  
-    background: -moz-linear-gradient(bottom, rgba(10,10,10,0) 200px, rgba(10,10,10,1) 310px);  
-    background: -ms-linear-gradient(bottom, rgba(10,10,10,0) 200px, rgba(10,10,10,1) 310px);  
-    background: -o-linear-gradient(bottom, rgba(10,10,10,0) 200px, rgba(10,10,10,1) 310px);
+    background: linear-gradient(bottom, rgba(10,10,10,0) 155px, rgba(10,10,10,1) 310px); 
+    background: -webkit-linear-gradient(bottom, rgba(10,10,10,0) 155px, rgba(10,10,10,1) 310px);  
+    background: -moz-linear-gradient(bottom, rgba(10,10,10,0) 155px, rgba(10,10,10,1) 310px);  
+    background: -ms-linear-gradient(bottom, rgba(10,10,10,0) 155px, rgba(10,10,10,1) 310px);  
+    background: -o-linear-gradient(bottom, rgba(10,10,10,0) 155px, rgba(10,10,10,1) 310px);
   }
 }
 @media (min-width:641px) { 
   .down-gradient {
     /*background-attachment: scroll;*/
-    background: linear-gradient(bottom, rgba(10,10,10,0) 250px, rgba(10,10,10,1) 400px); 
-    background: -webkit-linear-gradient(bottom, rgba(10,10,10,0) 250px, rgba(10,10,10,1) 400px);  
-    background: -moz-linear-gradient(bottom, rgba(10,10,10,0) 250px, rgba(10,10,10,1) 400px);  
-    background: -ms-linear-gradient(bottom, rgba(10,10,10,0) 250px, rgba(10,10,10,1) 400px);  
-    background: -o-linear-gradient(bottom, rgba(10,10,10,0) 250px, rgba(10,10,10,1) 400px);
+    background: linear-gradient(bottom right, rgba(10,10,10,0) 250px, rgba(10,10,10,1) 520px); 
+    background: -webkit-linear-gradient(bottom right, rgba(10,10,10,0) 250px, rgba(10,10,10,1) 520px);  
+    background: -moz-linear-gradient(bottom right, rgba(10,10,10,0) 250px, rgba(10,10,10,1) 520px);  
+    background: -ms-linear-gradient(bottom right, rgba(10,10,10,0) 250px, rgba(10,10,10,1) 520px);  
+    background: -o-linear-gradient(bottom right, rgba(10,10,10,0) 250px, rgba(10,10,10,1) 520px);
   }
 }
 @media (min-width:961px) { 
   .down-gradient {
     /*background-attachment: scroll;*/
-    background: linear-gradient(bottom, rgba(10,10,10,0) 400px, rgba(10,10,10,1) 620px); 
-    background: -webkit-linear-gradient(bottom, rgba(10,10,10,0) 400px, rgba(10,10,10,1) 620px);  
-    background: -moz-linear-gradient(bottom, rgba(10,10,10,0) 400px, rgba(10,10,10,1) 620px);  
-    background: -ms-linear-gradient(bottom, rgba(10,10,10,0) 400px, rgba(10,10,10,1) 620px);  
-    background: -o-linear-gradient(bottom, rgba(10,10,10,0) 400px, rgba(10,10,10,1) 620px);
+    background: linear-gradient(bottom right, rgba(10,10,10,0) 400px, rgba(10,10,10,1) 620px); 
+    background: -webkit-linear-gradient(bottom right, rgba(10,10,10,0) 400px, rgba(10,10,10,1) 620px);  
+    background: -moz-linear-gradient(bottom right, rgba(10,10,10,0) 400px, rgba(10,10,10,1) 620px);  
+    background: -ms-linear-gradient(bottom right, rgba(10,10,10,0) 400px, rgba(10,10,10,1) 620px);  
+    background: -o-linear-gradient(bottom right, rgba(10,10,10,0) 400px, rgba(10,10,10,1) 620px);
   }
 }
 @media (min-width:1025px) { 
   .down-gradient {
     /*background-attachment: scroll;*/
-    background: linear-gradient(bottom, rgba(10,10,10,0) 460px, rgba(10,10,10,1) 640px); 
-    background: -webkit-linear-gradient(bottom, rgba(10,10,10,0) 460px, rgba(10,10,10,1) 640px);  
-    background: -moz-linear-gradient(bottom, rgba(10,10,10,0) 460px, rgba(10,10,10,1) 640px);  
-    background: -ms-linear-gradient(bottom, rgba(10,10,10,0) 460px, rgba(10,10,10,1) 640px);  
-    background: -o-linear-gradient(bottom, rgba(10,10,10,0) 460px, rgba(10,10,10,1) 640px);
+    background: linear-gradient(bottom right, rgba(10,10,10,0) 460px, rgba(10,10,10,1) 640px); 
+    background: -webkit-linear-gradient(bottom right, rgba(10,10,10,0) 460px, rgba(10,10,10,1) 640px);  
+    background: -moz-linear-gradient(bottom right, rgba(10,10,10,0) 460px, rgba(10,10,10,1) 640px);  
+    background: -ms-linear-gradient(bottom right, rgba(10,10,10,0) 460px, rgba(10,10,10,1) 640px);  
+    background: -o-linear-gradient(bottom right, rgba(10,10,10,0) 460px, rgba(10,10,10,1) 640px);
   }
 }
 @media (min-width:1280px) { 
   .down-gradient {
     /*background-attachment: scroll;*/
-    background: linear-gradient(bottom, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 800px); 
-    background: -webkit-linear-gradient(bottom, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 800px);  
-    background: -moz-linear-gradient(bottom, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 800px);  
-    background: -ms-linear-gradient(bottom, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 800px);  
-    background: -o-linear-gradient(bottom, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 800px);
+    background: linear-gradient(bottom right, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 800px); 
+    background: -webkit-linear-gradient(bottom right, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 800px);  
+    background: -moz-linear-gradient(bottom right, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 800px);  
+    background: -ms-linear-gradient(bottom right, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 800px);  
+    background: -o-linear-gradient(bottom right, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 800px);
   }
 }
 @media (min-width:1281px) { 
   .down-gradient {
     /*background-attachment: scroll;*/
-    background: linear-gradient(bottom, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 1040px); 
-    background: -webkit-linear-gradient(bottom, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 1040px);  
-    background: -moz-linear-gradient(bottom, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 1040px);  
-    background: -ms-linear-gradient(bottom, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 1040px);  
-    background: -o-linear-gradient(bottom, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 1040px);
+    background: linear-gradient(bottom right, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 1040px); 
+    background: -webkit-linear-gradient(bottom right, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 1040px);  
+    background: -moz-linear-gradient(bottom right, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 1040px);  
+    background: -ms-linear-gradient(bottom right, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 1040px);  
+    background: -o-linear-gradient(bottom right, rgba(10,10,10,0) 520px, rgba(10,10,10,1) 1040px);
   }
 }
 
