@@ -409,13 +409,6 @@ body {
   z-index: -1;
   color: #fff;
 }
-/*
-@media (max-width:767px) {
-  body {
-    position: relative;
-    background: inherit;
-  }
-}*/
 
 /* Padding for spacing */
 .inner {
@@ -578,9 +571,11 @@ iframe {
 @media (max-width:1280px) { #welcome .bcg {background-image: url('./images/welcome/welcome_1281.jpg');}/* hi-res laptops and desktops */ }
 @media (min-width:1281px) { #welcome .bcg {background-image: url('./images/welcome/welcome_1281.jpg');}/* hi-res laptops and desktops */ }
 
-THIS IS THE OFFENDING LINE
+#welcome {
+  height: 100%;
+}
+
 #welcome .bcg {
-  position: fixed; <--- RIGHT HERE
   -webkit-background-position: top;
     -moz-background-position: top;
     -o-background-position: top;
