@@ -563,13 +563,13 @@ iframe {
 
 /* Welcome */
 
-@media (max-width:320px) { #welcome .bcg {background-image: url('./images/welcome/welcome_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }
-@media (max-width:481px) { #welcome .bcg {background-image: url('./images/welcome/welcome_481.jpg');}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
-@media (max-width:641px) { #welcome .bcg {background-image: url('./images/welcome/welcome_641.jpg');}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
-@media (max-width:961px) { #welcome .bcg {background-image: url('./images/welcome/welcome_961.jpg');}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
-@media (max-width:1025px) { #welcome .bcg {background-image: url('./images/welcome/welcome_1025.jpg');}/* big landscape tablets, laptops, and desktops */ }
-@media (max-width:1280px) { #welcome .bcg {background-image: url('./images/welcome/welcome_1281.jpg');}/* hi-res laptops and desktops */ }
-@media (min-width:1281px) { #welcome .bcg {background-image: url('./images/welcome/welcome_1281.jpg');}/* hi-res laptops and desktops */ }
+@media (max-width:320px) { #welcome .bcg, #admin-welcome .bcg {background-image: url('./images/welcome/welcome_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }
+@media (max-width:481px) { #welcome .bcg, #admin-welcome .bcg {background-image: url('./images/welcome/welcome_481.jpg');}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media (max-width:641px) { #welcome .bcg, #admin-welcome .bcg {background-image: url('./images/welcome/welcome_641.jpg');}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (max-width:961px) { #welcome .bcg, #admin-welcome .bcg {background-image: url('./images/welcome/welcome_961.jpg');}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (max-width:1025px) { #welcome .bcg, #admin-welcome .bcg {background-image: url('./images/welcome/welcome_1025.jpg');}/* big landscape tablets, laptops, and desktops */ }
+@media (max-width:1280px) { #welcome .bcg, #admin-welcome .bcg {background-image: url('./images/welcome/welcome_1281.jpg');}/* hi-res laptops and desktops */ }
+@media (min-width:1281px) { #welcome .bcg, #admin-welcome .bcg {background-image: url('./images/welcome/welcome_1281.jpg');}/* hi-res laptops and desktops */ }
 
 #welcome {
   height: 100%;
@@ -772,6 +772,17 @@ BlackOut Screen
 /*
 Admin
  */
+
+#admin-welcome {
+  height: 100%;
+}
+
+#admin-welcome .bcg {
+  -webkit-background-position: top;
+    -moz-background-position: top;
+    -o-background-position: top;
+  background-position: top;
+}
 
 .taskbar {
   position: absolute;
