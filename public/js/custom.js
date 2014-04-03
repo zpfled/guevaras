@@ -1,3 +1,8 @@
+// Set Welcome Screen Height
+
+$(function () {
+	$('.welcome-head').css('height', $(window).innerHeight());
+})
 
 // Email Obfuscation ------------------------------------------------------------------------------------------------
 
