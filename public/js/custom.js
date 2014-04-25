@@ -2,11 +2,11 @@
 
 $(function () {
 	$('.welcome-head').css('height', $(window).innerHeight());
-})
+});
 
 // Email Obfuscation ------------------------------------------------------------------------------------------------
 
-(function($) {
+$(function () {
     jQuery.fn.mailto = function() {
         return this.each(function() {
             var email_add = $(this).attr("href").replace(/\s*\(.+\)\s*/, "@");
@@ -16,7 +16,7 @@ $(function () {
         });
     };
 
-})(jQuery);
+});
 
 $(document).ready(function() {
     $(function() {
@@ -408,18 +408,18 @@ $(function () {
 
 // Parallax Scrolling Fanciocity --------------------------------------------------------------------------------------
 
-$(function() {
-	// Init Skrollr
-	if(!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)){
-		var s = skrollr.init({
-			render: function(data) {
-				// Debugging - Log the current scroll position.
-				console.log(data.curTop);
-			}
-		});
-		// Refresh Skrollr after resizing our sections
-		s.refresh($('.homeSlide'));
-	}
-});
+// $(function() {
+// 	// Init Skrollr
+// 	if(!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)){
+// 		var s = skrollr.init({
+// 			render: function(data) {
+// 				// Debugging - Log the current scroll position.
+// 				console.log(data.curTop);
+// 			}
+// 		});
+// 		// Refresh Skrollr after resizing our sections
+// 		s.refresh($('.homeSlide'));
+// 	}
+// });
 
 

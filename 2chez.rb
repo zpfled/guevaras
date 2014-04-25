@@ -100,7 +100,7 @@ before do
 end
 
 options '/*' do
-    headers['Access-Control-Allow-Origin'] = "*"
+    response['Access-Control-Allow-Origin'] = "*"
     headers['Access-Control-Allow-Methods'] = "GET, POST, PUT, DELETE, OPTIONS"
     headers['Access-Control-Allow-Headers'] ="accept, authorization, origin"
 end
@@ -183,6 +183,7 @@ end
 		@price = item.price = item.price + 1
 		item.save
 
+		p request.xhr?
 		if request.xhr?
 			halt 200, "#{@price}"
 		else
@@ -195,6 +196,7 @@ end
 		@price = item.price = item.price - 1
 		item.save
 
+		p request.xhr?
 		if request.xhr?
 			halt 200, "#{@price}"
 		else
