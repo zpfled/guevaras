@@ -69,16 +69,11 @@ class TwoChez < Sinatra::Application
 before do
 	# Create initial user
 	if User.all.length == 0
-		zach = 	User.create 	name: 		'todd',
-								email: 		'toddhohulin@mchsi.com',
-								password: 	'password',
-								admin: 		true
-		zach.save
-		todd = 	User.create 	name: 		'zach',
+		zach = 	User.create 	name: 		'zach',
 								email: 		'zpfled@gmail.com',
 								password: 	'password',
 								admin: 		true
-		todd.save
+		zach.save
 	end
 
 
