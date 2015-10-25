@@ -1,58 +1,18 @@
 require 'bundler'
 require 'sinatra/activerecord'
-require './app/models/user'
-require './app/models/menu_item'
+require './models/user'
+require './models/menu_item'
 Bundler.require(:default, :development)
 
-
-# Setup Pony email configs
-configure :production do
-	set :email_options, {
-		via: 			:smtp,
-		via_options: 	{
-			address: 				'smtp.sendgrid.net',
-			port: 	 				'587',
-			domain: 				'heroku.com',
-			user_name: 				ENV['SENDGRID_USERNAME'],
-			password: 				ENV['SENDGRID_PASSWORD'],
-			authentication: 		:plain,
-			enable_starttls_auto: 	true
-		}
-	}
-
-Pony.options = settings.email_options
-
-end
-
-
-class TwoChez < Sinatra::Application
+class Web < Sinatra::Application
 	register Sinatra::ActiveRecordExtension
 	include BCrypt
+
 	enable :sessions
 		set :session_secret, 'persenukedipsekjonukpunon',
 		expire_after: 	3600 # session expires after 1 hour
 
-# Routes
-
-# Before/After Blocks ----------------------------------------------------------
-
 before do
-	# return
-	# Create initial user
-	# if User.all.length == 0
-	# 	zach = 	User.create 	name: 		'todd',
-	# 							email: 		'toddhohulin@mchsi.com',
-	# 							password: 	'password',
-	# 							admin: 		true
-	# 	zach.save
-	# 	todd = 	User.create 	name: 		'zach',
-	# 							email: 		'zpfled@gmail.com',
-	# 							password: 	'password',
-	# 							admin: 		true
-	# 	todd.save
-	# end
-
-
 	@user = session[:name]
 	@users = User.all
 	@menu_items = MenuItem.all
@@ -64,10 +24,6 @@ before do
 	@categories = []
 	@menu_items.map { |item| @categories.push(item.category) unless @categories.include?(item.category) }
 	@categories.sort!
-
-	# Set admin
-	# @users.each { |user| user.admin = true ? user.name == 'zach' || user.name == 'dave' || user.name = 'todd' : false; user.save }
-
 end
 
 options '/*' do
@@ -330,6 +286,4 @@ end
 			session.destroy
 			redirect '/'
 		end
-
-
 end
