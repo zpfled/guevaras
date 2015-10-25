@@ -1,3 +1,3 @@
-require './2chez'
+require './app'
 
 run TwoChez

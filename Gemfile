@@ -1,37 +1,10 @@
-source "https://rubygems.org"
-ruby "2.0.0"
-gem 'sinatra'
-gem 'data_mapper'
+source 'https://rubygems.org'
+ruby '2.0.0'
+
+gem 'bcrypt', require: 'bcrypt'
+gem 'grape'
+gem 'rake'
 gem 'shotgun'
-gem 'bcrypt',			require: 'bcrypt'
-gem 'multi_json', 		'1.8.4'
-gem 'pony'
-
-group :development, :test do
-	#  gem 'shotgun'
-	gem 'rspec'
-	gem 'guard'
-
-	gem 'guard-rspec'
-
-	gem 'guard-spork', 	'1.4.2'
-	gem 'spork', 		'0.9.2'
-	gem 'growl'
-end
-
-group :test do
-	gem 'rack-test'
-	gem 'capybara'
-end
-
-group :development do
-	gem 'guard-livereload', require: false
-	gem 'guard-shotgun', :git => 'https://github.com/rchampourlier/guard-shotgun.git'
-	gem 'sqlite3'
-	gem 'dm-sqlite-adapter'
-end
-
-group :production do
-	gem 'pg'
-	gem 'dm-postgres-adapter'
-end
+gem 'sinatra'
+gem 'sinatra-activerecord'
+gem 'pg'
