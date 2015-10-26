@@ -1,3 +1,3 @@
 require './app'
 
-run Web
+run Rack::Cascade.new([API, Web])
