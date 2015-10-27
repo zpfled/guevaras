@@ -1,101 +1,64 @@
 require 'bundler'
 require 'sinatra/activerecord'
-require './app/models/user'
-require './app/models/menu_item'
+require './models/user'
+require './models/menu_item'
+# require './api/menu_items_controller'
 Bundler.require(:default, :development)
 
+class API < Grape::API
+  version 'v1', using: :path
+  format :json
+  prefix :api
 
-# Setup Pony email configs
-configure :production do
-	set :email_options, {
-		via: 			:smtp,
-		via_options: 	{
-			address: 				'smtp.sendgrid.net',
-			port: 	 				'587',
-			domain: 				'heroku.com',
-			user_name: 				ENV['SENDGRID_USERNAME'],
-			password: 				ENV['SENDGRID_PASSWORD'],
-			authentication: 		:plain,
-			enable_starttls_auto: 	true
-		}
-	}
-
-Pony.options = settings.email_options
-
+  resource :menu_items do
+    desc 'List all menu items'
+    get do
+      MenuItem.all
+    end
+	end
 end
 
-
-class TwoChez < Sinatra::Application
+class Web < Sinatra::Application
 	register Sinatra::ActiveRecordExtension
-	include BCrypt
+
+	# TODO: clean this up
 	enable :sessions
 		set :session_secret, 'persenukedipsekjonukpunon',
 		expire_after: 	3600 # session expires after 1 hour
 
-# Routes
+	# TODO: rm this
+	before do
+		@menu_items = MenuItem.all
 
-# Before/After Blocks ----------------------------------------------------------
+		@menus = []
+		@menu_items.map { |item| @menus.push(item.menu) unless @menus.include?(item.menu) }
+		@menus.sort!.rotate!
 
-before do
-	# return
-	# Create initial user
-	# if User.all.length == 0
-	# 	zach = 	User.create 	name: 		'todd',
-	# 							email: 		'toddhohulin@mchsi.com',
-	# 							password: 	'password',
-	# 							admin: 		true
-	# 	zach.save
-	# 	todd = 	User.create 	name: 		'zach',
-	# 							email: 		'zpfled@gmail.com',
-	# 							password: 	'password',
-	# 							admin: 		true
-	# 	todd.save
-	# end
+		@categories = []
+		@menu_items.map { |item| @categories.push(item.category) unless @categories.include?(item.category) }
+		@categories.sort!
+	end
 
+	# TODO: is this necessary?
+	options '/*' do
+	  response['Access-Control-Allow-Origin'] = "*"
+	  headers['Access-Control-Allow-Methods'] = "GET, POST, PUT, DELETE, OPTIONS"
+	  headers['Access-Control-Allow-Headers'] ="accept, authorization, origin"
+	end
 
-	@user = session[:name]
-	@users = User.all
-	@menu_items = MenuItem.all
+	# TODO: this is the only route that should remain...everything else will be JS
+	get '/' do
+		erb :index
+	end
 
-	@menus = []
-	@menu_items.map { |item| @menus.push(item.menu) unless @menus.include?(item.menu) }
-	@menus.sort!.rotate!
-
-	@categories = []
-	@menu_items.map { |item| @categories.push(item.category) unless @categories.include?(item.category) }
-	@categories.sort!
-
-	# Set admin
-	# @users.each { |user| user.admin = true ? user.name == 'zach' || user.name == 'dave' || user.name = 'todd' : false; user.save }
-
-end
-
-options '/*' do
-    response['Access-Control-Allow-Origin'] = "*"
-    headers['Access-Control-Allow-Methods'] = "GET, POST, PUT, DELETE, OPTIONS"
-    headers['Access-Control-Allow-Headers'] ="accept, authorization, origin"
-end
-
-# Public Routes ---------------------------------------------------------------
-
-get '/' do
-	@title = 'Welcome'
-	@admin = false
-	@site_email = User.first.email
-	@first_user = User.first
-
-	erb :index
-end
-
-get '/signup' do
-	# Protect '/signup' from unauthorized users
-	redirect '/login'
-end
+	get '/signup' do
+		# Protect '/signup' from unauthorized users
+		redirect '/login'
+	end
 
 	# Login Routes
 	get '/login' do
 		@message = "#{User.last.name}, #{User.last.password}"
-		@title = 'Login'
 		@action = 'log in'
 		erb :login
 	end
@@ -115,46 +78,12 @@ end
 		end
 	end
 
-# Admin Routes ---------------------------------------------------------------
-
-get '/admin' do
-	if session[:name]
-		user = User.first(name: session[:name])
-		@current_user = user
-		@id = user.id
-		@boss = true ? user.admin == true : false
-	end
-
-	@title = 'Dashboard'
-	@admin = true ? @user : false
-
- 	if @user && User.first(name: session[:name]).logged_in?(@user)
- 		# Only render admin view if logged in
- 		erb :admin
- 	else
- 		# Redirect to '/login' if unauthorized user tries to access '/admin'
- 		redirect '/login'
- 	end
-end
-
-get '/menu' do
-	@admin = true ? @user : false
-
- 	if @user && User.first(name: session[:name]).logged_in?(@user)
- 		erb :menu, layout: false
- 	else
- 		redirect '/'
- 	end
-end
-
-
 	# Single-Button Menu Updates
 	get '/:id/raise' do
 		item = MenuItem.get params[:id]
 		@price = item.price = item.price + 1
 		item.save
 
-		p request.xhr?
 		if request.xhr?
 			halt 200, "#{@price}"
 		else
@@ -175,161 +104,48 @@ end
 		end
 	end
 
-	# Taskbar
-		# Update Personal Info
-		post '/:id/update/email' do
-			admin = User.first
-			user = User.first(id: params[:id])
+	# Update Personal Info
+	post '/:id/update/email' do
+		admin = User.first
+		user = User.first(id: params[:id])
 
 
-			if params[:email] != ""
-				# Email change confirmation to new email address, cc: old email address
-				Pony.mail 	to: 		"#{user.email}",
-							cc: 		"#{params[:email]}",
-            				from: 		"noreply@2Chez.com",
-            				subject: 	"Email Change Confirmation",
-            				body: 		erb(:email_email, layout: false, locals: { user: user, admin: admin })
+		if params[:email] != ""
+			user.email = params[:email]
+			user.save
 
-				user.email = params[:email]
+			halt 200, "email change success"
+		end
+
+		redirect '/admin'
+
+	end
+
+	post '/:id/update/password' do
+		admin = User.first
+		user = User.first(id: params[:id])
+
+		if params[:old_password] != ""
+			old_password = params[:old_password]
+			new_password = params[:new_password]
+			confirm_password = params[:confirm_password]
+
+			if user.password == old_password.to_s  && new_password == confirm_password
+				user.password = new_password
 				user.save
 
-				halt 200, "email change success"
-			end
-
-			redirect '/admin'
-
-		end
-
-		post '/:id/update/password' do
-			admin = User.first
-			user = User.first(id: params[:id])
-
-			if params[:old_password] != ""
-				old_password = params[:old_password]
-				new_password = params[:new_password]
-				confirm_password = params[:confirm_password]
-
-				if user.password == old_password.to_s  && new_password == confirm_password
-					# Email confirmation every time password is changed
-					Pony.mail 	to: 		"#{user.email}",
-            					from: 		"noreply@2Chez.com",
-            					subject: 	"#{user.name.capitalize}, your password has been changed",
-            					body: 		erb(:password_email, layout: false, locals: { user: user, admin: admin })
-
-					user.password = new_password
-					user.save
-
-					halt 200, "password change success"
-				else
-					halt 500
-					# Send email to user upon failed password change attempt
-					Pony.mail 	to: 		"#{user.email}",
-            					from: 		"noreply@2Chez.com",
-            					subject: 	"Failed password change",
-            					body: 		erb(:failed_password_email, layout: false, locals: { user: user, admin: admin })
-				end
-			end
-
-			redirect '/admin'
-		end
-
-		# Manage Users
-		post '/signup' do
-			@user_exists = false
-			admin = User.first
-
-		 	@users.each { |user| @user_exists = true if params[:name] == user.name }
-
-		 	if @user_exists
-		 		halt 500, "#{params[:name].capitalize} is already registered"
-		 	else
-				user = User.new
-				user.name = params[:name]
-				user.email = params[:email]
-				user.password = 'password'
-				user.save
-
-				# Send email to new user
-				Pony.mail 	to:  		params[:email],
-            				from:  		"noreply@2Chez.com",
-            				subject:  	"Welcome to the big show, #{params[:name].capitalize}!",
-            				body:  		erb(:new_user, layout: false, locals: { user: user, admin: admin })
-
-            	# Send confirmation email to Todd
-            	Pony.mail 	to:  		admin.email,
-            				from:  		"noreply@2Chez.com",
-            				subject:  	"Did you grant #{params[:name].capitalize} access to the 2Chez website?",
-            				body:  		erb(:new_user_admin, layout: false, locals: { user: user, admin: admin })
-
-				redirect '/menu'
-			end
-		end
-
-		post '/user/delete' do
-			admin = User.first
-			user = User.first(name: params[:name])
-
-			if user.name == session[:name] || user.admin
-				halt 500
-				redirect '/menu'
+				halt 200, "password change success"
 			else
-				user.destroy
-
-				# Send confirmation email to Todd
-            	Pony.mail 	to: 	 	admin.email,
-            				from: 		"noreply@2Chez.com",
-            				subject: 	"Deleted #{params[:name].capitalize}",
-            				body: 		erb(:delete_user_admin, layout: false, locals: { user: user, admin: admin })
-
-				redirect '/menu'
+				halt 500
 			end
 		end
 
-		# Manage Menu
-		post '/menu' do
-			item = MenuItem.new
-			item.name = params[:name]
-			item.description = params[:description]
-			item.price = params[:price]
-			item.menu = params[:menu].split('-').join(' ')
-			cat = "#{params[:menu]}_category".to_sym
-			item.category = params[cat]
-			item.save
+		redirect '/admin'
+	end
 
-			redirect '/menu'
-		end
-
-		post '/edit' do
-			selector = "#{params[:menu]}_edit".to_sym
-			item = MenuItem.first(id: params[selector])
-			if params[:name] != ""
-				item.name = params[:name]
-			end
-			if params[:description] != ""
-				item.description = params[:description]
-			end
-			if params[:price] != ""
-				item.price = params[:price]
-			end
-			item.save
-
-			redirect '/menu'
-		end
-
-		post '/delete' do
-			selector = "#{params[:menu]}_delete".to_sym
-			item = MenuItem.first(id: params[selector])
-
-			item.destroy
-
-			redirect '/menu'
-		end
-
-		# Logout
-		post '/logout' do
-			session.destroy
-			redirect '/'
-		end
-
-
+	# Logout
+	post '/logout' do
+		session.destroy
+		redirect '/'
+	end
 end

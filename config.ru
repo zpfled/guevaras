@@ -1,3 +1,2 @@
 require './app'
-
-run TwoChez
+run Rack::Cascade.new([API, Web])
