@@ -1,0 +1,11 @@
+.brand-header-2 {
+  color: #c00;
+  font-family: 'Josefin Slab';
+  font-size: 1.1em;
+}
+
+@media (max-width: 767px) {
+  .subheading {
+    font-size: 1.5em;
+  }
+}

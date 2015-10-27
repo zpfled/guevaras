@@ -139,7 +139,7 @@ function deleteFilterCategories(menu) {
 
 $(function () {
 	$('#update-email').on('submit', function(event) {
-		
+
 		event.preventDefault();
 		var id = $(this).find('.id').text();
 		var button = $(this);
@@ -151,7 +151,7 @@ $(function () {
 			data:		$(this).serialize(),
 			dataType:	'html',
 
-		
+
 			success: function(data) {
 				$('.modal').slideUp(200);
 				$('.modal-backdrop').fadeToggle(200);
@@ -172,7 +172,7 @@ $(function () {
 
 $(function () {
 	$('#update-password').on('submit', function(event) {
-		
+
 		event.preventDefault();
 		var id = $(this).find('.id').text();
 		var button = $(this);
@@ -184,7 +184,7 @@ $(function () {
 			data:		$(this).serialize(),
 			dataType:	'html',
 
-		
+
 			success: function(data) {
 				$('.modal').slideUp(200);
 				$('.modal-backdrop').fadeToggle(200);
@@ -207,7 +207,7 @@ $(function () {
 
 $(function () {
 	$('#new-user').on('submit', function(event) {
-		
+
 		event.preventDefault();
 
 		$.ajax({
@@ -215,7 +215,7 @@ $(function () {
 			url:		'/signup',
 			data:		$(this).serialize(),
 			dataType:	'html',
-			
+
 			success: function(data) {
 				$('.modal').slideUp(200);
 				$('.modal-backdrop').fadeToggle(200);
@@ -236,7 +236,7 @@ $(function () {
 
 $(function () {
 	$('#delete-user').on('submit', function(event) {
-		
+
 		event.preventDefault();
 
 		$.ajax({
@@ -244,7 +244,7 @@ $(function () {
 			url:		'/user/delete',
 			data:		$(this).serialize(),
 			dataType:	'html',
-			
+
 			success: function(data) {
 				$('.modal').slideUp(200);
 				$('.modal-backdrop').fadeToggle(200);
@@ -267,7 +267,7 @@ $(function () {
 
 $(function () {
 	$('#add-item').on('submit', function(event) {
-		
+
 		event.preventDefault();
 
 		$.ajax({
@@ -275,7 +275,7 @@ $(function () {
 			url:		'/menu',
 			data:		$(this).serialize(),
 			dataType:	'html',
-			
+
 			success: function(data) {
 				$('.modal').slideUp(200);
 				$('.modal-backdrop').fadeToggle(200);
@@ -296,7 +296,7 @@ $(function () {
 
 $(function () {
 	$('#edit-item').on('submit', function(event) {
-		
+
 		event.preventDefault();
 
 		$.ajax({
@@ -304,7 +304,7 @@ $(function () {
 			url:		'/edit',
 			data:		$(this).serialize(),
 			dataType:	'html',
-			
+
 			success: function(data) {
 				$('.modal').slideUp(200);
 				$('.modal-backdrop').fadeToggle(200);
@@ -325,7 +325,7 @@ $(function () {
 
 $(function () {
 	$('#delete-item').on('submit', function(event) {
-		
+
 		event.preventDefault();
 
 		$.ajax({
@@ -333,7 +333,7 @@ $(function () {
 			url:		'/delete',
 			data:		$(this).serialize(),
 			dataType:	'html',
-			
+
 			success: function(data) {
 				$('.modal').slideUp(200);
 				$('.modal-backdrop').fadeToggle(200);
@@ -354,7 +354,7 @@ $(function () {
 
 $(function () {
 	$('.raise').on('submit', function(event) {
-		
+
 		event.preventDefault();
 		var id = $(this).find('.id').text();
 		var button = $(this);
@@ -366,7 +366,7 @@ $(function () {
 			data:		$(this).serialize(),
 			dataType:	'html',
 
-		
+
 			success: function(data) {
 				$('.menu-msg h3').html('raised price to $' + data);
 				$(button.parent().parent().find('.item-price')).html(data);
@@ -381,7 +381,7 @@ $(function () {
 
 $(function () {
 	$('.reduce').on('submit', function(event) {
-		
+
 		event.preventDefault();
 		var id = $(this).find('.id').text();
 		var button = $(this);
@@ -393,7 +393,7 @@ $(function () {
 			data:		$(this).serialize(),
 			dataType:	'html',
 
-		
+
 			success: function(data) {
 				$('.menu-msg h3').html('reduced price to $' + data);
 				$(button.parent().parent().find('.item-price')).html(data);
@@ -405,21 +405,3 @@ $(function () {
 		});
 	});
 });
-
-// Parallax Scrolling Fanciocity --------------------------------------------------------------------------------------
-
-// $(function() {
-// 	// Init Skrollr
-// 	if(!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)){
-// 		var s = skrollr.init({
-// 			render: function(data) {
-// 				// Debugging - Log the current scroll position.
-// 				console.log(data.curTop);
-// 			}
-// 		});
-// 		// Refresh Skrollr after resizing our sections
-// 		s.refresh($('.homeSlide'));
-// 	}
-// });
-
-
