@@ -23,7 +23,7 @@
 
   </head>
 
-  <body ng-app>
+  <body ng-app="twochez">
 
     <%= yield %>
 
@@ -51,8 +51,18 @@
         <h3 id="delete-msg" class="alert alert-success"></h3>
     </div>
 
-    <!-- JavaScript -->
-    <script src="bower_components/angular/angular.js"></script>
+    <!-- Load Angular -->
+    <script src="/js/bower_components/angular/angular.min.js"></script>
+    <script src="/js/angular/app.js"></script>
+    <!-- Services -->
+    <script src="/js/angular/services/media_query_service.js"></script>
+    <script src="/js/angular/services/chez_api.js"></script>
+    <!-- Directives -->
+    <script src="/js/angular/directives/chez_menu.js"></script>
+
+
+
+    <!-- Old Stuff -->
     <script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script src="/js/custom.js"></script>
   </body>

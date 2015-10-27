@@ -1,0 +1,18 @@
+<section class="menu-bcg scrim inner container">
+  <ul ng-repeat="category in categories">
+    <h3 class="category-section">
+      {{ category }}
+    </h3>
+    <li ng-repeat="menu_item in menu_items | filter: by_category">
+      <h5 class="item-name">
+        {{ menu_item.name }}
+        <span class="item-price pull-right">
+          {{ menu_item.price }}
+        </span>
+      </h5>
+      <p class="item-description">
+        {{ menu_item.description }}
+      </p>
+    </li>
+  </ul>
+</section>
