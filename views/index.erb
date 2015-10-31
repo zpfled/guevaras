@@ -1,9 +1,7 @@
 <section class="welcome welcome--bg full-vh pd-near">
   <div class="welcome--intro row scrim mg-top-far">
     <h1 class="welcome--header t-center mg-top-none">
-      <a href="/">
-        <span class="welcome--header-span">2</span>Chez
-      </a>
+      <span class="welcome--header-span">2</span>Chez
     </h1>
     <h2 class="t-center">Casual Fine Dining</h2>
     <p>
@@ -19,17 +17,17 @@
 
   <div>
     <!-- Mobile View -->
-    <div class="scrim" ng-hide="device.isDesktop()">
-      <a
-        href=""
-        ng-repeat="menu in menus"
-        ng-click="select_menu(menu)">
-        <div class="panel-heading">
-          <h2 class="panel-title">
+    <div ng-hide="device.isDesktop()">
+      <div class="menu--bg" >
+        <a
+          href=""
+          ng-repeat="menu in menus"
+          ng-click="select_menu(menu)">
+          <h2 class="pd-near side-gradient">
             {{ menu }}
           </h2>
-        </div>
-      </a>
+        </a>
+      </div>
       <chez-menu
         ng-repeat="menu in menus"
         ng-show="selected_menu_is(menu)"
@@ -39,8 +37,11 @@
 
     <!-- Desktop View -->
     <div ng-show="device.isDesktop()">
-      <ul class="nav nav-tabs nav-justified">
-        <li class="h2" ng-repeat="menu in menus">
+      <ul class="pd-none">
+        <li
+          class="h2 menu--tabs-li t-center"
+          ng-class="{active: selected_menu_is(menu)}"
+          ng-repeat="menu in menus">
           <a href="" ng-click="select_menu(menu)">
             {{ menu }}
           </a>
@@ -58,26 +59,29 @@
 
 <section class="hours--bg">
   <div class="side-gradient hours--gradient pd-near">
-    <h1 class="mg-top-none">Hours</h1>
-    <h2>Lunch</h2>
-    <p class="remove-bottom-margin">Monday - Friday</p>
-    <p>11am - 2pm</p>
-    <h2>Dinner</h2>
-    <p class="remove-bottom-margin">Monday - Thursday</p>
-    <p>5 - 9pm</p>
-    <p class="remove-bottom-margin">Friday &amp; Saturday</p>
-    <p>5 - 10pm</p>
+    <div class="row">
+      <h1 class="mg-top-none">Hours</h1>
+      <h2>Lunch</h2>
+      <p class="remove-bottom-margin">Monday - Friday</p>
+      <p>11am - 2pm</p>
+      <h2>Dinner</h2>
+      <p class="remove-bottom-margin">Monday - Thursday</p>
+      <p>5 - 9pm</p>
+      <p class="remove-bottom-margin">Friday &amp; Saturday</p>
+      <p>5 - 10pm</p>
+      </div>
   </div>
 </section>
 
-<section class="pd-far">
-  <h2 class="t-center">Reservations</h2>
+<section class="pd-near pd-top-far pd-bottom-far row t-center">
+  <h2>Reservations</h2>
   <p>
     Give us a call at 309.691.2224 to make your reservation. We answer between 10am and 10pm every day except Sunday.
   </p>
   <a
+    ng-hide="device.isDesktop()"
     href="tel:+13096912224"
-    class="col-xs-12 btn btn-lg btn-info visible-xs visible-sm contact-btn">
+    class="btn-info mg-top-near">
     Call Now
   </a>
 
@@ -85,30 +89,50 @@
   <p>
     Let 2Chez make your next party an unforgettable one. Call or email Todd to ask about availability, menu options, and pricing.
   </p>
-  <p class="visible-md visible-lg center">
+  <p class="t-center">
     Email:
-    <a href="mailto:toddhohulin@mchsi.com" class="email">
+    <a
+      href="mailto:toddhohulin@mchsi.com"
+      class="email"
+      ng-show="device.isDesktop()">
       toddhohulin@mchsi.com
     </a> or Call: 309.691.2224.
   </p>
   <a
+    ng-hide="device.isDesktop()"
     href="mailto:toddhohulin@mchsi.com"
-    class="email col-xs-12 btn btn-lg btn-info visible-xs visible-sm contact-btn">
+    class="email btn-info mg-top-near">
     Email Todd
   </a>
 </section>
 
 <section class="find find--bg t-left">
   <div class="side-gradient find--gradient pd-near">
-    <h1>Find Us</h1>
-    <h2>2Chez</h2>
-    <p class="mg-bottom-none">7815 N Knoxville Ave</p>
-    <p>Peoria, IL 61614</p>
-    <iframe
-      class="find--map"
-      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3021.054494503611!2d-89.60427759999999!3d40.782816100000005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880a5b391149347b%3A0x4047dfd0e21972b6!2s7815+N+Knoxville+Ave!5e0!3m2!1sen!2sus!4v1394348950841"
-      style="border:0">
-    </iframe>
+    <div class="row">
+      <h1>Find Us</h1>
+      <h2>2Chez</h2>
+      <p class="mg-bottom-none">7815 N Knoxville Ave</p>
+      <p>Peoria, IL 61614</p>
+      <iframe
+        class="find--map"
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3021.054494503611!2d-89.60427759999999!3d40.782816100000005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880a5b391149347b%3A0x4047dfd0e21972b6!2s7815+N+Knoxville+Ave!5e0!3m2!1sen!2sus!4v1394348950841"
+        style="border:0">
+      </iframe>
+    </div>
   </div>
 </section>
-<%= erb :footer, layout: false %>
+
+<footer class="footer--bg pd-far">
+  <p class="t-center copyright">
+    Copyright <%= Time.now.year %> TCSI, Inc.<br/>
+    Built by
+    <a href="https://twitter.com/zachpflederer">
+      @zachpflederer
+    </a>and
+    <a href="https://twitter.com/DavidLCrow">
+      @DavidLCrow
+    </a>.
+  </p>
+</footer>
+
+

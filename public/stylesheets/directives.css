@@ -14,6 +14,14 @@
 .chez-menu--section {
   text-transform: uppercase;
 }
+.chez-menu--scrim {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .chez-menu--scrim {
+    width: 50%;
+  }
+}
 
 .chez-menu--bg {
   background-color: rgb(10, 10, 10);
@@ -22,14 +30,6 @@
   background-repeat: no-repeat;
   overflow-y: scroll;
   background-size: 100%;
-}
-.chez-menu--scrim {
-  width: 100%;
-}
-@media (min-width: 768px) {
-  .chez-menu--scrim {
-    width: 50%;
-  }
 }
 
 @media (max-width:320px) { .chez-menu--bg {background-image: url('/images/menu/menu_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }

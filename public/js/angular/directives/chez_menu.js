@@ -1,15 +1,18 @@
 angular.module('twochez').directive('chezMenu', [
   '$window',
   'ChezApi',
+  'MediaQueryService',
   function (
     $window,
-    ChezApi
+    ChezApi,
+    MediaQueryService
 ) {
   'use strict';
 
   var link = function (scope, element, attrs) {
     scope.categories = [];
     scope.menu = [];
+    scope.device = MediaQueryService;
 
     scope.failure = function (response) {
       $window.console.error(response);

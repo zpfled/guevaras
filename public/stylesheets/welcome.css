@@ -48,4 +48,5 @@
     -moz-background-position: top;
     -o-background-position: top;
   background-position: top;
+  background-size: 100%;
 }

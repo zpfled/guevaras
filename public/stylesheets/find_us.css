@@ -14,19 +14,6 @@
   background-repeat: no-repeat;
   background-size: auto 100%;
 }
-@media (min-width: 768px) {
-  .find--bg {
-    background-size: 100%;
-  }
-  .find--gradient {
-    padding-top: 8em;
-    padding-bottom: 8em;
-  }
-  .find--map {
-    height: 300px;
-    width: 50vw;
-  }
-}
 
 .find--bg .btn-info {
   background-color: rgb(5,5,5);
@@ -52,4 +39,18 @@
   filter: grayscale(100%);
   filter: url(grayscale.svg); /* Firefox 4+ */
   filter: gray; /* IE 6-9 */
+}
+
+@media (min-width: 768px) {
+  .find--bg {
+    background-size: 100%;
+  }
+  .find--gradient {
+    padding-top: 8em;
+    padding-bottom: 8em;
+  }
+  .find--map {
+    height: 300px;
+    width: 40vw;
+  }
 }

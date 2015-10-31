@@ -11,20 +11,20 @@
     <link rel="shortcut icon" href="/images/icon.png">
     <title>2Chez Restaurant</title>
 
-    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link
         href='http://fonts.googleapis.com/css?family=Quicksand:300|Josefin+Slab'
         rel='stylesheet'
         type='text/css'>
+
+    <link href="/stylesheets/main.css" rel="stylesheet">
     <link href="/stylesheets/directives.css" rel="stylesheet">
-    <link href="/stylesheets/utilities.css" rel="stylesheet">
     <link href="/stylesheets/welcome.css" rel="stylesheet">
     <link href="/stylesheets/hours.css" rel="stylesheet">
     <link href="/stylesheets/find_us.css" rel="stylesheet">
 
   </head>
 
-  <body ng-app="twochez">
+  <body ng-app="twochez" ng-controller="AppController">
 
     <%= yield %>
 
@@ -39,6 +39,7 @@
     <script src="/js/angular/services/media_query_service.js"></script>
     <script src="/js/angular/services/chez_api.js"></script>
     <!-- Controllers -->
+    <script src="/js/angular/controllers/app_controller.js"></script>
     <script src="/js/angular/controllers/menu_controller.js"></script>
     <!-- Directives -->
     <script src="/js/angular/directives/chez_menu.js"></script>
