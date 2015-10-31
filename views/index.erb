@@ -1,73 +1,138 @@
-<%= erb :welcome, layout: false %>
+<section class="welcome welcome--bg full-vh pd-near">
+  <div class="welcome--intro row scrim mg-top-far">
+    <h1 class="welcome--header t-center mg-top-none">
+      <span class="welcome--header-span">2</span>Chez
+    </h1>
+    <h2 class="t-center">Casual Fine Dining</h2>
+    <p>
+      At 2Chez, we create authentic, rustic dishes inspired by classic, old-world flavors. Every dish is hand-crafted from scratch with carefully selected ingredients. This is the kind of food that is meant to be shared over a bottle of good wine with even better friends.
+    </p>
+  </div>
+</section>
 
-<section id="menu-msg">
-  <div class="bcg">
-    <div class="hsContainer">
-      <div class="hsContent">
-        <h1 class="h1 center">
-          Food &amp; Drink
-        </h1>
-        <div class="clearfix menu-intro">
-          <div class="col-xs-12 col-md-7 pull-left">
-            <img class="sm-img" src="./images/dinner-duck.jpg" alt="Duck">
-          </div>
-          <div class="col-xs-12 col-md-5 pull-right">
-            <p class="lead">
-              At 2Chez, we create authentic, rustic dishes inspired by classic, old-world flavors. Every dish is hand-crafted from scratch with carefully selected ingredients. This is the kind of food that is meant to be shared over a bottle of good wine with even better friends.
-            </p>
-            <p class="lead">
-              Our drinks list is all about complementing our food. Every bottle of wine, craft beer, and seasonal cocktail has been carefully curated to bring out the best in what we create. We even have a small plates menu, available only at the bar, for those who want a quick bite to eat with their cocktail.
-            </p>
-          </div>
-        </div>
+<section ng-controller="MenuController">
+  <h1 class="t-center mg-bottom-near" ng-show="menus.length" ng-cloak>
+    Menu
+  </h1>
+
+  <div>
+    <!-- Mobile View -->
+    <div ng-hide="device.isDesktop()">
+      <div class="menu--bg" >
+        <a
+          href=""
+          ng-repeat="menu in menus"
+          ng-click="select_menu(menu)">
+          <h2 class="pd-near side-gradient">
+            {{ menu }}
+          </h2>
+        </a>
       </div>
+      <chez-menu
+        ng-repeat="menu in menus"
+        ng-show="selected_menu_is(menu)"
+        menu-name="{{menu}}">
+      </chez-menu>
+    </div>
+
+    <!-- Desktop View -->
+    <div ng-show="device.isDesktop()">
+      <ul class="pd-none">
+        <li
+          class="h2 menu--tabs-li t-center"
+          ng-class="{active: selected_menu_is(menu)}"
+          ng-repeat="menu in menus">
+          <a href="" ng-click="select_menu(menu)">
+            {{ menu }}
+          </a>
+        </li>
+      </ul>
+
+      <chez-menu
+        ng-repeat="menu in menus"
+        ng-show="selected_menu_is(menu)"
+        menu-name="{{menu}}">
+      </chez-menu>
     </div>
   </div>
 </section>
 
-<%= erb :menu, layout: false %>
-
-<%= erb :hours, layout: false %>
-
-<section id="contact">
-  <div class="bcg">
-    <div class="hsContainer">
-      <div class="hsContent container-fluid">
-          <div class="col-lg-6 col-lg-offset-3">
-            <h2 class="center">
-              Reservations
-            </h2>
-              <div class="inner">
-                <p>
-                  Give us a call at 309.691.2224 to make your reservation. We answer between 10am and 10pm every day except Sunday.
-                </p>
-                <a
-                  href="tel:+13096912224"
-                  class="col-xs-12 btn btn-lg btn-info visible-xs visible-sm contact-btn">
-                  Call Now
-                </a>
-              </div>
-
-            <h2 class="center">Private Parties & Catering</h2>
-              <div class="inner">
-                <p>
-                  Let 2Chez make your next party an unforgettable one. Call or email Todd to ask about availability, menu options, and pricing.
-                </p>
-                <p class="visible-md visible-lg center">
-                  Email:
-                  <a href="mailto:toddhohulin@mchsi.com" class="email">
-                    toddhohulin@mchsi.com
-                  </a> or Call: 309.691.2224.
-                </p>
-                <a class="email col-xs-12 btn btn-lg btn-info visible-xs visible-sm contact-btn" href="mailto:toddhohulin@mchsi.com">
-                  Email Todd
-                </a>
-              </div>
-          </div>
+<section class="hours--bg">
+  <div class="side-gradient hours--gradient pd-near">
+    <div class="row">
+      <h1 class="mg-top-none">Hours</h1>
+      <h2>Lunch</h2>
+      <p class="remove-bottom-margin">Monday - Friday</p>
+      <p>11am - 2pm</p>
+      <h2>Dinner</h2>
+      <p class="remove-bottom-margin">Monday - Thursday</p>
+      <p>5 - 9pm</p>
+      <p class="remove-bottom-margin">Friday &amp; Saturday</p>
+      <p>5 - 10pm</p>
       </div>
+  </div>
+</section>
+
+<section class="pd-near pd-top-far pd-bottom-far row t-center">
+  <h2>Reservations</h2>
+  <p>
+    Give us a call at 309.691.2224 to make your reservation. We answer between 10am and 10pm every day except Sunday.
+  </p>
+  <a
+    ng-hide="device.isDesktop()"
+    href="tel:+13096912224"
+    class="btn-info mg-top-near">
+    Call Now
+  </a>
+
+  <h2 class="t-center">Private Parties & Catering</h2>
+  <p>
+    Let 2Chez make your next party an unforgettable one. Call or email Todd to ask about availability, menu options, and pricing.
+  </p>
+  <p class="t-center">
+    Email:
+    <a
+      href="mailto:toddhohulin@mchsi.com"
+      class="email"
+      ng-show="device.isDesktop()">
+      toddhohulin@mchsi.com
+    </a> or Call: 309.691.2224.
+  </p>
+  <a
+    ng-hide="device.isDesktop()"
+    href="mailto:toddhohulin@mchsi.com"
+    class="email btn-info mg-top-near">
+    Email Todd
+  </a>
+</section>
+
+<section class="find find--bg t-left">
+  <div class="side-gradient find--gradient pd-near">
+    <div class="row">
+      <h1>Find Us</h1>
+      <h2>2Chez</h2>
+      <p class="mg-bottom-none">7815 N Knoxville Ave</p>
+      <p>Peoria, IL 61614</p>
+      <iframe
+        class="find--map"
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3021.054494503611!2d-89.60427759999999!3d40.782816100000005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880a5b391149347b%3A0x4047dfd0e21972b6!2s7815+N+Knoxville+Ave!5e0!3m2!1sen!2sus!4v1394348950841"
+        style="border:0">
+      </iframe>
     </div>
   </div>
 </section>
 
-<%= erb :find, layout: false %>
-<%= erb :footer, layout: false %>
+<footer class="footer--bg pd-far">
+  <p class="t-center copyright">
+    Copyright <%= Time.now.year %> TCSI, Inc.<br/>
+    Built by
+    <a href="https://twitter.com/zachpflederer">
+      @zachpflederer
+    </a>and
+    <a href="https://twitter.com/DavidLCrow">
+      @DavidLCrow
+    </a>.
+  </p>
+</footer>
+
+

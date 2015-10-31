@@ -1,0 +1,41 @@
+/*chez-menu*/
+.chez-menu--ul {
+  margin: 0;
+}
+
+.chez-menu--li {
+  list-style: none;
+}
+
+.chez-menu--name {
+  font-size: 1.2em;
+}
+
+.chez-menu--section {
+  text-transform: uppercase;
+}
+.chez-menu--scrim {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .chez-menu--scrim {
+    width: 50%;
+  }
+}
+
+.chez-menu--bg {
+  background-color: rgb(10, 10, 10);
+  background-position: top center;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  overflow-y: scroll;
+  background-size: 100%;
+}
+
+@media (max-width:320px) { .chez-menu--bg {background-image: url('/images/menu/menu_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }
+@media (max-width:481px) { .chez-menu--bg {background-image: url('/images/menu/menu_481.jpg');}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media (max-width:641px) { .chez-menu--bg {background-image: url('/images/menu/menu_641.jpg');}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (max-width:961px) { .chez-menu--bg {background-image: url('/images/menu/menu_961.jpg');}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (max-width:1025px) { .chez-menu--bg {background-image: url('/images/menu/menu_1025.jpg');}/* big landscape tablets, laptops, and desktops */ }
+@media (max-width:1280px) { .chez-menu--bg {background-image: url('/images/menu/menu_1281.jpg');}/* hi-res laptops and desktops */ }
+@media (min-width:1281px) { .chez-menu--bg {background-image: url('/images/menu/menu_1281.jpg');}/* hi-res laptops and desktops */ }

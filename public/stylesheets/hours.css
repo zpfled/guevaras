@@ -1,0 +1,24 @@
+@media (max-width:320px) { .hours--bg {background-image: url('/images/hours/hours_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }
+@media (max-width:481px) { .hours--bg {background-image: url('/images/hours/hours_481.jpg');}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media (max-width:641px) { .hours--bg {background-image: url('/images/hours/hours_641.jpg');}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (max-width:961px) { .hours--bg {background-image: url('/images/hours/hours_961.jpg');}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (max-width:1025px) { .hours--bg {background-image: url('/images/hours/hours_1025.jpg');}/* big landscape tablets, laptops, and desktops */ }
+@media (max-width:1280px) { .hours--bg {background-image: url('/images/hours/hours_1281.jpg');}/* hi-res laptops and desktops */ }
+@media (min-width:1281px) { .hours--bg {background-image: url('/images/hours/hours_1281.jpg');}/* hi-res laptops and desktops */ }
+
+.hours--bg {
+  background-color: rgb(10, 10, 10);
+  background-position: top right;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+}
+@media (min-width: 768px) {
+  .hours--bg {
+    background-size: 100%;
+  }
+  .hours--gradient {
+    padding-top: 8em;
+    padding-bottom: 8em;
+  }
+}

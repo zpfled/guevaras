@@ -1,11 +1,52 @@
-.brand-header-2 {
-  color: #c00;
-  font-family: 'Josefin Slab';
-  font-size: 1.1em;
+/*Welcome Section*/
+.welcome--intro {
+  padding: 2rem;
+}
+@media (max-width: 641px) {
+  .welcome--intro {
+    padding: 1rem;
+  }
+}
+@media (min-width: 642px) {
+  .welcome--intro {
+    position: relative;
+    top: 20%;
+  }
 }
 
-@media (max-width: 767px) {
-  .subheading {
-    font-size: 1.5em;
-  }
+.welcome--header {
+  width: 100%;
+  display: block;
+  position: relative;
+}
+
+.welcome-head {
+  width: 100%;
+  background: linear-gradient(top, rgba(10,10,10,.75) 10%, rgba(10,10,10,0) 100%);
+  background: -webkit-gradient(top, rgba(10,10,10,.75) 10%, rgba(10,10,10,0) 100%);
+  background: -webkit-linear-gradient(top, rgba(10,10,10,.75) 10%, rgba(10,10,10,0) 100%);
+  background: -moz-linear-gradient(top, rgba(10,10,10,.75) 10%, rgba(10,10,10,0) 100%);
+  background: -ms-linear-gradient(top, rgba(10,10,10,.75) 10%, rgba(10,10,10,0) 100%);
+  background: -o-linear-gradient(top, rgba(10,10,10,.75) 10%, rgba(10,10,10,0) 100%);
+}
+
+.welcome--header-span {
+  color: #c00;
+  font-weight: 700;
+}
+
+@media (max-width:320px) { .welcome--bg {background-image: url('/images/welcome/welcome_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }
+@media (max-width:481px) { .welcome--bg {background-image: url('/images/welcome/welcome_481.jpg');}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media (max-width:641px) { .welcome--bg {background-image: url('/images/welcome/welcome_641.jpg');}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (max-width:961px) { .welcome--bg {background-image: url('/images/welcome/welcome_961.jpg');}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (max-width:1025px) { .welcome--bg {background-image: url('/images/welcome/welcome_1025.jpg');}/* big landscape tablets, laptops, and desktops */ }
+@media (max-width:1280px) { .welcome--bg {background-image: url('/images/welcome/welcome_1281.jpg');}/* hi-res laptops and desktops */ }
+@media (min-width:1281px) { .welcome--bg {background-image: url('/images/welcome/welcome_1281.jpg');}/* hi-res laptops and desktops */ }
+
+.welcome--bg {
+  -webkit-background-position: top;
+    -moz-background-position: top;
+    -o-background-position: top;
+  background-position: top;
+  background-size: 100%;
 }
