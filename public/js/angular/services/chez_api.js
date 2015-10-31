@@ -9,8 +9,12 @@ angular.module('twochez').service('ChezApi', [
   'use strict';
   this.base_url = 'api/v1/'
 
-  this.get_menu_items = function () {
-    return $http.get(this.base_url + 'menu_items');
+  this.get_menu_items = function (menu) {
+    if (menu) {
+      return $http.get(this.base_url + 'menu_items/' + menu.split(' ').join('_'));
+    } else {
+      return $http.get(this.base_url + 'menu_items');
+    };
   }
 
   return this;

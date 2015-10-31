@@ -8,30 +8,33 @@ angular.module('twochez').directive('chezMenu', [
   'use strict';
 
   var link = function (scope, element, attrs) {
-    scope.menu_items = [];
-    scope.categories = ['appetizers']
-
-    scope.by_category = function (menu_item) {
-      return true;
-    };
+    scope.categories = [];
+    scope.menu = [];
 
     scope.failure = function (response) {
       $window.console.error(response);
       return false;
     };
 
-    scope.set_menu_items = function (response) {
-      return scope.menu_items = response.data;
+    scope.items_sorted_by = function (category) {
+      return _.where(scope.menu, {category: category});
     };
 
-    ChezApi.get_menu_items().then(scope.set_menu_items)
+    scope.initialize_menu = function (response) {
+      scope.menu = response.data;
+      scope.categories = _.uniq(_.pluck(response.data, 'category'));
+    };
 
+    ChezApi.get_menu_items(scope.menuName).then(
+      scope.initialize_menu,
+      scope.failure
+    );
   };
 
   // Directive
   return {
     scope: {
-      type: '@',
+      menuName: '@'
     },
     restrict: 'E',
     templateUrl: '/templates/directives/chez_menu.html',

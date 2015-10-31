@@ -1,18 +1,24 @@
-<section class="menu-bcg scrim inner container">
-  <ul ng-repeat="category in categories">
-    <h3 class="category-section">
-      {{ category }}
-    </h3>
-    <li ng-repeat="menu_item in menu_items | filter: by_category">
-      <h5 class="item-name">
-        {{ menu_item.name }}
-        <span class="item-price pull-right">
-          {{ menu_item.price }}
-        </span>
-      </h5>
-      <p class="item-description">
-        {{ menu_item.description }}
-      </p>
-    </li>
-  </ul>
+<section class="chez-menu--bg">
+  <div class="chez-menu--scrim scrim row mg-top-near mg-bottom-near">
+    <ul
+      class="chez-menu--ul pd-near"
+      ng-repeat="category in categories" >
+      <h3 class="chez-menu--section mg-bottom-near">
+        {{ category | stripDashes }}
+      </h3>
+      <li
+        class="chez-menu--li"
+        ng-repeat="menu_item in items_sorted_by(category)">
+        <h5 class="chez-menu--name">
+          {{ menu_item.name }}
+          <span class="right">
+            {{ menu_item.price }}
+          </span>
+        </h5>
+        <p class="light-gray t-italics">
+          {{ menu_item.description }}
+        </p>
+      </li>
+    </ul>
+  </div>
 </section>

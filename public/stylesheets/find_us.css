@@ -1,0 +1,55 @@
+/* Find Us */
+@media (max-width:320px) { .find--bg {background-image: url('/images/find-us/find-us_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }
+@media (max-width:481px) { .find--bg {background-image: url('/images/find-us/find-us_481.jpg');}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media (max-width:641px) { .find--bg {background-image: url('/images/find-us/find-us_641.jpg');}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (max-width:961px) { .find--bg {background-image: url('/images/find-us/find-us_961.jpg');}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (max-width:1025px) { .find--bg {background-image: url('/images/find-us/find-us_1025.jpg');}/* big landscape tablets, laptops, and desktops */ }
+@media (max-width:1280px) { .find--bg {background-image: url('/images/find-us/find-us_1281.jpg');}/* hi-res laptops and desktops */ }
+@media (min-width:1281px) { .find--bg {background-image: url('/images/find-us/find-us_1281.jpg');}/* hi-res laptops and desktops */ }
+
+.find--bg {
+  background-color: rgb(10, 10, 10);
+  background-position: top right;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+}
+@media (min-width: 768px) {
+  .find--bg {
+    background-size: 100%;
+  }
+  .find--gradient {
+    padding-top: 8em;
+    padding-bottom: 8em;
+  }
+  .find--map {
+    height: 300px;
+    width: 50vw;
+  }
+}
+
+.find--bg .btn-info {
+  background-color: rgb(5,5,5);
+  background-color: rgba(5,5,5,.3);
+  margin: .5em 0 .5em 0;
+}
+
+.find--bg .btn-info:hover,
+.find--bg .btn-info:active {
+  background-color: rgb(250,250,250);
+  background-color: rgba(250,250,250,.3);
+}
+
+.find--map {
+  position: relative;
+  width: 90vw;
+
+  /* make map black and white */
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: url(grayscale.svg); /* Firefox 4+ */
+  filter: gray; /* IE 6-9 */
+}
