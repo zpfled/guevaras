@@ -1,12 +1,14 @@
 require 'bundler'
 require 'sinatra/activerecord'
 require './controllers/menu_items_controller'
+require './controllers/users_controller'
 require './models/user'
 require './models/menu_item'
 Bundler.require(:default, :development)
 
 class API < Grape::API
   mount MenuItemsController
+  mount UsersController
 end
 
 class Web < Sinatra::Application
@@ -15,20 +17,7 @@ class Web < Sinatra::Application
 	# TODO: clean this up
 	enable :sessions
 		set :session_secret, 'persenukedipsekjonukpunon',
-		expire_after: 	3600 # session expires after 1 hour
-
-	# TODO: rm this
-	before do
-		@menu_items = MenuItem.all
-
-		@menus = []
-		@menu_items.map { |item| @menus.push(item.menu) unless @menus.include?(item.menu) }
-		@menus.sort!.rotate!
-
-		@categories = []
-		@menu_items.map { |item| @categories.push(item.category) unless @categories.include?(item.category) }
-		@categories.sort!
-	end
+		expire_after: 3600
 
 	# TODO: is this necessary?
 	options '/*' do
@@ -40,11 +29,6 @@ class Web < Sinatra::Application
 	# TODO: this is the only route that should remain...everything else will be JS
 	get '/' do
 		erb :index
-	end
-
-	get '/signup' do
-		# Protect '/signup' from unauthorized users
-		redirect '/login'
 	end
 
 	# Login Routes

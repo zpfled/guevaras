@@ -1,2 +1,18 @@
-adapter: 'postgresql'
-database: <%= ENV['GUEVARAS_DATABASE_URL'] %>
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['GUEVARAS_DATABASE_URL'] %>
+  host: localhost
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['GUEVARAS_DATABASE_URL_DEV'] %>
+  host: localhost
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['GUEVARAS_DATABASE_URL_TEST'] %>
+  pool: 5
+  host: localhost

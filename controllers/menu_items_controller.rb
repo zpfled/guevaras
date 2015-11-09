@@ -1,6 +1,6 @@
-require 'grape'
+require_relative 'application_controller'
 
-class MenuItemsController < Grape::API
+class MenuItemsController < ApplicationController
   version 'v1', using: :path
   format :json
   prefix :api
