@@ -2,6 +2,7 @@ require 'bundler'
 require 'sinatra/activerecord'
 require './controllers/menu_items_controller'
 require './models/menu_item'
+require './helpers/twilio_helper'
 Bundler.require(:default, :development)
 
 class API < Grape::API
@@ -16,18 +17,14 @@ class Web < Sinatra::Application
 		erb :index, layout: false
 	end
 
-	get '/twilio' do
-		'Hello World! Currently running version ' + Twilio::VERSION + \
-        ' of the twilio-ruby library.'
-  end
-
-  get '/sms-quickstart' do
+  post '/sms-quickstart' do
 	  content_type 'text/xml'
-
+	  response = TwilioHelper.new(params)
 	  res = Twilio::TwiML::Response.new do |r|
 	    r.Sms "Hey Monkey. Thanks for the message 4!"
 	  end
-	  p res.to_xml
+
+	  res.to_xml
 	end
 
 	# Single-Button Menu Updates
