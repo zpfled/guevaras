@@ -9,9 +9,9 @@ gem 'shotgun'
 gem 'sinatra'
 gem 'sinatra-activerecord'
 gem 'pg'
+gem 'rack-test', require: 'rack/test'
 
 group :test do
-  gem 'rack-test', require: 'rack/test'
   gem 'rspec'
   gem 'database_cleaner'
 end

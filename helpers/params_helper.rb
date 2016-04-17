@@ -1,12 +1,18 @@
 require 'grape'
-require 'action_controller/metal/strong_parameters'
 
 module ParamsHelper
   extend Grape::API::Helpers
 
+  def session_params
+    email = params[:user].fetch(:email)
+    password = params[:user].fetch(:password)
+    { email: email, password: password }
+  end
+
   def user_params
-    ActionController::Parameters.new(params)
-      .require(:user)
-      .permit(:email, :name, :password)
+    email = params[:user].fetch(:email)
+    name = params[:user].fetch(:name)
+    password = params[:user].fetch(:password)
+    { email: email, name: name, password: password }
   end
 end

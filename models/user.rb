@@ -8,10 +8,23 @@ class User < ActiveRecord::Base
     when 'edit_menu'
       true
     when 'add_user'
-      self.admin
+      # check if admin?
+      false
     else
       false
     end
+  end
+
+  def authenticate!(pw, session)
+    if valid_password?(pw)
+      session[:user_id] = id
+    else
+      raise 'Incorrect username or password'
+    end
+  end
+
+  def valid_password?(password_try)
+    password == password_try
   end
 
   def password

@@ -1,23 +1,24 @@
 require 'bundler'
 require 'sinatra/activerecord'
 require './controllers/menu_items_controller'
+require './controllers/sessions_controller'
 require './controllers/users_controller'
 require './models/user'
 require './models/menu_item'
 Bundler.require(:default, :development)
 
 class API < Grape::API
+  use Rack::Session::Cookie, :key => 'rack.session',
+	                           :expire_after => 2592000, # In seconds
+	                           :secret => ENV['GUEVARAS_SESSION_SECRET']
+
   mount MenuItemsController
+  mount SessionsController
   mount UsersController
 end
 
 class Web < Sinatra::Application
 	register Sinatra::ActiveRecordExtension
-
-	# TODO: clean this up
-	enable :sessions
-		set :session_secret, 'persenukedipsekjonukpunon',
-		expire_after: 3600
 
 	# TODO: is this necessary?
 	options '/*' do
