@@ -1,8 +1,6 @@
 require 'bundler'
 require 'sinatra/activerecord'
 require './controllers/menu_items_controller'
-require './controllers/users_controller'
-require './models/user'
 require './models/menu_item'
 Bundler.require(:default, :development)
 
@@ -15,7 +13,21 @@ class Web < Sinatra::Application
 
 	# TODO: this is the only route that should remain...everything else will be JS
 	get '/' do
-		erb :index
+		erb :index, layout: false
+	end
+
+	get '/twilio' do
+		'Hello World! Currently running version ' + Twilio::VERSION + \
+        ' of the twilio-ruby library.'
+  end
+
+  get '/sms-quickstart' do
+	  content_type 'text/xml'
+
+	  res = Twilio::TwiML::Response.new do |r|
+	    r.Sms "Hey Monkey. Thanks for the message 4!"
+	  end
+	  p res.to_xml
 	end
 
 	# Single-Button Menu Updates

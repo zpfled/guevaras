@@ -6,6 +6,7 @@ gem 'rake'
 gem 'sinatra'
 gem 'sinatra-activerecord'
 gem 'pg'
+gem 'twilio-ruby'
 
 group :development do
   gem 'shotgun'
