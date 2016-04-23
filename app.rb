@@ -1,6 +1,6 @@
 require 'bundler'
 require 'sinatra/activerecord'
-require './controllers/menu_items_controller'
+require './controllers/api/v1/menu_items_controller'
 require './models/menu_item'
 require './helpers/twilio_helper'
 Bundler.require(:default, :development)

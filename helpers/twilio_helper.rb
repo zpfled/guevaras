@@ -1,5 +1,5 @@
 module TwilioHelper
-  def self.parse_body(params)
+  def parse_body(params)
     result = {}
     params['Body'].split(',').map do |kv|
       pair = kv.split(':').map(&:strip)
