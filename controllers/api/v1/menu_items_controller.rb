@@ -12,7 +12,7 @@ class MenuItemsController < Grape::API
   resource :menu_items do
     # Create
     desc 'Create a new menu item'
-    post :create do
+    post do
       # Create Flow
 
       # Posting to this endpoint creates a menu_item_draft with
@@ -44,6 +44,17 @@ class MenuItemsController < Grape::API
 
       ## Describe :item_name in 144 characters or less.
       ## Response is string, semi-smartly capitalized by server
+
+      # (Delete menu_item_draft)
+
+      # Save record as menu item, then present success message to user
+      # Ok, :item_name has been added to the :item_category section of the
+      # :item_menu menu, and is priced at $:item_price.
+      # What would you like to do next?
+      # (Reply with the number of the corresponding choice)
+      # 1. Add another item to the menu.
+      # 2. Change an existing menu item.
+      # 3. Delete an item from the menu.
     end
 
     # Read
