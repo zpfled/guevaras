@@ -1,5 +1,5 @@
 require 'grape'
-require_relative '../helpers/twilio_helper'
+require_relative '../../../helpers/twilio_helper'
 
 
 class MenuItemsController < Grape::API
