@@ -1,60 +1,30 @@
 require 'grape'
 require_relative '../../../helpers/twilio_helper'
+require_relative '../../../services/menu_item_service'
+
+AUTHORIZED_USERS = [13095736404]
 
 
 class MenuItemsController < Grape::API
   include TwilioHelper
 
   version 'v1', using: :path
-  format :json
   prefix :api
+  default_format :json
 
   resource :menu_items do
     # Create
     desc 'Create a new menu item'
-    post do
-      # Create Flow
-
-      # Posting to this endpoint creates a menu_item_draft with
-      # identifier: :approved_phone_number_that_request_came_from
-      # Create flow operates on this item and changes the appropriate
-      # attrs depending on where in the process you are.
-      # You can cancel the create process at anytime if you want.
-
-      ## What menu is this item for?
-      ## (Reply with the number of the correct menu)
-      ## 1. Lunch
-      ## 2. Dinner
-      ## 3. Wine List
-      ## 4. Cocktails
-      ## 5. Small Plates
-
-      ## What is this :item_type called?
-      ## //response is string, parsed and smartly capitalized by server
-
-      ## What category does :item_name fall into?
-      ## (Reply with the number of the corrseponding category)
-      ## 1. Loop
-      ## 2. through
-      ## 3. menu
-      ## 4. categories
-
-      ## How much does :item_name cost?
-      ## //response is number (or float)
-
-      ## Describe :item_name in 144 characters or less.
-      ## Response is string, semi-smartly capitalized by server
-
-      # (Delete menu_item_draft)
-
-      # Save record as menu item, then present success message to user
-      # Ok, :item_name has been added to the :item_category section of the
-      # :item_menu menu, and is priced at $:item_price.
-      # What would you like to do next?
-      # (Reply with the number of the corresponding choice)
-      # 1. Add another item to the menu.
-      # 2. Change an existing menu item.
-      # 3. Delete an item from the menu.
+    # TODO: This will be "post do" for real, just using "get :create" for development
+    # TODO: Url for the phone will need to be /api/v1/menu_items.xml
+    # post do
+    get :create do
+      begin
+        authorize!(params)
+        MenuItemService.create(create_params(params))
+      rescue
+        render_unauthorized_error
+      end
     end
 
     # Read
@@ -65,26 +35,82 @@ class MenuItemsController < Grape::API
 
     desc 'Get lunch menu'
     get :lunch do
-      MenuItem.where(menu: 'lunch')
+      MenuItem.where(menu_id: Menu.find_by(name: 'lunch').id)
     end
 
     desc 'Get small plates menu'
     get :small_plates do
-      MenuItem.where(menu: 'small plates')
+      MenuItem.where(menu_id: Menu.find_by(name: 'small plates').id)
     end
 
     desc 'Get wine list'
     get :wine do
-      MenuItem.where(menu: 'wine')
+      MenuItem.where(menu_id: Menu.find_by(name: 'wine').id)
     end
 
     desc 'Get dinner menu'
     get :dinner do
-      MenuItem.where(menu: 'dinner')
+      MenuItem.where(menu_id: Menu.find_by(name: 'dinner').id)
+    end
+
+    desc 'Get cocktail list'
+    get :cocktail do
+      MenuItem.where(menu_id: Menu.find_by(name: 'cocktail').id)
     end
 
     # Update
 
     # Destroy
+  end
+
+
+  helpers do
+    def authorize!(params)
+      authorized = AUTHORIZED_USERS.include? create_params(params)[:from]
+      raise Error unless authorized
+    end
+
+    def create_params(params)
+      # SAMPLE PARAMS FROM TWILIO REQUEST
+      # {
+      #   "ToCountry"=>"US",
+      #   "ToState"=>"IL",
+      #   "SmsMessageSid"=>"SM7d682c3d6a7ce0c1ecbc9bf920994276",
+      #   "NumMedia"=>"0",
+      #   "ToCity"=>"PEORIA",
+      #   "FromZip"=>"61603",
+      #   "SmsSid"=>"SM7d682c3d6a7ce0c1ecbc9bf920994276",
+      #   "FromState"=>"IL",
+      #   "SmsStatus"=>"received",
+      #   "FromCity"=>"PEORIA",
+      #   "Body"=>"Posting, 34",
+      #   "FromCountry"=>"US",
+      #   "To"=>"+13092731511",
+      #   "ToZip"=>"61603",
+      #   "NumSegments"=>"1",
+      #   "MessageSid"=>"SM7d682c3d6a7ce0c1ecbc9bf920994276",
+      #   "AccountSid"=>"ACaaafb0a1094b5adf37d08405abbb18bf",
+      #   "From"=>"+13095736404",
+      #   "ApiVersion"=>"2010-04-01"
+      # }
+      body = params.fetch('Body')
+      from = params.fetch('From')
+
+      return {
+        body: body,
+        from: from.to_i
+      }
+    end
+
+    def render_unauthorized_error
+      error_response = Twilio::TwiML::Response.new do |r|
+        r.Sms "Uh oh! It looks like you're trying to update the menu from an unauthorized phone.\n
+              \n
+              If you think you should not be receiving this message,
+              call Zach and he'll get you sorted out."
+      end
+
+      error_response
+    end
   end
 end

@@ -1,7 +1,5 @@
 class CategoryDataMigration < ActiveRecord::Migration
   def change
-    CATEGORY_NAMES = MenuItem.pluck(:category).uniq
-
     MenuItem.all.each do |item|
       cat_name = item.category.downcase.gsub('-', ' ')
       if existing = Category.find_by(name: cat_name, menu_id: item.menu_id)

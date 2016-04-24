@@ -35,11 +35,13 @@ ActiveRecord::Schema.define(version: 20160423212040) do
   end
 
   create_table "menu_items", force: :cascade do |t|
-    t.string  "name",        limit: 50, null: false
-    t.text    "description",            null: false
-    t.integer "price",                  null: false
-    t.integer "category_id"
-    t.integer "menu_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "description", null: false
+    t.string   "name",        null: false
+    t.integer  "price",       null: false
+    t.integer  "category_id"
+    t.integer  "menu_id"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -48,16 +50,13 @@ ActiveRecord::Schema.define(version: 20160423212040) do
     t.datetime "updated_at"
   end
 
-  create_table "users", id: false, force: :cascade do |t|
-    t.integer "id",                   default: "nextval('users_id_seq'::regclass)", null: false
-    t.text    "name",                                                               null: false
-    t.text    "email",                                                              null: false
-    t.string  "password", limit: 255,                                               null: false
-    t.boolean "admin",                default: false
+  create_table "users", force: :cascade do |t|
+    t.boolean  "admin",         default: false
+    t.string   "email",                         null: false
+    t.string   "name",                          null: false
+    t.string   "password_hash",                 null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
-
-  add_index "users", ["email"], name: "unique_users_email", unique: true, using: :btree
-  add_index "users", ["id"], name: "unique_users_key", unique: true, using: :btree
-  add_index "users", ["name"], name: "unique_users_name", unique: true, using: :btree
 
 end

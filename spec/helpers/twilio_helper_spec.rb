@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe TwilioHelper do
   describe '#parse_body' do
-    it 'returns a hash with action, menu, item, price, and description values' do
+    xit 'returns a hash with action, menu, item, price, and description values' do
       params = {
         'Body' => 'action: add, menu: lunch, item: Shark Sandwich, price: 10, description: yum!'
       }
