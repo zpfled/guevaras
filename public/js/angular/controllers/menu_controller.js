@@ -14,27 +14,28 @@ angular.module('twochez').controller('MenuController', [
   $scope.selected_menu = MediaQueryService.isDesktop() ? 'dinner' : null;
   $scope.device = MediaQueryService;
 
-  $scope.failure = function (response) {
-    $window.console.error(response);
-    return false;
-  };
-
-  $scope.initialize_menu = function (response) {
-    $scope.menus = _.uniq(_.pluck(response.data, 'menu'));
+  $scope.initializeMenus = function (menuItems) {
+    $scope.menus = _.uniq(_.pluck(menuItems, 'menu'));
+    $scope.menuItems = menuItems;
     return true;
   };
 
-  $scope.select_menu = function (menu) {
+  $scope.isSelectedMenu = function (menu) {
+    return $scope.selected_menu === menu;
+  };
+
+  $scope.logError = function (response) {
+    console.error('failed', response);
+    return false;
+  };
+
+  $scope.selectMenu = function (menu) {
     $scope.selected_menu = menu;
     return menu;
   };
 
-  $scope.selected_menu_is = function (menu) {
-    return $scope.selected_menu === menu;
-  };
-
-  ChezApi.get_menu_items().then(
-    $scope.initialize_menu,
-    $scope.failure
+  ChezApi.getMenuItems().then(
+    $scope.initializeMenus,
+    $scope.logError
   );
 }]);

@@ -1,4 +1,4 @@
-angular.module('twochez').directive('chezMenu', [
+angular.module('twochez').directive('chezmenu', [
   '$window',
   'ChezApi',
   'MediaQueryService',
@@ -14,33 +14,45 @@ angular.module('twochez').directive('chezMenu', [
     scope.menu = [];
     scope.device = MediaQueryService;
 
-    scope.failure = function (response) {
-      $window.console.error(response);
-      return false;
+    scope.init = function () {
+      scope.menu = _.where(scope.menuItems, { menu: scope.menuName });
+      scope.categories = _.uniq(_.pluck(scope.menu, 'category'));
     };
 
-    scope.items_sorted_by = function (category) {
-      return _.where(scope.menu, {category: category});
+    scope.sortedBy = function (category) {
+      return _.where(scope.menu, { category: category });
     };
 
-    scope.initialize_menu = function (response) {
-      scope.menu = response.data;
-      scope.categories = _.uniq(_.pluck(response.data, 'category'));
-    };
-
-    ChezApi.get_menu_items(scope.menuName).then(
-      scope.initialize_menu,
-      scope.failure
-    );
+    scope.init();
   };
 
   // Directive
   return {
     scope: {
+      menuItems: '=',
       menuName: '@'
     },
     restrict: 'E',
-    templateUrl: '/templates/directives/chez_menu.html',
-    link: link
+    link: link,
+    template: '<section ng-class="{\'chezmenu--bg\': device.isDesktop()}">' +
+                '<div class="chezmenu--scrim scrim row mg-top-near mg-bottom-near">' +
+                    '<ul class="chezmenu--ul pd-near" ng-repeat="category in categories">' +
+                      '<h3 class="chezmenu--section mg-bottom-near">' +
+                        '{{ category | stripDashes }}' +
+                      '</h3>' +
+                      '<li class="chezmenu--li" ng-repeat="item in sortedBy(category)">' +
+                        '<h5 class="chezmenu--name">' +
+                          '{{ item.name }}' +
+                          '<span class="right">' +
+                            '{{ item.price }}' +
+                          '</span>' +
+                        '</h5>' +
+                        '<p class="light-gray t-italics">' +
+                          '{{ item.description }}' +
+                        '</p>' +
+                      '</li>' +
+                    '</ul>' +
+                  '</div>' +
+                '</section>'
   };
 }]);

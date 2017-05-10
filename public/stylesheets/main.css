@@ -5,6 +5,10 @@ html, body {
   text-rendering: optimizeLegibility;
 }
 
+.right {
+  float: right;
+}
+
 .btn-info {
   color: #887C64;
   background-color: #D5C9A3;
@@ -85,13 +89,13 @@ p {
   background-size: auto 100%;
 }
 
-@media (max-width:320px) { .menu--bg {background-image: url('/images/menu/menu_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }
-@media (max-width:481px) { .menu--bg {background-image: url('/images/menu/menu_481.jpg');}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
-@media (max-width:641px) { .menu--bg {background-image: url('/images/menu/menu_641.jpg');}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
-@media (max-width:961px) { .menu--bg {background-image: url('/images/menu/menu_961.jpg');}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
-@media (max-width:1025px) { .menu--bg {background-image: url('/images/menu/menu_1025.jpg');}/* big landscape tablets, laptops, and desktops */ }
-@media (max-width:1280px) { .menu--bg {background-image: url('/images/menu/menu_1281.jpg');}/* hi-res laptops and desktops */ }
-@media (min-width:1281px) { .menu--bg {background-image: url('/images/menu/menu_1281.jpg');}/* hi-res laptops and desktops */ }
+@media (max-width:320px) { .menu--bg {background-image: url('./../images/menu/menu_320.jpg');}/* smartphones, iPhone, portrait 480x320 phones */ }
+@media (max-width:481px) { .menu--bg {background-image: url('./../images/menu/menu_481.jpg');}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media (max-width:641px) { .menu--bg {background-image: url('./../images/menu/menu_641.jpg');}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (max-width:961px) { .menu--bg {background-image: url('./../images/menu/menu_961.jpg');}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (max-width:1025px) { .menu--bg {background-image: url('./../images/menu/menu_1025.jpg');}/* big landscape tablets, laptops, and desktops */ }
+@media (max-width:1280px) { .menu--bg {background-image: url('./../images/menu/menu_1281.jpg');}/* hi-res laptops and desktops */ }
+@media (min-width:1281px) { .menu--bg {background-image: url('./../images/menu/menu_1281.jpg');}/* hi-res laptops and desktops */ }
 
 .menu--tabs-li {
   display: inline-block;

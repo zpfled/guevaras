@@ -1,21 +1,19 @@
-angular.module('twochez').service('ChezApi', [
-  '$http',
-  '$q',
-  function(
-    $http,
-    $q
-  ) {
+angular.module('twochez').service('ChezApi', [ '$q', function($q) {
 
   'use strict';
-  this.base_url = 'api/v1/'
 
-  this.get_menu_items = function (menu) {
-    if (menu) {
-      return $http.get(this.base_url + 'menu_items/' + menu.split(' ').join('_'));
-    } else {
-      return $http.get(this.base_url + 'menu_items');
-    };
-  }
+  this.getMenuItems = function () {
+    console.log('getMenuItems');
+    return $q(function (resolve, reject) {
+      Tabletop.init({
+        key: 'https://docs.google.com/spreadsheets/d/1DEgK3eUSnEjyuCVzCvAlzTXNmCN-5sKR8ihiE2KIJIo/pub?output=csv',
+        callback: function(menuItems) {
+          resolve(menuItems);
+        },
+        simpleSheet: true
+      });
+    });
+  };
 
   return this;
 }]);
