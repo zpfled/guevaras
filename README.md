@@ -1,6 +1,7 @@
-#website for 2Chez restaurant
-[ freelance job ]
+# website for 2Chez restaurant
 
-##overview
+This was my first real website, and as such, it has a special place in my Github profile. It started out as a janky Sinatra app that barely worked, but was a hell of a lot of fun to build. I kept coming back to it with refactors based on things I had learned along the way. Then I'd come back and refactor away those refactors.
 
-This was a collaboration with my good friend @davecrow. I was working at 2Chez Restaurant at the time, about to leave for Dev Bootcamp, and wanted to build something that would actually help somebody. 2Chez desperately needed a new website, so I started building it in Sinatra. Dave started helping me out with the front end, and taught me a lot about design and workflow along the way.
+Anyway, the goal has always been to have a site that is useful to my friend Todd, the owner of 2Chez restaurant. He wants to be able to update the menu on his own from time to time, and I certainly don't want to be in charge of updating the site in response to minor price changes here and there. Initially I used DataMapper and Postgres to store the menu. Then I switched to ActiveRecord and turned the Ruby app into an API, for no reason except that I wanted to play around with Grape. I even went down the path of developing an sms menu-updating system with Twilio before I realized that was a way-too-complex idea. 
+
+Finally I settled on a static web page that reads menu data from a Google spreadsheet. It's dead simple, and while there are still traces of my former bad ideas in here (like all of the Angular code), it's finally super useful. Todd can manage his menu on a spreadsheet (which is what he's used to working with), I don't have to maintain anything, and my friend Jeff, who no longer works at 2Chez, can still be found pictured in the 'Find Us' section. Win-win-win.
